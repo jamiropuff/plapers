@@ -12,8 +12,8 @@
       <!-- ============================================================== -->
       <div class="navbar-brand">
         <!-- Logo icon -->
-        <a href="index.html">
-          <img src="<?= base_url() ?>/admin/assets/images/freedashDark.svg" alt="" class="img-fluid">
+        <a href="./">
+          <img src="<?= base_url() ?>/assets/images/logo_plapers.svg" alt="" class="img-fluid">
         </a>
       </div>
       <!-- ============================================================== -->
@@ -126,38 +126,12 @@
             <a class="dropdown-item" href="#">Something else here</a>
           </div>
         </li>
-        <li class="nav-item d-none d-md-block">
-          <a class="nav-link" href="javascript:void(0)">
-            <div class="customize-input">
-              <select
-                class="custom-select form-control bg-white custom-radius custom-shadow border-0">
-                <option selected>EN</option>
-                <option value="1">AB</option>
-                <option value="2">AK</option>
-                <option value="3">BE</option>
-              </select>
-            </div>
-          </a>
-        </li>
       </ul>
       <!-- ============================================================== -->
       <!-- Right side toggle and nav items -->
       <!-- ============================================================== -->
       <ul class="navbar-nav float-end">
-        <!-- ============================================================== -->
-        <!-- Search -->
-        <!-- ============================================================== -->
-        <li class="nav-item d-none d-md-block">
-          <a class="nav-link" href="javascript:void(0)">
-            <form>
-              <div class="customize-input">
-                <input class="form-control custom-shadow custom-radius border-0 bg-white"
-                  type="search" placeholder="Search" aria-label="Search">
-                <i class="form-control-icon" data-feather="search"></i>
-              </div>
-            </form>
-          </a>
-        </li>
+       
         <!-- ============================================================== -->
         <!-- User profile and search -->
         <!-- ============================================================== -->

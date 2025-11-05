@@ -15,6 +15,8 @@
     <link href="<?= base_url() ?>/admin/assets/extra-libs/c3/c3.min.css" rel="stylesheet">
     <link href="<?= base_url() ?>/admin/assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
     <link href="<?= base_url() ?>/admin/assets/extra-libs/jvector/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
+    <!-- Fontawesome CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="<?= base_url() ?>/admin/dist/css/style.min.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

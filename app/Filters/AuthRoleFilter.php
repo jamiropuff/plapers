@@ -11,14 +11,20 @@ class AuthRoleFilter implements FilterInterface
     public function before(RequestInterface $request, $arguments = null)
     {
 
-        // $session = session();
+        $session = session();
 
-        // if(!$session){
-        //     //return redirect('panel');
-        //     return redirect()->to(ADMIN_HOME.'panel');
-        // }
+        if (!$session) {
+            //return redirect('panel');
+            return redirect()->to(ADMIN_HOME . 'panel');
+        }
 
-        // if($session->role_id != 1){
+        $rolesPermitidos = [1, 3, 4, 5];
+
+        if (!in_array($session->Rol, $rolesPermitidos)) {
+            return redirect()->to(ADMIN_HOME.'panel');
+        }
+
+        // if($session->Rol != 1){
         //     //return redirect('panel');
         //     return redirect()->to(ADMIN_HOME.'panel');
         // }

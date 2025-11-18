@@ -35,9 +35,9 @@ class Database extends Config
         'hostname' => 'localhost',
         'username' => 'root', // arceocon_impo
         'password' => '', // ?$U&b8SrS}#%
-        'database' => 'impo', // arceocon_impo
+        'database' => 'plapers', // arceocon_impo
         'DBDriver' => 'MySQLi',
-        'DBPrefix' => '',
+        'DBPrefix' => 'plap_',
         'pConnect' => false,
         'DBDebug'  => (ENVIRONMENT !== 'production'),
         'charset'  => 'utf8',

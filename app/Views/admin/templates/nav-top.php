@@ -12,7 +12,7 @@
       <!-- ============================================================== -->
       <div class="navbar-brand">
         <!-- Logo icon -->
-        <a href="./">
+        <a href="/panel/home">
           <img src="<?= base_url() ?>/assets/images/logo_plapers.svg" alt="" class="img-fluid">
         </a>
       </div>
@@ -140,32 +140,14 @@
             aria-haspopup="true" aria-expanded="false">
             <img src="<?= base_url() ?>/admin/assets/images/users/profile-pic.jpg" alt="user" class="rounded-circle"
               width="40">
-            <span class="ms-2 d-none d-lg-inline-block"><span>Hello,</span> <span
-                class="text-dark">Jason Doe</span> <i data-feather="chevron-down"
+            <span class="ms-2 d-none d-lg-inline-block"><span>Hola,</span> <span
+                class="text-dark"><?= $session->Nombres. ' ' . $session->Paterno ?></span> <i data-feather="chevron-down"
                 class="svg-icon"></i></span>
           </a>
           <div class="dropdown-menu dropdown-menu-end dropdown-menu-right user-dd animated flipInY">
-            <a class="dropdown-item" href="javascript:void(0)"><i data-feather="user"
+            <a class="dropdown-item" href="/admin/logout"><i data-feather="power"
                 class="svg-icon me-2 ms-1"></i>
-              My Profile</a>
-            <a class="dropdown-item" href="javascript:void(0)"><i data-feather="credit-card"
-                class="svg-icon me-2 ms-1"></i>
-              My Balance</a>
-            <a class="dropdown-item" href="javascript:void(0)"><i data-feather="mail"
-                class="svg-icon me-2 ms-1"></i>
-              Inbox</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="javascript:void(0)"><i data-feather="settings"
-                class="svg-icon me-2 ms-1"></i>
-              Account Setting</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="javascript:void(0)"><i data-feather="power"
-                class="svg-icon me-2 ms-1"></i>
-              Logout</a>
-            <div class="dropdown-divider"></div>
-            <div class="pl-4 p-3"><a href="javascript:void(0)" class="btn btn-sm btn-info">View
-                Profile</a></div>
-          </div>
+              Cerrar Sesión</a>
         </li>
         <!-- ============================================================== -->
         <!-- User profile and search -->

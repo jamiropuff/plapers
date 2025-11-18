@@ -50,7 +50,7 @@
                         </div>
                         <h2 class="mt-3 text-center">Iniciar Sesión</h2>
                         <p class="text-center">Ingrese su dirección de correo electrónico y contraseña para acceder al panel de administración.</p>
-                        <form class="mt-4">
+                        
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="form-group mb-3">
@@ -67,13 +67,13 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-12 text-center">
-                                    <button type="submit" class="btn w-100 btn-dark">Entrar</button>
+                                    <button type="button" class="btn w-100 btn-dark" onclick="login()">Entrar</button>
                                 </div>
                                 <div class="col-lg-12 text-center mt-5">
                                     
                                 </div>
                             </div>
-                        </form>
+                        
                     </div>
                 </div>
             </div>
@@ -92,6 +92,7 @@
     <!-- ============================================================== -->
     <!-- This page plugin js -->
     <!-- ============================================================== -->
+     <script src="<?= base_url() ?>/admin/dist/js/main.js"></script>
     <script>
         $(".preloader ").fadeOut();
     </script>

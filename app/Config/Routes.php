@@ -86,8 +86,8 @@ $routes->get('panel', 'Home::admin');
 $routes->get('panel/home', 'Home::dashboard');
 
 // Login
-$routes->post('/login', 'UserController::login');
-$routes->get('/logout', 'UserController::logout');
+$routes->post('admin/login', 'UserController::login');
+$routes->get('admin/logout', 'UserController::logout');
 
 // Users
 // $routes->get('/users/create', 'UserController::crear_usuario');
@@ -95,9 +95,11 @@ $routes->get('/logout', 'UserController::logout');
 // $routes->post('/users/update', 'UserController::update');
 // $routes->post('/users/delete', 'UserController::delete');
 
-// Prospectives
-$routes->get('panel/prospectives', 'ProspectiveController::prospectives');
-$routes->post('panel/prospectives/search', 'ProspectiveController::search');
+// Ordenes
+$routes->get('panel/ordenes/activas', 'OrdenesController::ordenes_activas');
+$routes->get('panel/ordenes/finalizadas', 'OrdenesController::ordenes_finalizadas');
+$routes->get('panel/ordenes/canceladas', 'OrdenesController::ordenes_canceladas');
+$routes->get('uploads/(:segment)/(:any)', 'FileController::serveFile/$1/$2');
 
 // Degree
 $routes->get('panel/degree', 'AdminDegreeController::degree');

@@ -24,7 +24,7 @@ class Filters extends BaseConfig
         'honeypot'      => Honeypot::class,
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
-        'authrolefilter' => AuthRoleFilter::class,
+        'authAdmin' => AuthRoleFilter::class,
     ];
 
     /**
@@ -71,7 +71,7 @@ class Filters extends BaseConfig
      * @var array
      */
     public $filters = [
-        'authrolefilter' => [
+        'authAdmin' => [
             'before' => [
                 'panel/*',
             ]

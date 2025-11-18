@@ -46,7 +46,7 @@ switch ($title) {
     <!-- Sidebar navigation-->
     <nav class="sidebar-nav mb-5">
       <ul id="sidebarnav">
-        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="index.html"
+        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/panel/home"
             aria-expanded="false"><i data-feather="home" class="feather-icon"></i><span
               class="hide-menu">Dashboard</span></a></li>
 
@@ -54,18 +54,18 @@ switch ($title) {
 
         <li class="nav-small-cap"><span class="hide-menu">Órdenes</span></li>
         <li class="sidebar-item">
-          <a class="sidebar-link" href="ticket-list.html" aria-expanded="false">
+          <a class="sidebar-link" href="/panel/ordenes/activas" aria-expanded="false">
             <i class="fa-solid fa-file-invoice"></i></i><span class="hide-menu">Activas</span>
           </a>
         </li>
         <li class="sidebar-item"> 
-          <a class="sidebar-link sidebar-link" href="app-chat.html" aria-expanded="false">
+          <a class="sidebar-link sidebar-link" href="/panel/ordenes/finalizadas" aria-expanded="false">
             <i class="fa-solid fa-file-import"></i><span class="hide-menu">Finalizadas</span>
           </a>
         </li>
         <li class="sidebar-item">
-          <a class="sidebar-link sidebar-link" href="app-calendar.html" aria-expanded="false">
-            <i class="fa-solid fa-file-contract"></i><span class="hide-menu">Canceladas</span>
+          <a class="sidebar-link sidebar-link" href="/panel/ordenes/canceladas" aria-expanded="false">
+            <i class="fa-solid fa-file-excel"></i><span class="hide-menu">Canceladas</span>
           </a>
         </li>
 

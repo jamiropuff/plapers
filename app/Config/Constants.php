@@ -97,8 +97,30 @@ define('EVENT_PRIORITY_HIGH', 10);
 //defined('APP_URL')        or define('APP_URL', "http://ec2-75-101-184-63.compute-1.amazonaws.com:3000/v1/api/"); // URL Base del sitio
 
 # Constants IMPo 
-defined('ADMIN_HOME')        or define('ADMIN_HOME', "http://plapers.io/"); // URL Base del sitio
+defined('ADMIN_HOME')           or define('ADMIN_HOME', "http://plapers.io/"); // URL Base del sitio
 
+// RUTAS
 // Protocol http or https
 $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https://'.$_SERVER['HTTP_HOST'] : 'http://'.$_SERVER['HTTP_HOST'];
-defined('BASE') || define('BASE',$protocol);
+defined('BASE') || define('BASE',$protocol); // URL Base del sitio
+
+defined('DIR_PUBLIC')           or define('DIR_PUBLIC', BASE . "public/"); // Directorio público
+defined('DIR_IMG')              or define('DIR_IMG', DIR_PUBLIC . "img/"); // Directorio de imágenes
+defined('DIR_FOTOS')            or define('DIR_FOTOS', DIR_PUBLIC . "fotos/"); // Directorio de fotos de placas
+
+// AJAX CONSTANTS
+defined('REQUEST_SUCCESS')      or define('REQUEST_SUCCESS', 10000); // No errors on request
+defined('REQUEST_FAILED')       or define('REQUEST_FAILED', 10001); // Error on request
+defined('METHOD_NOT_ALLOWED')   or define('METHOD_NOT_ALLOWED', 10002); // Method GET POST DELETE not allowed
+defined('INVALID_REQUEST')      or define('INVALID_REQUEST', 10003); // Validation failed
+
+// DB CONSTANTS
+defined('QUERY_SUCCESS')        or define('QUERY_SUCCESS', 20000); // no results found
+defined('NO_RESULTS')           or define('NO_RESULTS', 20001); // no results found
+defined('QUERY_FAILED')         or define('QUERY_FAILED', 20002); // no results found
+
+// RESPONSE MESSAGES
+defined('MSG_METHOD_NOT_ALLOWED')   or define('MSG_METHOD_NOT_ALLOWED', "Este método no está permitido"); // Validation failed
+defined('MSG_DB_ERROR')             or define('MSG_DB_ERROR', "Error en la base de datos, por favor intente más tarde"); // DB Query failed
+
+

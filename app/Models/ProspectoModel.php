@@ -4,11 +4,11 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class ProspectoModel extends Model {
+class OrdenModel extends Model {
 
-    protected $table = 'prospectos';
-    protected $primaryKey = 'id';
+    protected $table = 't_orden';
+    protected $primaryKey = 'id_orden';
     protected $returnType = 'object';
-    protected $allowedFields = ['nombres','apellidos','email','telefono','plantel','interes','medio_entero','mensaje','fecha_upd'];
+    protected $allowedFields = ['id_user','id_tipo_pago','id_tipo_envio','id_estatus_pago','id_estatus_pedido','subtotal','iva','envio','total','id_direccion','id_facturacion'];
 
 }

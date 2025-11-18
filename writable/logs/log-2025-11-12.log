@@ -1,0 +1,7 @@
+CRITICAL - 2025-11-12 08:09:40 --> Undefined variable $Id_Tipo_Pago
+in APPPATH\Controllers\OrdenesController.php on line 114.
+ 1 APPPATH\Controllers\OrdenesController.php(114): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $Id_Tipo_Pago', 'APPPATH\\Controllers\\OrdenesController.php', 114)
+ 2 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\OrdenesController->ordenes_finalizadas()
+ 3 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrdenesController))
+ 4 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()

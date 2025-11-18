@@ -6,10 +6,10 @@ use CodeIgniter\Model;
 
 class UsuarioModel extends Model {
 
-    protected $table = 'usuarios';
-    protected $primaryKey = 'id';
+    protected $table = 't_usuarios';
+    protected $primaryKey = 'id_user';
     protected $returnType = 'object';
-    protected $allowedFields = ['usuario','email','pass'];
+    protected $allowedFields = ['username','correo_electronico','password', 'remember_token'];
 
     public function passHash($passHash) {
         return password_hash($passHash, PASSWORD_DEFAULT);

@@ -7,7 +7,9 @@
     <!-- ============================================================== -->
     <div class="row">
         <div class="col-12">
-            <?php //echo "<pre>", var_dump($ordenes), "</pre>"; ?>
+            <?php //echo "<pre>", var_dump($ordenes), "</pre>"; 
+            // echo "<pre>", var_dump($estatusPedido), "</pre>";
+            ?>
             <div class="card">
                 <div class="card-body">
                     <div class="table-responsive">
@@ -99,10 +101,34 @@
                                         <td class="text-center"><?= $fecha_produccion; ?></td>
                                         <td class="text-center"><a href="/ordenes/productos/<?= $orden->id_orden; ?>"><i class="fa-solid fa-eye fa-2x"></i></a></td>
                                         <td class="text-center"><a href="/ordenes/orden/<?= $orden->id_orden; ?>"><i class="fa-regular fa-file-lines fa-2x"></i></a></td>
+
+                                        <?php if (isset($session->Rol) && ($session->Rol == 1 || $session->Rol == 3)) { ?>
+                                            <td>
+                                                <select id="id_estatus_pago_<?= $orden->id_orden; ?>" class="form-select form-select-sm" onchange="cambiar_pago(<?= $orden->id_orden; ?>, this.value)">
+                                                    <option value="0">Seleccionar</option>
+                                                    <?php foreach ($estatusPago as $estatus) { ?>
+                                                        <option value="<?= $estatus->id_estatus_pago; ?>"><?= $estatus->estatus_pago; ?></option>
+                                                    <?php } ?>
+                                                </select>
+                                            </td>
+                                        <?php } ?>
+
                                         <td>
-                                            <select></select>
+                                            <select id="id_estatus_pedido_<?= $orden->id_orden; ?>" class="form-select form-select-sm" onchange="pedidoModal(<?= $orden->id_orden; ?>, this.value, <?= $orden->id_estatus_pago; ?>)">
+                                                <option value="0">Seleccionar</option>
+                                                <?php foreach ($estatusPedido as $estatus) { ?>
+                                                    <?php if (isset($session->Rol) && $session->Rol != 5) { ?>
+                                                        <?php if ($orden->id_estatus_pedido != 3 && $orden->id_estatus_pedido != 7) { ?>
+                                                            <option value="<?= $estatus->id_estatus_pedido; ?>"><?= $estatus->estatus_pedido; ?></option>
+                                                        <?php } ?>
+                                                    <?php } else { ?>
+                                                        <?php if ($orden->id_estatus_pedido == 3 || $orden->id_estatus_pedido == 7) { ?>
+                                                            <option value="<?= $estatus->id_estatus_pedido; ?>"><?= $estatus->estatus_pedido; ?></option>
+                                                        <?php } ?>
+                                                    <?php } ?>
+                                                <?php } ?>
+                                            </select>
                                         </td>
-                                        <td><select></select></td>
                                         <td class="text-center"><i class="fa-solid fa-file-export fa-2x"></i></td>
                                     </tr>
                                     <?php $x++; ?>

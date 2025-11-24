@@ -11,4 +11,15 @@ class CatTipoEnvioModel extends Model {
     protected $returnType = 'object';
     protected $allowedFields = ['tipo_envio'];
 
+	public function lista($activo = "")
+	{
+        $builder = $this->table('cat_tipo_envio');
+		if($activo != ""){
+			$builder->where("activo", $activo);
+		}
+		$builder->orderBy("activo", "desc");
+		$builder->orderBy("tipo_envio", "asc");
+		return $builder->get()->getResult();
+	}   
+
 }

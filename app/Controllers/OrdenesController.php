@@ -3,6 +3,10 @@
 namespace App\Controllers;
 
 use App\Models\OrdenModel;
+use App\Models\CatTipoPagoModel;
+use App\Models\CatEstatusPagoModel;
+use App\Models\CatTipoEnvioModel;
+use App\Models\CatEstatusPedidoModel;
 
 class OrdenesController extends BaseController
 {
@@ -12,7 +16,15 @@ class OrdenesController extends BaseController
         $db = \Config\Database::connect();
         $session = session();
 
-        echo "<script>console.log('Nombres: " . $session->Nombres . "');</script>";
+        $tipoPagoModel = new CatTipoPagoModel();
+        $estatusPagoModel = new CatEstatusPagoModel();
+        $tipoEnvioModel = new CatTipoEnvioModel();
+        $estatusPedidoModel = new CatEstatusPedidoModel();
+
+        $tipoPago = $tipoPagoModel->lista();
+        $estatusPago = $estatusPagoModel->lista();
+        $tipoEnvio = $tipoEnvioModel->lista();
+        $estatusPedido = $estatusPedidoModel->lista();
 
         // Builder principal
         $builder = $db->table('t_orden AS a');
@@ -54,7 +66,20 @@ class OrdenesController extends BaseController
         }
         $builder->orderBy("a.id_orden", "DESC");
 
-        $ordenes = $builder->get()->getResult(); // Ejecutar la consulta y obtener los resultados
+        $query = $builder->get(); // Ejecutar la consulta
+
+        $array_tipo_envio = [];
+        foreach ($query->getResult() as $row) {
+            // Tipo de Envío
+            $id_tipo_envio = $row->id_tipo_envio;
+            if ($id_tipo_envio > 0) {
+                $cat_tipo_envio = $tipoEnvioModel->lista_envio($id_tipo_envio);
+            } else {
+                $cat_tipo_envio = $tipoEnvioModel->lista_envio("1");
+            }
+
+            $array_tipo_envio[] = (object)["estatus_pedido" => $row->estatus_pedido, "id_estatus_pedido" => $row->id_estatus_pedido, "id_tipo_envio" => $row->id_tipo_envio, "activo" => $row->activo];
+        }
 
 
         $data_breadcrumb = array(
@@ -65,10 +90,14 @@ class OrdenesController extends BaseController
         $data_main = array(
             'menu' => 'ordenes_activas',
             'ordenes' => $ordenes,
+            'tipoPago' => $tipoPago,
+            'estatusPago' => $estatusPago,
+            'tipoEnvio' => $tipoEnvio,
+            'estatusPedido' => $estatusPedido
         );
 
         $data_session = array(
-            'session' => $session
+            "session" => $session
         );
 
         $data_footer = array(
@@ -76,11 +105,11 @@ class OrdenesController extends BaseController
         );
 
         echo view('admin/templates/header');
-        echo view('admin/templates/nav-top',$data_session);
+        echo view('admin/templates/nav-top', $data_session);
         echo view('admin/templates/nav-aside');
-        echo view('admin/templates/breadcrumb',$data_breadcrumb);
-        echo view('admin/ordenes/activas',$data_main);
-        echo view('admin/templates/footer',$data_footer);
+        echo view('admin/templates/breadcrumb', $data_breadcrumb);
+        echo view('admin/ordenes/activas', $data_main);
+        echo view('admin/templates/footer', $data_footer);
     }
 
     public function ordenes_finalizadas($Id_Rol = 0)
@@ -135,9 +164,9 @@ class OrdenesController extends BaseController
         );
 
         echo view('admin/templates/header');
-        echo view('admin/templates/nav-top',$data_session);
+        echo view('admin/templates/nav-top', $data_session);
         echo view('admin/templates/nav-aside');
-        echo view('admin/templates/breadcrumb',$data_breadcrumb);
+        echo view('admin/templates/breadcrumb', $data_breadcrumb);
         echo view('admin/ordenes/finalizadas', $data_main);
         echo view('admin/templates/footer');
     }
@@ -188,9 +217,9 @@ class OrdenesController extends BaseController
         );
 
         echo view('admin/templates/header');
-        echo view('admin/templates/nav-top',$data_session);
+        echo view('admin/templates/nav-top', $data_session);
         echo view('admin/templates/nav-aside');
-        echo view('admin/templates/breadcrumb',$data_breadcrumb);
+        echo view('admin/templates/breadcrumb', $data_breadcrumb);
         echo view('admin/ordenes/canceladas', $data_main);
         echo view('admin/templates/footer');
     }

@@ -1,0 +1,851 @@
+ERROR - 2025-11-24 17:03:06 --> mysqli_sql_exception: Table 'plapers.plap_contador' doesn't exist in C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `visitas...', 0)
+#1 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `visitas...')
+#2 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `visitas...')
+#3 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `visitas...', Array, false)
+#4 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Model.php(202): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\BaseModel.php(525): CodeIgniter\Model->doFind(false, NULL)
+#6 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Model.php(218): CodeIgniter\BaseModel->find()
+#7 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\BaseModel.php(556): CodeIgniter\Model->doFindColumn('visitas')
+#8 C:\xampp\htdocs\plapers\app\Controllers\DegreeController.php(52): CodeIgniter\BaseModel->findColumn('visitas')
+#9 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\CodeIgniter.php(925): App\Controllers\DegreeController->oferta_show()
+#10 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DegreeController))
+#11 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\plapers\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#13 {main}
+ERROR - 2025-11-24 17:03:06 --> mysqli_sql_exception: Table 'plapers.plap_contador' doesn't exist in C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `visitas...', 0)
+#1 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `visitas...')
+#2 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `visitas...')
+#3 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `visitas...', Array, false)
+#4 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Model.php(202): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\BaseModel.php(525): CodeIgniter\Model->doFind(false, NULL)
+#6 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Model.php(218): CodeIgniter\BaseModel->find()
+#7 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\BaseModel.php(556): CodeIgniter\Model->doFindColumn('visitas')
+#8 C:\xampp\htdocs\plapers\app\Controllers\DegreeController.php(52): CodeIgniter\BaseModel->findColumn('visitas')
+#9 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\CodeIgniter.php(925): App\Controllers\DegreeController->oferta_show()
+#10 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DegreeController))
+#11 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\plapers\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#13 {main}
+ERROR - 2025-11-24 17:03:06 --> mysqli_sql_exception: Table 'plapers.plap_contador' doesn't exist in C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `visitas...', 0)
+#1 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `visitas...')
+#2 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `visitas...')
+#3 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `visitas...', Array, false)
+#4 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Model.php(202): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\BaseModel.php(525): CodeIgniter\Model->doFind(false, NULL)
+#6 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Model.php(218): CodeIgniter\BaseModel->find()
+#7 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\BaseModel.php(556): CodeIgniter\Model->doFindColumn('visitas')
+#8 C:\xampp\htdocs\plapers\app\Controllers\DegreeController.php(52): CodeIgniter\BaseModel->findColumn('visitas')
+#9 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\CodeIgniter.php(925): App\Controllers\DegreeController->oferta_show()
+#10 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DegreeController))
+#11 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\plapers\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#13 {main}
+ERROR - 2025-11-24 17:03:06 --> mysqli_sql_exception: Table 'plapers.plap_contador' doesn't exist in C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `visitas...', 0)
+#1 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `visitas...')
+#2 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `visitas...')
+#3 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `visitas...', Array, false)
+#4 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Model.php(202): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\BaseModel.php(525): CodeIgniter\Model->doFind(false, NULL)
+#6 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Model.php(218): CodeIgniter\BaseModel->find()
+#7 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\BaseModel.php(556): CodeIgniter\Model->doFindColumn('visitas')
+#8 C:\xampp\htdocs\plapers\app\Controllers\DegreeController.php(52): CodeIgniter\BaseModel->findColumn('visitas')
+#9 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\CodeIgniter.php(925): App\Controllers\DegreeController->oferta_show()
+#10 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DegreeController))
+#11 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\plapers\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#13 {main}
+CRITICAL - 2025-11-24 17:03:06 --> Call to a member function getResult() on bool
+in SYSTEMPATH\Model.php on line 202.
+ 1 SYSTEMPATH\BaseModel.php(525): CodeIgniter\Model->doFind(false, null)
+ 2 SYSTEMPATH\Model.php(218): CodeIgniter\BaseModel->find()
+ 3 SYSTEMPATH\BaseModel.php(556): CodeIgniter\Model->doFindColumn('visitas')
+ 4 APPPATH\Controllers\DegreeController.php(52): CodeIgniter\BaseModel->findColumn('visitas')
+ 5 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\DegreeController->oferta_show()
+ 6 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DegreeController))
+ 7 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-11-24 17:03:06 --> Call to a member function getResult() on bool
+in SYSTEMPATH\Model.php on line 202.
+ 1 SYSTEMPATH\BaseModel.php(525): CodeIgniter\Model->doFind(false, null)
+ 2 SYSTEMPATH\Model.php(218): CodeIgniter\BaseModel->find()
+ 3 SYSTEMPATH\BaseModel.php(556): CodeIgniter\Model->doFindColumn('visitas')
+ 4 APPPATH\Controllers\DegreeController.php(52): CodeIgniter\BaseModel->findColumn('visitas')
+ 5 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\DegreeController->oferta_show()
+ 6 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DegreeController))
+ 7 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-11-24 17:03:06 --> Call to a member function getResult() on bool
+in SYSTEMPATH\Model.php on line 202.
+ 1 SYSTEMPATH\BaseModel.php(525): CodeIgniter\Model->doFind(false, null)
+ 2 SYSTEMPATH\Model.php(218): CodeIgniter\BaseModel->find()
+ 3 SYSTEMPATH\BaseModel.php(556): CodeIgniter\Model->doFindColumn('visitas')
+ 4 APPPATH\Controllers\DegreeController.php(52): CodeIgniter\BaseModel->findColumn('visitas')
+ 5 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\DegreeController->oferta_show()
+ 6 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DegreeController))
+ 7 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-11-24 17:03:06 --> Call to a member function getResult() on bool
+in SYSTEMPATH\Model.php on line 202.
+ 1 SYSTEMPATH\BaseModel.php(525): CodeIgniter\Model->doFind(false, null)
+ 2 SYSTEMPATH\Model.php(218): CodeIgniter\BaseModel->find()
+ 3 SYSTEMPATH\BaseModel.php(556): CodeIgniter\Model->doFindColumn('visitas')
+ 4 APPPATH\Controllers\DegreeController.php(52): CodeIgniter\BaseModel->findColumn('visitas')
+ 5 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\DegreeController->oferta_show()
+ 6 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DegreeController))
+ 7 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-11-24 17:10:11 --> Call to undefined method App\Models\CatTipoEnvioModel::lista_envio
+in SYSTEMPATH\Model.php on line 807.
+ 1 APPPATH\Controllers\OrdenesController.php(76): CodeIgniter\Model->__call('lista_envio', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\OrdenesController->ordenes_activas()
+ 3 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrdenesController))
+ 4 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-11-24 19:13:44 --> mysqli_sql_exception: Table 'plapers.plap_contador' doesn't exist in C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `visitas...', 0)
+#1 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `visitas...')
+#2 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `visitas...')
+#3 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `visitas...', Array, false)
+#4 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Model.php(202): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\BaseModel.php(525): CodeIgniter\Model->doFind(false, NULL)
+#6 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Model.php(218): CodeIgniter\BaseModel->find()
+#7 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\BaseModel.php(556): CodeIgniter\Model->doFindColumn('visitas')
+#8 C:\xampp\htdocs\plapers\app\Controllers\DegreeController.php(52): CodeIgniter\BaseModel->findColumn('visitas')
+#9 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\CodeIgniter.php(925): App\Controllers\DegreeController->oferta_show()
+#10 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DegreeController))
+#11 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\plapers\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#13 {main}
+CRITICAL - 2025-11-24 19:13:44 --> Call to a member function getResult() on bool
+in SYSTEMPATH\Model.php on line 202.
+ 1 SYSTEMPATH\BaseModel.php(525): CodeIgniter\Model->doFind(false, null)
+ 2 SYSTEMPATH\Model.php(218): CodeIgniter\BaseModel->find()
+ 3 SYSTEMPATH\BaseModel.php(556): CodeIgniter\Model->doFindColumn('visitas')
+ 4 APPPATH\Controllers\DegreeController.php(52): CodeIgniter\BaseModel->findColumn('visitas')
+ 5 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\DegreeController->oferta_show()
+ 6 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DegreeController))
+ 7 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-11-24 19:13:44 --> mysqli_sql_exception: Table 'plapers.plap_contador' doesn't exist in C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `visitas...', 0)
+#1 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `visitas...')
+#2 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `visitas...')
+#3 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `visitas...', Array, false)
+#4 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Model.php(202): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\BaseModel.php(525): CodeIgniter\Model->doFind(false, NULL)
+#6 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Model.php(218): CodeIgniter\BaseModel->find()
+#7 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\BaseModel.php(556): CodeIgniter\Model->doFindColumn('visitas')
+#8 C:\xampp\htdocs\plapers\app\Controllers\DegreeController.php(52): CodeIgniter\BaseModel->findColumn('visitas')
+#9 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\CodeIgniter.php(925): App\Controllers\DegreeController->oferta_show()
+#10 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DegreeController))
+#11 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\plapers\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#13 {main}
+CRITICAL - 2025-11-24 19:13:44 --> Call to a member function getResult() on bool
+in SYSTEMPATH\Model.php on line 202.
+ 1 SYSTEMPATH\BaseModel.php(525): CodeIgniter\Model->doFind(false, null)
+ 2 SYSTEMPATH\Model.php(218): CodeIgniter\BaseModel->find()
+ 3 SYSTEMPATH\BaseModel.php(556): CodeIgniter\Model->doFindColumn('visitas')
+ 4 APPPATH\Controllers\DegreeController.php(52): CodeIgniter\BaseModel->findColumn('visitas')
+ 5 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\DegreeController->oferta_show()
+ 6 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DegreeController))
+ 7 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-11-24 19:13:44 --> mysqli_sql_exception: Table 'plapers.plap_contador' doesn't exist in C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `visitas...', 0)
+#1 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `visitas...')
+#2 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `visitas...')
+#3 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `visitas...', Array, false)
+#4 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Model.php(202): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\BaseModel.php(525): CodeIgniter\Model->doFind(false, NULL)
+#6 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Model.php(218): CodeIgniter\BaseModel->find()
+#7 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\BaseModel.php(556): CodeIgniter\Model->doFindColumn('visitas')
+#8 C:\xampp\htdocs\plapers\app\Controllers\DegreeController.php(52): CodeIgniter\BaseModel->findColumn('visitas')
+#9 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\CodeIgniter.php(925): App\Controllers\DegreeController->oferta_show()
+#10 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DegreeController))
+#11 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\plapers\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#13 {main}
+CRITICAL - 2025-11-24 19:13:44 --> Call to a member function getResult() on bool
+in SYSTEMPATH\Model.php on line 202.
+ 1 SYSTEMPATH\BaseModel.php(525): CodeIgniter\Model->doFind(false, null)
+ 2 SYSTEMPATH\Model.php(218): CodeIgniter\BaseModel->find()
+ 3 SYSTEMPATH\BaseModel.php(556): CodeIgniter\Model->doFindColumn('visitas')
+ 4 APPPATH\Controllers\DegreeController.php(52): CodeIgniter\BaseModel->findColumn('visitas')
+ 5 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\DegreeController->oferta_show()
+ 6 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DegreeController))
+ 7 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-11-24 19:13:44 --> mysqli_sql_exception: Table 'plapers.plap_contador' doesn't exist in C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `visitas...', 0)
+#1 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `visitas...')
+#2 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `visitas...')
+#3 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `visitas...', Array, false)
+#4 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Model.php(202): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\BaseModel.php(525): CodeIgniter\Model->doFind(false, NULL)
+#6 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Model.php(218): CodeIgniter\BaseModel->find()
+#7 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\BaseModel.php(556): CodeIgniter\Model->doFindColumn('visitas')
+#8 C:\xampp\htdocs\plapers\app\Controllers\DegreeController.php(52): CodeIgniter\BaseModel->findColumn('visitas')
+#9 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\CodeIgniter.php(925): App\Controllers\DegreeController->oferta_show()
+#10 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DegreeController))
+#11 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\plapers\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#13 {main}
+CRITICAL - 2025-11-24 19:13:44 --> Call to a member function getResult() on bool
+in SYSTEMPATH\Model.php on line 202.
+ 1 SYSTEMPATH\BaseModel.php(525): CodeIgniter\Model->doFind(false, null)
+ 2 SYSTEMPATH\Model.php(218): CodeIgniter\BaseModel->find()
+ 3 SYSTEMPATH\BaseModel.php(556): CodeIgniter\Model->doFindColumn('visitas')
+ 4 APPPATH\Controllers\DegreeController.php(52): CodeIgniter\BaseModel->findColumn('visitas')
+ 5 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\DegreeController->oferta_show()
+ 6 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DegreeController))
+ 7 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-11-24 19:13:46 --> mysqli_sql_exception: Unknown column 'estatus_pedido' in 'field list' in C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `estatus...', 0)
+#1 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `estatus...')
+#2 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `estatus...')
+#3 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `estatus...', Array, false)
+#4 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Model.php(805): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\plapers\app\Models\CatTipoEnvioModel.php(38): CodeIgniter\Model->__call('get', Array)
+#6 C:\xampp\htdocs\plapers\app\Controllers\OrdenesController.php(76): App\Models\CatTipoEnvioModel->lista_envio('1')
+#7 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\CodeIgniter.php(925): App\Controllers\OrdenesController->ordenes_activas()
+#8 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrdenesController))
+#9 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\plapers\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2025-11-24 19:13:46 --> Call to a member function getResult() on bool
+in APPPATH\Models\CatTipoEnvioModel.php on line 40.
+ 1 APPPATH\Controllers\OrdenesController.php(76): App\Models\CatTipoEnvioModel->lista_envio('1')
+ 2 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\OrdenesController->ordenes_activas()
+ 3 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrdenesController))
+ 4 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-11-24 19:15:33 --> Undefined property: mysqli::$id_tipo_envio
+in APPPATH\Controllers\OrdenesController.php on line 74.
+ 1 APPPATH\Controllers\OrdenesController.php(74): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: mysqli::$id_tipo_envio', 'APPPATH\\Controllers\\OrdenesController.php', 74)
+ 2 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\OrdenesController->ordenes_activas()
+ 3 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrdenesController))
+ 4 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-11-24 19:15:46 --> Undefined property: mysqli::$id_tipo_envio
+in APPPATH\Controllers\OrdenesController.php on line 75.
+ 1 APPPATH\Controllers\OrdenesController.php(75): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: mysqli::$id_tipo_envio', 'APPPATH\\Controllers\\OrdenesController.php', 75)
+ 2 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\OrdenesController->ordenes_activas()
+ 3 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrdenesController))
+ 4 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-11-24 19:16:24 --> Undefined variable $query
+in APPPATH\Controllers\OrdenesController.php on line 72.
+ 1 APPPATH\Controllers\OrdenesController.php(72): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $query', 'APPPATH\\Controllers\\OrdenesController.php', 72)
+ 2 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\OrdenesController->ordenes_activas()
+ 3 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrdenesController))
+ 4 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-11-24 19:16:34 --> Undefined property: mysqli::$id_tipo_envio
+in APPPATH\Views\admin\ordenes\activas.php on line 41.
+ 1 APPPATH\Views\admin\ordenes\activas.php(41): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: mysqli::$id_tipo_envio', 'APPPATH\\Views\\admin\\ordenes\\activas.php', 41)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\ordenes\\activas.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('admin/ordenes/activas', [], true)
+ 5 APPPATH\Controllers\OrdenesController.php(112): view('admin/ordenes/activas', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\OrdenesController->ordenes_activas()
+ 7 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrdenesController))
+ 8 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-11-24 19:17:28 --> mysqli_sql_exception: Unknown column 'estatus_pedido' in 'field list' in C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `estatus...', 0)
+#1 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `estatus...')
+#2 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `estatus...')
+#3 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `estatus...', Array, false)
+#4 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Model.php(805): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\plapers\app\Models\CatTipoEnvioModel.php(38): CodeIgniter\Model->__call('get', Array)
+#6 C:\xampp\htdocs\plapers\app\Controllers\OrdenesController.php(77): App\Models\CatTipoEnvioModel->lista_envio('1')
+#7 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\CodeIgniter.php(925): App\Controllers\OrdenesController->ordenes_activas()
+#8 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrdenesController))
+#9 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\plapers\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2025-11-24 19:17:28 --> Call to a member function getResult() on bool
+in APPPATH\Models\CatTipoEnvioModel.php on line 40.
+ 1 APPPATH\Controllers\OrdenesController.php(77): App\Models\CatTipoEnvioModel->lista_envio('1')
+ 2 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\OrdenesController->ordenes_activas()
+ 3 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrdenesController))
+ 4 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-11-24 19:38:12 --> mysqli_sql_exception: Unknown column 'estatus_pedido' in 'field list' in C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `estatus...', 0)
+#1 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `estatus...')
+#2 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `estatus...')
+#3 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `estatus...', Array, false)
+#4 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Model.php(805): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\plapers\app\Models\CatTipoEnvioModel.php(38): CodeIgniter\Model->__call('get', Array)
+#6 C:\xampp\htdocs\plapers\app\Controllers\OrdenesController.php(79): App\Models\CatTipoEnvioModel->lista_envio('1')
+#7 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\CodeIgniter.php(925): App\Controllers\OrdenesController->ordenes_activas()
+#8 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrdenesController))
+#9 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\plapers\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2025-11-24 19:38:12 --> Call to a member function getResult() on bool
+in APPPATH\Models\CatTipoEnvioModel.php on line 40.
+ 1 APPPATH\Controllers\OrdenesController.php(79): App\Models\CatTipoEnvioModel->lista_envio('1')
+ 2 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\OrdenesController->ordenes_activas()
+ 3 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrdenesController))
+ 4 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-11-24 19:42:01 --> mysqli_sql_exception: Unknown column 'estatus_pedido' in 'field list' in C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `estatus...', 0)
+#1 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `estatus...')
+#2 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `estatus...')
+#3 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `estatus...', Array, false)
+#4 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Model.php(805): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\plapers\app\Models\CatTipoEnvioModel.php(38): CodeIgniter\Model->__call('get', Array)
+#6 C:\xampp\htdocs\plapers\app\Controllers\OrdenesController.php(79): App\Models\CatTipoEnvioModel->lista_envio('1')
+#7 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\CodeIgniter.php(925): App\Controllers\OrdenesController->ordenes_activas()
+#8 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrdenesController))
+#9 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\plapers\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2025-11-24 19:42:01 --> Call to a member function getResult() on bool
+in APPPATH\Models\CatTipoEnvioModel.php on line 40.
+ 1 APPPATH\Controllers\OrdenesController.php(79): App\Models\CatTipoEnvioModel->lista_envio('1')
+ 2 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\OrdenesController->ordenes_activas()
+ 3 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrdenesController))
+ 4 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-11-24 19:47:14 --> mysqli_sql_exception: Unknown column 'estatus_pedido' in 'field list' in C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `estatus...', 0)
+#1 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `estatus...')
+#2 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `estatus...')
+#3 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `estatus...', Array, false)
+#4 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Model.php(805): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\plapers\app\Models\CatTipoEnvioModel.php(39): CodeIgniter\Model->__call('get', Array)
+#6 C:\xampp\htdocs\plapers\app\Controllers\OrdenesController.php(79): App\Models\CatTipoEnvioModel->lista_envio('1')
+#7 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\CodeIgniter.php(925): App\Controllers\OrdenesController->ordenes_activas()
+#8 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrdenesController))
+#9 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\plapers\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2025-11-24 19:47:14 --> Call to a member function getResult() on bool
+in APPPATH\Models\CatTipoEnvioModel.php on line 40.
+ 1 APPPATH\Controllers\OrdenesController.php(79): App\Models\CatTipoEnvioModel->lista_envio('1')
+ 2 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\OrdenesController->ordenes_activas()
+ 3 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrdenesController))
+ 4 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-11-24 19:47:39 --> mysqli_sql_exception: Unknown column 'estatus_pedido' in 'field list' in C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `estatus...', 0)
+#1 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `estatus...')
+#2 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `estatus...')
+#3 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `estatus...', Array, false)
+#4 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Model.php(805): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\plapers\app\Models\CatTipoEnvioModel.php(39): CodeIgniter\Model->__call('get', Array)
+#6 C:\xampp\htdocs\plapers\app\Controllers\OrdenesController.php(79): App\Models\CatTipoEnvioModel->lista_envio('1')
+#7 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\CodeIgniter.php(925): App\Controllers\OrdenesController->ordenes_activas()
+#8 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrdenesController))
+#9 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\plapers\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2025-11-24 19:47:39 --> Call to a member function getResult() on bool
+in APPPATH\Models\CatTipoEnvioModel.php on line 43.
+ 1 APPPATH\Controllers\OrdenesController.php(79): App\Models\CatTipoEnvioModel->lista_envio('1')
+ 2 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\OrdenesController->ordenes_activas()
+ 3 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrdenesController))
+ 4 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-11-24 19:48:49 --> mysqli_sql_exception: Unknown column 'estatus_pedido' in 'field list' in C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `estatus...', 0)
+#1 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `estatus...')
+#2 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `estatus...')
+#3 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `estatus...', Array, false)
+#4 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Model.php(805): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\plapers\app\Models\CatTipoEnvioModel.php(39): CodeIgniter\Model->__call('get', Array)
+#6 C:\xampp\htdocs\plapers\app\Controllers\OrdenesController.php(79): App\Models\CatTipoEnvioModel->lista_envio('1')
+#7 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\CodeIgniter.php(925): App\Controllers\OrdenesController->ordenes_activas()
+#8 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrdenesController))
+#9 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\plapers\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2025-11-24 19:48:49 --> Call to a member function getResult() on bool
+in APPPATH\Models\CatTipoEnvioModel.php on line 43.
+ 1 APPPATH\Controllers\OrdenesController.php(79): App\Models\CatTipoEnvioModel->lista_envio('1')
+ 2 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\OrdenesController->ordenes_activas()
+ 3 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrdenesController))
+ 4 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-11-24 19:51:38 --> Undefined property: stdClass::$constancia
+in APPPATH\Controllers\OrdenesController.php on line 142.
+ 1 APPPATH\Controllers\OrdenesController.php(142): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$constancia', 'APPPATH\\Controllers\\OrdenesController.php', 142)
+ 2 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\OrdenesController->ordenes_activas()
+ 3 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrdenesController))
+ 4 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-11-24 19:54:12 --> Undefined property: stdClass::$constancia
+in APPPATH\Controllers\OrdenesController.php on line 142.
+ 1 APPPATH\Controllers\OrdenesController.php(142): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$constancia', 'APPPATH\\Controllers\\OrdenesController.php', 142)
+ 2 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\OrdenesController->ordenes_activas()
+ 3 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrdenesController))
+ 4 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-11-24 19:54:51 --> Undefined property: stdClass::$constancia
+in APPPATH\Controllers\OrdenesController.php on line 143.
+ 1 APPPATH\Controllers\OrdenesController.php(143): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$constancia', 'APPPATH\\Controllers\\OrdenesController.php', 143)
+ 2 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\OrdenesController->ordenes_activas()
+ 3 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrdenesController))
+ 4 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-11-24 19:56:35 --> Undefined property: stdClass::$fecha_constancia
+in APPPATH\Controllers\OrdenesController.php on line 144.
+ 1 APPPATH\Controllers\OrdenesController.php(144): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$fecha_constancia', 'APPPATH\\Controllers\\OrdenesController.php', 144)
+ 2 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\OrdenesController->ordenes_activas()
+ 3 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrdenesController))
+ 4 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-11-24 19:56:49 --> Undefined property: stdClass::$id_tipo_envio
+in APPPATH\Views\admin\ordenes\activas.php on line 41.
+ 1 APPPATH\Views\admin\ordenes\activas.php(41): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$id_tipo_envio', 'APPPATH\\Views\\admin\\ordenes\\activas.php', 41)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\ordenes\\activas.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('admin/ordenes/activas', [], true)
+ 5 APPPATH\Controllers\OrdenesController.php(181): view('admin/ordenes/activas', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\OrdenesController->ordenes_activas()
+ 7 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrdenesController))
+ 8 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-11-24 20:00:45 --> Undefined property: stdClass::$id_tipo_envio
+in APPPATH\Views\admin\ordenes\activas.php on line 41.
+ 1 APPPATH\Views\admin\ordenes\activas.php(41): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$id_tipo_envio', 'APPPATH\\Views\\admin\\ordenes\\activas.php', 41)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\ordenes\\activas.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('admin/ordenes/activas', [], true)
+ 5 APPPATH\Controllers\OrdenesController.php(181): view('admin/ordenes/activas', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\OrdenesController->ordenes_activas()
+ 7 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrdenesController))
+ 8 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-11-24 20:03:59 --> Undefined property: stdClass::$id_tipo_envio
+in APPPATH\Views\admin\ordenes\activas.php on line 41.
+ 1 APPPATH\Views\admin\ordenes\activas.php(41): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$id_tipo_envio', 'APPPATH\\Views\\admin\\ordenes\\activas.php', 41)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\ordenes\\activas.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('admin/ordenes/activas', [], true)
+ 5 APPPATH\Controllers\OrdenesController.php(183): view('admin/ordenes/activas', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\OrdenesController->ordenes_activas()
+ 7 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrdenesController))
+ 8 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-11-24 20:06:00 --> Undefined property: stdClass::$id_tipo_envio
+in APPPATH\Views\admin\ordenes\activas.php on line 41.
+ 1 APPPATH\Views\admin\ordenes\activas.php(41): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$id_tipo_envio', 'APPPATH\\Views\\admin\\ordenes\\activas.php', 41)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\ordenes\\activas.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('admin/ordenes/activas', [], true)
+ 5 APPPATH\Controllers\OrdenesController.php(183): view('admin/ordenes/activas', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\OrdenesController->ordenes_activas()
+ 7 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrdenesController))
+ 8 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-11-24 20:06:31 --> Undefined property: stdClass::$id_tipo_envio
+in APPPATH\Views\admin\ordenes\activas.php on line 41.
+ 1 APPPATH\Views\admin\ordenes\activas.php(41): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$id_tipo_envio', 'APPPATH\\Views\\admin\\ordenes\\activas.php', 41)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\ordenes\\activas.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('admin/ordenes/activas', [], true)
+ 5 APPPATH\Controllers\OrdenesController.php(183): view('admin/ordenes/activas', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\OrdenesController->ordenes_activas()
+ 7 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrdenesController))
+ 8 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-11-24 20:09:06 --> Undefined property: stdClass::$id_tipo_envio
+in APPPATH\Views\admin\ordenes\activas.php on line 41.
+ 1 APPPATH\Views\admin\ordenes\activas.php(41): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$id_tipo_envio', 'APPPATH\\Views\\admin\\ordenes\\activas.php', 41)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\ordenes\\activas.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('admin/ordenes/activas', [], true)
+ 5 APPPATH\Controllers\OrdenesController.php(185): view('admin/ordenes/activas', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\OrdenesController->ordenes_activas()
+ 7 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrdenesController))
+ 8 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-11-24 20:10:36 --> Undefined property: stdClass::$id_tipo_envio
+in APPPATH\Views\admin\ordenes\activas.php on line 43.
+ 1 APPPATH\Views\admin\ordenes\activas.php(43): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$id_tipo_envio', 'APPPATH\\Views\\admin\\ordenes\\activas.php', 43)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\ordenes\\activas.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('admin/ordenes/activas', [], true)
+ 5 APPPATH\Controllers\OrdenesController.php(185): view('admin/ordenes/activas', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\OrdenesController->ordenes_activas()
+ 7 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrdenesController))
+ 8 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-11-24 20:10:57 --> mysqli_sql_exception: Table 'plapers.plap_contador' doesn't exist in C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `visitas...', 0)
+#1 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `visitas...')
+#2 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `visitas...')
+#3 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `visitas...', Array, false)
+#4 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Model.php(202): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\BaseModel.php(525): CodeIgniter\Model->doFind(false, NULL)
+#6 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Model.php(218): CodeIgniter\BaseModel->find()
+#7 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\BaseModel.php(556): CodeIgniter\Model->doFindColumn('visitas')
+#8 C:\xampp\htdocs\plapers\app\Controllers\DegreeController.php(52): CodeIgniter\BaseModel->findColumn('visitas')
+#9 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\CodeIgniter.php(925): App\Controllers\DegreeController->oferta_show()
+#10 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DegreeController))
+#11 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\plapers\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#13 {main}
+CRITICAL - 2025-11-24 20:10:57 --> Call to a member function getResult() on bool
+in SYSTEMPATH\Model.php on line 202.
+ 1 SYSTEMPATH\BaseModel.php(525): CodeIgniter\Model->doFind(false, null)
+ 2 SYSTEMPATH\Model.php(218): CodeIgniter\BaseModel->find()
+ 3 SYSTEMPATH\BaseModel.php(556): CodeIgniter\Model->doFindColumn('visitas')
+ 4 APPPATH\Controllers\DegreeController.php(52): CodeIgniter\BaseModel->findColumn('visitas')
+ 5 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\DegreeController->oferta_show()
+ 6 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DegreeController))
+ 7 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-11-24 20:11:03 --> mysqli_sql_exception: Table 'plapers.plap_contador' doesn't exist in C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `visitas...', 0)
+#1 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `visitas...')
+#2 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `visitas...')
+#3 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `visitas...', Array, false)
+#4 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Model.php(202): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\BaseModel.php(525): CodeIgniter\Model->doFind(false, NULL)
+#6 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Model.php(218): CodeIgniter\BaseModel->find()
+#7 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\BaseModel.php(556): CodeIgniter\Model->doFindColumn('visitas')
+#8 C:\xampp\htdocs\plapers\app\Controllers\DegreeController.php(52): CodeIgniter\BaseModel->findColumn('visitas')
+#9 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\CodeIgniter.php(925): App\Controllers\DegreeController->oferta_show()
+#10 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DegreeController))
+#11 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\plapers\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#13 {main}
+CRITICAL - 2025-11-24 20:11:03 --> Call to a member function getResult() on bool
+in SYSTEMPATH\Model.php on line 202.
+ 1 SYSTEMPATH\BaseModel.php(525): CodeIgniter\Model->doFind(false, null)
+ 2 SYSTEMPATH\Model.php(218): CodeIgniter\BaseModel->find()
+ 3 SYSTEMPATH\BaseModel.php(556): CodeIgniter\Model->doFindColumn('visitas')
+ 4 APPPATH\Controllers\DegreeController.php(52): CodeIgniter\BaseModel->findColumn('visitas')
+ 5 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\DegreeController->oferta_show()
+ 6 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DegreeController))
+ 7 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-11-24 20:11:06 --> Undefined property: stdClass::$id_tipo_envio
+in APPPATH\Views\admin\ordenes\activas.php on line 43.
+ 1 APPPATH\Views\admin\ordenes\activas.php(43): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$id_tipo_envio', 'APPPATH\\Views\\admin\\ordenes\\activas.php', 43)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\ordenes\\activas.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('admin/ordenes/activas', [], true)
+ 5 APPPATH\Controllers\OrdenesController.php(185): view('admin/ordenes/activas', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\OrdenesController->ordenes_activas()
+ 7 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrdenesController))
+ 8 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-11-24 20:11:14 --> Undefined property: stdClass::$id_tipo_envio
+in APPPATH\Views\admin\ordenes\activas.php on line 43.
+ 1 APPPATH\Views\admin\ordenes\activas.php(43): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$id_tipo_envio', 'APPPATH\\Views\\admin\\ordenes\\activas.php', 43)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\ordenes\\activas.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('admin/ordenes/activas', [], true)
+ 5 APPPATH\Controllers\OrdenesController.php(185): view('admin/ordenes/activas', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\OrdenesController->ordenes_activas()
+ 7 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrdenesController))
+ 8 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-11-24 20:11:53 --> mysqli_sql_exception: Table 'plapers.plap_contador' doesn't exist in C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `visitas...', 0)
+#1 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `visitas...')
+#2 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `visitas...')
+#3 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `visitas...', Array, false)
+#4 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Model.php(202): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\BaseModel.php(525): CodeIgniter\Model->doFind(false, NULL)
+#6 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Model.php(218): CodeIgniter\BaseModel->find()
+#7 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\BaseModel.php(556): CodeIgniter\Model->doFindColumn('visitas')
+#8 C:\xampp\htdocs\plapers\app\Controllers\DegreeController.php(52): CodeIgniter\BaseModel->findColumn('visitas')
+#9 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\CodeIgniter.php(925): App\Controllers\DegreeController->oferta_show()
+#10 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DegreeController))
+#11 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\plapers\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#13 {main}
+CRITICAL - 2025-11-24 20:11:53 --> Call to a member function getResult() on bool
+in SYSTEMPATH\Model.php on line 202.
+ 1 SYSTEMPATH\BaseModel.php(525): CodeIgniter\Model->doFind(false, null)
+ 2 SYSTEMPATH\Model.php(218): CodeIgniter\BaseModel->find()
+ 3 SYSTEMPATH\BaseModel.php(556): CodeIgniter\Model->doFindColumn('visitas')
+ 4 APPPATH\Controllers\DegreeController.php(52): CodeIgniter\BaseModel->findColumn('visitas')
+ 5 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\DegreeController->oferta_show()
+ 6 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DegreeController))
+ 7 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-11-24 20:12:03 --> mysqli_sql_exception: Table 'plapers.plap_contador' doesn't exist in C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `visitas...', 0)
+#1 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `visitas...')
+#2 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `visitas...')
+#3 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `visitas...', Array, false)
+#4 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Model.php(202): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\BaseModel.php(525): CodeIgniter\Model->doFind(false, NULL)
+#6 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Model.php(218): CodeIgniter\BaseModel->find()
+#7 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\BaseModel.php(556): CodeIgniter\Model->doFindColumn('visitas')
+#8 C:\xampp\htdocs\plapers\app\Controllers\DegreeController.php(52): CodeIgniter\BaseModel->findColumn('visitas')
+#9 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\CodeIgniter.php(925): App\Controllers\DegreeController->oferta_show()
+#10 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DegreeController))
+#11 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\plapers\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#13 {main}
+CRITICAL - 2025-11-24 20:12:03 --> Call to a member function getResult() on bool
+in SYSTEMPATH\Model.php on line 202.
+ 1 SYSTEMPATH\BaseModel.php(525): CodeIgniter\Model->doFind(false, null)
+ 2 SYSTEMPATH\Model.php(218): CodeIgniter\BaseModel->find()
+ 3 SYSTEMPATH\BaseModel.php(556): CodeIgniter\Model->doFindColumn('visitas')
+ 4 APPPATH\Controllers\DegreeController.php(52): CodeIgniter\BaseModel->findColumn('visitas')
+ 5 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\DegreeController->oferta_show()
+ 6 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DegreeController))
+ 7 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-11-24 20:17:16 --> Undefined property: stdClass::$Nombres
+in APPPATH\Views\admin\ordenes\activas.php on line 92.
+ 1 APPPATH\Views\admin\ordenes\activas.php(92): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$Nombres', 'APPPATH\\Views\\admin\\ordenes\\activas.php', 92)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\ordenes\\activas.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('admin/ordenes/activas', [], true)
+ 5 APPPATH\Controllers\OrdenesController.php(185): view('admin/ordenes/activas', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\OrdenesController->ordenes_activas()
+ 7 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrdenesController))
+ 8 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-11-24 20:17:37 --> Undefined property: stdClass::$Nombres
+in APPPATH\Views\admin\ordenes\activas.php on line 92.
+ 1 APPPATH\Views\admin\ordenes\activas.php(92): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$Nombres', 'APPPATH\\Views\\admin\\ordenes\\activas.php', 92)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\ordenes\\activas.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('admin/ordenes/activas', [], true)
+ 5 APPPATH\Controllers\OrdenesController.php(185): view('admin/ordenes/activas', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\OrdenesController->ordenes_activas()
+ 7 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrdenesController))
+ 8 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-11-24 20:18:35 --> Undefined property: stdClass::$Nombres
+in APPPATH\Views\admin\ordenes\activas.php on line 92.
+ 1 APPPATH\Views\admin\ordenes\activas.php(92): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$Nombres', 'APPPATH\\Views\\admin\\ordenes\\activas.php', 92)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\ordenes\\activas.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('admin/ordenes/activas', [], true)
+ 5 APPPATH\Controllers\OrdenesController.php(185): view('admin/ordenes/activas', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\OrdenesController->ordenes_activas()
+ 7 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrdenesController))
+ 8 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-11-24 20:19:52 --> Undefined property: stdClass::$Nombres
+in APPPATH\Views\admin\ordenes\activas.php on line 92.
+ 1 APPPATH\Views\admin\ordenes\activas.php(92): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$Nombres', 'APPPATH\\Views\\admin\\ordenes\\activas.php', 92)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\ordenes\\activas.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('admin/ordenes/activas', [], true)
+ 5 APPPATH\Controllers\OrdenesController.php(185): view('admin/ordenes/activas', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\OrdenesController->ordenes_activas()
+ 7 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrdenesController))
+ 8 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-11-24 20:20:29 --> Unclosed '{' on line 40
+in APPPATH\Views\admin\ordenes\activas.php on line 56.
+ 1 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('admin/ordenes/activas', [], true)
+ 3 APPPATH\Controllers\OrdenesController.php(185): view('admin/ordenes/activas', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\OrdenesController->ordenes_activas()
+ 5 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrdenesController))
+ 6 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-11-24 20:22:59 --> Undefined property: stdClass::$Nombres
+in APPPATH\Views\admin\ordenes\activas.php on line 92.
+ 1 APPPATH\Views\admin\ordenes\activas.php(92): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$Nombres', 'APPPATH\\Views\\admin\\ordenes\\activas.php', 92)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\ordenes\\activas.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('admin/ordenes/activas', [], true)
+ 5 APPPATH\Controllers\OrdenesController.php(185): view('admin/ordenes/activas', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\OrdenesController->ordenes_activas()
+ 7 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrdenesController))
+ 8 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-11-24 20:23:24 --> Undefined variable $Cat_Tipo_Envio
+in APPPATH\Views\admin\ordenes\activas.php on line 121.
+ 1 APPPATH\Views\admin\ordenes\activas.php(121): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $Cat_Tipo_Envio', 'APPPATH\\Views\\admin\\ordenes\\activas.php', 121)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\ordenes\\activas.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('admin/ordenes/activas', [], true)
+ 5 APPPATH\Controllers\OrdenesController.php(185): view('admin/ordenes/activas', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\OrdenesController->ordenes_activas()
+ 7 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrdenesController))
+ 8 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-11-24 20:26:34 --> Undefined variable $Cat_Tipo_Envio
+in APPPATH\Views\admin\ordenes\activas.php on line 121.
+ 1 APPPATH\Views\admin\ordenes\activas.php(121): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $Cat_Tipo_Envio', 'APPPATH\\Views\\admin\\ordenes\\activas.php', 121)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\ordenes\\activas.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('admin/ordenes/activas', [], true)
+ 5 APPPATH\Controllers\OrdenesController.php(185): view('admin/ordenes/activas', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\OrdenesController->ordenes_activas()
+ 7 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrdenesController))
+ 8 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-11-24 20:27:52 --> Undefined variable $Cat_Tipo_Envio
+in APPPATH\Views\admin\ordenes\activas.php on line 121.
+ 1 APPPATH\Views\admin\ordenes\activas.php(121): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $Cat_Tipo_Envio', 'APPPATH\\Views\\admin\\ordenes\\activas.php', 121)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\ordenes\\activas.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('admin/ordenes/activas', [], true)
+ 5 APPPATH\Controllers\OrdenesController.php(185): view('admin/ordenes/activas', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\OrdenesController->ordenes_activas()
+ 7 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrdenesController))
+ 8 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-11-24 20:28:12 --> Undefined variable $Cat_Tipo_Envio
+in APPPATH\Views\admin\ordenes\activas.php on line 119.
+ 1 APPPATH\Views\admin\ordenes\activas.php(119): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $Cat_Tipo_Envio', 'APPPATH\\Views\\admin\\ordenes\\activas.php', 119)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\ordenes\\activas.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('admin/ordenes/activas', [], true)
+ 5 APPPATH\Controllers\OrdenesController.php(185): view('admin/ordenes/activas', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\OrdenesController->ordenes_activas()
+ 7 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrdenesController))
+ 8 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-11-24 20:28:15 --> Undefined variable $Cat_Tipo_Envio
+in APPPATH\Views\admin\ordenes\activas.php on line 119.
+ 1 APPPATH\Views\admin\ordenes\activas.php(119): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $Cat_Tipo_Envio', 'APPPATH\\Views\\admin\\ordenes\\activas.php', 119)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\ordenes\\activas.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('admin/ordenes/activas', [], true)
+ 5 APPPATH\Controllers\OrdenesController.php(185): view('admin/ordenes/activas', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\OrdenesController->ordenes_activas()
+ 7 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrdenesController))
+ 8 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-11-24 20:28:44 --> Undefined variable $Cat_Tipo_Envio
+in APPPATH\Views\admin\ordenes\activas.php on line 119.
+ 1 APPPATH\Views\admin\ordenes\activas.php(119): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $Cat_Tipo_Envio', 'APPPATH\\Views\\admin\\ordenes\\activas.php', 119)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\ordenes\\activas.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('admin/ordenes/activas', [], true)
+ 5 APPPATH\Controllers\OrdenesController.php(185): view('admin/ordenes/activas', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\OrdenesController->ordenes_activas()
+ 7 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrdenesController))
+ 8 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-11-24 20:30:28 --> Undefined variable $Cat_Tipo_Envio
+in APPPATH\Views\admin\ordenes\activas.php on line 119.
+ 1 APPPATH\Views\admin\ordenes\activas.php(119): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $Cat_Tipo_Envio', 'APPPATH\\Views\\admin\\ordenes\\activas.php', 119)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\ordenes\\activas.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('admin/ordenes/activas', [], true)
+ 5 APPPATH\Controllers\OrdenesController.php(185): view('admin/ordenes/activas', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\OrdenesController->ordenes_activas()
+ 7 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrdenesController))
+ 8 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-11-24 20:31:36 --> Undefined variable $Cat_Tipo_Envio
+in APPPATH\Views\admin\ordenes\activas.php on line 119.
+ 1 APPPATH\Views\admin\ordenes\activas.php(119): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $Cat_Tipo_Envio', 'APPPATH\\Views\\admin\\ordenes\\activas.php', 119)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\ordenes\\activas.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('admin/ordenes/activas', [], true)
+ 5 APPPATH\Controllers\OrdenesController.php(185): view('admin/ordenes/activas', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\OrdenesController->ordenes_activas()
+ 7 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrdenesController))
+ 8 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-11-24 20:32:13 --> Undefined variable $Cat_Tipo_Envio
+in APPPATH\Views\admin\ordenes\activas.php on line 122.
+ 1 APPPATH\Views\admin\ordenes\activas.php(122): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $Cat_Tipo_Envio', 'APPPATH\\Views\\admin\\ordenes\\activas.php', 122)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\ordenes\\activas.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('admin/ordenes/activas', [], true)
+ 5 APPPATH\Controllers\OrdenesController.php(185): view('admin/ordenes/activas', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\OrdenesController->ordenes_activas()
+ 7 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrdenesController))
+ 8 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-11-24 20:32:38 --> Undefined variable $Cat_Tipo_Envio
+in APPPATH\Views\admin\ordenes\activas.php on line 122.
+ 1 APPPATH\Views\admin\ordenes\activas.php(122): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $Cat_Tipo_Envio', 'APPPATH\\Views\\admin\\ordenes\\activas.php', 122)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\ordenes\\activas.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('admin/ordenes/activas', [], true)
+ 5 APPPATH\Controllers\OrdenesController.php(185): view('admin/ordenes/activas', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\OrdenesController->ordenes_activas()
+ 7 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrdenesController))
+ 8 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-11-24 20:32:55 --> mysqli_sql_exception: Table 'plapers.plap_contador' doesn't exist in C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `visitas...', 0)
+#1 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `visitas...')
+#2 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `visitas...')
+#3 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `visitas...', Array, false)
+#4 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Model.php(202): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\BaseModel.php(525): CodeIgniter\Model->doFind(false, NULL)
+#6 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Model.php(218): CodeIgniter\BaseModel->find()
+#7 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\BaseModel.php(556): CodeIgniter\Model->doFindColumn('visitas')
+#8 C:\xampp\htdocs\plapers\app\Controllers\DegreeController.php(52): CodeIgniter\BaseModel->findColumn('visitas')
+#9 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\CodeIgniter.php(925): App\Controllers\DegreeController->oferta_show()
+#10 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DegreeController))
+#11 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\plapers\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#13 {main}
+CRITICAL - 2025-11-24 20:32:55 --> Call to a member function getResult() on bool
+in SYSTEMPATH\Model.php on line 202.
+ 1 SYSTEMPATH\BaseModel.php(525): CodeIgniter\Model->doFind(false, null)
+ 2 SYSTEMPATH\Model.php(218): CodeIgniter\BaseModel->find()
+ 3 SYSTEMPATH\BaseModel.php(556): CodeIgniter\Model->doFindColumn('visitas')
+ 4 APPPATH\Controllers\DegreeController.php(52): CodeIgniter\BaseModel->findColumn('visitas')
+ 5 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\DegreeController->oferta_show()
+ 6 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DegreeController))
+ 7 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-11-24 20:33:27 --> mysqli_sql_exception: Table 'plapers.plap_contador' doesn't exist in C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `visitas...', 0)
+#1 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `visitas...')
+#2 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `visitas...')
+#3 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `visitas...', Array, false)
+#4 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Model.php(202): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\BaseModel.php(525): CodeIgniter\Model->doFind(false, NULL)
+#6 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\Model.php(218): CodeIgniter\BaseModel->find()
+#7 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\BaseModel.php(556): CodeIgniter\Model->doFindColumn('visitas')
+#8 C:\xampp\htdocs\plapers\app\Controllers\DegreeController.php(52): CodeIgniter\BaseModel->findColumn('visitas')
+#9 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\CodeIgniter.php(925): App\Controllers\DegreeController->oferta_show()
+#10 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DegreeController))
+#11 C:\xampp\htdocs\plapers\vendor\codeigniter4\framework\system\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\plapers\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#13 {main}
+CRITICAL - 2025-11-24 20:33:27 --> Call to a member function getResult() on bool
+in SYSTEMPATH\Model.php on line 202.
+ 1 SYSTEMPATH\BaseModel.php(525): CodeIgniter\Model->doFind(false, null)
+ 2 SYSTEMPATH\Model.php(218): CodeIgniter\BaseModel->find()
+ 3 SYSTEMPATH\BaseModel.php(556): CodeIgniter\Model->doFindColumn('visitas')
+ 4 APPPATH\Controllers\DegreeController.php(52): CodeIgniter\BaseModel->findColumn('visitas')
+ 5 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\DegreeController->oferta_show()
+ 6 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DegreeController))
+ 7 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()

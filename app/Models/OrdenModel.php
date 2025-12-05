@@ -4,7 +4,8 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class OrdenModel extends Model {
+class OrdenModel extends Model
+{
 
     protected $table = 't_orden';
     protected $primaryKey = 'id_orden';

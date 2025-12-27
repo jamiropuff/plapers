@@ -5,6 +5,10 @@
     width: 100%;
     font-size: 0.75rem;
 }
+.page-wrapper>.page-breadcrumb {
+    max-width: 100%;
+    margin: 0 auto;
+}
 .table th, .table thead th {
     font-weight: 200;
 }

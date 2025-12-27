@@ -101,42 +101,11 @@ $routes->get('panel/ordenes/finalizadas', 'OrdenesController::ordenes_finalizada
 $routes->get('panel/ordenes/canceladas', 'OrdenesController::ordenes_canceladas');
 $routes->get('uploads/(:segment)/(:any)', 'FileController::serveFile/$1/$2');
 
-// Degree
-$routes->get('panel/degree', 'AdminDegreeController::degree');
-$routes->post('panel/degree/add', 'AdminDegreeController::add');
-$routes->get('panel/degree/edit/(:num)', 'AdminDegreeController::edit/$1');
+// Reportes
+$routes->get('panel/reportes/ver-reporte', 'ReportesController::ver_reporte');
 
-$routes->post('panel/degree/update_info_general', 'AdminDegreeController::update_info_general');
-$routes->post('panel/degree/update_banners', 'AdminDegreeController::update_banners');
-$routes->post('panel/degree/update_video', 'AdminDegreeController::update_video');
 
-$routes->post('panel/degree/insert_inscripcion', 'AdminDegreeController::insert_inscripcion');
-$routes->post('panel/degree/update_inscripcion', 'AdminDegreeController::update_inscripcion');
-$routes->post('panel/degree/delete_inscripcion', 'AdminDegreeController::delete_inscripcion');
 
-$routes->post('panel/degree/insert_inversion', 'AdminDegreeController::insert_inversion');
-$routes->post('panel/degree/update_inversion', 'AdminDegreeController::update_inversion');
-$routes->post('panel/degree/delete_inversion', 'AdminDegreeController::delete_inversion');
-
-$routes->post('panel/degree/insert_plantel', 'AdminDegreeController::insert_plantel');
-$routes->post('panel/degree/update_plantel', 'AdminDegreeController::update_plantel');
-$routes->post('panel/degree/delete_plantel', 'AdminDegreeController::delete_plantel');
-
-$routes->post('panel/degree/insert_info_plantel', 'AdminDegreeController::insert_info_plantel');
-$routes->post('panel/degree/update_info_plantel', 'AdminDegreeController::update_info_plantel');
-$routes->post('panel/degree/delete_info_plantel', 'AdminDegreeController::delete_info_plantel');
-
-$routes->post('panel/degree/insert_promocion', 'AdminDegreeController::insert_promocion');
-$routes->post('panel/degree/update_promocion', 'AdminDegreeController::update_promocion');
-$routes->post('panel/degree/delete_promocion', 'AdminDegreeController::delete_promocion');
-
-$routes->post('panel/degree/insert_evento', 'AdminDegreeController::insert_evento');
-$routes->post('panel/degree/update_evento', 'AdminDegreeController::update_evento');
-$routes->post('panel/degree/delete_evento', 'AdminDegreeController::delete_evento');
-
-$routes->post('panel/degree/insert_instalacion', 'AdminDegreeController::insert_instalacion');
-$routes->post('panel/degree/update_instalacion', 'AdminDegreeController::update_instalacion');
-$routes->post('panel/degree/delete_instalacion', 'AdminDegreeController::delete_instalacion');
 
 // Degree 
 $routes->post('panel/degree/list', 'AdminDegreeController::list');
@@ -155,20 +124,8 @@ $routes->post('panel/events/list', 'AdminEventsController::list');
 $routes->get('panel/password', 'UserController::password');
 $routes->post('panel/password/upd', 'UserController::upd_pass');
 
-// Promotions
-//$routes->get('panel/promotions', 'PromotionsController::promotions');
-
 $routes->get('(:any)', 'DegreeController::oferta_show');
 
-// Brackets
-// $routes->get('/brackets', 'BracketsController::brackets');
-// $routes->get('/brackets/list', 'BracketsController::list_brackets');
-// $routes->get('/brackets/list_phase1/(:num)', 'BracketsController::list_phase1/$1');
-// $routes->post('/brackets/save', 'BracketsController::save');
-// $routes->post('/brackets/update', 'BracketsController::update');
-// $routes->post('/brackets/delete', 'BracketsController::delete');
-
-//$routes->get('/login/pools', 'dashboard\LoginController::pools');
 
 /*
  * --------------------------------------------------------------------

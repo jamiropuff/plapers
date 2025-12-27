@@ -73,7 +73,7 @@ switch ($title) {
 
         <li class="nav-small-cap"><span class="hide-menu">Reportes</span></li>
         <li class="sidebar-item">
-          <a class="sidebar-link sidebar-link" href="ui-cards.html" aria-expanded="false">
+          <a class="sidebar-link sidebar-link" href="/panel/reportes/ver-reporte" aria-expanded="false">
             <i class="fa-solid fa-file-invoice-dollar"></i></i><span class="hide-menu">Ver Reporte</span>
           </a>
         </li>

@@ -1,3 +1,20 @@
+.custom-select {
+    display: block;
+    width: 100%;
+    padding: 6px 12px;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #4f5467;
+    background-color: transparent;
+    background-clip: padding-box;
+    border: var(--bs-border-width) solid #e9ecef;
+    appearance: none;
+    border-radius: 2px;
+    box-shadow: inset 0 1px 2px rgba(var(--bs-body-color-rgb), .075);
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    background: url(../../assets/images/custom-select.png) right 1.1rem center no-repeat;
+}
 .page-wrapper>.container-fluid, .page-wrapper>.container-lg, .page-wrapper>.container-md, .page-wrapper>.container-sm, .page-wrapper>.container-xl, .page-wrapper>.container-xxl {
     padding: 35px 15px;
     max-width: 100%; 

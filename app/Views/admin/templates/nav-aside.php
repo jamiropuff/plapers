@@ -83,7 +83,7 @@ switch ($title) {
         <li class="nav-small-cap"><span class="hide-menu">Clientes</span></li>
 
         <li class="sidebar-item">
-          <a class="sidebar-link sidebar-link" href="authentication-login1.html" aria-expanded="false">
+          <a class="sidebar-link sidebar-link" href="/panel/clientes/ver-clientes" aria-expanded="false">
             <i class="fa-solid fa-users"></i><span class="hide-menu">Ver Clientes</span>
           </a>
         </li>

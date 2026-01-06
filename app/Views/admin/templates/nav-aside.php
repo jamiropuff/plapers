@@ -1,42 +1,3 @@
-<?php
-$menu0 = ''; // dashboard
-$menu1 = ''; // prospectos
-$menu2 = ''; // oferta educativa
-$menu3 = ''; // eventos
-$menu4 = ''; // cambiar constraseña
-$title = '';
-switch ($title) {
-  /*
-  case 'Dashboard':
-    $menu0 = 'active';
-  break;
-  */
-  case 'Prospectos de Formularios':
-    $menu1 = 'active';
-    break;
-
-  case 'Oferta Educativa':
-    $menu2 = 'active';
-    break;
-
-  case 'Eventos':
-    $menu3 = 'active';
-    break;
-
-  case 'Eventos':
-    $menu3 = 'active';
-    break;
-
-  case 'Cambiar Contraseña':
-    $menu4 = 'active';
-    break;
-
-  default:
-    $menu1 = 'active';
-    break;
-}
-?>
-
 <!-- ============================================================== -->
 <!-- Left Sidebar - style you can find in sidebar.scss  -->
 <!-- ============================================================== -->
@@ -93,7 +54,7 @@ switch ($title) {
 
         <li class="nav-small-cap"><span class="hide-menu">Boletín</span></li>
         <li class="sidebar-item">
-          <a class="sidebar-link sidebar-link" href="authentication-login1.html" aria-expanded="false">
+          <a class="sidebar-link sidebar-link" href="/panel/boletin/suscritos" aria-expanded="false">
             <i class="fa-solid fa-envelope-open-text"></i><span class="hide-menu">Sucritos</span>
           </a>
         </li>
@@ -102,17 +63,17 @@ switch ($title) {
 
         <li class="nav-small-cap"><span class="hide-menu">Catálogos</span></li>
         <li class="sidebar-item">
-          <a class="sidebar-link sidebar-link" href="authentication-login1.html" aria-expanded="false">
+          <a class="sidebar-link sidebar-link" href="/panel/catalogos/categorias" aria-expanded="false">
             <i class="fa-solid fa-list"></i><span class="hide-menu">Categorías</span>
           </a>
         </li>
         <li class="sidebar-item">
-          <a class="sidebar-link sidebar-link" href="authentication-login1.html" aria-expanded="false">
+          <a class="sidebar-link sidebar-link" href="/panel/catalogos/subcategorias" aria-expanded="false">
             <i class="fa-solid fa-table-cells"></i><span class="hide-menu">Subcategorías</span>
           </a>
         </li>
         <li class="sidebar-item">
-          <a class="sidebar-link sidebar-link" href="authentication-login1.html" aria-expanded="false">
+          <a class="sidebar-link sidebar-link" href="/panel/catalogos/productos" aria-expanded="false">
             <i class="fa-solid fa-layer-group"></i><span class="hide-menu">Productos</span>
           </a>
         </li>
@@ -121,7 +82,7 @@ switch ($title) {
 
         <li class="nav-small-cap"><span class="hide-menu">Usuarios</span></li>
         <li class="sidebar-item">
-          <a class="sidebar-link sidebar-link" href="authentication-login1.html" aria-expanded="false">
+          <a class="sidebar-link sidebar-link" href="/panel/usuarios/ver-usuarios" aria-expanded="false">
             <i class="fa-solid fa-users-gear"></i><span class="hide-menu">Ver Usuarios</span>
           </a>
         </li>

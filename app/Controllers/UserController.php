@@ -6,6 +6,14 @@ use App\Models\UsuarioModel;
 
 class UserController extends BaseController
 {
+
+    protected $userModel;
+
+    public function __construct()
+    {
+        $this->userModel = new UsuarioModel();
+    }
+
     public function login()
     {
 
@@ -185,5 +193,273 @@ class UserController extends BaseController
         //$verify = $usuarioModel->verifyPass('Master123#','$2y$10$RdNUU/v5QOsp.u5W2R.eieJ8RFHnVhDlYlqZzOc.LmLr1jNaWqOf.');
         //var_dump($verify);
 
+    }
+
+    public function ver_usuarios()
+    {
+        $session = session();
+        $data_main = [];
+
+        if ($session->has('Rol') && in_array($session->get('Rol'), [1])) {
+
+            $Id_Rol = $session->get('Rol');
+
+            if (empty($Id_Rol)) {
+                $data_main["Msg"]  = "No se encontró el rol del usuario";
+                $data_main["Code"] = INVALID_REQUEST;
+            } else {
+                $usuarioModel = new UsuarioModel();
+                $usuarios = $usuarioModel->lista_usuarios();
+                // var_dump($usuarios);
+            }
+        } else {
+            $data_main["Code"] = REQUEST_FAILED;
+            $data_main["Msg"]  = "No se encontró el Rol del usuario";
+        }
+
+        $data_breadcrumb = array(
+            'title' => 'Usuarios',
+            'icon' => '<i class="fa-solid fa-file-invoice-dollar"></i>'
+        );
+
+        $data_main = array(
+            'menu' => 'usuarios',
+            'Titulo' => 'Usuarios',
+            'Usuarios' => $usuarios,
+        );
+
+        // echo "<pre>", var_dump($data_main), "</pre>";
+
+        $data_session = array(
+            "session" => $session
+        );
+
+        $data_footer = array(
+            'menu' => 'usuarios',
+        );
+
+        echo view('admin/templates/header');
+        echo view('admin/templates/nav-top', $data_session);
+        echo view('admin/templates/nav-aside');
+        echo view('admin/templates/breadcrumb', $data_breadcrumb);
+        echo view('admin/users/usuarios', $data_main);
+        echo view('admin/templates/footer', $data_footer);
+
+    }
+
+    /* =========================
+     * DATOS FACTURACIÓN
+     * ========================= */
+    public function datos_facturacion()
+    {
+        if ($this->request->getMethod() !== 'post') {
+            return $this->response->setJSON([
+                'Code' => METHOD_NOT_ALLOWED,
+                'Msg'  => MSG_METHOD_NOT_ALLOWED
+            ]);
+        }
+
+        $token = $this->request->getPost('Token');
+
+        if (empty($token)) {
+            return $this->response->setJSON([
+                'Code' => INVALID_REQUEST,
+                'Msg'  => 'No se encontró token'
+            ]);
+        }
+
+        return $this->response->setJSON(
+            $this->userModel->obtiene_datos_facturacion($token)
+        );
+    }
+
+    /* =========================
+     * DATOS DIRECCIÓN
+     * ========================= */
+    public function datos_direccion()
+    {
+        if ($this->request->getMethod() !== 'post') {
+            return $this->response->setJSON([
+                'Code' => METHOD_NOT_ALLOWED,
+                'Msg'  => MSG_METHOD_NOT_ALLOWED
+            ]);
+        }
+
+        $token = $this->request->getPost('Token');
+
+        if (empty($token)) {
+            return $this->response->setJSON([
+                'Code' => INVALID_REQUEST,
+                'Msg'  => 'No se encontró token'
+            ]);
+        }
+
+        return $this->response->setJSON(
+            $this->userModel->obtiene_datos_direcciones($token)
+        );
+    }
+
+    /* =========================
+     * REGISTRA DIRECCIÓN
+     * ========================= */
+    public function registra_direccion()
+    {
+        if ($this->request->getMethod() !== 'post') {
+            return $this->response->setJSON([
+                'Code' => METHOD_NOT_ALLOWED,
+                'Msg'  => MSG_METHOD_NOT_ALLOWED
+            ]);
+        }
+
+        $data = $this->request->getPost();
+
+        if (empty($data['Token'])) {
+            return $this->response->setJSON([
+                'Code' => INVALID_REQUEST,
+                'Msg'  => 'No se encontró token'
+            ]);
+        }
+
+        $required = ['Recibe','Calle','Numero','Colonia','Municipio','Codigo_Postal','Pais','Telefono'];
+
+        foreach ($required as $field) {
+            if (empty($data[$field])) {
+                return $this->response->setJSON([
+                    'Code' => INVALID_REQUEST,
+                    'Msg'  => 'Se requieren todos los campos'
+                ]);
+            }
+        }
+
+        return $this->response->setJSON(
+            $this->userModel->registra_direccion(
+                $data['Token'],
+                $data['Recibe'],
+                $data['Calle'],
+                $data['Numero'],
+                $data['Interior'] ?? '',
+                $data['Colonia'],
+                $data['Municipio'],
+                $data['Estado'] ?? '',
+                $data['Codigo_Postal'],
+                $data['Referencia'] ?? '',
+                $data['Notas'] ?? '',
+                $data['Pais'],
+                $data['Telefono']
+            )
+        );
+    }
+
+    /* =========================
+     * REGISTRA FACTURACIÓN
+     * ========================= */
+    public function registra_facturacion()
+    {
+        if ($this->request->getMethod() !== 'post') {
+            return $this->response->setJSON([
+                'Code' => METHOD_NOT_ALLOWED,
+                'Msg'  => MSG_METHOD_NOT_ALLOWED
+            ]);
+        }
+
+        $data = $this->request->getPost();
+        $file = $this->request->getFile('Documento_situacion_fiscal');
+
+        if (!$file || !$file->isValid()) {
+            return $this->response->setJSON([
+                'Code' => INVALID_REQUEST,
+                'Msg'  => 'Documento fiscal requerido'
+            ]);
+        }
+
+        $fileName = 'constancia_' . $data['RFC'] . '_' . date('YmdHis') . '.' . $file->getExtension();
+        $file->move(WRITEPATH . 'uploads/documentos', $fileName);
+
+        return $this->response->setJSON(
+            $this->userModel->registra_facturacion(
+                $data['Token'],
+                $data['Razon_Social'] ?? '',
+                $data['RFC'],
+                $data['CURP'] ?? '',
+                $data['Nombres'] ?? '',
+                $data['Paterno'] ?? '',
+                $data['Materno'] ?? '',
+                $data['Calle'],
+                $data['Numero'],
+                $data['Interior'] ?? '',
+                $data['Colonia'],
+                $data['Municipio'],
+                $data['Estado'] ?? '',
+                $data['Codigo_Postal'],
+                $data['Pais'],
+                $data['Uso'],
+                $data['Tipo_Persona'],
+                $fileName
+            )
+        );
+    }
+
+    /* =========================
+     * GUARDA ORDEN
+     * ========================= */
+    public function guarda_orden()
+    {
+        if ($this->request->getMethod() !== 'post') {
+            return $this->response->setJSON([
+                'Code' => METHOD_NOT_ALLOWED,
+                'Msg'  => MSG_METHOD_NOT_ALLOWED
+            ]);
+        }
+
+        $data = $this->request->getPost();
+        $productos = json_decode($data['Productos'] ?? '[]');
+
+        $orden = $this->userModel->registra_orden(
+            $data['Token'],
+            $data['Id_Tipo_Pago'],
+            $data['Id_Estatus_Pago'],
+            $data['Id_Tipo_Envio'],
+            $data['Id_Estatus_Pedido'],
+            $data['Subtotal'],
+            $data['Iva'],
+            $data['Envio'],
+            $data['Total'],
+            $data['Id_Direccion'],
+            $data['Id_Facturacion'],
+            $data['Notas_Adicionales'] ?? '',
+            $data['Id_uso']
+        );
+
+        if (($orden['Code'] ?? 0) !== REQUEST_SUCCESS) {
+            return $this->response->setJSON($orden);
+        }
+
+        foreach ($productos as $product) {
+            $this->userModel->registra_producto(
+                $data['Token'],
+                $orden['Id'],
+                $product->id_producto,
+                $product->nom_categoria,
+                $product->nom_producto,
+                $product->personalizacion->posicion ?? '',
+                $product->personalizacion->linea1->texto ?? '',
+                $product->personalizacion->linea1->fuente ?? '',
+                $product->personalizacion->linea1->caracteres ?? '',
+                $product->personalizacion->linea2->texto ?? '',
+                $product->personalizacion->linea2->fuente ?? '',
+                $product->personalizacion->linea2->caracteres ?? '',
+                $product->personalizacion->linea3->texto ?? '',
+                $product->personalizacion->linea3->fuente ?? '',
+                $product->personalizacion->linea3->caracteres ?? '',
+                $product->personalizacion->color ?? '',
+                $product->personalizacion->acabado ?? '',
+                $product->foto,
+                $product->cantidad,
+                $product->precio_unitario,
+                $product->precio
+            );
+        }
+
+        return $this->response->setJSON($orden);
     }
 }

@@ -90,6 +90,7 @@ $routes->post('admin/login', 'UserController::login');
 $routes->get('admin/logout', 'UserController::logout');
 
 // Users
+$routes->get('panel/usuarios/ver-usuarios', 'UserController::ver_usuarios');
 // $routes->get('/users/create', 'UserController::crear_usuario');
 // $routes->get('/users/testpass', 'UserController::test_pass');
 // $routes->post('/users/update', 'UserController::update');
@@ -130,17 +131,17 @@ $routes->get('panel/boletin/suscritos', 'BoletinesController::lista_suscritos');
 
 
 // Degree 
-$routes->post('panel/degree/list', 'AdminDegreeController::list');
-$routes->post('panel/degree/academic_degree', 'AdminDegreeController::academic_degree');
+// $routes->post('panel/degree/list', 'AdminDegreeController::list');
+// $routes->post('panel/degree/academic_degree', 'AdminDegreeController::academic_degree');
 
 // Events
-$routes->get('panel/events', 'AdminEventsController::events');
-$routes->post('panel/events/add', 'AdminEventsController::add');
-$routes->post('panel/events/upd', 'AdminEventsController::upd');
-$routes->post('panel/events/del', 'AdminEventsController::del');
+// $routes->get('panel/events', 'AdminEventsController::events');
+// $routes->post('panel/events/add', 'AdminEventsController::add');
+// $routes->post('panel/events/upd', 'AdminEventsController::upd');
+// $routes->post('panel/events/del', 'AdminEventsController::del');
 
 // Events
-$routes->post('panel/events/list', 'AdminEventsController::list');
+// $routes->post('panel/events/list', 'AdminEventsController::list');
 
 // Password
 $routes->get('panel/password', 'UserController::password');

@@ -5,7 +5,7 @@ namespace App\Controllers;
 use App\Models\CategoriaModel;
 use CodeIgniter\Controller;
 
-class Categorias extends Controller
+class CategoriasController extends Controller
 {
     protected $categoriaModel;
 
@@ -16,23 +16,54 @@ class Categorias extends Controller
 
     public function lista()
     {
+        $session = session();
         $method = $this->request->getMethod(true);
         $activo = $this->request->getGet('activo') ?? "";
 
         if ($method === 'GET') {
-            $response['Code'] = REQUEST_SUCCESS;
+            $code = REQUEST_SUCCESS;
 
             if ($activo !== "") {
-                $response['Categorias'] = $this->categoriaModel->lista($activo);
+                $categorias = $this->categoriaModel->lista($activo);
             } else {
-                $response['Categorias'] = $this->categoriaModel->lista();
+                $categorias = $this->categoriaModel->lista();
             }
         } else {
-            $response['Code'] = METHOD_NOT_ALLOWED;
-            $response['Msg']  = MSG_METHOD_NOT_ALLOWED;
+            $code = METHOD_NOT_ALLOWED;
+            $msg  = MSG_METHOD_NOT_ALLOWED;
         }
 
-        return $this->response->setJSON($response);
+        // return $this->response->setJSON($response);
+
+        $data_breadcrumb = array(
+            'title' => 'Categorias',
+            'icon' => '<i class="fa-solid fa-list"></i>'
+        );
+
+        $data_main = array(
+            'menu' => 'categorias',
+            'Titulo' => 'Categorias',
+            'Categorias' => $categorias,
+            'Code' => $code,
+            'Msg'  => $msg ?? ""
+        );
+
+        // echo "<pre>", var_dump($data_main), "</pre>";
+
+        $data_session = array(
+            "session" => $session
+        );
+
+        $data_footer = array(
+            'menu' => 'categorias',
+        );
+
+        echo view('admin/templates/header');
+        echo view('admin/templates/nav-top', $data_session);
+        echo view('admin/templates/nav-aside');
+        echo view('admin/templates/breadcrumb', $data_breadcrumb);
+        echo view('admin/catalogos/categorias', $data_main);
+        echo view('admin/templates/footer', $data_footer);
     }
 
     public function busca($idCategoria = null)

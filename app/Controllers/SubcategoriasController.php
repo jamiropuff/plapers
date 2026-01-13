@@ -5,15 +5,17 @@ namespace App\Controllers;
 use App\Models\SubcategoriaModel;
 use CodeIgniter\Controller;
 
-class Subcategorias extends Controller
+class SubcategoriasController extends Controller
 {
     protected $request;
     protected $response;
+    protected $subcategoriaModel;
 
     public function __construct()
     {
         $this->request  = service('request');
         $this->response = service('response');
+        $this->subcategoriaModel = new SubcategoriaModel();
     }
 
     /* =======================
@@ -21,28 +23,56 @@ class Subcategorias extends Controller
        ======================= */
     public function lista()
     {
+        $session = session();
         $method = $this->request->getMethod(true);
         $activo = $this->request->getGet('activo') ?? '';
 
         if ($method === 'GET') {
 
-            $model = new SubcategoriaModel();
+            $code = REQUEST_SUCCESS;
 
-            $response = [
-                'Code' => REQUEST_SUCCESS,
-                'Subcategorias' => ($activo !== '')
-                    ? $model->lista($activo)
-                    : $model->lista()
-            ];
+            if ($activo !== "") {
+                $subcategorias = $this->subcategoriaModel->lista($activo);
+            } else {
+                $subcategorias = $this->subcategoriaModel->lista();
+            }
 
         } else {
-            $response = [
-                'Code' => METHOD_NOT_ALLOWED,
-                'Msg'  => MSG_METHOD_NOT_ALLOWED
-            ];
+            $code = METHOD_NOT_ALLOWED;
+            $msg  = MSG_METHOD_NOT_ALLOWED;
         }
 
-        return $this->response->setJSON($response);
+        // return $this->response->setJSON($response);
+
+        $data_breadcrumb = array(
+            'title' => 'Subcategorias',
+            'icon' => '<i class="fa-solid fa-table-cells"></i>'
+        );
+
+        $data_main = array(
+            'menu' => 'subcategorias',
+            'Titulo' => 'Subcategorias',
+            'Subcategorias' => $subcategorias,
+            'Code' => $code,
+            'Msg'  => $msg ?? ""
+        );
+
+        // echo "<pre>", var_dump($data_main), "</pre>";
+
+        $data_session = array(
+            "session" => $session
+        );
+
+        $data_footer = array(
+            'menu' => 'subcategorias',
+        );
+
+        echo view('admin/templates/header');
+        echo view('admin/templates/nav-top', $data_session);
+        echo view('admin/templates/nav-aside');
+        echo view('admin/templates/breadcrumb', $data_breadcrumb);
+        echo view('admin/catalogos/subcategorias', $data_main);
+        echo view('admin/templates/footer', $data_footer);
     }
 
     /* =======================
@@ -75,7 +105,6 @@ class Subcategorias extends Controller
                     ];
                 }
             }
-
         } else {
             $response = [
                 'Code' => METHOD_NOT_ALLOWED,
@@ -104,14 +133,12 @@ class Subcategorias extends Controller
                     'Code' => INVALID_REQUEST,
                     'Msg'  => 'Se requiere el nombre de la subcategoría y el ID de la categoría'
                 ];
-
             } else {
 
                 $model = new SubcategoriaModel();
                 $response = $model->agrega_subcategoria($idCategoria, $nomSubcategoria);
                 $response['Code'] = REQUEST_SUCCESS;
             }
-
         } else {
             $response = [
                 'Code' => METHOD_NOT_ALLOWED,
@@ -145,7 +172,6 @@ class Subcategorias extends Controller
                     'Code' => INVALID_REQUEST,
                     'Msg'  => 'Se requiere el nombre de la subcategoría y el id de la categoría'
                 ];
-
             } else {
 
                 $model = new SubcategoriaModel();
@@ -156,7 +182,6 @@ class Subcategorias extends Controller
                 );
                 $response['Code'] = REQUEST_SUCCESS;
             }
-
         } else {
             $response = [
                 'Code' => METHOD_NOT_ALLOWED,
@@ -184,14 +209,12 @@ class Subcategorias extends Controller
                     'Code' => INVALID_REQUEST,
                     'Msg'  => 'Se requiere el id de la categoría'
                 ];
-
             } else {
 
                 $model = new SubcategoriaModel();
                 $response = $model->cambia_status($idSubcategoria, 1);
                 $response['Code'] = REQUEST_SUCCESS;
             }
-
         } else {
             $response = [
                 'Code' => METHOD_NOT_ALLOWED,
@@ -219,14 +242,12 @@ class Subcategorias extends Controller
                     'Code' => INVALID_REQUEST,
                     'Msg'  => 'Se requiere el id de la categoría'
                 ];
-
             } else {
 
                 $model = new SubcategoriaModel();
                 $response = $model->cambia_status($idSubcategoria, 0);
                 $response['Code'] = REQUEST_SUCCESS;
             }
-
         } else {
             $response = [
                 'Code' => METHOD_NOT_ALLOWED,

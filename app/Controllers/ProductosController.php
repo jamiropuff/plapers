@@ -4,33 +4,65 @@ namespace App\Controllers;
 
 use App\Models\ProductoModel;
 
-class Productos extends BaseController
+class ProductosController extends BaseController
 {
-    /* ========================= LISTA ========================= */
 
+    protected $productoModel;
+
+    public function __construct()
+    {
+        $this->productoModel = new ProductoModel();
+    }
+
+    /* ========================= LISTA ========================= */
     public function lista()
     {
+        $session = session();
         $method = $this->request->getMethod(true);
-
-        if ($method !== 'GET') {
-            return $this->response->setJSON([
-                'Code' => METHOD_NOT_ALLOWED,
-                'Msg'  => MSG_METHOD_NOT_ALLOWED
-            ]);
-        }
-
         $activo = $this->request->getGet('activo') ?? "";
 
-        $productoModel = new ProductoModel();
+        if ($method === 'GET') {
+            $code = REQUEST_SUCCESS;
 
-        $response = [
-            'Code' => REQUEST_SUCCESS,
-            'Productos' => ($activo !== "")
-                ? $productoModel->lista($activo)
-                : $productoModel->lista()
-        ];
+            if ($activo !== "") {
+                $productos = $this->productoModel->lista($activo);
+            } else {
+                $productos = $this->productoModel->lista();
+            }
+        } else {
+            $code = METHOD_NOT_ALLOWED;
+            $msg  = MSG_METHOD_NOT_ALLOWED;
+        }
 
-        return $this->response->setJSON($response);
+        // return $this->response->setJSON($productos);
+
+        $data_breadcrumb = array(
+            'title' => 'Productos',
+            'icon' => '<i class="fa-solid fa-layer-group"></i>'
+        );
+
+        $data_main = array(
+            'menu' => 'productos',
+            'Titulo' => 'Productos',
+            'Productos' => $productos,
+        );
+
+        // echo "<pre>", var_dump($data_main), "</pre>";
+
+        $data_session = array(
+            "session" => $session
+        );
+
+        $data_footer = array(
+            'menu' => 'productos',
+        );
+
+        echo view('admin/templates/header');
+        echo view('admin/templates/nav-top', $data_session);
+        echo view('admin/templates/nav-aside');
+        echo view('admin/templates/breadcrumb', $data_breadcrumb);
+        echo view('admin/catalogos/productos', $data_main);
+        echo view('admin/templates/footer', $data_footer);
     }
 
     /* ========================= AGREGA ========================= */

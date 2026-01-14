@@ -112,6 +112,7 @@ $routes->post('panel/catalogos/categorias/agrega', 'CategoriasController::agrega
 $routes->post('panel/catalogos/categorias/edita', 'CategoriasController::edita');
 $routes->post('panel/catalogos/categorias/activa', 'CategoriasController::activa');
 $routes->post('panel/catalogos/categorias/desactiva', 'CategoriasController::desactiva');
+
 // Subcategorias
 $routes->get('panel/catalogos/subcategorias', 'SubcategoriasController::lista');
 $routes->get('panel/catalogos/subcategorias/(:num)', 'SubcategoriasController::busca/$1');
@@ -119,6 +120,14 @@ $routes->post('panel/catalogos/subcategorias/agrega', 'SubcategoriasController::
 $routes->post('panel/catalogos/subcategorias/edita', 'SubcategoriasController::edita');
 $routes->post('panel/catalogos/subcategorias/activa', 'SubcategoriasController::activa');
 $routes->post('panel/catalogos/subcategorias/desactiva', 'SubcategoriasController::desactiva');
+
+// Productos
+$routes->get('panel/catalogos/productos', 'ProductosController::lista');
+$routes->get('panel/catalogos/productos/(:num)', 'ProductosController::busca/$1');
+$routes->post('panel/catalogos/productos/agrega', 'ProductosController::agrega');
+$routes->post('panel/catalogos/productos/edita', 'ProductosController::edita');
+$routes->post('panel/catalogos/productos/activa', 'ProductosController::activa');
+$routes->post('panel/catalogos/productos/desactiva', 'ProductosController::desactiva');
 
 // Clientes
 $routes->get('panel/clientes/ver-clientes', 'ClientesController::ver_clientes');

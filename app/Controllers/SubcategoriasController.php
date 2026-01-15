@@ -75,6 +75,30 @@ class SubcategoriasController extends Controller
         echo view('admin/templates/footer', $data_footer);
     }
 
+    public function listaJSON()
+    {
+        $method = $this->request->getMethod(true);
+        $activo = $this->request->getGet('activo') ?? '';
+
+        if ($method === 'GET') {
+
+            $response["code"] = REQUEST_SUCCESS;
+
+            if ($activo !== "") {
+                $response = $this->subcategoriaModel->lista($activo);
+            } else {
+                $response = $this->subcategoriaModel->lista();
+            }
+
+        } else {
+            $response["code"] = METHOD_NOT_ALLOWED;
+            $response["msg"]  = MSG_METHOD_NOT_ALLOWED;
+        }
+
+        return $this->response->setJSON($response);
+
+    }
+
     /* =======================
        BUSCA
        ======================= */

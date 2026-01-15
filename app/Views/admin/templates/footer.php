@@ -61,15 +61,15 @@
 
 <script src="<?= base_url() ?>/admin/assets/plugins/xls/xlsx.full.min.js"></script>
 
-<!-- Eventos -->
-<?php /*if ($title == 'Eventos'): ?>
-    <script src="<?= base_url() ?>/admin/js/events.js"></script>
+<!-- Productos -->
+<?php if ($menu == 'productos'): ?>
+    <script src="<?= base_url() ?>/admin/dist/js/productos.js"></script>
   <?php endif ?>
 
   <!-- Usuarios -->
-  <?php if ($title == 'Cambiar Contraseña'): ?>
+  <?php if ($menu == 'Cambiar Contraseña'): ?>
     <script src="<?= base_url() ?>/admin/js/users.js"></script>
-  <?php endif */ ?>
+  <?php endif ?>
 
 
 <script>

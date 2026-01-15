@@ -107,6 +107,7 @@ $routes->get('panel/reportes/ver-reporte', 'ReportesController::ver_reporte');
 
 // Categorias
 $routes->get('panel/catalogos/categorias', 'CategoriasController::lista');
+$routes->get('panel/catalogos/categorias/lista', 'CategoriasController::listaJSON');
 $routes->get('panel/catalogos/categorias/(:num)', 'CategoriasController::busca/$1');
 $routes->post('panel/catalogos/categorias/agrega', 'CategoriasController::agrega');
 $routes->post('panel/catalogos/categorias/edita', 'CategoriasController::edita');
@@ -115,6 +116,7 @@ $routes->post('panel/catalogos/categorias/desactiva', 'CategoriasController::des
 
 // Subcategorias
 $routes->get('panel/catalogos/subcategorias', 'SubcategoriasController::lista');
+$routes->get('panel/catalogos/subcategorias/lista', 'SubcategoriasController::listaJSON');
 $routes->get('panel/catalogos/subcategorias/(:num)', 'SubcategoriasController::busca/$1');
 $routes->post('panel/catalogos/subcategorias/agrega', 'SubcategoriasController::agrega');
 $routes->post('panel/catalogos/subcategorias/edita', 'SubcategoriasController::edita');

@@ -61,15 +61,25 @@
 
 <script src="<?= base_url() ?>/admin/assets/plugins/xls/xlsx.full.min.js"></script>
 
+<!-- Categorías -->
+<?php if ($menu == 'categorias'): ?>
+  <script src="<?= base_url() ?>/admin/dist/js/categorias.js"></script>
+<?php endif ?>
+
+<!-- Subcategorías -->
+<?php if ($menu == 'subcategorias'): ?>
+  <script src="<?= base_url() ?>/admin/dist/js/subcategorias.js"></script>
+<?php endif ?>
+
 <!-- Productos -->
 <?php if ($menu == 'productos'): ?>
-    <script src="<?= base_url() ?>/admin/dist/js/productos.js"></script>
-  <?php endif ?>
+  <script src="<?= base_url() ?>/admin/dist/js/productos.js"></script>
+<?php endif ?>
 
-  <!-- Usuarios -->
-  <?php if ($menu == 'Cambiar Contraseña'): ?>
-    <script src="<?= base_url() ?>/admin/js/users.js"></script>
-  <?php endif ?>
+<!-- Usuarios -->
+<?php if ($menu == 'Cambiar Contraseña'): ?>
+  <script src="<?= base_url() ?>/admin/js/users.js"></script>
+<?php endif ?>
 
 
 <script>

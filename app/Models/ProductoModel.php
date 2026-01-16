@@ -7,17 +7,28 @@ use Config\Database;
 
 class ProductoModel extends Model
 {
+    protected $db;
     protected $table      = 'cat_productos';
     protected $primaryKey = 'id_producto';
     protected $returnType = 'array';
     protected $allowedFields = [
-        'nom_producto','id_categoria','id_subcategoria','id_medida',
-        'precio_unitario','descripcion','foto','clave','activo',
-        'id_color','id_posicion','id_caracter','id_signo','id_terminado',
-        'ejemplo','new'
+        'nom_producto',
+        'id_categoria',
+        'id_subcategoria',
+        'id_medida',
+        'precio_unitario',
+        'descripcion',
+        'foto',
+        'clave',
+        'activo',
+        'id_color',
+        'id_posicion',
+        'id_caracter',
+        'id_signo',
+        'id_terminado',
+        'ejemplo',
+        'new'
     ];
-
-    protected $db;
 
     public function __construct()
     {
@@ -55,6 +66,105 @@ class ProductoModel extends Model
         $builder->orderBy('cp.id_producto', 'DESC');
 
         return $builder->get()->getResultArray();
+    }
+
+    public function agrega_producto(
+        $Nom_Producto,
+        $Id_Categoria,
+        $Id_Subcategoria,
+        $Precio,
+        $Descripcion,
+        $Clave,
+        $foto
+    ) {
+
+        $data = [
+            'nom_producto'    => $Nom_Producto,
+            'id_categoria'    => $Id_Categoria,
+            'id_subcategoria' => $Id_Subcategoria,
+            'precio_unitario' => $Precio,
+            'descripcion'     => $Descripcion,
+            'clave'           => $Clave
+        ];
+
+        /** Reglas por categoría **/
+        if ($Id_Categoria == 1) {
+            $data['id_medida']    = 1;
+            $data['id_signo']     = '1,2';
+            $data['id_color']     = '1,2,3,4,5,6,7,8';
+            $data['id_terminado'] = '1';
+        } elseif ($Id_Categoria == 2) {
+            $data['id_medida'] = 6;
+            $data['id_signo']  = '1';
+            $data['id_color']  = '1,2,3,4,5,6,7,8';
+            $data['id_terminado'] = ($Id_Subcategoria == 3) ? '1,2' : '2';
+        } elseif ($Id_Categoria == 3 || $Id_Categoria == 4) {
+            $data['id_medida']    = 2;
+            $data['id_signo']     = '1,5';
+            $data['id_terminado'] = '1';
+            $data['id_color']     = '1,2,3,4,5,6,7,8';
+        } elseif ($Id_Categoria == 5) {
+            $data['id_medida']    = 7;
+            $data['id_signo']     = 0;
+            $data['id_terminado'] = 1;
+            $data['id_color']     = 0;
+        }
+
+        /** Insert **/
+        if (!$this->insert($data)) {
+            return [
+                'Code'  => QUERY_FAILED,
+                'Msg'   => 'Hubo un error con la base de datos',
+                'Error' => $this->errors()
+            ];
+        }
+
+        $Id = $this->getInsertID();
+        // echo "ID del nuevo producto: {$Id}<br>";
+
+
+        /** Prefijo por categoría **/
+        $Id_Categoria = (int) $Id_Categoria;
+        $Nom_Cate = match ($Id_Categoria) {
+            1 => 'BIC',
+            2 => 'AME',
+            3 => 'EUM',
+            4 => 'EUR',
+            5 => 'ACC',
+        };
+
+        /** Manejo de imagen **/
+        if ($foto->isValid() && !$foto->hasMoved()) {
+            echo "Entro a mover la foto";
+
+            $ext = $foto->getExtension();
+
+            $Nom_Foto     = "{$Nom_Cate}_{$Id}.{$ext}";
+            $Nom_Ejemplo  = "EJ_{$Nom_Cate}_{$Id}.{$ext}";
+            $Nom_Foto_Ch  = "{$Nom_Cate}_{$Id}ch.{$ext}";
+
+            $ruta = FCPATH . "fotos/{$Id_Subcategoria}/";
+            echo var_dump($ruta);
+
+            if (!is_dir($ruta)) {
+                mkdir($ruta, 0755, true);
+            }
+
+            $foto->move($ruta, $Nom_Foto);
+
+            copy($ruta . $Nom_Foto, $ruta . $Nom_Ejemplo);
+            copy($ruta . $Nom_Foto, $ruta . $Nom_Foto_Ch);
+
+            $this->update($Id, [
+                'foto'    => $Nom_Foto,
+                'ejemplo' => $Nom_Ejemplo
+            ]);
+        }
+
+        return [
+            'Code' => QUERY_SUCCESS,
+            'Msg'  => "Se agregó el producto {$Nom_Producto}"
+        ];
     }
 
     /* ========================= BUSCA ========================= */

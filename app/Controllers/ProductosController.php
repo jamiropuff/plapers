@@ -78,12 +78,16 @@ class ProductosController extends BaseController
             ]);
         }
 
+        // var_dump($this->request->getPost());
+        // var_dump($this->request->getFile('foto'));
+
         $nomProducto    = $this->request->getPost('nom_producto');
         $idCategoria    = $this->request->getPost('id_categoria');
         $idSubcategoria = $this->request->getPost('id_subcategoria');
         $precio         = $this->request->getPost('precio');
         $descripcion    = $this->request->getPost('descripcion');
         $clave          = $this->request->getPost('clave');
+        $foto = $this->request->getFile('foto');
 
         if (empty($nomProducto)) {
             return $this->response->setJSON([
@@ -99,7 +103,8 @@ class ProductosController extends BaseController
             $idSubcategoria,
             $precio,
             $descripcion,
-            $clave
+            $clave,
+            $foto
         );
 
         $response['Code'] = REQUEST_SUCCESS;

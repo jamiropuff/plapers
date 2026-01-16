@@ -1,12 +1,12 @@
-function cambiaSubcategoriaJS(idSubcategoria, estatusActual) {
+function cambiaCategoriaJS(idCategoria, estatusActual) {
 
     const formdata = new FormData();
-    formdata.append('id_subcategoria', idSubcategoria);
+    formdata.append('id_categoria', idCategoria);
 
     const nuevoEstatus = estatusActual == 1 ? 0 : 1;
     const ruta = nuevoEstatus === 1 ? 'activa' : 'desactiva';
 
-    fetch(`/panel/catalogos/subcategorias/${ruta}`, {
+    fetch(`/panel/catalogos/categorias/${ruta}`, {
         method: 'POST',
         body: formdata
     })
@@ -15,7 +15,7 @@ function cambiaSubcategoriaJS(idSubcategoria, estatusActual) {
             if (res.Code === 10000) {
 
                 // Texto ACTIVO
-                const celdaActivo = document.getElementById(`activo-${idSubcategoria}`);
+                const celdaActivo = document.getElementById(`activo-${idCategoria}`);
                 celdaActivo.innerHTML = nuevoEstatus === 1
                     ? 'SI'
                     : '<span class="activo-false">NO</span>';
@@ -33,7 +33,7 @@ function cambiaSubcategoriaJS(idSubcategoria, estatusActual) {
                 // Actualiza onclick
                 icono.setAttribute(
                     'onclick',
-                    `cambiaSubcategoriaJS(${idSubcategoria}, ${nuevoEstatus})`
+                    `cambiaCategoriaJS(${idCategoria}, ${nuevoEstatus})`
                 );
 
             } else {
@@ -43,56 +43,47 @@ function cambiaSubcategoriaJS(idSubcategoria, estatusActual) {
         .catch(err => console.error(err));
 }
 
-function modalAgregaSubcategoria() {
-    const modalBody = document.querySelector('#modalSubcategorias .modal-body');
+function modalAgregaCategoria() {
+    const modalBody = document.querySelector('#modalCategorias .modal-body');
 
     modalBody.innerHTML = `
-    <form id="formSubcategoria">
+    <form id="formCategoria">
       <div class="mb-3">
-        <label class="form-label">Categoría</label>
-        <select class="form-select" id="id_categoria" required>
-          <option value="">Seleccione una categoría</option>
-        </select>
+        <label class="form-label">Nombre de la categoría</label>
+        <input type="text" class="form-control" id="nom_categoria" required>
       </div>
 
-      <div class="mb-3">
-        <label class="form-label">Nombre de la subcategoría</label>
-        <input type="text" class="form-control" id="nom_subcategoria" required>
-      </div>
-
-      <button type="button" class="btn btn-primary w-100" onclick="agregaSubcategoria(event)">Guardar subcategoría</button>
+      <button type="button" class="btn btn-primary w-100" onclick="agregaCategoria(event)">Guardar categoría</button>
       <button type="button" class="btn btn-light w-100 mt-2" data-bs-dismiss="modal">Cancelar</button>
     </form>
   `;
 
-    cargaCategorias();
-
     const modal = new bootstrap.Modal(
-        document.getElementById('modalSubcategorias')
+        document.getElementById('modalCategorias')
     );
     modal.show();
 }
 
-function agregaSubcategoria(e) {
+function agregaCategoria(e) {
     e.preventDefault();
 
     const formData = new FormData();
-    formData.append('id_categoria', document.getElementById('id_categoria').value);
-    formData.append('nom_subcategoria', document.getElementById('nom_subcategoria').value);
+    formData.append('nom_categoria', document.getElementById('nom_categoria').value);
 
     // console.log('Enviando datos de la subcategoría');
     // console.log(...formData);
 
-    fetch('/panel/catalogos/subcategorias/agrega', {
+    fetch('/panel/catalogos/categorias/agrega', {
         method: 'POST',
         body: formData
     })
         .then(res => res.json())
         .then(data => {
+          // console.log(data);
             if (data.Code === 10000) {
                 alert(data.Msg);
                 bootstrap.Modal.getInstance(
-                    document.getElementById('modalSubcategorias')
+                    document.getElementById('modalCategorias')
                 ).hide();
                 listarRegistros();
             } else {
@@ -101,54 +92,43 @@ function agregaSubcategoria(e) {
         })
         .catch(err => {
             console.error(err);
-            alert('Error al guardar la subcategoría');
+            alert('Error al guardar la categoría');
         });
 }
 
-function modalEditaSubcategoria(idSubcategoria, idCategoria, nomSubcategoria) {
-    const modalBody = document.querySelector('#modalSubcategorias .modal-body');
+function modalEditaCategoria(idCategoria, nomCategoria) {
+    const modalBody = document.querySelector('#modalCategorias .modal-body');
 
     modalBody.innerHTML = `
-    <form id="formSubcategoria">
+    <form id="formCategoria">
       <div class="mb-3">
-        <label class="form-label">Categoría</label>
-        <select class="form-select" id="id_categoria" required>
-          <option value="">Seleccione una categoría</option>
-        </select>
+        <label class="form-label">Nombre de la categoría</label>
+        <input type="text" class="form-control" id="nom_categoria" value="${nomCategoria}" required>
       </div>
 
-      <div class="mb-3">
-        <label class="form-label">Nombre de la subcategoría</label>
-        <input type="text" class="form-control" id="nom_subcategoria" value="${nomSubcategoria}" required>
-      </div>
-
-      <input type="hidden" id="id_subcategoria" value="${idSubcategoria}">
-
-      <button type="button" class="btn btn-primary w-100" onclick="editaSubcategoria(event)">Guardar subcategoría</button>
+      <input type="hidden" id="id_categoria" value="${idCategoria}">
+      <button type="button" class="btn btn-primary w-100" onclick="editaCategoria(event)">Guardar categoría</button>
       <button type="button" class="btn btn-light w-100 mt-2" data-bs-dismiss="modal">Cancelar</button>
     </form>
   `;
 
-    cargaCategorias(idCategoria);
-
     const modal = new bootstrap.Modal(
-        document.getElementById('modalSubcategorias')
+        document.getElementById('modalCategorias')
     );
     modal.show();
 }
 
-function editaSubcategoria(e) {
+function editaCategoria(e) {
     e.preventDefault();
 
     const formData = new FormData();
     formData.append('id_categoria', document.getElementById('id_categoria').value);
-    formData.append('nom_subcategoria', document.getElementById('nom_subcategoria').value);
-    formData.append('id_subcategoria', document.getElementById('id_subcategoria').value);
+    formData.append('nom_categoria', document.getElementById('nom_categoria').value);
 
     // console.log('Enviando datos de la subcategoría');
     // console.log(...formData);
 
-    fetch('/panel/catalogos/subcategorias/edita', {
+    fetch('/panel/catalogos/categorias/edita', {
         method: 'POST',
         body: formData
     })
@@ -157,7 +137,7 @@ function editaSubcategoria(e) {
             if (data.Code === 10000) {
                 alert(data.Msg);
                 bootstrap.Modal.getInstance(
-                    document.getElementById('modalSubcategorias')
+                    document.getElementById('modalCategorias')
                 ).hide();
                 listarRegistros();
             } else {
@@ -166,21 +146,22 @@ function editaSubcategoria(e) {
         })
         .catch(err => {
             console.error(err);
-            alert('Error al guardar la subcategoría');
+            alert('Error al guardar la categoría');
         });
 }
 
 const listarRegistros = () => {
-    const tbody = document.querySelector('#tablaSubcategorias tbody');
+  // console.log('Listando categorías...');
+    const tbody = document.querySelector('#tablaCategorias tbody');
     tbody.innerHTML = `
     <tr>
-      <td colspan="6" class="text-center">
+      <td colspan="5" class="text-center">
         Cargando registros...
       </td>
     </tr>
   `;
 
-    fetch('/panel/catalogos/subcategorias/lista')
+    fetch('/panel/catalogos/categorias/lista')
         .then(res => res.json())
         .then(data => {
 
@@ -191,23 +172,22 @@ const listarRegistros = () => {
             tbody.innerHTML = '';
             let contador = 1;
 
-            data.forEach(sub => {
-                const activoTxt = sub.activo == 1 ? 'SI' : 'NO';
-                const activoClass = sub.activo == 1 ? 'text-success' : 'text-danger';
+            data.forEach(cat => {
+                const activoTxt = cat.activo == 1 ? 'SI' : 'NO';
+                const activoClass = cat.activo == 1 ? 'text-success' : 'text-danger';
 
                 const tr = document.createElement('tr');
                 tr.innerHTML = `
           <td class="text-center">${contador}</td>
-          <td class="text-center">${sub.id_subcategoria}</td>
-          <td class="text-center">${sub.nom_categoria}</td>
-          <td class="text-center">${sub.nom_subcategoria}</td>
-          <td class="text-center" id="activo-${sub.id_subcategoria}">
+          <td class="text-center">${cat.id_categoria}</td>
+          <td class="text-center">${cat.nom_categoria}</td>
+          <td class="text-center" id="activo-${cat.id_categoria}">
             ${activoTxt}
           </td>
           <td class="text-center">
-            <i class="fa-solid fa-pencil fa-2x text-warning cur-pointer" onclick="modalEditaSubcategoria(${sub.id_subcategoria}, ${sub.id_categoria}, '${sub.nom_subcategoria}')"></i>
+            <i class="fa-solid fa-pencil fa-2x text-warning cur-pointer" onclick="modalEditaCategoria(${cat.id_categoria}, '${cat.nom_categoria}')"></i>
             <i class="fa-solid fa-power-off fa-2x toggle-status cur-pointer ${activoClass}"
-              onclick="cambiaSubcategoriaJS(${sub.id_subcategoria}, ${sub.activo})">
+              onclick="cambiaCategoriaJS(${cat.id_categoria}, ${cat.activo})">
             </i>
           </td>
         `;
@@ -219,7 +199,7 @@ const listarRegistros = () => {
             if (contador === 1) {
                 tbody.innerHTML = `
           <tr>
-            <td colspan="6" class="text-center">
+            <td colspan="5" class="text-center">
               No hay registros
             </td>
           </tr>

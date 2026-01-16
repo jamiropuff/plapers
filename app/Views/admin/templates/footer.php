@@ -62,6 +62,12 @@
 <script src="<?= base_url() ?>/admin/assets/plugins/xls/xlsx.full.min.js"></script>
 
 <!-- Categorías -->
+<?php if ($menu == 'clientes'): ?>
+  <script src="<?= base_url() ?>/admin/dist/js/clientes.js"></script>
+<?php endif ?>
+
+
+<!-- Categorías -->
 <?php if ($menu == 'categorias'): ?>
   <script src="<?= base_url() ?>/admin/dist/js/categorias.js"></script>
 <?php endif ?>

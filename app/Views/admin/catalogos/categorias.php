@@ -15,7 +15,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-striped">
+                        <table id="tablaCategorias" class="table table-striped">
                             <thead class="bg-primary text-white">
                                 <tr>
                                     <th class="text-center">#</th>
@@ -35,7 +35,7 @@
                                         <td class="text-center"><?= $x; ?></td>
                                         <td class="text-center"><?= $categoria["id_categoria"]; ?></td>
                                         <td class="text-center"><?= $categoria["nom_categoria"]; ?></td>
-                                        <td class="text-center"><?= $activo; ?></td>
+                                        <td class="text-center" id="activo-<?= $categoria['id_categoria']; ?>"><?= $activo; ?></td>
                                         <td class="text-center">
                                             <i class="fa-solid fa-pencil fa-2x text-warning cur-pointer" onclick="modalEditaCategoria(<?= $categoria['id_categoria']; ?>, '<?= $categoria['nom_categoria']; ?>')"></i>
                                             <i class="fa-solid fa-power-off fa-2x toggle-status cur-pointer

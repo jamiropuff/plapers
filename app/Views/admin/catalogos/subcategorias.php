@@ -37,7 +37,7 @@
                                         <td class="text-center"><?= $subcategoria["id_subcategoria"]; ?></td>
                                         <td class="text-center"><?= $subcategoria["nom_categoria"]; ?></td>
                                         <td class="text-center"><?= $subcategoria["nom_subcategoria"]; ?></td>
-                                        <td class="text-center"id="activo-<?= $subcategoria['id_subcategoria']; ?>"><?= $activo; ?></td>
+                                        <td class="text-center" id="activo-<?= $subcategoria['id_subcategoria']; ?>"><?= $activo; ?></td>
                                         <td class="text-center">
                                             <i class="fa-solid fa-pencil fa-2x text-warning cur-pointer" onclick="modalEditaSubcategoria(<?= $subcategoria['id_subcategoria']; ?>,<?= $subcategoria['id_categoria']; ?>,'<?= $subcategoria['nom_subcategoria']; ?>')"></i>
                                             <i class="fa-solid fa-power-off fa-2x toggle-status cur-pointer

@@ -38,9 +38,9 @@
                                         <td class="text-center"><?= $cliente["Nombre"] . " " . $cliente["Paterno"] . " " . $cliente["Materno"]; ?></td>
                                         <td class="text-center"><?= $cliente["Correo_Electronico"]; ?></td>
                                         <td class="text-center"><?= $activo; ?></td>
-                                        <td class="text-center"><?= $descuento; ?></td>
+                                        <td class="text-center" id="resultTipoUsuario_<?= $cliente['Id_User'] ?>"><?= $descuento; ?></td>
                                         <td class="text-center">
-                                            <a href="/clientes/info/<?= $cliente['Id_User'] ?>" title="Ver Información del Cliente">
+                                            <a href="/panel/clientes/info/<?= $cliente['Id_User'] ?>" title="Ver Información del Cliente">
                                                 <i class="fa-solid fa-eye"></i>
                                             </a>
                                         </td>

@@ -105,6 +105,14 @@ $routes->get('uploads/(:segment)/(:any)', 'FileController::serveFile/$1/$2');
 // Reportes
 $routes->get('panel/reportes/ver-reporte', 'ReportesController::ver_reporte');
 
+// Clientes
+$routes->get('panel/clientes/ver-clientes', 'ClientesController::ver_clientes');
+$routes->get('panel/clientes/info/(:num)', 'ClientesController::info/$1');
+$routes->post('panel/clientes/cambiar_tipo_usuario', 'ClientesController::cambiar_tipo_usuario');
+
+// Suscritos al boletín
+$routes->get('panel/boletin/suscritos', 'BoletinesController::lista_suscritos');
+
 // Categorias
 $routes->get('panel/catalogos/categorias', 'CategoriasController::lista');
 $routes->get('panel/catalogos/categorias/lista', 'CategoriasController::listaJSON');
@@ -131,13 +139,6 @@ $routes->post('panel/catalogos/productos/edita', 'ProductosController::edita');
 $routes->post('panel/catalogos/productos/activa', 'ProductosController::activa');
 $routes->post('panel/catalogos/productos/desactiva', 'ProductosController::desactiva');
 
-// Clientes
-$routes->get('panel/clientes/ver-clientes', 'ClientesController::ver_clientes');
-$routes->get('panel/clientes/info/(:num)', 'ClientesController::info/$1');
-$routes->post('panel/clientes/cambiar_tipo_usuario', 'ClientesController::cambiar_tipo_usuario');
-
-// Suscritos al boletín
-$routes->get('panel/boletin/suscritos', 'BoletinesController::lista_suscritos');
 
 
 // Degree 

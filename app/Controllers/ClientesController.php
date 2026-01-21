@@ -69,7 +69,7 @@ class ClientesController extends BaseController
 
         if ($method === 'get') {
 
-            $Id_User = $this->request->uri->getSegment(3);
+            $Id_User = $this->request->uri->getSegment(4);
 
             if (empty($Id_User)) {
                 $data_main["Msg"]  = "No se encontró ese usuario";

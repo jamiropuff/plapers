@@ -126,12 +126,21 @@ class ClienteModel extends Model
 
         $data = [];
         foreach ($query->getResult() as $row) {
-            $estado = $this->estado($row->estado)[0]['Nombre_Estado'] ?? '';
-            $pais   = $this->pais($row->pais)[0]['Nombre_Pais'] ?? '';
+            $estado = $this->estado($row->estado);
+            $pais   = $this->pais($row->pais);
 
             $data[] = [
                 "Id_Direccion" => $row->id_direccion,
+                "Recibe"        => $row->recibe,
                 "Calle"        => $row->calle,
+                "Numero"        => $row->numero,
+                "Interior"        => $row->interior,
+                "Colonia"      => $row->colonia,
+                "Municipio"        => $row->municipio,
+                "Codigo_Postal" => $row->codigo_postal,
+                "Telefono"      => $row->telefono,
+                "Referencia"        => $row->referencia,
+                "Notas_Adicionales" => $row->notas_adicionales,
                 "Estado"       => $estado,
                 "Pais"         => $pais
             ];
@@ -148,15 +157,33 @@ class ClienteModel extends Model
 
         $data = [];
         foreach ($query->getResult() as $row) {
-            $estado = $this->estado($row->estado)[0]['Nombre_Estado'] ?? '';
-            $pais   = $this->pais($row->pais)[0]['Nombre_Pais'] ?? '';
+            $estado = $this->estado($row->estado);
+            // echo "<pre>", var_dump($estado), "</pre>";
+            $pais   = $this->pais($row->pais);
+            // echo "<br> uso cfdi id: " . $row->uso;
+            $uso_cfdi = $this->uso_cfdi($row->uso);
+            // echo "<br> uso cfdi: ";
+            // echo "<pre>", var_dump($uso_cfdi), "</pre>";
 
             $data[] = [
                 "Id_Facturacion" => $row->id_facturacion,
                 "Razon_Social"   => $row->razon_social,
                 "Rfc"            => $row->rfc,
+                "Curp"            => $row->curp,
+                "Calle"            => $row->calle,
+                "Numero"          => $row->numero,
+                "Interior"        => $row->interior,
+                "Colonia"        => $row->colonia,
+                "Municipio"      => $row->municipio,
+                "Codigo_Postal" => $row->codigo_postal,
+                "Nombres"      => $row->nombres,
+                "Paterno"      => $row->paterno,
+                "Materno"      => $row->materno,
+                "Tipo_Persona" => $row->tipo_persona,
+                "Documento_Situacion_Fiscal" => $row->documento_situacion_fiscal,
                 "Estado"         => $estado,
-                "Pais"           => $pais
+                "Pais"           => $pais,
+                "Uso"         => $uso_cfdi
             ];
         }
 
@@ -209,6 +236,14 @@ class ClienteModel extends Model
     {
         return $this->db->table('plap_cat_paises')
             ->where('id_pais', $Id_Pais)
+            ->get()
+            ->getResultArray();
+    }
+
+    public function uso_cfdi($Id_Uso)
+    {
+        return $this->db->table('plap_cat_uso_cfdi')
+            ->where('id_uso', $Id_Uso)
             ->get()
             ->getResultArray();
     }

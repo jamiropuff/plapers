@@ -107,6 +107,7 @@ $routes->get('panel/reportes/ver-reporte', 'ReportesController::ver_reporte');
 
 // Clientes
 $routes->get('panel/clientes/ver-clientes', 'ClientesController::ver_clientes');
+$routes->get('panel/clientes/lista', 'ClientesController::listaJSON');
 $routes->get('panel/clientes/info/(:num)', 'ClientesController::info/$1');
 $routes->post('panel/clientes/cambiar_tipo_usuario', 'ClientesController::cambiar_tipo_usuario');
 

@@ -47,6 +47,8 @@ class ClienteModel extends Model
 
         $clientes = [];
         foreach ($query->getResult() as $row) {
+            $ultima_compra = $this->ultima_compra($row->id_user);
+
             $clientes[] = [
                 "Id_User"            => $row->id_user,
                 "Nombre"             => $row->nombres,
@@ -55,7 +57,8 @@ class ClienteModel extends Model
                 "Correo_Electronico" => $row->correo_electronico,
                 "Id_Tipo_Usuario"    => $row->id_tipo_usuario,
                 "Active"             => $row->active,
-                "Fecha_Add"          => $row->fecha_add
+                "Fecha_Add"          => $row->fecha_add,
+                "Ultima_Compra"      => $ultima_compra
             ];
         }
 
@@ -246,5 +249,16 @@ class ClienteModel extends Model
             ->where('id_uso', $Id_Uso)
             ->get()
             ->getResultArray();
+    }
+
+    public function ultima_compra($id_usuario)
+    {
+        return $this->db->table('plap_t_orden')
+            ->where('id_user', $id_usuario)
+            ->whereIn('id_estatus_pedido', [8, 9]) // Finalizado Envío y Finalizado Sin Envío
+            ->orderBy('id_orden', 'DESC') // ultima compra
+            ->limit(1)
+            ->get()
+            ->getRowArray();
     }
 }

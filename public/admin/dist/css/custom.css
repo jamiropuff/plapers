@@ -5,6 +5,10 @@
     border-radius: 4px;
     font-weight: 500;
 }
+.filters {
+    background-color: #fff !important;
+    color: #000 !important;
+}
 .bg-red-light {
     background-color: #e69379 !important;
 }

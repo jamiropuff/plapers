@@ -56,7 +56,30 @@ class ClientesController extends BaseController
         echo view('admin/templates/breadcrumb', $data_breadcrumb);
         echo view('admin/clientes/clientes', $data_main);
         echo view('admin/templates/footer', $data_footer);
+    }
 
+    public function listaJSON()
+    {
+        $session = session();
+        $response = [];
+
+        if ($session->has('Rol') && in_array($session->get('Rol'), [1, 3])) {
+
+            $Id_Rol = $session->get('Rol');
+
+            if (empty($Id_Rol)) {
+                $response["Msg"]  = "No se encontró el rol del usuario";
+                $response["Code"] = INVALID_REQUEST;
+            } else {
+                $clienteModel = new ClienteModel();
+                $response = $clienteModel->obtiene_datos_cliente($Id_Rol);
+            }
+        } else {
+            $response["Code"] = REQUEST_FAILED;
+            $response["Msg"]  = "No se encontró el Rol del usuario";
+        }
+
+        return $this->response->setJSON($response);
     }
 
     public function info()

@@ -244,7 +244,39 @@ class UserController extends BaseController
         echo view('admin/templates/breadcrumb', $data_breadcrumb);
         echo view('admin/users/usuarios', $data_main);
         echo view('admin/templates/footer', $data_footer);
+    }
 
+    public function usuariosJSON()
+    {
+        $session = session();
+        $data_main = [];
+
+        if ($session->has('Rol') && in_array($session->get('Rol'), [1])) {
+
+            $Id_Rol = $session->get('Rol');
+            $tipo = $this->request->getJSON()->tipo ?? null;
+
+            if (empty($Id_Rol)) {
+                $response["Msg"]  = "No se encontró el rol del usuario";
+                $response["Code"] = INVALID_REQUEST;
+            } else {
+
+                if (empty($tipo)) {
+                    return $this->response->setJSON([
+                        "Code" => INVALID_REQUEST,
+                        "Msg"  => "No se recibió el tipo de consulta"
+                    ]);
+                }
+                $usuarioModel = new UsuarioModel();
+                $response = $usuarioModel->lista_usuarios($tipo);
+                // var_dump($response);
+            }
+        } else {
+            $response["Code"] = REQUEST_FAILED;
+            $response["Msg"]  = "No se encontró el Rol del usuario";
+        }
+
+        return $this->response->setJSON($response);
     }
 
     /* =========================
@@ -320,7 +352,7 @@ class UserController extends BaseController
             ]);
         }
 
-        $required = ['Recibe','Calle','Numero','Colonia','Municipio','Codigo_Postal','Pais','Telefono'];
+        $required = ['Recibe', 'Calle', 'Numero', 'Colonia', 'Municipio', 'Codigo_Postal', 'Pais', 'Telefono'];
 
         foreach ($required as $field) {
             if (empty($data[$field])) {

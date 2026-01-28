@@ -82,8 +82,13 @@
 
         <li class="nav-small-cap"><span class="hide-menu">Usuarios</span></li>
         <li class="sidebar-item">
-          <a class="sidebar-link sidebar-link" href="/panel/usuarios/ver-usuarios" aria-expanded="false">
-            <i class="fa-solid fa-users-gear"></i><span class="hide-menu">Ver Usuarios</span>
+          <a class="sidebar-link sidebar-link" href="/panel/usuarios/staff" aria-expanded="false">
+            <i class="fa-solid fa-users-gear"></i><span class="hide-menu">Staff</span>
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a class="sidebar-link sidebar-link" href="/panel/usuarios/user" aria-expanded="false">
+            <i class="fa-solid fa-user-tag"></i><span class="hide-menu">Usuarios</span>
           </a>
         </li>
 

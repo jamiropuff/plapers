@@ -61,11 +61,15 @@
 
 <script src="<?= base_url() ?>/admin/assets/plugins/xls/xlsx.full.min.js"></script>
 
-<!-- Categorías -->
+<!-- Reportes -->
+<?php if ($menu == 'reporte_ventas'): ?>
+  <script src="<?= base_url() ?>/admin/dist/js/reporte.js"></script>
+<?php endif ?>
+
+<!-- Clientes -->
 <?php if ($menu == 'clientes'): ?>
   <script src="<?= base_url() ?>/admin/dist/js/clientes.js"></script>
 <?php endif ?>
-
 
 <!-- Categorías -->
 <?php if ($menu == 'categorias'): ?>
@@ -83,8 +87,8 @@
 <?php endif ?>
 
 <!-- Usuarios -->
-<?php if ($menu == 'Cambiar Contraseña'): ?>
-  <script src="<?= base_url() ?>/admin/js/users.js"></script>
+<?php if ($menu == 'usuarios'): ?>
+  <script src="<?= base_url() ?>/admin/dist/js/usuarios.js"></script>
 <?php endif ?>
 
 

@@ -604,12 +604,20 @@ class UsuarioModel extends Model
         ];
     }
 
-    public function lista_usuarios()
+    public function lista_usuarios($tipo = 'user')
     {
         $builder = $this->db->table('plap_t_usuarios a');
         $builder->select('a.id_user, c.id_rol, c.nom_rol, b.nombres, b.paterno, b.materno, a.correo_electronico, a.username, a.active');
         $builder->join('plap_t_info_usuarios b', 'a.id_user = b.id_user');
         $builder->join('plap_cat_roles c', 'a.id_rol = c.id_rol');
+
+        // 🔥 Filtro por tipo
+        if ($tipo === 'user') {
+            $builder->where('a.id_rol', 2);
+        } elseif ($tipo === 'staff') {
+            $builder->where('a.id_rol !=', 2);
+        }
+
         $builder->orderBy('c.id_rol', 'ASC');
         $builder->orderBy('b.nombres', 'ASC');
 

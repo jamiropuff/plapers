@@ -126,10 +126,10 @@ class ReporteModel extends Model
 
                     foreach ($rows as $row) {
 
-                        $tipo_pago       = ($Id_Tipo_Pago > 0) ? $row->tipo_pago : 'Todos';
-                        $tipo_envio      = ($Id_Tipo_Envio > 0) ? $row->tipo_envio : 'Todos';
-                        $estatus_pago    = ($Id_Estatus_Pago > 0) ? $row->estatus_pago : 'Todos';
-                        $estatus_pedido  = ($Id_Estatus_Pedido > 0) ? $row->estatus_pedido : 'Todos';
+                        $tipo_pago       = $row->tipo_pago;
+                        $tipo_envio      = $row->tipo_envio;
+                        $estatus_pago    = $row->estatus_pago;
+                        $estatus_pedido  = $row->estatus_pedido;
 
                         $ventas[] = [
                             "Id_Orden" => $row->id_orden,
@@ -164,9 +164,9 @@ class ReporteModel extends Model
                             "Clave" => $row->clave,
                             "Nom_Producto" => $row->nom_producto,
                             "Cantidad" => $row->cantidad,
-                            "Precio" => number_format($row->precio, 2, ',', '.'),
-                            "Iva" => number_format($row->iva, 2, ',', '.'),
-                            "Total_Suma" => number_format($row->total_suma, 2, ',', '.')
+                            "Precio" => number_format($row->precio, 2, '.', ','),
+                            "Iva" => number_format($row->iva, 2, '.', ','),
+                            "Total_Suma" => number_format($row->total_suma, 2, '.', ',')
                         ];
                     }
 

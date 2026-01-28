@@ -90,7 +90,9 @@ $routes->post('admin/login', 'UserController::login');
 $routes->get('admin/logout', 'UserController::logout');
 
 // Users
-$routes->get('panel/usuarios/ver-usuarios', 'UserController::ver_usuarios');
+$routes->get('panel/usuarios/user', 'UserController::ver_usuarios');
+$routes->get('panel/usuarios/staff', 'UserController::ver_usuarios');
+$routes->post('panel/usuarios/lista', 'UserController::usuariosJSON');
 // $routes->get('/users/create', 'UserController::crear_usuario');
 // $routes->get('/users/testpass', 'UserController::test_pass');
 // $routes->post('/users/update', 'UserController::update');
@@ -104,6 +106,7 @@ $routes->get('uploads/(:segment)/(:any)', 'FileController::serveFile/$1/$2');
 
 // Reportes
 $routes->get('panel/reportes/ver-reporte', 'ReportesController::ver_reporte');
+$routes->get('panel/reportes/lista', 'ReportesController::reporteJSON');
 
 // Clientes
 $routes->get('panel/clientes/ver-clientes', 'ClientesController::ver_clientes');

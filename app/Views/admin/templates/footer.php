@@ -61,6 +61,7 @@
 
 <script src="<?= base_url() ?>/admin/assets/plugins/xls/xlsx.full.min.js"></script>
 
+
 <!-- Reportes -->
 <?php if ($menu == 'reporte_ventas'): ?>
   <script src="<?= base_url() ?>/admin/dist/js/reporte.js"></script>
@@ -108,6 +109,3 @@
   })
 </script>
 
-</body>
-
-</html>

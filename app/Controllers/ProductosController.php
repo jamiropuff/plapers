@@ -63,6 +63,30 @@ class ProductosController extends BaseController
         echo view('admin/templates/breadcrumb', $data_breadcrumb);
         echo view('admin/catalogos/productos', $data_main);
         echo view('admin/templates/footer', $data_footer);
+        echo view('admin/templates/end', $data_footer);
+    }
+
+    public function listaJSON()
+    {
+        $session = session();
+        $method = $this->request->getMethod(true);
+        $activo = $this->request->getGet('activo') ?? "";
+
+        if ($method === 'GET') {
+            $response['code'] = REQUEST_SUCCESS;
+
+            if ($activo !== "") {
+                $response = $this->productoModel->lista($activo);
+            } else {
+                $response = $this->productoModel->lista();
+            }
+        } else {
+            $response['code'] = METHOD_NOT_ALLOWED;
+            $response['msg']  = MSG_METHOD_NOT_ALLOWED;
+        }
+
+        return $this->response->setJSON($response);
+
     }
 
     /* ========================= AGREGA ========================= */

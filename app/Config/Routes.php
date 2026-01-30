@@ -100,6 +100,8 @@ $routes->post('panel/usuarios/lista', 'UserController::usuariosJSON');
 
 // Ordenes
 $routes->get('panel/ordenes/activas', 'OrdenesController::ordenes_activas');
+$routes->get('panel/ordenes/lista_activas', 'OrdenesController::ordenes_activasJSON');
+$routes->get('panel/ordenes/orden/(:num)', 'OrdenesController::orden/$1');
 $routes->get('panel/ordenes/finalizadas', 'OrdenesController::ordenes_finalizadas');
 $routes->get('panel/ordenes/canceladas', 'OrdenesController::ordenes_canceladas');
 $routes->get('uploads/(:segment)/(:any)', 'FileController::serveFile/$1/$2');
@@ -137,6 +139,7 @@ $routes->post('panel/catalogos/subcategorias/desactiva', 'SubcategoriasControlle
 
 // Productos
 $routes->get('panel/catalogos/productos', 'ProductosController::lista');
+$routes->get('panel/catalogos/productos/lista', 'ProductosController::listaJSON');
 $routes->get('panel/catalogos/productos/(:num)', 'ProductosController::busca/$1');
 $routes->post('panel/catalogos/productos/agrega', 'ProductosController::agrega');
 $routes->post('panel/catalogos/productos/edita', 'ProductosController::edita');

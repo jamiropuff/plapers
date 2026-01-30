@@ -56,6 +56,7 @@ class ClientesController extends BaseController
         echo view('admin/templates/breadcrumb', $data_breadcrumb);
         echo view('admin/clientes/clientes', $data_main);
         echo view('admin/templates/footer', $data_footer);
+        echo view('admin/templates/end', $data_footer);
     }
 
     public function listaJSON()
@@ -133,6 +134,7 @@ class ClientesController extends BaseController
         echo view('admin/templates/breadcrumb', $data_breadcrumb);
         echo view('admin/clientes/info', $data_main);
         echo view('admin/templates/footer', $data_footer);
+        echo view('admin/templates/end', $data_footer);
     }
 
     public function cambiar_tipo_usuario()

@@ -1,3 +1,208 @@
+document.addEventListener('DOMContentLoaded', () => {
+    listarRegistro();
+});
+
+const obtenerCategorias = async () => {
+	try {
+		const response = await fetch('/panel/catalogos/categorias/lista');
+		if (!response.ok) {
+			throw new Error('Error HTTP: ' + response.status);
+		}
+
+		return await response.json();
+		// console.log('Categorias:', data);
+	} catch (error) {
+		console.error('Error:', error);
+	}
+}
+
+const listarRegistro = async (cantidad = 50) => {
+	// console.log("listarRegistro");
+
+	let response = await obtenerCategorias();
+	// console.log(response);
+
+	let divTable = document.getElementById("tblRegistros");
+	divTable.innerHTML = "";
+
+	let table = document.createElement("table");
+	table.id = "tablaRegistros";
+	table.setAttribute("class", "table table-bordered table-striped");
+	divTable.append(table);
+
+	var contenido = `  
+      <thead class="bg-primary text-white">
+        <tr>
+          <th class="align-middle">#</th>
+          <th class="align-middle">ID CATEGORÍA</th>
+          <th class="align-middle">CATEGORÍA</th>
+          <th class="align-middle">ACTIVO</th>
+          <th class="align-middle">ACCIONES</th>
+        </tr>
+      </thead>
+	  <tbody class="border border-primary">
+      `;
+
+	let i = 1;
+
+	for (const categoria of response) {
+
+        const activo = categoria.activo == 1 ? "SI" : "NO";
+
+		contenido += `
+        <tr>
+            <td>${i++}</td>
+            <td>${categoria.id_categoria}</td>
+            <td>${categoria.nom_categoria}</td>
+            <td id="activo-${categoria.id_categoria}">${activo}</td>
+            <td class="text-center">
+                <i class="fa-solid fa-pencil fa-2x text-warning cur-pointer" onclick="modalEditaCategoria(${categoria.id_categoria}, '${categoria.nom_categoria}')"></i>
+                <i class="fa-solid fa-power-off fa-2x toggle-status cur-pointer
+                ${categoria.activo == 1 ? 'text-success' : 'text-danger'}"
+                    onclick="cambiaCategoriaJS(${categoria.id_categoria}, ${categoria.activo})">
+            </td>
+        </tr>
+        `;
+	}
+
+	contenido += `</tbody>`;
+
+
+	$("#tablaRegistros").html(contenido);
+
+	// 👇 CLONAR THEAD PARA FILTROS
+	$('#tablaRegistros thead tr')
+		.clone(true)
+		.removeClass('bg-primary text-white')
+		.addClass('filters')
+		.appendTo('#tablaRegistros thead');
+
+	var tablaRegistros = $("#tablaRegistros")
+		.DataTable({
+			dom: "Bfrtip",
+			responsive: true,
+			lengthMenu: [
+				[10, 25, 50, 100, -1],
+				[10, 25, 50, 100, "Todos"],
+			],
+			lengthChange: false,
+			autoWidth: false,
+			scrollX: false,
+			stateSave: false,
+			pageLength: cantidad,
+			order: [[0, "asc"]],
+			language: {
+				processing: "Procesando...",
+				search: "Buscar:",
+				lengthMenu: "Mostrar _MENU_ registros",
+				info: "Mostrando _START_ a _END_ de _TOTAL_ registros",
+				infoEmpty: "Mostrando 0 a 0 de 0 registros",
+				infoFiltered: "(filtrado de _MAX_ registros totales)",
+				infoPostFix: "",
+				loadingRecords: "Cargando...",
+				zeroRecords: "No se encontraron resultados",
+				emptyTable: "No hay datos disponibles en la tabla",
+				paginate: {
+					first: "Primero",
+					previous: "Anterior",
+					next: "Siguiente",
+					last: "Último"
+				},
+				buttons: {
+					pageLength: {
+						_: "Mostrar %d filas",
+						"-1": "Mostrar todos"
+					}
+				}
+			},
+			buttons: [
+				{
+					extend: "pageLength",
+				},
+				{
+					extend: "excel",
+					text: "Excel",
+					className: "btn-dark",
+					exportOptions: {
+						columns: [1, 2, 3, 4],
+					},
+				},
+				{
+					extend: "pdfHtml5",
+					text: "PDF",
+					header: true,
+					title: "PDF",
+					duplicate: true,
+					className: "btn-dark",
+					pageOrientation: "landscape",
+					pageSize: "A4",
+					pageMargins: [5, 5, 5, 5],
+					exportOptions: {
+						columns: [1, 2, 3, 4],
+						alignment: "center",
+						stripHtml: false,
+					},
+					pageBreak: "after",
+				},
+				{
+					extend: "print",
+					text: "Imprimir",
+					className: "btn-dark",
+					pageSize: "A4",
+					orientation: "landscape",
+					exportOptions: {
+						columns: [1, 2, 3, 4],
+					},
+				},
+				{
+					extend: "colvis",
+					text: "Columnas",
+					className: "btn-dark",
+				},
+			],
+			select: {
+				rows: {
+					_: "%d filas seleccionadas",
+					1: "1 fila seleccionada"
+				}
+			},
+			columnDefs: [
+				{ targets: 0, orderable: false },     // #
+				{ targets: [4], orderable: false }, // icono y select
+				{ targets: [4], searchable: false } // no filtrar
+			],
+			select: true,
+			orderCellsTop: true,
+			fixedHeader: true,
+			initComplete: function () {
+				var api = this.api();
+
+				api.columns().eq(0).each(function (colIdx) {
+
+					// ❌ NO filtrar las últimas 2 columnas
+					if (colIdx < 1 || colIdx >= 4) {
+						$('.filters th').eq(colIdx).html('');
+						return;
+					}
+
+					var cell = $('.filters th').eq(colIdx);
+
+					$(cell).html('<input type="text" class="form-control form-control-sm" placeholder="Buscar" />');
+
+					$('input', cell)
+						.off('keyup change')
+						.on('keyup change', function (e) {
+							e.stopPropagation();
+							api.column(colIdx).search(this.value).draw();
+						});
+				});
+			}
+		})
+		.buttons()
+		.container()
+		.appendTo("#tablaRegistros_wrapper .col-md-6:eq(0)");
+};
+
 function cambiaCategoriaJS(idCategoria, estatusActual) {
 
     const formdata = new FormData();
@@ -85,7 +290,7 @@ function agregaCategoria(e) {
                 bootstrap.Modal.getInstance(
                     document.getElementById('modalCategorias')
                 ).hide();
-                listarRegistros();
+                listarRegistro();
             } else {
                 alert(data.Msg);
             }
@@ -139,7 +344,7 @@ function editaCategoria(e) {
                 bootstrap.Modal.getInstance(
                     document.getElementById('modalCategorias')
                 ).hide();
-                listarRegistros();
+                listarRegistro();
             } else {
                 alert(data.Msg);
             }
@@ -147,74 +352,5 @@ function editaCategoria(e) {
         .catch(err => {
             console.error(err);
             alert('Error al guardar la categoría');
-        });
-}
-
-const listarRegistros = () => {
-  // console.log('Listando categorías...');
-    const tbody = document.querySelector('#tablaCategorias tbody');
-    tbody.innerHTML = `
-    <tr>
-      <td colspan="5" class="text-center">
-        Cargando registros...
-      </td>
-    </tr>
-  `;
-
-    fetch('/panel/catalogos/categorias/lista')
-        .then(res => res.json())
-        .then(data => {
-
-            if (!Array.isArray(data)) {
-                throw new Error('Formato de respuesta inválido');
-            }
-
-            tbody.innerHTML = '';
-            let contador = 1;
-
-            data.forEach(cat => {
-                const activoTxt = cat.activo == 1 ? 'SI' : 'NO';
-                const activoClass = cat.activo == 1 ? 'text-success' : 'text-danger';
-
-                const tr = document.createElement('tr');
-                tr.innerHTML = `
-          <td class="text-center">${contador}</td>
-          <td class="text-center">${cat.id_categoria}</td>
-          <td class="text-center">${cat.nom_categoria}</td>
-          <td class="text-center" id="activo-${cat.id_categoria}">
-            ${activoTxt}
-          </td>
-          <td class="text-center">
-            <i class="fa-solid fa-pencil fa-2x text-warning cur-pointer" onclick="modalEditaCategoria(${cat.id_categoria}, '${cat.nom_categoria}')"></i>
-            <i class="fa-solid fa-power-off fa-2x toggle-status cur-pointer ${activoClass}"
-              onclick="cambiaCategoriaJS(${cat.id_categoria}, ${cat.activo})">
-            </i>
-          </td>
-        `;
-
-                tbody.appendChild(tr);
-                contador++;
-            });
-
-            if (contador === 1) {
-                tbody.innerHTML = `
-          <tr>
-            <td colspan="5" class="text-center">
-              No hay registros
-            </td>
-          </tr>
-        `;
-            }
-
-        })
-        .catch(err => {
-            console.error(err);
-            tbody.innerHTML = `
-        <tr>
-          <td colspan="6" class="text-center text-danger">
-            Error al cargar subcategorías
-          </td>
-        </tr>
-      `;
         });
 }

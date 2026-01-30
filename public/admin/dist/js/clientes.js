@@ -1,5 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
-	listarRegistro();
+    const path = window.location.pathname;
+
+    if (path === '/panel/clientes/ver-clientes') {
+        listarRegistro();
+    }
 });
 
 const obtenerClientes = async () => {

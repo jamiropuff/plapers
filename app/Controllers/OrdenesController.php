@@ -11,179 +11,329 @@ use App\Models\CatEstatusPedidoModel;
 class OrdenesController extends BaseController
 {
 
-    public function ordenes_activas($Id_Rol = 0, $Id_Tipo_Pago = 0, $Id_Tipo_Envio = 0, $Id_Estatus_Pago = 0, $Id_Estatus_Pedido = 0)
+    // public function ordenes_activas_last($Id_Rol = 0, $Id_Tipo_Pago = 0, $Id_Tipo_Envio = 0, $Id_Estatus_Pago = 0, $Id_Estatus_Pedido = 0)
+    // {
+    //     $db = \Config\Database::connect();
+    //     $session = session();
+
+    //     $tipoPagoModel = new CatTipoPagoModel();
+    //     $estatusPagoModel = new CatEstatusPagoModel();
+    //     $tipoEnvioModel = new CatTipoEnvioModel();
+    //     $estatusPedidoModel = new CatEstatusPedidoModel();
+
+    //     $tipoPago = $tipoPagoModel->lista();
+    //     $estatusPago = $estatusPagoModel->lista();
+    //     $tipoEnvio = $tipoEnvioModel->lista();
+    //     $estatusPedido = $estatusPedidoModel->lista();
+
+    //     // Builder principal
+    //     $builder = $db->table('t_orden AS a');
+    //     $builder->select('
+    //         a.id_orden, a.id_user, e.nombres, e.paterno, e.materno,
+    //         a.id_tipo_pago, a.id_tipo_envio, a.id_estatus_pago, a.id_estatus_pedido,
+    //         a.subtotal, a.iva, a.envio, a.total, a.id_direccion, a.id_facturacion,
+    //         a.fecha_pedido, a.fecha_produccion, a.fecha_entrega, a.fecha_enviado, a.fecha_completo,
+    //         a.activo, a.comprobante, a.constancia, a.fecha_constancia, 
+    //         b.tipo_pago, c.estatus_pago, d.estatus_pedido
+    //     ');
+
+    //     // JOINs
+    //     $builder->join('cat_tipo_pago AS b', 'a.id_tipo_pago = b.id_tipo_pago');
+    //     $builder->join('cat_estatus_pago AS c', 'a.id_estatus_pago = c.id_estatus_pago');
+    //     $builder->join('cat_estatus_pedido AS d', 'a.id_estatus_pedido = d.id_estatus_pedido');
+    //     $builder->join('t_info_usuarios AS e', 'a.id_user = e.id_user');
+
+    //     // Filtros base
+    //     $builder->where('a.id_estatus_pago !=', 3); // omitir cancelados
+
+    //     if ($Id_Tipo_Pago > 0) {
+    //         $builder->where("a.id_tipo_pago", $Id_Tipo_Pago);
+    //     }
+    //     if ($Id_Tipo_Envio > 0) {
+    //         $builder->where("a.id_tipo_envio", $Id_Tipo_Envio);
+    //     }
+    //     if ($Id_Estatus_Pago > 0) {
+    //         $builder->where("a.id_estatus_pago", $Id_Estatus_Pago);
+    //     }
+    //     if ($Id_Estatus_Pedido > 0) {
+    //         $builder->where("a.id_estatus_pedido", $Id_Estatus_Pedido);
+    //     }
+    //     // Producción
+    //     if ($Id_Rol == 5) {
+    //         $builder->where("(a.id_estatus_pedido = 2 OR a.id_estatus_pedido = 6)");
+    //     } else {
+    //         $builder->where("(a.id_estatus_pedido != 8 AND a.id_estatus_pedido != 9)");
+    //     }
+    //     $builder->orderBy("a.id_orden", "DESC");
+
+    //     $query = $builder->get(); // Ejecutar la consulta        
+    //     $ordenes = [];
+
+    //     $array_tipo_envio = [];
+
+    //     foreach ($query->getResult() as $row) {
+    //         // echo "<pre>", var_dump($row), "</pre>";
+
+    //         // Tipo de Envío
+    //         $id_tipo_envio = $row->id_tipo_envio;
+    //         if ($id_tipo_envio > 0) {
+    //             $cat_tipo_envio = $this->lista_envio($id_tipo_envio);
+    //         } else {
+    //             $cat_tipo_envio = $this->lista_envio("1");
+    //         }
+
+    //         // Facturación
+    //         $id_facturacion = $row->id_facturacion;
+
+    //         if ($id_facturacion > 0) {
+    //             $direccion_facturacion = $this->obtiene_cliente_direccion_facturacion($id_facturacion);
+    //         } else {
+    //             $direccion_facturacion = null;
+    //         }
+
+    //         if ($Id_Tipo_Pago > 0) {
+    //             $tipo_pago = $row->tipo_pago;
+    //         } else {
+    //             $tipo_pago = "Todos";
+    //         }
+    //         if ($Id_Tipo_Envio > 0) {
+    //             $tipo_envio = $row->tipo_envio;
+    //         } else {
+    //             $tipo_envio = "Todos";
+    //         }
+    //         if ($Id_Estatus_Pago > 0) {
+    //             $estatus_pago = $row->estatus_pago;
+    //         } else {
+    //             $estatus_pago = "Todos";
+    //         }
+    //         if ($Id_Estatus_Pedido > 0) {
+    //             $estatus_pedido = $row->estatus_pedido;
+    //         } else {
+    //             $estatus_pedido = "Todos";
+    //         }
+
+
+    //         $ordenes[] = (object)[
+    //             "Id_Orden" => $row->id_orden,
+    //             "Id_User" => $row->id_user,
+    //             "Nombre" => $row->nombres,
+    //             "Paterno" => $row->paterno,
+    //             "Materno" => $row->materno,
+    //             "Id_Tipo_Pago" => $row->id_tipo_pago,
+    //             "Id_Tipo_Envio" => $row->id_tipo_envio,
+    //             "Id_Estatus_Pago" => $row->id_estatus_pago,
+    //             "Id_Estatus_Pedido" => $row->id_estatus_pedido,
+    //             "Subtotal" => $row->subtotal,
+    //             "Iva" => $row->iva,
+    //             "Envio" => $row->envio,
+    //             "Total" => $row->total,
+    //             "Id_Direccion" => $row->id_direccion,
+    //             "Id_Facturacion" => $row->id_facturacion,
+    //             "Fecha_Pedido" => $row->fecha_pedido,
+    //             "Fecha_Produccion" => $row->fecha_produccion,
+    //             "Fecha_Entrega" => $row->fecha_entrega,
+    //             "Fecha_Enviado" => $row->fecha_enviado,
+    //             "Fecha_Completo" => $row->fecha_completo,
+    //             "Activo" => $row->activo,
+    //             "Tipo_Pago_R" => $tipo_pago,
+    //             "Tipo_Envio_R" => $tipo_envio,
+    //             "Estatus_Pago_R" => $estatus_pago,
+    //             "Estatus_Pedido_R" => $estatus_pedido,
+    //             "Comprobante" => $row->comprobante,
+    //             "Constancia" => $row->constancia,
+    //             "Fecha_Constancia" => $row->fecha_constancia,
+    //             "Tipo_Pago" => $row->tipo_pago,
+    //             "Estatus_Pago" => $row->estatus_pago,
+    //             "Estatus_Pedido" => $row->estatus_pedido,
+    //             "Cat_Tipo_Envio" => $cat_tipo_envio,
+    //             "Cat_Estatus_Pago" => $this->listado_pago(),
+    //             "Direccion_Facturacion" => $direccion_facturacion
+    //         ];
+    //     }
+
+    //     // echo "<pre>", var_dump($ordenes), "</pre>";
+
+
+    //     $data_breadcrumb = array(
+    //         'title' => 'Ordenes Activas',
+    //         'icon' => '<i class="fa-solid fa-file-invoice"></i>'
+    //     );
+
+    //     $data_main = array(
+    //         'menu' => 'ordenes_activas',
+    //         'ordenes' => $ordenes,
+    //         'tipoPago' => $tipoPago,
+    //         'estatusPago' => $estatusPago,
+    //         'tipoEnvio' => $tipoEnvio,
+    //         'estatusPedido' => $estatusPedido
+    //     );
+
+    //     // echo "<pre>", var_dump($data_main), "</pre>";
+
+    //     $data_session = array(
+    //         "session" => $session
+    //     );
+
+    //     $data_footer = array(
+    //         'menu' => 'ordenes_activas',
+    //     );
+
+    //     echo view('admin/templates/header');
+    //     echo view('admin/templates/nav-top', $data_session);
+    //     echo view('admin/templates/nav-aside');
+    //     echo view('admin/templates/breadcrumb', $data_breadcrumb);
+    //     echo view('admin/ordenes/activas_last', $data_main);
+    //     echo view('admin/templates/footer', $data_footer);
+    // }
+
+    public function ordenes_activas()
     {
-        $db = \Config\Database::connect();
         $session = session();
 
-        $tipoPagoModel = new CatTipoPagoModel();
-        $estatusPagoModel = new CatEstatusPagoModel();
-        $tipoEnvioModel = new CatTipoEnvioModel();
-        $estatusPedidoModel = new CatEstatusPedidoModel();
-
-        $tipoPago = $tipoPagoModel->lista();
-        $estatusPago = $estatusPagoModel->lista();
-        $tipoEnvio = $tipoEnvioModel->lista();
-        $estatusPedido = $estatusPedidoModel->lista();
-
-        // Builder principal
-        $builder = $db->table('t_orden AS a');
-        $builder->select('
-            a.id_orden, a.id_user, e.nombres, e.paterno, e.materno,
-            a.id_tipo_pago, a.id_tipo_envio, a.id_estatus_pago, a.id_estatus_pedido,
-            a.subtotal, a.iva, a.envio, a.total, a.id_direccion, a.id_facturacion,
-            a.fecha_pedido, a.fecha_produccion, a.fecha_entrega, a.fecha_enviado, a.fecha_completo,
-            a.activo, a.comprobante, a.constancia, a.fecha_constancia, 
-            b.tipo_pago, c.estatus_pago, d.estatus_pedido
-        ');
-
-        // JOINs
-        $builder->join('cat_tipo_pago AS b', 'a.id_tipo_pago = b.id_tipo_pago');
-        $builder->join('cat_estatus_pago AS c', 'a.id_estatus_pago = c.id_estatus_pago');
-        $builder->join('cat_estatus_pedido AS d', 'a.id_estatus_pedido = d.id_estatus_pedido');
-        $builder->join('t_info_usuarios AS e', 'a.id_user = e.id_user');
-
-        // Filtros base
-        $builder->where('a.id_estatus_pago !=', 3); // omitir cancelados
-
-        if ($Id_Tipo_Pago > 0) {
-            $builder->where("a.id_tipo_pago", $Id_Tipo_Pago);
-        }
-        if ($Id_Tipo_Envio > 0) {
-            $builder->where("a.id_tipo_envio", $Id_Tipo_Envio);
-        }
-        if ($Id_Estatus_Pago > 0) {
-            $builder->where("a.id_estatus_pago", $Id_Estatus_Pago);
-        }
-        if ($Id_Estatus_Pedido > 0) {
-            $builder->where("a.id_estatus_pedido", $Id_Estatus_Pedido);
-        }
-        // Producción
-        if ($Id_Rol == 5) {
-            $builder->where("(a.id_estatus_pedido = 2 OR a.id_estatus_pedido = 6)");
-        } else {
-            $builder->where("(a.id_estatus_pedido != 8 AND a.id_estatus_pedido != 9)");
-        }
-        $builder->orderBy("a.id_orden", "DESC");
-
-        $query = $builder->get(); // Ejecutar la consulta        
-        $ordenes = [];
-
-        $array_tipo_envio = [];
-
-        foreach ($query->getResult() as $row) {
-            // echo "<pre>", var_dump($row), "</pre>";
-
-            // Tipo de Envío
-            $id_tipo_envio = $row->id_tipo_envio;
-            if ($id_tipo_envio > 0) {
-                $cat_tipo_envio = $this->lista_envio($id_tipo_envio);
-            } else {
-                $cat_tipo_envio = $this->lista_envio("1");
-            }
-
-            // Facturación
-            $id_facturacion = $row->id_facturacion;
-
-            if ($id_facturacion > 0) {
-                $direccion_facturacion = $this->obtiene_cliente_direccion_facturacion($id_facturacion);
-            } else {
-                $direccion_facturacion = null;
-            }
-
-            if ($Id_Tipo_Pago > 0) {
-                $tipo_pago = $row->tipo_pago;
-            } else {
-                $tipo_pago = "Todos";
-            }
-            if ($Id_Tipo_Envio > 0) {
-                $tipo_envio = $row->tipo_envio;
-            } else {
-                $tipo_envio = "Todos";
-            }
-            if ($Id_Estatus_Pago > 0) {
-                $estatus_pago = $row->estatus_pago;
-            } else {
-                $estatus_pago = "Todos";
-            }
-            if ($Id_Estatus_Pedido > 0) {
-                $estatus_pedido = $row->estatus_pedido;
-            } else {
-                $estatus_pedido = "Todos";
-            }
-
-
-            $ordenes[] = (object)[
-                "Id_Orden" => $row->id_orden,
-                "Id_User" => $row->id_user,
-                "Nombre" => $row->nombres,
-                "Paterno" => $row->paterno,
-                "Materno" => $row->materno,
-                "Id_Tipo_Pago" => $row->id_tipo_pago,
-                "Id_Tipo_Envio" => $row->id_tipo_envio,
-                "Id_Estatus_Pago" => $row->id_estatus_pago,
-                "Id_Estatus_Pedido" => $row->id_estatus_pedido,
-                "Subtotal" => $row->subtotal,
-                "Iva" => $row->iva,
-                "Envio" => $row->envio,
-                "Total" => $row->total,
-                "Id_Direccion" => $row->id_direccion,
-                "Id_Facturacion" => $row->id_facturacion,
-                "Fecha_Pedido" => $row->fecha_pedido,
-                "Fecha_Produccion" => $row->fecha_produccion,
-                "Fecha_Entrega" => $row->fecha_entrega,
-                "Fecha_Enviado" => $row->fecha_enviado,
-                "Fecha_Completo" => $row->fecha_completo,
-                "Activo" => $row->activo,
-                "Tipo_Pago_R" => $tipo_pago,
-                "Tipo_Envio_R" => $tipo_envio,
-                "Estatus_Pago_R" => $estatus_pago,
-                "Estatus_Pedido_R" => $estatus_pedido,
-                "Comprobante" => $row->comprobante,
-                "Constancia" => $row->constancia,
-                "Fecha_Constancia" => $row->fecha_constancia,
-                "Tipo_Pago" => $row->tipo_pago,
-                "Estatus_Pago" => $row->estatus_pago,
-                "Estatus_Pedido" => $row->estatus_pedido,
-                "Cat_Tipo_Envio" => $cat_tipo_envio,
-                "Cat_Estatus_Pago" => $this->listado_pago(),
-                "Direccion_Facturacion" => $direccion_facturacion
-            ];
+        // 🔐 Validar sesión y rol
+        if (!isset($session->Rol) || !in_array($session->Rol, [1, 3, 5])) {
+            return redirect()->to('/login');
         }
 
-        // echo "<pre>", var_dump($ordenes), "</pre>";
+        $Id_Rol = $session->Rol;
 
+        // 📊 Datos
+        $data_main = [
+            'menu' => 'ordenes',
+        ];
 
-        $data_breadcrumb = array(
-            'title' => 'Ordenes Activas',
+        // 🧭 Breadcrumb
+        $data_breadcrumb = [
+            'title' => 'Órdenes Activas',
             'icon' => '<i class="fa-solid fa-file-invoice"></i>'
-        );
+        ];
 
-        $data_main = array(
-            'menu' => 'ordenes_activas',
-            'ordenes' => $ordenes,
-            'tipoPago' => $tipoPago,
-            'estatusPago' => $estatusPago,
-            'tipoEnvio' => $tipoEnvio,
-            'estatusPedido' => $estatusPedido
-        );
-
-        // echo "<pre>", var_dump($data_main), "</pre>";
-
-        $data_session = array(
+        // 📎 Sesión
+        $data_session = [
             "session" => $session
-        );
+        ];
 
-        $data_footer = array(
-            'menu' => 'ordenes_activas',
-        );
+        $data_footer = [
+            'menu' => 'ordenes'
+        ];
 
+        // 🖼️ Vistas
         echo view('admin/templates/header');
         echo view('admin/templates/nav-top', $data_session);
         echo view('admin/templates/nav-aside');
         echo view('admin/templates/breadcrumb', $data_breadcrumb);
         echo view('admin/ordenes/activas', $data_main);
         echo view('admin/templates/footer', $data_footer);
+        echo view('admin/scripts/ordenes', $data_session);
+        echo view('admin/templates/end', $data_footer);
+    }
+
+    public function ordenes_activasJSON()
+    {
+        $session = session();
+
+        // 🔐 Validar sesión y rol
+        if (!isset($session->Rol) || !in_array($session->Rol, [1, 3, 5])) {
+            return redirect()->to('/login');
+        }
+
+        $Id_Rol = $session->Rol;
+
+        // 📥 Filtros (POST)
+        if ($this->request->getMethod() === 'post') {
+            $Id_Tipo_Pago = (int)$this->request->getPost('id_tipo_pago_search');
+            $Id_Estatus_Pago = (int)$this->request->getPost('id_estatus_pago_search');
+            $Id_Tipo_Envio = (int)$this->request->getPost('id_tipo_envio_search');
+            $Id_Estatus_Pedido = (int)$this->request->getPost('id_estatus_pedido_search');
+        } else {
+            $Id_Tipo_Pago = 0;
+            $Id_Estatus_Pago = 0;
+            $Id_Tipo_Envio = 0;
+            $Id_Estatus_Pedido = 0;
+        }
+
+        // 📦 Modelos de catálogos
+        $tipoPagoModel = new CatTipoPagoModel();
+        $estatusPagoModel = new CatEstatusPagoModel();
+        $tipoEnvioModel = new CatTipoEnvioModel();
+        $estatusPedidoModel = new CatEstatusPedidoModel();
+
+        // 📦 Modelo principal
+        $ordenModel = new OrdenModel();
+
+        // 📊 Datos
+        $response = [
+            'menu' => 'ordenes_activas',
+            'data' => $ordenModel->obtieneDatosOrden(
+                $Id_Rol,
+                $Id_Tipo_Pago,
+                $Id_Tipo_Envio,
+                $Id_Estatus_Pago,
+                $Id_Estatus_Pedido
+            ),
+            'tipoPago' => $tipoPagoModel->lista(),
+            'estatusPago' => $estatusPagoModel->lista(),
+            'tipoEnvio' => $tipoEnvioModel->lista(),
+            'estatusPedido' => $estatusPedidoModel->lista()
+        ];
+
+        return $this->response->setJSON($response);
+    }
+
+    public function orden($idOrden = null)
+    {
+
+        $session = session();
+        $data["Titulo"] = "Ficha";
+
+
+        // 🔎 Obtener ID desde la URL si no viene como parámetro
+        if ($idOrden === null) {
+            $idOrden = $this->request->getUri()->getSegment(4);
+        }
+
+        if (empty($idOrden)) {
+            $data["Msg"]  = "No se encontraron los productos";
+            $data["Code"] = INVALID_REQUEST;
+        } else {
+
+            $ordenModel = new OrdenModel();
+
+            // 📦 Productos de la orden
+            $data["Productos"] = $ordenModel->obtieneDatosOrdenProducto($idOrden);
+
+            // 🚚 Tipo de envío
+            $data["TipoEnvio"] = $ordenModel->listaEnvio();
+        }
+
+        $Id_Rol = $session->Rol;
+
+        // 🧭 Breadcrumb
+        $data_breadcrumb = [
+            'title' => 'Órdenes Activas',
+            'icon' => '<i class="fa-solid fa-file-invoice"></i>'
+        ];
+
+        // 📎 Sesión
+        $data_session = [
+            "session" => $session
+        ];
+
+        $data_footer = [
+            'menu' => 'ordenes'
+        ];
+
+        echo "<pre>", var_dump($data), "</pre>";
+
+        // 🖼️ Vistas
+        echo view('admin/templates/header');
+        echo view('admin/templates/nav-top', $data_session);
+        echo view('admin/templates/nav-aside');
+        echo view('admin/templates/breadcrumb', $data_breadcrumb);
+        echo view('admin/ordenes/orden', $data);
+        echo view('admin/templates/footer', $data_footer);
+        // echo view('admin/scripts/ordenes', $data_session);
+        echo view('admin/templates/end', $data_footer);
     }
 
     public function ordenes_finalizadas($Id_Rol = 0)
@@ -301,31 +451,30 @@ class OrdenesController extends BaseController
 
     /***********************************************************/
 
-	public function lista_envio($id_tipo_envio = 0)
-	{
+    public function lista_envio($id_tipo_envio = 0)
+    {
 
         $db = \Config\Database::connect();
 
-		$builder = $db->table('plap_cat_estatus_pedido');
-		$builder->select('estatus_pedido, id_estatus_pedido, id_tipo_envio, activo');
+        $builder = $db->table('plap_cat_estatus_pedido');
+        $builder->select('estatus_pedido, id_estatus_pedido, id_tipo_envio, activo');
 
-		if($id_tipo_envio > 0){
-			$builder->where("id_tipo_envio", $id_tipo_envio);
-		}else{
-			$builder->where("id_tipo_envio", "1");
-		}
+        if ($id_tipo_envio > 0) {
+            $builder->where("id_tipo_envio", $id_tipo_envio);
+        } else {
+            $builder->where("id_tipo_envio", "1");
+        }
 
-		$builder->orderBy("activo", "desc");
-		$builder->orderBy("id_estatus_pedido", "asc");
-		$query = $builder->get();
+        $builder->orderBy("activo", "desc");
+        $builder->orderBy("id_estatus_pedido", "asc");
+        $query = $builder->get();
 
-		$estatus_pedido = [];
-		foreach ($query->getResult() as $row)
-		{
-			$estatus_pedido[] = (object)["id_estatus_pedido" => $row->id_estatus_pedido, "id_tipo_envio" => $row->id_tipo_envio,"estatus_pedido" => $row->estatus_pedido, "activo" => $row->activo];
-		}
-		return $estatus_pedido;
-	} 
+        $estatus_pedido = [];
+        foreach ($query->getResult() as $row) {
+            $estatus_pedido[] = (object)["id_estatus_pedido" => $row->id_estatus_pedido, "id_tipo_envio" => $row->id_tipo_envio, "estatus_pedido" => $row->estatus_pedido, "activo" => $row->activo];
+        }
+        return $estatus_pedido;
+    }
 
     // Obtiene los datos de facturación del cliente
     public function obtiene_cliente_direccion_facturacion($Id_Direccion_Facturacion)

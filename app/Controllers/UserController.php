@@ -244,6 +244,7 @@ class UserController extends BaseController
         echo view('admin/templates/breadcrumb', $data_breadcrumb);
         echo view('admin/users/usuarios', $data_main);
         echo view('admin/templates/footer', $data_footer);
+        echo view('admin/templates/end', $data_footer);
     }
 
     public function usuariosJSON()

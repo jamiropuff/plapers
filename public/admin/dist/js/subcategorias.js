@@ -1,6 +1,213 @@
 let categorias = [];
 let subcategorias = [];
 
+document.addEventListener('DOMContentLoaded', () => {
+    listarRegistro();
+});
+
+const obtenerSubcategorias = async () => {
+	try {
+		const response = await fetch('/panel/catalogos/subcategorias/lista');
+		if (!response.ok) {
+			throw new Error('Error HTTP: ' + response.status);
+		}
+
+		return await response.json();
+		// console.log('Subcategorias:', data);
+	} catch (error) {
+		console.error('Error:', error);
+	}
+}
+
+const listarRegistro = async (cantidad = 50) => {
+	// console.log("listarRegistro");
+
+	let response = await obtenerSubcategorias();
+	// console.log(response);
+
+	let divTable = document.getElementById("tblRegistros");
+	divTable.innerHTML = "";
+
+	let table = document.createElement("table");
+	table.id = "tablaRegistros";
+	table.setAttribute("class", "table table-bordered table-striped");
+	divTable.append(table);
+
+	var contenido = `  
+      <thead class="bg-primary text-white">
+        <tr>
+          <th class="align-middle">#</th>
+          <th class="align-middle">ID SUBCATEGORÍA</th>
+          <th class="align-middle">CATEGORÍA</th>
+          <th class="align-middle">SUBCATEGORÍA</th>
+          <th class="align-middle">ACTIVO</th>
+          <th class="align-middle">ACCIONES</th>
+        </tr>
+      </thead>
+	  <tbody class="border border-primary">
+      `;
+
+	let i = 1;
+
+	for (const subcategoria of response) {
+
+        const activo = subcategoria.activo == 1 ? "SI" : "NO";
+
+		contenido += `
+        <tr>
+            <td>${i++}</td>
+            <td>${subcategoria.id_subcategoria}</td>
+            <td>${subcategoria.nom_categoria}</td>
+            <td>${subcategoria.nom_subcategoria}</td>
+            <td id="activo-${subcategoria.id_subcategoria}">${activo}</td>
+            <td class="text-center">
+                <i class="fa-solid fa-pencil fa-2x text-warning cur-pointer" onclick="modalEditaSubcategoria(${subcategoria.id_subcategoria},${subcategoria.id_categoria},'${subcategoria.nom_subcategoria}')"></i>
+                <i class="fa-solid fa-power-off fa-2x toggle-status cur-pointer
+                ${subcategoria.activo == 1 ? 'text-success' : 'text-danger'}"
+                    onclick="cambiaSubcategoriaJS(${subcategoria.id_subcategoria}, ${subcategoria.activo})">
+            </td>
+        </tr>
+        `;
+	}
+
+	contenido += `</tbody>`;
+
+
+	$("#tablaRegistros").html(contenido);
+
+	// 👇 CLONAR THEAD PARA FILTROS
+	$('#tablaRegistros thead tr')
+		.clone(true)
+		.removeClass('bg-primary text-white')
+		.addClass('filters')
+		.appendTo('#tablaRegistros thead');
+
+	var tablaRegistros = $("#tablaRegistros")
+		.DataTable({
+			dom: "Bfrtip",
+			responsive: true,
+			lengthMenu: [
+				[10, 25, 50, 100, -1],
+				[10, 25, 50, 100, "Todos"],
+			],
+			lengthChange: false,
+			autoWidth: false,
+			scrollX: false,
+			stateSave: false,
+			pageLength: cantidad,
+			order: [[0, "asc"]],
+			language: {
+				processing: "Procesando...",
+				search: "Buscar:",
+				lengthMenu: "Mostrar _MENU_ registros",
+				info: "Mostrando _START_ a _END_ de _TOTAL_ registros",
+				infoEmpty: "Mostrando 0 a 0 de 0 registros",
+				infoFiltered: "(filtrado de _MAX_ registros totales)",
+				infoPostFix: "",
+				loadingRecords: "Cargando...",
+				zeroRecords: "No se encontraron resultados",
+				emptyTable: "No hay datos disponibles en la tabla",
+				paginate: {
+					first: "Primero",
+					previous: "Anterior",
+					next: "Siguiente",
+					last: "Último"
+				},
+				buttons: {
+					pageLength: {
+						_: "Mostrar %d filas",
+						"-1": "Mostrar todos"
+					}
+				}
+			},
+			buttons: [
+				{
+					extend: "pageLength",
+				},
+				{
+					extend: "excel",
+					text: "Excel",
+					className: "btn-dark",
+					exportOptions: {
+						columns: [1, 2, 3, 4],
+					},
+				},
+				{
+					extend: "pdfHtml5",
+					text: "PDF",
+					header: true,
+					title: "PDF",
+					duplicate: true,
+					className: "btn-dark",
+					pageOrientation: "landscape",
+					pageSize: "A4",
+					pageMargins: [5, 5, 5, 5],
+					exportOptions: {
+						columns: [1, 2, 3, 4],
+						alignment: "center",
+						stripHtml: false,
+					},
+					pageBreak: "after",
+				},
+				{
+					extend: "print",
+					text: "Imprimir",
+					className: "btn-dark",
+					pageSize: "A4",
+					orientation: "landscape",
+					exportOptions: {
+						columns: [1, 2, 3, 4],
+					},
+				},
+				{
+					extend: "colvis",
+					text: "Columnas",
+					className: "btn-dark",
+				},
+			],
+			select: {
+				rows: {
+					_: "%d filas seleccionadas",
+					1: "1 fila seleccionada"
+				}
+			},
+			columnDefs: [
+				{ targets: 0, orderable: false },     // #
+				{ targets: [4], orderable: false }, // icono y select
+				{ targets: [4], searchable: false } // no filtrar
+			],
+			select: true,
+			orderCellsTop: true,
+			fixedHeader: true,
+			initComplete: function () {
+				var api = this.api();
+
+				api.columns().eq(0).each(function (colIdx) {
+
+					// ❌ NO filtrar las últimas 2 columnas
+					if (colIdx < 1 || colIdx >= 4) {
+						$('.filters th').eq(colIdx).html('');
+						return;
+					}
+
+					var cell = $('.filters th').eq(colIdx);
+
+					$(cell).html('<input type="text" class="form-control form-control-sm" placeholder="Buscar" />');
+
+					$('input', cell)
+						.off('keyup change')
+						.on('keyup change', function (e) {
+							e.stopPropagation();
+							api.column(colIdx).search(this.value).draw();
+						});
+				});
+			}
+		})
+		.buttons()
+		.container()
+		.appendTo("#tablaRegistros_wrapper .col-md-6:eq(0)");
+};
+
 const cargaCategorias = (id = "") => {
     fetch('/panel/catalogos/categorias/lista')
         .then(res => res.json())
@@ -128,7 +335,7 @@ function agregaSubcategoria(e) {
                 bootstrap.Modal.getInstance(
                     document.getElementById('modalSubcategorias')
                 ).hide();
-                listarRegistros();
+                listarRegistro();
             } else {
                 alert(data.Msg);
             }
@@ -193,7 +400,7 @@ function editaSubcategoria(e) {
                 bootstrap.Modal.getInstance(
                     document.getElementById('modalSubcategorias')
                 ).hide();
-                listarRegistros();
+                listarRegistro();
             } else {
                 alert(data.Msg);
             }
@@ -201,74 +408,5 @@ function editaSubcategoria(e) {
         .catch(err => {
             console.error(err);
             alert('Error al guardar la subcategoría');
-        });
-}
-
-const listarRegistros = () => {
-    const tbody = document.querySelector('#tablaSubcategorias tbody');
-    tbody.innerHTML = `
-    <tr>
-      <td colspan="6" class="text-center">
-        Cargando registros...
-      </td>
-    </tr>
-  `;
-
-    fetch('/panel/catalogos/subcategorias/lista')
-        .then(res => res.json())
-        .then(data => {
-
-            if (!Array.isArray(data)) {
-                throw new Error('Formato de respuesta inválido');
-            }
-
-            tbody.innerHTML = '';
-            let contador = 1;
-
-            data.forEach(sub => {
-                const activoTxt = sub.activo == 1 ? 'SI' : 'NO';
-                const activoClass = sub.activo == 1 ? 'text-success' : 'text-danger';
-
-                const tr = document.createElement('tr');
-                tr.innerHTML = `
-          <td class="text-center">${contador}</td>
-          <td class="text-center">${sub.id_subcategoria}</td>
-          <td class="text-center">${sub.nom_categoria}</td>
-          <td class="text-center">${sub.nom_subcategoria}</td>
-          <td class="text-center" id="activo-${sub.id_subcategoria}">
-            ${activoTxt}
-          </td>
-          <td class="text-center">
-            <i class="fa-solid fa-pencil fa-2x text-warning cur-pointer" onclick="modalEditaSubcategoria(${sub.id_subcategoria}, ${sub.id_categoria}, '${sub.nom_subcategoria}')"></i>
-            <i class="fa-solid fa-power-off fa-2x toggle-status cur-pointer ${activoClass}"
-              onclick="cambiaSubcategoriaJS(${sub.id_subcategoria}, ${sub.activo})">
-            </i>
-          </td>
-        `;
-
-                tbody.appendChild(tr);
-                contador++;
-            });
-
-            if (contador === 1) {
-                tbody.innerHTML = `
-          <tr>
-            <td colspan="6" class="text-center">
-              No hay registros
-            </td>
-          </tr>
-        `;
-            }
-
-        })
-        .catch(err => {
-            console.error(err);
-            tbody.innerHTML = `
-        <tr>
-          <td colspan="6" class="text-center text-danger">
-            Error al cargar subcategorías
-          </td>
-        </tr>
-      `;
         });
 }

@@ -1,6 +1,232 @@
 let categorias = [];
 let subcategorias = [];
 
+const baseUrl = window.location.origin + '/';
+//console.log(baseUrl);
+
+document.addEventListener('DOMContentLoaded', () => {
+    listarRegistro();
+});
+
+const obtenerProductos = async () => {
+	try {
+		const response = await fetch('/panel/catalogos/productos/lista');
+		if (!response.ok) {
+			throw new Error('Error HTTP: ' + response.status);
+		}
+
+		return await response.json();
+		// console.log('Productos:', data);
+	} catch (error) {
+		console.error('Error:', error);
+	}
+}
+
+const listarRegistro = async (cantidad = 50) => {
+	// console.log("listarRegistro");
+
+	let response = await obtenerProductos();
+	console.log(response);
+
+	let divTable = document.getElementById("tblRegistros");
+	divTable.innerHTML = "";
+
+	let table = document.createElement("table");
+	table.id = "tablaRegistros";
+	table.setAttribute("class", "table table-bordered table-striped");
+	divTable.append(table);
+
+	var contenido = `  
+      <thead class="bg-primary text-white">
+        <tr>
+          <th class="align-middle">#</th>
+          <th class="align-middle">ID PRODUCTO</th>
+          <th class="align-middle">CATEGORÍA</th>
+          <th class="align-middle">SUBCATEGORÍA</th>
+          <th class="align-middle">PRODUCTO</th>
+          <th class="align-middle">FOTO</th>
+          <th class="align-middle">MEDIDAS</th>
+          <th class="align-middle">PRECIO</th>
+          <th class="align-middle">ACTIVO</th>
+          <th class="align-middle">ACCIONES</th>
+        </tr>
+      </thead>
+	  <tbody class="border border-primary">
+      `;
+
+	let i = 1;
+
+	for (const producto of response) {
+
+        const activo = producto.activo == 1 ? "SI" : "NO";
+
+        if (producto.foto) {
+            foto = `${baseUrl}fotos/${producto.id_subcategoria}/${producto.foto}`;
+        } else {
+            foto = `${baseUrl}no-image.png`;
+        }
+
+		contenido += `
+        <tr>
+            <td>${i++}</td>
+            <td>${producto.id_producto}</td>
+            <td>${producto.nom_categoria}</td>
+            <td class="text-center">${producto.nom_subcategoria}</td>
+            <td class="text-center">${producto.nom_producto}</td>
+            <td class="text-center"><img src="${foto}" alt="Foto de ${producto.nom_producto}" style="max-width: 100px; max-height: 100px;"></td>
+            <td class="text-center">${producto.largo} x ${producto.ancho} cms.</td>
+            <td class="text-center">${producto.precio_unitario}</td>
+            <td class="text-center" id="activo-${producto.id_producto}">${activo}</td>
+            <td class="text-center">
+                <i class="fa-solid fa-eye fa-2x text-primary cur-pointer" onclick="mostrarProducto('${producto.nom_producto}','${producto.nom_subcategoria}','${producto.nom_categoria}','${foto}','${producto.clave}','${producto.descripcion}','${producto.largo}','${producto.ancho}','${producto.precio_unitario}')"></i>
+                <!-- <i class="fa-solid fa-pencil"></i> -->
+                <i class="fa-solid fa-power-off fa-2x toggle-status cur-pointer
+                ${producto.activo == 1 ? 'text-success' : 'text-danger'}"
+                    onclick="cambiaProductoJS(${producto.id_producto}, ${producto.activo})">
+                </i>
+            </td>
+        </tr>
+        `;
+	}
+
+	contenido += `</tbody>`;
+
+
+	$("#tablaRegistros").html(contenido);
+
+	// 👇 CLONAR THEAD PARA FILTROS
+	$('#tablaRegistros thead tr')
+		.clone(true)
+		.removeClass('bg-primary text-white')
+		.addClass('filters')
+		.appendTo('#tablaRegistros thead');
+
+	var tablaRegistros = $("#tablaRegistros")
+		.DataTable({
+			dom: "Bfrtip",
+			responsive: true,
+			lengthMenu: [
+				[10, 25, 50, 100, -1],
+				[10, 25, 50, 100, "Todos"],
+			],
+			lengthChange: false,
+			autoWidth: false,
+			scrollX: false,
+			stateSave: false,
+			pageLength: cantidad,
+			order: [[0, "asc"]],
+			language: {
+				processing: "Procesando...",
+				search: "Buscar:",
+				lengthMenu: "Mostrar _MENU_ registros",
+				info: "Mostrando _START_ a _END_ de _TOTAL_ registros",
+				infoEmpty: "Mostrando 0 a 0 de 0 registros",
+				infoFiltered: "(filtrado de _MAX_ registros totales)",
+				infoPostFix: "",
+				loadingRecords: "Cargando...",
+				zeroRecords: "No se encontraron resultados",
+				emptyTable: "No hay datos disponibles en la tabla",
+				paginate: {
+					first: "Primero",
+					previous: "Anterior",
+					next: "Siguiente",
+					last: "Último"
+				},
+				buttons: {
+					pageLength: {
+						_: "Mostrar %d filas",
+						"-1": "Mostrar todos"
+					}
+				}
+			},
+			buttons: [
+				{
+					extend: "pageLength",
+				},
+				{
+					extend: "excel",
+					text: "Excel",
+					className: "btn-dark",
+					exportOptions: {
+						columns: [1, 2, 3, 4, 5, 6, 7, 8],
+					},
+				},
+				{
+					extend: "pdfHtml5",
+					text: "PDF",
+					header: true,
+					title: "PDF",
+					duplicate: true,
+					className: "btn-dark",
+					pageOrientation: "landscape",
+					pageSize: "A4",
+					pageMargins: [5, 5, 5, 5],
+					exportOptions: {
+						columns: [1, 2, 3, 4, 5, 6, 7, 8],
+						alignment: "center",
+						stripHtml: false,
+					},
+					pageBreak: "after",
+				},
+				{
+					extend: "print",
+					text: "Imprimir",
+					className: "btn-dark",
+					pageSize: "A4",
+					orientation: "landscape",
+					exportOptions: {
+						columns: [1, 2, 3, 4, 5, 6, 7, 8],
+					},
+				},
+				{
+					extend: "colvis",
+					text: "Columnas",
+					className: "btn-dark",
+				},
+			],
+			select: {
+				rows: {
+					_: "%d filas seleccionadas",
+					1: "1 fila seleccionada"
+				}
+			},
+			columnDefs: [
+				{ targets: 0, orderable: false },     // #
+				{ targets: [9], orderable: false }, // icono y select
+				{ targets: [9], searchable: false } // no filtrar
+			],
+			select: true,
+			orderCellsTop: true,
+			fixedHeader: true,
+			initComplete: function () {
+				var api = this.api();
+
+				api.columns().eq(0).each(function (colIdx) {
+
+					// ❌ NO filtrar las últimas 2 columnas
+					if (colIdx < 1 || colIdx >= 9) {
+						$('.filters th').eq(colIdx).html('');
+						return;
+					}
+
+					var cell = $('.filters th').eq(colIdx);
+
+					$(cell).html('<input type="text" class="form-control form-control-sm" placeholder="Buscar" />');
+
+					$('input', cell)
+						.off('keyup change')
+						.on('keyup change', function (e) {
+							e.stopPropagation();
+							api.column(colIdx).search(this.value).draw();
+						});
+				});
+			}
+		})
+		.buttons()
+		.container()
+		.appendTo("#tablaRegistros_wrapper .col-md-6:eq(0)");
+};
+
 const cargaCategorias = () => {
     fetch('/panel/catalogos/categorias/lista')
         .then(res => res.json())

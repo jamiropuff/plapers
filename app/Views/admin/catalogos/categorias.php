@@ -14,40 +14,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <div class="table-responsive">
-                        <table id="tablaCategorias" class="table table-striped">
-                            <thead class="bg-primary text-white">
-                                <tr>
-                                    <th class="text-center">#</th>
-                                    <th class="text-center">ID CATEGORIA</th>
-                                    <th class="text-center">CATEGORIA</th>
-                                    <th class="text-center">ACTIVO</th>
-                                    <th class="text-center">OPCIONES</th>
-                                </tr>
-                            </thead>
-                            <tbody class="border border-primary">
-                                <?php $x = 1; ?>
-                                <?php foreach ($Categorias as $categoria) { ?>
-                                    <?php
-                                    $activo     = ($categoria['activo'] == 1) ? "SI" : "NO";
-                                    ?>
-                                    <tr>
-                                        <td class="text-center"><?= $x; ?></td>
-                                        <td class="text-center"><?= $categoria["id_categoria"]; ?></td>
-                                        <td class="text-center"><?= $categoria["nom_categoria"]; ?></td>
-                                        <td class="text-center" id="activo-<?= $categoria['id_categoria']; ?>"><?= $activo; ?></td>
-                                        <td class="text-center">
-                                            <i class="fa-solid fa-pencil fa-2x text-warning cur-pointer" onclick="modalEditaCategoria(<?= $categoria['id_categoria']; ?>, '<?= $categoria['nom_categoria']; ?>')"></i>
-                                            <i class="fa-solid fa-power-off fa-2x toggle-status cur-pointer
-                                            <?= $categoria['activo'] == 1 ? 'text-success' : 'text-danger'; ?>"
-                                                onclick="cambiaCategoriaJS(<?= $categoria['id_categoria']; ?>, <?= $categoria['activo']; ?>)">
-                                        </td>
-                                    </tr>
-                                    <?php $x++; ?>
-                                <?php } ?>
-                            </tbody>
-                        </table>
-                    </div>
+                    <div id="tblRegistros" class="table-responsive"></div>
                 </div>
             </div>
         </div>

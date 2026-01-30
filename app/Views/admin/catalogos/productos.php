@@ -14,7 +14,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <div class="table-responsive">
+                    <div id="tblRegistros" class="table-responsive">
                         <table class="table table-striped">
                             <thead class="bg-primary text-white">
                                 <tr>

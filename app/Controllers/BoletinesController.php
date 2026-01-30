@@ -57,5 +57,6 @@ class BoletinesController extends BaseController
         echo view('admin/templates/breadcrumb', $data_breadcrumb);
         echo view('admin/boletin/suscritos', $data_main);
         echo view('admin/templates/footer', $data_footer);
+        echo view('admin/templates/end', $data_footer);
     }
 }

@@ -73,6 +73,7 @@ class SubcategoriasController extends Controller
         echo view('admin/templates/breadcrumb', $data_breadcrumb);
         echo view('admin/catalogos/subcategorias', $data_main);
         echo view('admin/templates/footer', $data_footer);
+        echo view('admin/templates/end', $data_footer);
     }
 
     public function listaJSON()

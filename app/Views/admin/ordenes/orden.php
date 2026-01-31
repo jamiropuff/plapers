@@ -18,8 +18,10 @@
                                     <h4 class="mb-0 text-white">Datos de Contacto</h4>
                                 </div>
                                 <div class="card-body">
-                                    <h6 class="card-title"><strong>NOMBRE:</strong> <?php echo htmlspecialchars($Cliente_Info['Clientes'][0]['Nombre'] ?? ''); ?></h6>
-                                    <p class="card-text"><strong>CORREO ELECTRÓNICO:</strong> <?php echo htmlspecialchars($Cliente_Info['Clientes'][0]['Correo_Electronico'] ?? ''); ?></p>
+                                    <h6 class="card-title"><strong>NOMBRE:</strong> <?php echo htmlspecialchars($data['Productos'][0]['Orden'][0]['nombres'].' '.$data['Productos'][0]['Orden'][0]['paterno'].' '.$data['Productos'][0]['Orden'][0]['materno'] ?? ''); ?></h6>
+                                    <p class="card-text"><strong>EMAIL:</strong> <?php echo htmlspecialchars($Cliente_Info['Clientes'][0]['Correo_Electronico'] ?? ''); ?></p>
+                                    <p class="card-text"><strong>OBSERVACIONES CLIENTE:</strong> <?php echo htmlspecialchars($Cliente_Info['Clientes'][0]['Observaciones'] ?? ''); ?></p>
+                                    <p class="card-text"><strong>OBSERVACIONES PLAPERS:</strong> <?php echo htmlspecialchars($Cliente_Info['Clientes'][0]['Correo_Electronico'] ?? ''); ?></p>
                                 </div>
                             </div>
                         </div>

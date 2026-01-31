@@ -188,7 +188,7 @@ class OrdenModel extends Model
         // =====================================================
         $orden = $this->obtieneDatosOrdenPorId($Id_Orden);
         $ordenData = $orden['Orden'][0];
-        //echo "<pre>", var_dump($ordenData), "</pre>";
+        // echo "<pre>", var_dump($ordenData), "</pre>";
 
         $Id_User_Comprador        = $ordenData['id_user'];
         $Id_Direccion_Envio       = $ordenData['id_direccion'];
@@ -227,12 +227,15 @@ class OrdenModel extends Model
 
         $productos = $builder->get()->getResultArray();
 
+        // echo "<pre>", var_dump($productos), "</pre>";
+
 
 
         // =====================================================
         // 3️⃣ COMPRADOR
         // =====================================================
-        $Response["Comprador"] = $this->obtieneDatosClienteId($Id_User_Comprador);
+        $comprador = $this->obtieneDatosClienteId($Id_User_Comprador);
+        // echo "<pre>", var_dump($comprador), "</pre>";
 
         // =====================================================
         // 4️⃣ USUARIOS POR ESTATUS (IN)
@@ -278,11 +281,13 @@ class OrdenModel extends Model
         // 6️⃣ DIRECCIONES
         // =====================================================
         if ($Id_Direccion_Envio > 0) {
-            $Response["Direccion_Envio"] = $this->obtieneClienteDireccionEnvio($Id_Direccion_Envio);
+            $direccion_envio = $this->obtieneClienteDireccionEnvio($Id_Direccion_Envio);
+            // echo "<pre>", var_dump($direccion_envio), "</pre>";
         }
 
         if ($Id_Direccion_Facturacion > 0) {
-            $Response["Direccion_Facturacion"] = $this->obtieneClienteDireccionFacturacion($Id_Direccion_Facturacion);
+            $direccion_facturacion = $this->obtieneClienteDireccionFacturacion($Id_Direccion_Facturacion);
+            // echo "<pre>", var_dump($direccion_facturacion), "</pre>";
         }
 
         // =====================================================
@@ -290,17 +295,24 @@ class OrdenModel extends Model
         // =====================================================
         if ($Id_Uso > 0) {
             $uso = $this->usoCfdi($Id_Uso);
-            $Response["Uso_Cfdi"] = $uso[0]['nombre_uso'] ?? null;
+            $uso_cfdi = $uso[0]['nombre_uso'] ?? null;
         } else {
-            $Response["Uso_Cfdi"] = null;
+            $uso_cfdi = null;
         }
+        // echo "<pre>", var_dump($uso_cfdi), "</pre>";
 
         // =====================================================
         // 8️⃣ RESPUESTA FINAL
         // =====================================================
         $Response = array_merge($orden, [
+            "Comprador" => $comprador ?? [],
+            "Direccion_Envio" => $direccion_envio ?? [],
+            "Direccion_Facturacion" => $direccion_facturacion ?? [],
+            "Uso_Cfdi" => $uso_cfdi ?? null,
             "Orden_Productos" => $productos
         ]);
+
+        // echo "<pre>", var_dump($Response), "</pre>";
 
         return $Response;
     }
@@ -397,9 +409,13 @@ class OrdenModel extends Model
         $builder->orderBy('a.active', 'DESC');
         $builder->orderBy('b.nombres', 'ASC');
 
+        $query = $builder->get()->getResultArray();
+
+        // echo "<pre>", var_dump($query), "</pre>";
+
         return [
             "Code" => REQUEST_SUCCESS,
-            "Clientes" => $builder->get()->getResultArray()
+            "Clientes" => $query
         ];
     }
 

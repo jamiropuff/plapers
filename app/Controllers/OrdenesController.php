@@ -300,7 +300,7 @@ class OrdenesController extends BaseController
             $ordenModel = new OrdenModel();
 
             // 📦 Productos de la orden
-            $data["Productos"] = $ordenModel->obtieneDatosOrdenProducto($idOrden);
+            $data["Data"] = $ordenModel->obtieneDatosOrdenProducto($idOrden);
 
             // 🚚 Tipo de envío
             $data["TipoEnvio"] = $ordenModel->listaEnvio();
@@ -323,7 +323,7 @@ class OrdenesController extends BaseController
             'menu' => 'ordenes'
         ];
 
-        echo "<pre>", var_dump($data), "</pre>";
+        // echo "<pre>", var_dump($data), "</pre>";
 
         // 🖼️ Vistas
         echo view('admin/templates/header');

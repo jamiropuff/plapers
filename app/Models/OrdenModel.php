@@ -448,7 +448,7 @@ class OrdenModel extends Model
             $pais = $arr_pais[0]['Nombre_Pais'] ?? null;
 
             // Uso CFDI
-            $arr_uso = $this->uso_cfdi($row->uso);
+            $arr_uso = $this->usoCfdi($row->uso);
             $uso_cfdi = $arr_uso[0]['nombre_uso'] ?? null;
 
             $direccion_facturacion[] = [

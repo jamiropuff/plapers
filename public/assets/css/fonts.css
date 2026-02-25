@@ -1,0 +1,92 @@
+/* =========================
+   FUENTES PERSONALIZADAS
+   ========================= */
+
+/* Bicicleta */
+@font-face {
+    font-family: "ald721b";
+    src: url("../fonts/ald721b.woff2") format("woff2"),
+         url("../fonts/ald721b.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Euromini */
+@font-face {
+    font-family: "EURONEWOPEN";
+    src: url("../fonts/EURONUEVA.woff2") format("woff2"),
+         url("../fonts/EURONUEVA.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Europea */
+@font-face {
+    font-family: "EUROFAT";
+    src: url("../fonts/TEUROFAT.woff2") format("woff2"),
+         url("../fonts/TEUROFAT.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "EUROTHIN";
+    src: url("../fonts/TIPOEURO.woff2") format("woff2"),
+         url("../fonts/TIPOEURO.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Americana */
+@font-face {
+    font-family: "BEBASKAI_0";
+    src: url("../fonts/Maru_Plapers_Med.woff2") format("woff2"),
+         url("../fonts/Maru_Plapers_Med.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "built_titling_lt";
+    src: url("../fonts/Maru_Plapers_Delgada.woff2") format("woff2"),
+         url("../fonts/Maru_Plapers_Delgada.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "built_titling_rg";
+    src: url("../fonts/Maru_Plapers_Chica.woff2") format("woff2"),
+         url("../fonts/Maru_Plapers_Chica.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "LicensePlate_0";
+    src: url("../fonts/Maru_Plapers_Gde.woff2") format("woff2"),
+         url("../fonts/Maru_Plapers_Gde.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* =========================
+   CLASES UTILITARIAS
+   ========================= */
+
+.ff-tipo-1 { font-family: "ald721b", sans-serif; }
+.ff-tipo-2 { font-family: "EUROFAT", sans-serif; }
+.ff-tipo-3 { font-family: "EUROTHIN", sans-serif; }
+.ff-tipo-4 { font-family: "EURONEWOPEN", sans-serif; }
+.ff-tipo-5 { font-family: "LicensePlate_0", sans-serif; }
+.ff-tipo-6 { font-family: "built_titling_lt", sans-serif; }
+.ff-tipo-7 { font-family: "BEBASKAI_0", sans-serif; }
+.ff-tipo-8 { font-family: "built_titling_rg", sans-serif; }

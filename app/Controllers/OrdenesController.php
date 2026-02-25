@@ -287,7 +287,7 @@ class OrdenesController extends BaseController
         $data["Titulo"] = "Ficha";
 
 
-        // 🔎 Obtener ID desde la URL si no viene como parámetro
+        // Obtener ID desde la URL si no viene como parámetro
         if ($idOrden === null) {
             $idOrden = $this->request->getUri()->getSegment(4);
         }
@@ -299,22 +299,22 @@ class OrdenesController extends BaseController
 
             $ordenModel = new OrdenModel();
 
-            // 📦 Productos de la orden
+            // Productos de la orden
             $data["Data"] = $ordenModel->obtieneDatosOrdenProducto($idOrden);
 
-            // 🚚 Tipo de envío
+            // Tipo de envío
             $data["TipoEnvio"] = $ordenModel->listaEnvio();
         }
 
         $Id_Rol = $session->Rol;
 
-        // 🧭 Breadcrumb
+        // Breadcrumb
         $data_breadcrumb = [
             'title' => 'Órdenes Activas',
             'icon' => '<i class="fa-solid fa-file-invoice"></i>'
         ];
 
-        // 📎 Sesión
+        // Sesión
         $data_session = [
             "session" => $session
         ];
@@ -325,12 +325,70 @@ class OrdenesController extends BaseController
 
         // echo "<pre>", var_dump($data), "</pre>";
 
-        // 🖼️ Vistas
+        // Vistas
         echo view('admin/templates/header');
         echo view('admin/templates/nav-top', $data_session);
         echo view('admin/templates/nav-aside');
         echo view('admin/templates/breadcrumb', $data_breadcrumb);
         echo view('admin/ordenes/orden', $data);
+        echo view('admin/templates/footer', $data_footer);
+        // echo view('admin/scripts/ordenes', $data_session);
+        echo view('admin/templates/end', $data_footer);
+    }
+
+    public function productos()
+    {
+        $session = session();
+        $data["Titulo"] = "Productos";
+
+        $method = $this->request->getMethod(true); // TRUE = uppercase
+
+        if ($method === "GET") {
+
+            $Id_Orden = $this->request->uri->getSegment(4);
+
+            if (empty($Id_Orden)) {
+
+                $data["Msg"]  = "No se encontraron los productos";
+                $data["Code"] = INVALID_REQUEST;
+            } else {
+
+                $ordenModel = model('App\Models\OrdenModel');
+
+                $data["Productos"] = $ordenModel->obtieneDatosOrdenProducto($Id_Orden);
+                $data["TipoEnvio"] = $ordenModel->listaEnvio();
+            }
+        } else {
+
+            $data["Code"] = METHOD_NOT_ALLOWED;
+            $data["Msg"]  = MSG_METHOD_NOT_ALLOWED;
+        }
+
+        $Id_Rol = $session->Rol;
+
+        // Breadcrumb
+        $data_breadcrumb = [
+            'title' => 'Productos',
+            'icon' => '<i class="fa-solid fa-box"></i>'
+        ];
+
+        // Sesión
+        $data_session = [
+            "session" => $session
+        ];
+
+        $data_footer = [
+            'menu' => 'productos'
+        ];
+
+        echo "<pre>", var_dump($data), "</pre>";
+
+        // Vistas
+        echo view('admin/templates/header');
+        echo view('admin/templates/nav-top', $data_session);
+        echo view('admin/templates/nav-aside');
+        echo view('admin/templates/breadcrumb', $data_breadcrumb);
+        echo view('admin/ordenes/producto', $data);
         echo view('admin/templates/footer', $data_footer);
         // echo view('admin/scripts/ordenes', $data_session);
         echo view('admin/templates/end', $data_footer);

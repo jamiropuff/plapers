@@ -102,6 +102,7 @@ $routes->post('panel/usuarios/lista', 'UserController::usuariosJSON');
 $routes->get('panel/ordenes/activas', 'OrdenesController::ordenes_activas');
 $routes->get('panel/ordenes/lista_activas', 'OrdenesController::ordenes_activasJSON');
 $routes->get('panel/ordenes/orden/(:num)', 'OrdenesController::orden/$1');
+$routes->get('panel/ordenes/productos/(:num)', 'OrdenesController::productos/$1');
 $routes->get('panel/ordenes/finalizadas', 'OrdenesController::ordenes_finalizadas');
 $routes->get('panel/ordenes/canceladas', 'OrdenesController::ordenes_canceladas');
 $routes->get('uploads/(:segment)/(:any)', 'FileController::serveFile/$1/$2');

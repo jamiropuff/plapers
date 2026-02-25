@@ -24,7 +24,7 @@ const listarRegistro = async (cantidad = 50) => {
 	// console.log("listarRegistro");
 
 	let response = await obtenerClientes();
-	// console.log(response);
+	console.log(response);
 
 	let divTable = document.getElementById("tblRegistros");
 	divTable.innerHTML = "";

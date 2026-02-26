@@ -1,3 +1,7 @@
+.imgs-zoom-area img {
+    width: 100% !important;
+}
+
 /* =========================
    COLORES GENERADOS
    ========================= */
@@ -38,6 +42,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
 .placa--img {

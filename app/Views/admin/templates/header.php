@@ -30,6 +30,10 @@
   <link rel="stylesheet" href="<?= base_url() ?>/admin/assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
   <!-- Style CSS -->
   <link href="<?= base_url() ?>/admin/dist/css/style.min.css" rel="stylesheet">
+  <!-- Fuentes CSS -->
+  <link href="<?= base_url() ?>/assets/css/fonts.css" rel="stylesheet">
+  <!-- Placas CSS -->
+  <link href="<?= base_url() ?>/assets/css/placas.css" rel="stylesheet">
   <!-- Custom CSS -->
   <link href="<?= base_url() ?>/admin/dist/css/custom.css" rel="stylesheet">
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

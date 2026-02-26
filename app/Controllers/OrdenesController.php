@@ -381,7 +381,7 @@ class OrdenesController extends BaseController
             'menu' => 'productos'
         ];
 
-        echo "<pre>", var_dump($data), "</pre>";
+        // echo "<pre>", var_dump($data), "</pre>";
 
         // Vistas
         echo view('admin/templates/header');

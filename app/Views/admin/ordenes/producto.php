@@ -1,14 +1,17 @@
 <!-- ============================================================== -->
 <!-- Container fluid  -->
 <!-- ============================================================== -->
-<?php //echo "<pre>", var_dump($Data), "</pre>";
+<?php //echo "<pre>", var_dump($Productos), "</pre>";
 ?>
 <?php
-$orden = $Data['Orden'];
-$comprador = $Data['Comprador'];
-$direccion_envio = $Data['Direccion_Envio'];
-$direccion_facturacion = $Data['Direccion_Facturacion'];
-$productos = $Data['Orden_Productos'];
+$orden = $Productos['Orden'];
+$comprador = $Productos['Comprador'];
+$direccion_envio = $Productos['Direccion_Envio'];
+$direccion_facturacion = $Productos['Direccion_Facturacion'];
+$uso_cfdi = $Productos['Uso_Cfdi'];
+$productos = $Productos['Orden_Productos'];
+
+//echo "<pre>", var_dump($productos), "</pre>";
 ?>
 <div class="container-fluid">
     <!-- ============================================================== -->
@@ -110,7 +113,7 @@ $productos = $Data['Orden_Productos'];
                                         <h4 class="mb-0 text-white">Dirección de Facturación</h4>
                                     </div>
                                     <div class="card-body">
-                                        <h6 class="card-title"><strong><?=  $tipo_persona; ?>:</strong> <?php echo htmlspecialchars($nombre_persona ?? ''); ?></h6>
+                                        <h6 class="card-title"><strong><?= $tipo_persona; ?>:</strong> <?php echo htmlspecialchars($nombre_persona ?? ''); ?></h6>
                                         <p class="card-text"><strong>RFC:</strong> <?php echo htmlspecialchars($direccion_facturacion[0]['Rfc'] ?? ''); ?></p>
                                         <p class="card-text"><strong>CURP:</strong> <?php echo htmlspecialchars($direccion_facturacion[0]['Curp'] ?? ''); ?></p>
                                         <p class="card-text"><strong>Uso CFDI:</strong> <?php echo htmlspecialchars($uso_cfdi ?? ''); ?></p>
@@ -131,177 +134,166 @@ $productos = $Data['Orden_Productos'];
                 </div>
 
                 <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-striped">
-                            <thead class="bg-primary text-white">
-                                <tr>
-                                    <th class="text-center">#</th>
-                                    <th class="text-center">&nbsp;</th>
-                                    <th class="text-center">PRODUCTO</th>
-                                    <th class="text-center">PRECIO</th>
-                                    <th class="text-center">CANTIDAD</th>
-                                    <th class="text-center">TOTAL</th>
-                                </tr>
-                            </thead>
-                            <tbody class="border border-primary">
-                                <?php
-                                $x = 1;
-                                $cantidad = 0;
-                                $precio_unitario = 0;
-                                $total = 0;
-                                ?>
-                                <?php foreach ($productos as $producto) { ?>
-                                    <?php
-                                    $id_orden_producto = $producto['id_orden_producto'];
-                                    $id_producto = $producto['id_producto'];
-
-                                    $id_categoria = $producto['id_categoria'];
-                                    $id_posicion = $producto['id_posicion'];
-                                    $id_color = $producto['id_color'];
-
-                                    $texto_linea1 = $producto['texto_linea1'];
-                                    $fuente_linea1 = $producto['fuente1'];
-                                    $caracteres_linea1 = $producto['caracteres_linea1'];
-
-                                    $texto_linea2 = $producto['texto_linea2'];
-                                    $fuente_linea2 = $producto['fuente2'];
-                                    $caracteres_linea2 = $producto['caracteres_linea2'];
-
-                                    $texto_linea3 = $producto['texto_linea3'];
-                                    $fuente_linea3 = $producto['fuente3'];
-                                    $caracteres_linea3 = $producto['caracteres_linea3'];
-
-                                    $claseL1 = "ff-tipo-" . $fuente_linea1 . " posicion-" . $id_posicion . " personaliza-" . $caracteres_linea1 . " letra-color-" . $id_color . " linea-1";
-                                    $claseL2 = "ff-tipo-" . $fuente_linea2 . " posicion-" . $id_posicion . " personaliza-" . $caracteres_linea2 . " letra-color-" . $id_color . " linea-2";
-                                    $claseL3 = "ff-tipo-" . $fuente_linea3 . " posicion-" . $id_posicion . " personaliza-" . $caracteres_linea3 . " letra-color-" . $id_color . " linea-3";
-
-                                    $acabado = $producto['id_terminado'];
-
-                                    //echo "acabado: ".$acabado."<br>";
-
-                                    if (isset($acabado) && $acabado == 1) {
-                                        $img_acabado = "public/acabado/" . $id_categoria . "/acabado-" . $id_color . ".png";
-                                    } elseif ($acabado == 2) {
-                                        $img_acabado = "public/acabado/" . $id_categoria . "/acabado-ch.png";
-                                    } else {
-                                        $img_acabado = "public/acabado/" . $id_categoria . "/acabado-pl.png";
-                                    }
-
-
-                                    //echo "texto_linea1: ".$texto_linea1;
-
-                                    // $texto_linea1 = $producto['texto_linea1'];
-                                    // $texto_linea2 = $producto['texto_linea2'];
-                                    // $texto_linea3 = $producto['texto_linea3'];
-                                    //echo "texto_linea1: ".$texto_linea1;
-
-                                    // Totales
-                                    $precio_unitario = $precio_unitario + $producto['precio_unitario'];
-                                    $cantidad = $cantidad + $producto['cantidad'];
-                                    $total = $total + $producto['total'];
-
-                                    ?>
-                                    <tr>
-                                        <td class="text-center align-middle"><?= $x; ?></td>
-                                        <td class="text-center align-middle"><img src="<?= $producto['foto']; ?>" alt="Imagen del producto" style="max-width: 150px; max-height: 150px;"></td>
-                                        <td>
-                                            <?= $producto['nom_producto']; ?><br>
-                                            Categoría: <?= $producto['nom_categoria']; ?><br>
-
-                                            <?php if ($producto["id_categoria"] != 5 && $producto["id_categoria"] != 6 && $producto["id_categoria"] != 7) { ?>
-
-                                                Línea 1: <?= $producto['texto_linea1']; ?><br>
-
-                                                <?php if (!empty($texto_linea2)) { ?>
-                                                    Línea 2: <?= $producto['texto_linea2']; ?><br>
-                                                <?php } ?>
-
-                                                <?php if (!empty($texto_linea3)) { ?>
-                                                    Línea 3: <?= $producto['texto_linea3']; ?><br>
-                                                <?php } ?>
-
-                                                Color: <?= $producto['color']; ?> <div style="background-color: #<?= $producto['hex']; ?>; border: 1px solid #000; border-radius: 50%; width:30px; height:30px; display: inline-block;"></div><br>
-                                                
-                                                Distribución: <img src="https://plapers.com.mx/public/img/posiciones/p<?= $producto['id_posicion'] ?>.jpg" />
-
-                                            <?php } ?>
-                                        </td>
-                                        <td class="text-center align-middle fw-bold "><?= $producto['precio_unitario']; ?></td>
-                                        <td class="text-center align-middle"><?= $producto['cantidad']; ?></td>
-                                        <td class="text-center align-middle fw-bold "><?= $producto['total']; ?></td>
-                                    </tr>
-                                    <?php $x++; ?>
-                                <?php } ?>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <div class="card-body">
                     <div class="row">
-                        <div class="col-md-6">
-                            <div class="card border-primary">
-                                <div class="card-header bg-primary">
-                                    <h4 class="mb-0 text-white"></h4>
-                                </div>
-                                <div class="card-body fs-5">
-                                    <?php
-                                    $id_tipo_envio = $orden[0]['id_tipo_envio'];
-                                    $tipo_envio = (isset($id_tipo_envio) && $id_tipo_envio == 1) ? 'Envio a domicilio' : 'Recoger en oficina';
-
-                                    $id_tipo_pago = $orden[0]['id_tipo_pago'];
-                                    $tipo_pago = (isset($id_tipo_pago) && $id_tipo_pago == 1) ? 'Paypal' : 'Depósito bancario';
-                                    ?>
-                                    <p class="card-text"><strong>TIPO DE ENVÍO</strong><br><?php echo htmlspecialchars($tipo_envio ?? ''); ?></p>
-                                    <p class="card-text mt-5"><strong>MÉTODO DE PAGO</strong><br><?php echo htmlspecialchars($tipo_pago ?? ''); ?></p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="card border-primary">
-                                <div class="card-header bg-primary">
-                                    <h4 class="mb-0 text-white">DETALLES DE PAGO</h4>
-                                </div>
-                                <div class="card-body">
-                                    <?php
-                                    $subtotal = $orden[0]['subtotal'];
-                                    $iva = $orden[0]['iva'];
-                                    $envio = $orden[0]['envio'];
-
-                                    $costo_envio = (isset($envio) && $envio > 0) ? $envio :  0;
-
-                                    $total = $orden[0]['total'];
-                                    ?>
-                                    <table class="table fs-5">
+                        <div class="col-md-12">
+                            <div class="table-responsive">
+                                <table class="table table-striped ">
+                                    <thead>
                                         <tr>
-                                            <td>Cantidad de productos:</td>
-                                            <td><?php echo $cantidad; ?></td>
+                                            <th class="text-center fw-bold">Fecha de<br>Producción</th>
+                                            <th class="text-center fw-bold">Usuario<br>Producción</th>
+                                            <th class="text-center fw-bold">Fecha de<br>Entrega<br>Producción</th>
+                                            <th class="text-center fw-bold">Fecha de<br>Fabricación</th>
+                                            <th class="text-center fw-bold">Usuario<br>Fabricación</th>
+                                            <th class="text-center fw-bold">Fecha<br>Enviado</th>
+                                            <th class="text-center fw-bold">Usuario<br>Enviado</th>
+                                            <th class="text-center fw-bold">Fecha<br>Finalizado</th>
+                                            <th class="text-center fw-bold">Usuario<br>Finalizado</th>
                                         </tr>
+                                    </thead>
+                                    <tbody>
                                         <tr>
-                                            <td>Subtotal:</td>
-                                            <td><?php echo '$ ' . number_format($subtotal, 2, '.', ','); ?></td>
+                                            <td class="text-center align-middle"><?= htmlspecialchars($orden[0]['fecha_produccion'] ?? ''); ?></td>
+                                            <td class="text-center align-middle"><?= htmlspecialchars($orden[0]['id_usuario_produccion'] ?? ''); ?></td>
+                                            <td class="text-center align-middle"><?= htmlspecialchars($orden[0]['fecha_entrega'] ?? ''); ?></td>
+                                            <td class="text-center align-middle"><?= htmlspecialchars($orden[0]['fecha_fabricado'] ?? ''); ?></td>
+                                            <td class="text-center align-middle"><?= htmlspecialchars($orden[0]['id_usuario_fabricado'] ?? ''); ?></td>
+                                            <td class="text-center align-middle"><?= htmlspecialchars($orden[0]['fecha_enviado'] ?? ''); ?></td>
+                                            <td class="text-center align-middle"><?= htmlspecialchars($orden[0]['id_usuario_enviado'] ?? ''); ?></td>
+                                            <td class="text-center align-middle"><?= htmlspecialchars($orden[0]['fecha_completo'] ?? ''); ?></td>
+                                            <td class="text-center align-middle"><?= htmlspecialchars($orden[0]['id_usuario_finalizado'] ?? ''); ?></td>
                                         </tr>
-                                        <?php if ($costo_envio > 0) { ?>
-                                            <tr>
-                                                <td>Envío</td>
-                                                <td><?php echo '$ ' . number_format($costo_envio, 2, '.', ','); ?></td>
-                                            </tr>
-                                        <?php } ?>
-                                        <tr>
-                                            <td>IVA:</td>
-                                            <td><?php echo '$ ' . number_format($iva, 2, '.', ','); ?></td>
-                                        </tr>
-                                        <tr class="text-danger">
-                                            <td class="fw-bold">Total a pagar:</td>
-                                            <td class="fw-bold"><?php echo '$ ' . number_format($total, 2, '.', ','); ?></td>
-                                        </tr>
-                                    </table>
-                                </div>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <?php foreach ($productos as $producto) { ?>
+                    <?php
+
+                    echo "<pre>", var_dump($producto), "</pre>";
+                    $id_orden_producto = $producto['id_orden_producto'];
+                    $id_producto = $producto['id_producto'];
+
+                    $id_categoria = $producto['id_categoria'];
+                    $id_posicion = $producto['id_posicion'];
+                    $id_color = $producto['id_color'];
+
+                    $texto_linea1 = $producto['texto_linea1'];
+                    $fuente_linea1 = $producto['fuente_linea1'];
+                    $caracteres_linea1 = $producto['caracteres_linea1'];
+
+                    $texto_linea2 = $producto['texto_linea2'];
+                    $fuente_linea2 = $producto['fuente_linea2'];
+                    $caracteres_linea2 = $producto['caracteres_linea2'];
+
+                    $texto_linea3 = $producto['texto_linea3'];
+                    $fuente_linea3 = $producto['fuente_linea3'];
+                    $caracteres_linea3 = $producto['caracteres_linea3'];
+
+                    $claseL1 = "ff-tipo-" . $fuente_linea1 . " posicion-" . $id_posicion . " personaliza-" . $caracteres_linea1 . " letra-color-" . $id_color . " linea-1";
+                    $claseL2 = "ff-tipo-" . $fuente_linea2 . " posicion-" . $id_posicion . " personaliza-" . $caracteres_linea2 . " letra-color-" . $id_color . " linea-2";
+                    $claseL3 = "ff-tipo-" . $fuente_linea3 . " posicion-" . $id_posicion . " personaliza-" . $caracteres_linea3 . " letra-color-" . $id_color . " linea-3";
+
+                    $acabado = $producto['id_terminado'];
+
+                    //echo "acabado: ".$acabado."<br>";
+
+                    if (isset($acabado) && $acabado == 1) {
+                        $img_acabado = "acabado/" . $id_categoria . "/acabado-" . $id_color . ".png";
+                    } elseif ($acabado == 2) {
+                        $img_acabado = "acabado/" . $id_categoria . "/acabado-ch.png";
+                    } else {
+                        $img_acabado = "acabado/" . $id_categoria . "/acabado-pl.png";
+                    }
+                    ?>
+
+                    <div class="card-body">
+                        <div class="row mt-20">
+                            <div class="col-md-5 col-sm-5 col-xs-12 categoria-<?php echo $id_categoria; ?>" id="placa">
+                                <div style="text-transform: uppercase;" class="<?php echo $claseL1; ?>"><?php echo $texto_linea1; ?></div>
+                                <?php if (!empty($texto_linea2)) { ?>
+                                    <div style="text-transform: uppercase;" class="<?php echo $claseL2; ?>"><?php echo $texto_linea2; ?></div>
+                                <?php } ?>
+
+                                <?php if (!empty($texto_linea3)) { ?>
+                                    <div style="text-transform: uppercase;" class="<?php echo $claseL3; ?>"><?php echo $texto_linea3; ?></div>
+                                <?php } ?>
+                                <div class="imgs-zoom-area" style="position: relative; top:0; left: 0; width: 100%;">
+                                    <img class="placa--img" id="zoom_03" src="<?= $producto['foto'] ?>" alt style="position: relative; top:0; left: 0;" />
+                                    <img src="<?= base_url() ?>/<?php echo $img_acabado; ?>" style="position: absolute; top:0; left: 0;" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">CATEGORÍA</th>
+                                        <th class="text-center">PRODUCTO</th>
+                                        <th class="text-center">CANTIDAD</th>
+                                        <th class="text-center">DISTRIBUCIÓN</th>
+                                        <th class="text-center">COLOR</th>
+
+                                        <th class="text-center">LÍNEA 1</th>
+                                        <th class="text-center">FUENTE 1</th>
+                                        <th class="text-center">CARACTERES LÍNEA 1</th>
+                                        <?php if (!empty($texto_linea2)) { ?>
+                                            <th class="text-center">LÍNEA 2</th>
+                                            <th class="text-center">FUENTE 2</th>
+                                            <th class="text-center">CARACTERES LÍNEA 2</th>
+                                        <?php } ?>
+                                        <?php if (!empty($texto_linea3)) { ?>
+                                            <th class="text-center">LÍNEA 3</th>
+                                            <th class="text-center">FUENTE 3</th>
+                                            <th class="text-center">CARACTERES LÍNEA 3</th>
+                                        <?php } ?>
+                                        <th class="text-center">Acabado</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="border border-primary">
+
+                                    <tr>
+                                        <td class="text-center align-middle"><?= $producto['nom_categoria']; ?></td>
+                                        <td class="text-center align-middle"><?= $producto['nom_producto']; ?></td>
+                                        <td class="text-center align-middle"><?= $producto['cantidad']; ?></td>
+                                        <td class="text-center align-middle"><img src="https://plapers.com.mx/public/img/posiciones/p<?= $producto['id_posicion'] ?>.jpg" /></td>
+                                        <td class="text-center align-middle">
+                                            <div style="background-color: #<?= $producto['hex']; ?>; border: 1px solid #000; border-radius: 50%; width:30px; height:30px; display: inline-block;"></div><br><?= $producto['color']; ?>
+                                        </td>
+
+                                        <td class="text-center align-middle"><?= $texto_linea1; ?></td>
+                                        <td class="text-center align-middle"><?= $fuente_linea1; ?></td>
+                                        <td class="text-center align-middle"><?= $caracteres_linea1; ?></td>
+
+                                        <?php if (!empty($texto_linea2)) { ?>
+                                            <td class="text-center align-middle"><?= $texto_linea2; ?></td>
+                                            <td class="text-center align-middle"><?= $fuente_linea2; ?></td>
+                                            <td class="text-center align-middle"><?= $caracteres_linea2; ?></td>
+                                        <?php } ?>
+
+                                        <?php if (!empty($texto_linea3)) { ?>
+                                            <td class="text-center align-middle"><?= $texto_linea3; ?></td>
+                                            <td class="text-center align-middle"><?= $fuente_linea3; ?></td>
+                                            <td class="text-center align-middle"><?= $caracteres_linea3; ?></td>
+                                        <?php } ?>
+
+                                        <td class="text-center align-middle"><?= $producto['nom_terminado']; ?></td>
+                                    </tr>
+                                    
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                <?php } ?>
+
+                
 
             </div>
         </div>

@@ -13,7 +13,7 @@ $productos = $Productos['Orden_Productos'];
 
 //echo "<pre>", var_dump($productos), "</pre>";
 ?>
-<div class="container-fluid">
+<div class="container">
     <!-- ============================================================== -->
     <!-- Start Page Content -->
     <!-- ============================================================== -->
@@ -173,7 +173,7 @@ $productos = $Productos['Orden_Productos'];
                 <?php foreach ($productos as $producto) { ?>
                     <?php
 
-                    echo "<pre>", var_dump($producto), "</pre>";
+                    // echo "<pre>", var_dump($producto), "</pre>";
                     $id_orden_producto = $producto['id_orden_producto'];
                     $id_producto = $producto['id_producto'];
 

@@ -92,7 +92,7 @@
 <div class="top__header pt-30 pb-30">
     <div class="container">
         <div class="top__wrapper">
-            <a href="index.php" class="main__logo">
+            <a href="<?= base_url() ?>/index.php" class="main__logo">
                 <img src="<?= base_url() ?>/assets/images/logo-plapers/logo-plapers.svg" alt="logo Plapers">
             </a>
             <!--<div class="search__wrp">
@@ -169,7 +169,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="acerca-de-plapers.php">NOSOTROS</a>
+                    <a href="web/acerca_de">NOSOTROS</a>
                 </li>
                 <li>
                     <a href="#">GALERÍA</a>

@@ -7,26 +7,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PLAPERS</title>
     <!-- Favicon img -->
-    <link rel="shortcut icon" href="assets/images/favicon.png">
+    <link rel="shortcut icon" href="<?= base_url() ?>/assets/images/favicon.png">
     <!-- Bootstarp min css -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/css/bootstrap.min.css">
     <!-- All min css -->
-    <link rel="stylesheet" href="assets/css/all.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/css/all.min.css">
     <!-- Swiper bundle min css -->
-    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/css/swiper-bundle.min.css">
     <!-- Magnigic popup css -->
-    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/css/magnific-popup.css">
     <!-- Animate css -->
-    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/css/animate.css">
     <!-- Nice select css -->
-    <link rel="stylesheet" href="assets/css/nice-select.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/css/nice-select.css">
 
-    <link rel="stylesheet" href="assets/dist/effect-cards-stack.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/dist/effect-cards-stack.css">
 
 
     <!-- Style css -->
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/custom.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/css/style.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/css/custom.css">
 </head>
 
 <body>

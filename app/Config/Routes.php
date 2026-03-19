@@ -39,9 +39,8 @@ $routes->set404Override();
 /* Website */
 /**********************************************************************/
 $routes->get('/', 'Home::index');
+$routes->get('web/acerca_de', 'Home::acerca_de');
 $routes->post('solicitar_informacion', 'Home::solicitar_informacion');
-$routes->post('contador_visitas', 'Home::contador_visitas');
-$routes->get('promociones', 'Home::promociones');
 
 $routes->get('list_degree', 'AdminDegreeController::list_degree');
 

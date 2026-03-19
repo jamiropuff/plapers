@@ -29,6 +29,28 @@ class Home extends BaseController
         echo view('templates/close');
     }
 
+    public function acerca_de()
+    {
+
+        // $data_footer = array(
+        //     'grade' => '',
+        //     'menu' => 'inicio',
+        //     'visitas' => $visitas,
+        //     'eventos' => $eventos,
+        //     'menu_oferta' => $menu_oferta
+        // );
+
+        echo view('templates/header');
+        echo view('templates/nav-top');
+        // echo view('templates/sidebar-right');
+        //echo view('templates/breadcrumb',$data_breadcrumb);
+        echo view('aboutus/banner');
+        echo view('aboutus/default');
+        echo view('templates/footer');
+        // echo view('scripts/scripts');
+        echo view('templates/close');
+    }
+
     public function contacto()
     {
 

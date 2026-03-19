@@ -59,7 +59,7 @@
 ?>
 
 <!-- Footer area start here -->
-<footer class="footer-area bg-image" data-background="<?= base_url() ?>/assets/images/footer-plaperes/footer-bg-plapers.jpg">
+<footer class="footer-area bg-image" data-background="<?= base_url() ?>/assets/images/footer-plapers/footer-bg-plapers.jpg">
     <div class="container">
         <div class="footer__wrp pt-65 pb-65 bor-top bor-bottom">
             <div class="row g-4">
@@ -112,11 +112,11 @@
         </div>
         <div class="footer__copy-text pt-35 pb-35">
             <a href="index.php" class="logo d-block">
-                <img src="assets/images/logo-plapers/logo-plapers.svg" alt="logo Plapers footer">
+                <img src="<?= base_url() ?>/assets/images/logo-plapers/logo-plapers.svg" alt="logo Plapers footer">
             </a>
             <p>&copy; Copyright 2026 Todos los derechos Reservados</p>
             <a href="#0" class="payment d-block image">
-                <img src="assets/images/icon/payment.png" alt="icon">
+                <img src="<?= base_url() ?>/assets/images/icon/payment.png" alt="icon">
             </a>
         </div>
     </div>

@@ -1,1 +1,0 @@
-<div class="container-magazine" id="container-magazine"></div>

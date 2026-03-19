@@ -193,11 +193,31 @@ $productos = $Productos['Orden_Productos'];
                     $fuente_linea3 = $producto['fuente_linea3'];
                     $caracteres_linea3 = $producto['caracteres_linea3'];
 
+
+                    $id_categoria = 4;
+                    $id_posicion = 4;
+                    $id_color = 1;
+
+                    $texto_linea1 = "GUILLERM";
+                    $fuente_linea1 = 4;
+                    $caracteres_linea1 = 8;
+                    
+                    $texto_linea2 = "";
+                    $fuente_linea2 = "";
+                    $caracteres_linea2 = "";
+
+                    $texto_linea3 = "";
+                    $fuente_linea3 = "";
+                    $caracteres_linea3 = "";
+
+
+
                     $claseL1 = "ff-tipo-" . $fuente_linea1 . " posicion-" . $id_posicion . " personaliza-" . $caracteres_linea1 . " letra-color-" . $id_color . " linea-1";
                     $claseL2 = "ff-tipo-" . $fuente_linea2 . " posicion-" . $id_posicion . " personaliza-" . $caracteres_linea2 . " letra-color-" . $id_color . " linea-2";
                     $claseL3 = "ff-tipo-" . $fuente_linea3 . " posicion-" . $id_posicion . " personaliza-" . $caracteres_linea3 . " letra-color-" . $id_color . " linea-3";
 
                     $acabado = $producto['id_terminado'];
+                    $acabado = 1;
 
                     //echo "acabado: ".$acabado."<br>";
 
@@ -208,6 +228,9 @@ $productos = $Productos['Orden_Productos'];
                     } else {
                         $img_acabado = "acabado/" . $id_categoria . "/acabado-pl.png";
                     }
+
+                    $producto['foto'] = "https://plapers.com.mx/public/fotos/10/EUR_62.png";
+
                     ?>
 
                     <div class="card-body">
@@ -223,7 +246,7 @@ $productos = $Productos['Orden_Productos'];
                                 <?php } ?>
                                 <div class="imgs-zoom-area" style="position: relative; top:0; left: 0; width: 100%;">
                                     <img class="placa--img" id="zoom_03" src="<?= $producto['foto'] ?>" alt style="position: relative; top:0; left: 0;" />
-                                    <img src="<?= base_url() ?>/<?php echo $img_acabado; ?>" style="position: absolute; top:0; left: 0;" />
+                                    <img src="<?= base_url() ?>/<?php echo $img_acabado; ?>" style="position: absolute; top:0; left: 0; width:100%; height:100%;" />
                                 </div>
                             </div>
                         </div>

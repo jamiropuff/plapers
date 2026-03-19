@@ -1,98 +1,55 @@
 <!-- Banner area start here -->
 <section class="banner-two">
-    <div class="banner-two__shape-left d-none d-lg-block wow bounceInLeft" data-wow-duration="1s"
-        data-wow-delay=".5s">
-        <img src="<?= base_url() ?>/assets/images/shape/vape1.png" alt="shape">
-    </div>
-    <div class="banner-two__shape-right d-none d-lg-block wow bounceInRight" data-wow-duration="1s"
-        data-wow-delay=".1s">
-        <img class="sway_Y__animation " src="<?= base_url() ?>/assets/images/shape/vape2.png" alt="shape">
-    </div>
     <div class="swiper banner-two__slider">
         <div class="swiper-wrapper">
+
             <div class="swiper-slide">
-                <div class="slide-bg" data-background="<?= base_url() ?>/assets/images/banner/banner-two-image1.jpg"></div>
+                <div class="slide-bg" data-background="<?= base_url() ?>/assets/images/home-plapers/slider-plapers/plapers-slide-A.jpg"></div>
                 <div class="container">
                     <div class="banner-two__content">
                         <h4 data-animation="fadeInUp" data-delay="1s"><img src="<?= base_url() ?>/assets/images/icon/fire.svg"
-                                alt="icon"> GET <span class="primary-color">25% OFF</span> NOW</h4>
-                        <h1 data-animation="fadeInUp" data-delay="1.3s">Find everything <br>
-                            for <span class="primary-color">vaping</span></h1>
-                        <p class="mt-40" data-animation="fadeInUp" data-delay="1.5s">Sell globally in minutes
-                            with localized currencies languages, and <br> experie in
-                            every
-                            market. only a variety of vaping
-                            products</p>
+                                alt="icon"> LLEGASTE <span class="primary-color">AL LUGAR</span> INDICADO</h4>
+                        <h1 data-animation="fadeInUp" data-delay="1.3s">Encuentra tu estilo <br>
+                            y <span class="primary-color">personal&iacute;zalo</span></h1>
+                        <p class="mt-40" data-animation="fadeInUp" data-delay="1.5s">Contamos con diversos modelos
+                            <br> de placas en 4 formatos diferentes
+                        </p>
                         <div class="banner-two__info mt-30" data-animation="fadeInUp" data-delay="1.7s">
-                            <span class="mb-10">Starting Price</span>
-                            <h3>$99.00</h3>
+                            <span class="mb-10">Precios desde </span>
+                            <h3>$126.00</h3>
                         </div>
                         <div class="btn-wrp mt-65">
-                            <a href="shop.html" class="btn-one" data-animation="fadeInUp"
-                                data-delay="1.8s"><span>Shop
-                                    Now</span></a>
-                            <a class="btn-one-light ml-20" href="shop-single.html" data-animation="fadeInUp"
-                                data-delay="1.9s"><span>View Details</span></a>
+                            <a href="#" class="btn-one" data-animation="fadeInUp"
+                                data-delay="1.8s"><span>Comprar ahora</span></a>
                         </div>
                     </div>
                 </div>
             </div>
+
             <div class="swiper-slide">
-                <div class="slide-bg" data-background="<?= base_url() ?>/assets/images/banner/banner-two-image2.jpg"></div>
+                <div class="slide-bg" data-background="<?= base_url() ?>/assets/images/home-plapers/slider-plapers/plapers-slide-B.jpg"></div>
                 <div class="container">
                     <div class="banner-two__content">
                         <h4 data-animation="fadeInUp" data-delay="1s"><img src="<?= base_url() ?>/assets/images/icon/fire.svg"
-                                alt="icon"> GET <span class="primary-color">25% OFF</span> NOW</h4>
-                        <h1 data-animation="fadeInUp" data-delay="1.3s">Find everything <br>
-                            for <span class="primary-color">vaping</span></h1>
-                        <p class="mt-40" data-animation="fadeInUp" data-delay="1.5s">Sell globally in minutes
-                            with localized currencies languages, and <br> experie in
-                            every
-                            market. only a variety of vaping
-                            products</p>
+                                alt="icon"> LLEGASTE <span class="primary-color">AL LUGAR</span> INDICADO</h4>
+                        <h1 data-animation="fadeInUp" data-delay="1.3s">Usamos alta tecnolog&iacute;a<br>
+                            para garantizar la mejor <span class="primary-color">calidad</span></h1>
+                        <p class="mt-40" data-animation="fadeInUp" data-delay="1.5s">Somos una empresa
+                            <br> 100% mexicana
+                        </p>
                         <div class="banner-two__info mt-30" data-animation="fadeInUp" data-delay="1.7s">
-                            <span class="mb-10">Starting Price</span>
-                            <h3>$99.00</h3>
+                            <span class="mb-10">Precios desde</span>
+                            <h3>$126.00</h3>
                         </div>
                         <div class="btn-wrp mt-65">
                             <a href="shop.html" class="btn-one" data-animation="fadeInUp"
-                                data-delay="1.8s"><span>Shop
-                                    Now</span></a>
-                            <a class="btn-one-light ml-20" href="shop-single.html" data-animation="fadeInUp"
-                                data-delay="1.9s"><span>View
-                                    Details</span></a>
+                                data-delay="1.8s"><span>Compra ahora</span></a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="swiper-slide">
-                <div class="slide-bg" data-background="<?= base_url() ?>/assets/images/banner/banner-two-image3.jpg"></div>
-                <div class="container">
-                    <div class="banner-two__content">
-                        <h4 data-animation="fadeInUp" data-delay="1s"><img src="<?= base_url() ?>/assets/images/icon/fire.svg"
-                                alt="icon"> GET <span class="primary-color">25% OFF</span> NOW</h4>
-                        <h1 data-animation="fadeInUp" data-delay="1.3s">Find everything <br>
-                            for <span class="primary-color">vaping</span></h1>
-                        <p class="mt-40" data-animation="fadeInUp" data-delay="1.5s">Sell globally in minutes
-                            with localized currencies languages, and <br> experie in
-                            every
-                            market. only a variety of vaping
-                            products</p>
-                        <div class="banner-two__info mt-30" data-animation="fadeInUp" data-delay="1.7s">
-                            <span class="mb-10">Starting Price</span>
-                            <h3>$99.00</h3>
-                        </div>
-                        <div class="btn-wrp mt-65">
-                            <a href="shop.html" class="btn-one" data-animation="fadeInUp"
-                                data-delay="1.8s"><span>Shop
-                                    Now</span></a>
-                            <a class="btn-one-light ml-20" href="shop-single.html" data-animation="fadeInUp"
-                                data-delay="1.9s"><span>View
-                                    Details</span></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+            
         </div>
     </div>
     <div class="banner-two__arry-btn">

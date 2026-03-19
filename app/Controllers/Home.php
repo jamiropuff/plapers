@@ -3,8 +3,6 @@
 namespace App\Controllers;
 
 use App\Models\ContadorModel;
-use App\Models\ProspectoModel;
-use App\Models\EventosModel;
 use App\Models\OfertaEducativaModel;
 
 class Home extends BaseController

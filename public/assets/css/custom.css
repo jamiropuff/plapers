@@ -1,0 +1,41 @@
+#app {
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  min-height: 540px;
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+.demo-slider-container {
+  align-self: center;
+  width: 100%;
+  max-width: 412px;
+  position: relative;
+  padding: 0 16px;
+  box-sizing: border-box;
+  margin: auto 0;
+}
+
+.demo-slider-wrap {
+  position: relative;
+  padding-bottom: 63.1578947368%;
+}
+
+.demo-slider {
+  flex-shrink: 0;
+  position: absolute;
+  inset: 0;
+}
+
+.cards-slider {
+  border-radius: 16px;
+}
+.cards-slider img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: inherit;
+}

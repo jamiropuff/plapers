@@ -112,7 +112,8 @@
 .categoria-2 .posicion-2,
 .categoria-2 .posicion-3,
 .categoria-2 .posicion-4,
-.categoria-2 .posicion-5 {
+.categoria-2 .posicion-5,
+.categoria-3 .posicion-4 {
     width: 94%;
     z-index: 3;
     position: absolute;
@@ -120,7 +121,7 @@
     text-align: center;
 }
 
-.categoria-3 .posicion-4,
+
 .categoria-4 .posicion-4 {
     width: 94%;
     z-index: 3;
@@ -861,8 +862,8 @@
     }
 
     .categoria-3 .posicion-4.personaliza-11 {
-        top: 34%;
-        font-size: 5.3rem;
+        top: -2%;
+        font-size: 3.5rem;
     }
 
     /* Europea */

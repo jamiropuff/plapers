@@ -394,90 +394,63 @@ class OrdenesController extends BaseController
         echo view('admin/templates/end', $data_footer);
     }
 
-    public function ordenes_finalizadas($Id_Rol = 0)
+    public function ordenes_finalizadas()
     {
-
-        $db = \Config\Database::connect();
         $session = session();
 
-        // Builder principal
-        $builder = $db->table('plap_t_orden AS a');
-        $builder->select('
-            a.id_orden, a.id_user, e.nombres, e.paterno, e.materno, a.id_tipo_pago, 
-            a.id_tipo_envio, a.id_estatus_pago, a.id_estatus_pedido, a.subtotal, 
-            a.iva, a.envio, a.total, a.id_direccion, a.id_facturacion, a.fecha_pedido, 
-            a.fecha_produccion, a.fecha_enviado, a.fecha_completo, a.activo, 
-            b.tipo_pago, c.estatus_pago, d.estatus_pedido
-        ');
-
-        // JOINs
-        $builder->join('cat_tipo_pago AS b', 'a.id_tipo_pago = b.id_tipo_pago');
-        $builder->join('cat_estatus_pago AS c', 'a.id_estatus_pago = c.id_estatus_pago');
-        $builder->join('cat_estatus_pedido AS d', 'a.id_estatus_pedido = d.id_estatus_pedido');
-        $builder->join('t_info_usuarios AS e', 'a.id_user = e.id_user');
-
-        // Filtros base
-        if ($Id_Rol == 5) {
-            $builder->where("(a.id_estatus_pedido = 3 OR a.id_estatus_pedido = 7 OR a.id_estatus_pedido = 8 OR a.id_estatus_pedido = 9)");
-        } else {
-            $builder->where("(a.id_estatus_pedido = 8 OR a.id_estatus_pedido = 9)");
+        // 🔐 Validar sesión y rol
+        if (!isset($session->Rol) || !in_array($session->Rol, [1, 3, 5])) {
+            return redirect()->to('/login');
         }
-        $builder->orderBy("a.id_orden", "DESC");
 
-        $ordenes = $builder->get()->getResult(); // Ejecutar la consulta y obtener los resultados
+        $data_main = [
+            'menu' => 'ordenes_finalizadas',
+        ];
 
-
-        $data_breadcrumb = array(
+        $data_breadcrumb = [
             'title' => 'Ordenes Finalizadas',
             'icon' => '<i class="fa-solid fa-file-import"></i>'
-        );
+        ];
 
-        $data_main = array(
+        $data_session = [
+            "session" => $session
+        ];
+
+        $data_footer = [
             'menu' => 'ordenes_finalizadas',
-            'ordenes' => $ordenes
-        );
-
-        $data_session = array(
-            'session' => $session
-        );
-
-        $data_footer = array(
-            'menu' => 'ordenes_finalizadas',
-        );
+        ];
 
         echo view('admin/templates/header');
         echo view('admin/templates/nav-top', $data_session);
         echo view('admin/templates/nav-aside');
         echo view('admin/templates/breadcrumb', $data_breadcrumb);
         echo view('admin/ordenes/finalizadas', $data_main);
-        echo view('admin/templates/footer');
+        echo view('admin/templates/footer', $data_footer);
+        echo view('admin/scripts/ordenes', $data_session);
+        echo view('admin/templates/end', $data_footer);
+    }
+    public function ordenes_finalizadasJSON()
+    {
+        $session = session();
+        if (!isset($session->Rol) || !in_array($session->Rol, [1, 3, 5])) {
+            return $this->response->setJSON(['Code' => REQUEST_FAILED, 'Msg' => 'No autorizado']);
+        }
+
+        $Id_Rol = $session->Rol;
+        $ordenModel = new OrdenModel();
+        $response = [
+            'Code' => REQUEST_SUCCESS,
+            'data' => $ordenModel->obtieneOrdenesFinalizadas($Id_Rol)
+        ];
+        return $this->response->setJSON($response);
     }
 
     public function ordenes_canceladas($Id_Rol = 0)
     {
-
-        $db = \Config\Database::connect();
         $session = session();
+        $ordenModel = new OrdenModel();
 
-        // Builder principal
-        $builder = $db->table('plap_t_orden AS a');
-        $builder->select('
-            a.id_orden, a.id_user, e.nombres, e.paterno, e.materno, a.id_tipo_pago, 
-            a.id_tipo_envio, a.id_estatus_pago, a.id_estatus_pedido, a.subtotal, 
-            a.iva, a.envio, a.total, a.id_direccion, a.id_facturacion, a.fecha_pedido, 
-            a.fecha_produccion, a.fecha_enviado, a.fecha_completo, a.activo, 
-            b.tipo_pago, c.estatus_pago, d.estatus_pedido
-        ');
-
-        // JOINs
-        $builder->join('cat_tipo_pago AS b', 'a.id_tipo_pago = b.id_tipo_pago');
-        $builder->join('cat_estatus_pago AS c', 'a.id_estatus_pago = c.id_estatus_pago');
-        $builder->join('cat_estatus_pedido AS d', 'a.id_estatus_pedido = d.id_estatus_pedido');
-        $builder->join('t_info_usuarios AS e', 'a.id_user = e.id_user');
-        $builder->where("a.id_estatus_pago = 3");
-        $builder->orderBy("a.id_orden", "DESC");
-
-        $ordenes = $builder->get()->getResult(); // Ejecutar la consulta y obtener los resultados
+        $ordenes = $ordenModel->obtieneOrdenesCanceladas($Id_Rol);
 
 
         $data_breadcrumb = array(

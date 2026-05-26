@@ -138,6 +138,54 @@ class OrdenModel extends Model
         ];
     }
 
+    public function obtieneOrdenesFinalizadas($Id_Rol = 0)
+    {
+        $builder = $this->db->table('plap_t_orden AS a');
+        $builder->select('
+            a.id_orden, a.id_user, e.nombres, e.paterno, e.materno, a.id_tipo_pago, 
+            a.id_tipo_envio, a.id_estatus_pago, a.id_estatus_pedido, a.subtotal, 
+            a.iva, a.envio, a.total, a.id_direccion, a.id_facturacion, a.fecha_pedido, 
+            a.fecha_produccion, a.fecha_enviado, a.fecha_completo, a.activo, 
+            b.tipo_pago, c.estatus_pago, d.estatus_pedido
+        ');
+
+        $builder->join('plap_cat_tipo_pago AS b', 'a.id_tipo_pago = b.id_tipo_pago');
+        $builder->join('plap_cat_estatus_pago AS c', 'a.id_estatus_pago = c.id_estatus_pago');
+        $builder->join('plap_cat_estatus_pedido AS d', 'a.id_estatus_pedido = d.id_estatus_pedido');
+        $builder->join('plap_t_info_usuarios AS e', 'a.id_user = e.id_user');
+
+        if ($Id_Rol == 5) {
+            $builder->where("(a.id_estatus_pedido = 3 OR a.id_estatus_pedido = 7 OR a.id_estatus_pedido = 8 OR a.id_estatus_pedido = 9)");
+        } else {
+            $builder->where("(a.id_estatus_pedido = 8 OR a.id_estatus_pedido = 9)");
+        }
+        $builder->orderBy("a.id_orden", "DESC");
+
+        return $builder->get()->getResult();
+    }
+
+    public function obtieneOrdenesCanceladas($Id_Rol = 0)
+    {
+        $builder = $this->db->table('plap_t_orden AS a');
+        $builder->select('
+            a.id_orden, a.id_user, e.nombres, e.paterno, e.materno, a.id_tipo_pago, 
+            a.id_tipo_envio, a.id_estatus_pago, a.id_estatus_pedido, a.subtotal, 
+            a.iva, a.envio, a.total, a.id_direccion, a.id_facturacion, a.fecha_pedido, 
+            a.fecha_produccion, a.fecha_enviado, a.fecha_completo, a.activo, 
+            b.tipo_pago, c.estatus_pago, d.estatus_pedido
+        ');
+
+        $builder->join('plap_cat_tipo_pago AS b', 'a.id_tipo_pago = b.id_tipo_pago');
+        $builder->join('plap_cat_estatus_pago AS c', 'a.id_estatus_pago = c.id_estatus_pago');
+        $builder->join('plap_cat_estatus_pedido AS d', 'a.id_estatus_pedido = d.id_estatus_pedido');
+        $builder->join('plap_t_info_usuarios AS e', 'a.id_user = e.id_user');
+        
+        $builder->where("a.id_estatus_pago = 3");
+        $builder->orderBy("a.id_orden", "DESC");
+
+        return $builder->get()->getResult();
+    }
+
     public function obtieneDatosOrdenPorId($Id_Orden)
     {
         $builder = $this->db->table('plap_t_orden a');

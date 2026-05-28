@@ -448,9 +448,6 @@ class OrdenesController extends BaseController
     public function ordenes_canceladas($Id_Rol = 0)
     {
         $session = session();
-        $ordenModel = new OrdenModel();
-
-        $ordenes = $ordenModel->obtieneOrdenesCanceladas($Id_Rol);
 
 
         $data_breadcrumb = array(
@@ -459,8 +456,7 @@ class OrdenesController extends BaseController
         );
 
         $data_main = array(
-            'menu' => 'ordenes_canceladas',
-            'ordenes' => $ordenes
+            'menu' => 'ordenes_canceladas'
         );
 
         $data_session = array(
@@ -476,7 +472,25 @@ class OrdenesController extends BaseController
         echo view('admin/templates/nav-aside');
         echo view('admin/templates/breadcrumb', $data_breadcrumb);
         echo view('admin/ordenes/canceladas', $data_main);
-        echo view('admin/templates/footer');
+        echo view('admin/templates/footer', $data_footer);
+        echo view('admin/scripts/ordenes', $data_session);
+        echo view('admin/templates/end', $data_footer);
+    }
+
+    public function ordenes_canceladasJSON()
+    {
+        $session = session();
+        if (!isset($session->Rol) || !in_array($session->Rol, [1, 3, 5])) {
+            return $this->response->setJSON(['Code' => REQUEST_FAILED, 'Msg' => 'No autorizado']);
+        }
+
+        $Id_Rol = $session->Rol;
+        $ordenModel = new OrdenModel();
+        $response = [
+            'Code' => REQUEST_SUCCESS,
+            'data' => $ordenModel->obtieneOrdenesCanceladas($Id_Rol)
+        ];
+        return $this->response->setJSON($response);
     }
 
 

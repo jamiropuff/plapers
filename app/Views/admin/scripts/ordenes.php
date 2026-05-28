@@ -11,6 +11,9 @@
         if (path === '/panel/ordenes/finalizadas') {
             listarRegistroFinalizadas();
         }
+        if (path === '/panel/ordenes/canceladas') {
+            listarRegistroCanceladas();
+        }
     });
 
     const generarOpcionesEstatusPedido = (orden, sessionRol) => {
@@ -381,6 +384,7 @@
 
         let response = await obtenerOrdenesFinalizadas();
         const ordenes = response.data;
+        
         var contenido = `
         <table id="tablaRegistros" class="table table-bordered table-striped">  
         <thead class="bg-success text-white">
@@ -572,6 +576,220 @@
        
     };
 
+    const obtenerOrdenesCanceladas = async () => {
+        try {
+            const response = await fetch('/panel/ordenes/lista_canceladas');
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const data = await response.json();
+            return data;
+            
+        } catch (error) {
+            console.error('Error al obtener las ordenes canceladas:', error);
+        }
+    };
 
+    const listarRegistroCanceladas = async (cantidad = 50 ) => {
+        let divTable = document.getElementById("tblRegistros");
+        divTable.innerHTML = `
+        <div class="d-flex justify-content-center my-5">
+            <div class="spinner-border text-success" role="status">
+                <span class="visually-hidden">Cargando...</span>
+            </div>
+        </div>
+        `;
+
+        let response = await obtenerOrdenesCanceladas();
+        const ordenes = response.data;
+        var contenido = `
+        <table id="tablaRegistros" class="table table-bordered table-striped">  
+        <thead class="bg-success text-white">
+            <tr>
+                <th class="text-center">#</th>
+                <th class="text-center">ORDEN</th>
+                <th class="text-center">USUARIO</th>
+                <th class="text-center">TIPO DE PAGO</th>
+                <th class="text-center">CONSTANCIA<br>SITUACIÓN<br>FISCAL</th>
+                <th class="text-center">ENVÍO A DOMICILIO</th>
+                <th class="text-center">ESTATUS DE PAGO</th>
+                <th class="text-center">ESTATUS PEDIDO</th>
+                <th class="text-center">FECHA PEDIDO</th>
+                <th class="text-center">FECHA ENTREGA PRODUCCIÓN</th>
+                <th class="text-center">VER PEDIDO</th>
+                <th class="text-center">VER FICHA DE PAGO</th>
+                <th class="text-center">MODIFICAR PAGO</th>
+                <th class="text-center">MODIFICAR PEDIDO</th>
+                <th class="text-center">DESCARGAR EXCEL</th>
+            </tr>
+        </thead>
+	    <tbody class="border border-primary">
+
+        ${ordenes.map((orden, index) => `
+            <tr>
+                <td>${index + 1}</td>
+                <td>${orden.id_orden}</td>
+                <td>${orden.nombres} ${orden.paterno} ${orden.materno}</td>
+                <td class="text-center">${orden.tipo_pago}</td>
+                <td class="text-center"><i class="fa-solid fa-file-pdf fa-2x"></i></td>
+                <td class="text-center">${orden.id_tipo_envio == 1 ? 'SI' : 'NO'}</td>
+                <td class="text-center">${orden.estatus_pago}</td>
+                <td class="text-center">${orden.estatus_pedido}</td>
+                <td class="text-center">${orden.fecha_pedido}</td>
+                <td class="text-center">${orden.fecha_produccion || ''}</td>
+                <td class="text-center"><i class="fa-solid fa-eye fa-2x"></i></td>
+                <td class="text-center"><i class="fa-regular fa-file-lines fa-2x"></i></td>
+                <td><select></select></td>
+                <td><select></select></td>
+                <td class="text-center"><i class="fa-solid fa-file-export fa-2x"></i></td>
+            </tr>
+        `).join('')}
+        </tbody>
+        </table>
+      `;
+
+      $("#tblRegistros").html(contenido);
+
+      // 👇 CLONAR THEAD PARA FILTROS
+      $('#tablaRegistros thead tr')
+        .clone(true)
+        .removeClass('bg-primary text-white')
+        .addClass('filters')
+        .appendTo('#tablaRegistros thead');
+
+        var tablaRegistros = $("#tablaRegistros")
+        .DataTable({
+          dom: "Bfrtip",
+          responsive: true, 
+          lengthMenu: [
+            [10, 25, 50, 100, -1],
+            [10, 25, 50, 100, "Todos"],
+          ],
+          lengthChange: false,
+          autoWidth: false,
+          scrollX: false,
+          stateSave: false,
+          pageLength: cantidad,
+          order: [
+            [0, "desc"]
+          ],
+          language: {
+            processing: "Procesando...",
+            search: "Buscar:",
+            lengthMenu: "Mostrar _MENU_ registros",
+            info: "Mostrando _START_ a _END_ de _TOTAL_ registros",
+            infoEmpty: "Mostrando 0 a 0 de 0 registros",
+            infoFiltered: "(filtrado de _MAX_ registros totales)",
+            infoPostFix: "",
+            loadingRecords: "Cargando...",
+            zeroRecords: "No se encontraron resultados",
+            emptyTable: "No hay datos disponibles en la tabla",
+            paginate: {
+              first: "Primero",
+              previous: "Anterior",
+              next: "Siguiente",
+              last: "Último"
+            },
+            buttons: {
+              pageLength: {
+                _: "Mostrar %d filas",
+                "-1": "Mostrar todos"
+              }
+            }
+          },
+          buttons: [{
+            extend: "pageLength",
+          },
+          {
+            extend: "excel",
+            text: "Excel",
+            className: "btn-dark",
+            exportOptions: {
+              columns: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+            },
+          },
+          {
+            extend: "pdfHtml5",
+            text: "PDF",
+            header: true,
+            title: "PDF",
+            duplicate: true,
+            className: "btn-dark",
+            pageOrientation: "landscape",
+            pageSize: "A4",
+            pageMargins: [5, 5, 5, 5],
+            exportOptions: {
+              columns: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+              alignment: "center",
+              stripHtml: false,
+            },
+            pageBreak: "after",
+          },
+          {
+            extend: "print",
+            text: "Imprimir",
+            className: "btn-dark",
+            pageSize: "A4",
+            orientation: "landscape",
+            exportOptions: {
+              columns: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+            },
+          },
+          {
+            extend: "colvis",
+            text: "Columnas",
+            className: "btn-dark",
+          },
+        ],
+        select: {
+          rows: {
+            _: "%d filas seleccionadas",
+            1: "1 fila seleccionada"
+          }
+        },
+        columnDefs: [{
+          targets: 0,
+          orderable: false
+        }, // #
+        {
+          targets: [11, 12, 13, 14],
+          orderable: false
+        }, // icono y select
+        {
+          targets: [11, 12, 13, 14],
+          searchable: false
+        } // no filtrar
+        ],
+        select: true,
+        orderCellsTop: true,
+        fixedHeader: true,
+        initComplete: function() {
+          var api = this.api();
+
+          api.columns().eq(0).each(function(colIdx) {
+
+            // ❌ NO filtrar las últimas 2 columnas
+            if (colIdx < 1 || colIdx >= 10) {
+              $('.filters th').eq(colIdx).html('');
+              return;
+            }
+
+            var cell = $('.filters th').eq(colIdx);
+
+            $(cell).html('<input type="text" class="form-control form-control-sm" placeholder="Buscar" />');
+
+            $('input', cell)
+              .off('keyup change')
+              .on('keyup change', function(e) {
+                e.stopPropagation();
+                api.column(colIdx).search(this.value).draw();
+              });
+          });
+        }
+      })
+      .buttons()
+      .container()
+      .appendTo("#tablaRegistros_wrapper .col-md-6:eq(0)");
+    };
 
 </script>

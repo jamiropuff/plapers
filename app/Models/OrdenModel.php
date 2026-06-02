@@ -138,7 +138,7 @@ class OrdenModel extends Model
         ];
     }
 
-    public function obtieneOrdenesFinalizadas($Id_Rol = 0)
+    public function obtieneOrdenesFinalizadas($Id_Rol = 0, $RangoFechaInicio = null, $RangoFechaFin = null)
     {
         $builder = $this->db->table('plap_t_orden AS a');
         $builder->select('
@@ -159,12 +159,28 @@ class OrdenModel extends Model
         } else {
             $builder->where("(a.id_estatus_pedido = 8 OR a.id_estatus_pedido = 9)");
         }
+        //aplicamos un filtro por fecha
+        if (!empty($RangoFechaInicio) && !empty($RangoFechaFin)) {
+            // Mandaron ambas fechas
+            $builder->where('a.fecha_pedido >=', $RangoFechaInicio . ' 00:00:00');
+            $builder->where('a.fecha_pedido <=', $RangoFechaFin . ' 23:59:59');
+        } elseif (!empty($RangoFechaInicio)) {
+            // Solo mandaron la de inicio
+            $builder->where('a.fecha_pedido >=', $RangoFechaInicio . ' 00:00:00');
+        } elseif (!empty($RangoFechaFin)) {
+            // Solo mandaron la de fin
+            $builder->where('a.fecha_pedido <=', $RangoFechaFin . ' 23:59:59');
+        } else {
+            // No mandaron nada (cargar por defecto)
+            
+            $builder->limit(20);
+        }
         $builder->orderBy("a.id_orden", "DESC");
 
         return $builder->get()->getResult();
     }
 
-    public function obtieneOrdenesCanceladas($Id_Rol = 0)
+    public function obtieneOrdenesCanceladas($Id_Rol = 0, $RangoFechaInicio = null, $RangoFechaFin = null)
     {
         $builder = $this->db->table('plap_t_orden AS a');
         $builder->select('
@@ -182,6 +198,22 @@ class OrdenModel extends Model
         
         $builder->where("a.id_estatus_pago = 3");
         $builder->orderBy("a.id_orden", "DESC");
+
+        if (!empty($RangoFechaInicio) && !empty($RangoFechaFin)) {
+            // Mandaron ambas fechas
+            $builder->where('a.fecha_pedido >=', $RangoFechaInicio . ' 00:00:00');
+            $builder->where('a.fecha_pedido <=', $RangoFechaFin . ' 23:59:59');
+        } elseif (!empty($RangoFechaInicio)) {
+            // Solo mandaron la de inicio
+            $builder->where('a.fecha_pedido >=', $RangoFechaInicio . ' 00:00:00');
+        } elseif (!empty($RangoFechaFin)) {
+            // Solo mandaron la de fin
+            $builder->where('a.fecha_pedido <=', $RangoFechaFin . ' 23:59:59');
+        } else {
+            // No mandaron nada (cargar por defecto)
+            
+            $builder->limit(20);
+        }
 
         return $builder->get()->getResult();
     }

@@ -437,10 +437,14 @@ class OrdenesController extends BaseController
         }
 
         $Id_Rol = $session->Rol;
+
+        $RangoFechaInicio = $this->request->getPost('rango_fecha_inicio');
+        $RangoFechaFin = $this->request->getPost('rango_fecha_fin');
+
         $ordenModel = new OrdenModel();
         $response = [
             'Code' => REQUEST_SUCCESS,
-            'data' => $ordenModel->obtieneOrdenesFinalizadas($Id_Rol)
+            'data' => $ordenModel->obtieneOrdenesFinalizadas($Id_Rol, $RangoFechaInicio, $RangoFechaFin)
         ];
         return $this->response->setJSON($response);
     }
@@ -483,12 +487,14 @@ class OrdenesController extends BaseController
         if (!isset($session->Rol) || !in_array($session->Rol, [1, 3, 5])) {
             return $this->response->setJSON(['Code' => REQUEST_FAILED, 'Msg' => 'No autorizado']);
         }
+        $RangoFechaInicio = $this->request->getPost('fecha_inicio');
+        $RangoFechaFin = $this->request->getPost('fecha_fin');
 
         $Id_Rol = $session->Rol;
         $ordenModel = new OrdenModel();
         $response = [
             'Code' => REQUEST_SUCCESS,
-            'data' => $ordenModel->obtieneOrdenesCanceladas($Id_Rol)
+            'data' => $ordenModel->obtieneOrdenesCanceladas($Id_Rol, $RangoFechaInicio, $RangoFechaFin)
         ];
         return $this->response->setJSON($response);
     }

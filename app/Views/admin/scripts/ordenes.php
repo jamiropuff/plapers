@@ -357,9 +357,15 @@
             .appendTo("#tablaRegistros_wrapper .col-md-6:eq(0)");
     };
 
-    const obtenerOrdenesFinalizadas = async () => {
+    const obtenerOrdenesFinalizadas = async (rangoFechaInicio, rangoFechaFin) => {
+        const formData = new FormData();
+        formData.append('rango_fecha_inicio', rangoFechaInicio);
+        formData.append('rango_fecha_fin', rangoFechaFin);
         try {
-            const response = await fetch('/panel/ordenes/lista_finalizadas');
+            const response = await fetch(`/panel/ordenes/lista_finalizadas`,{
+                method: 'POST',
+                body: formData
+            });
             if (!response.ok) {
                 throw new Error('Error HTTP: ' + response.status);
             }
@@ -370,19 +376,19 @@
     }
 
     const listarRegistroFinalizadas = async (cantidad = 50) => {
+        const rangoFechaInicio = document.getElementById("fecha_inicio").value;
+        const rangoFechaFin = document.getElementById("fecha_fin").value;
         
-        
-
         let divTable = document.getElementById("tblRegistros");
-        divTable.innerHTML = `
-        <div class="d-flex justify-content-center my-5">
-            <div class="spinner-border text-success" role="status">
-                <span class="visually-hidden">Cargando...</span>
+            divTable.innerHTML = `
+            <div class="d-flex justify-content-center my-5">
+                <div class="spinner-border text-success" role="status">
+                    <span class="visually-hidden">Cargando...</span>
+                </div>
             </div>
-        </div>
-    `;
+        `;
 
-        let response = await obtenerOrdenesFinalizadas();
+        let response = await obtenerOrdenesFinalizadas(rangoFechaInicio, rangoFechaFin);
         const ordenes = response.data;
         
         var contenido = `
@@ -576,9 +582,15 @@
        
     };
 
-    const obtenerOrdenesCanceladas = async () => {
+    const obtenerOrdenesCanceladas = async (fecha_inicio = null, fecha_fin = null) => {
+        const formData = new FormData();
+        formData.append("fecha_inicio", fecha_inicio);
+        formData.append("fecha_fin", fecha_fin);
         try {
-            const response = await fetch('/panel/ordenes/lista_canceladas');
+            const response = await fetch('/panel/ordenes/lista_canceladas', {
+                method: "POST",
+                body: formData
+            });
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
@@ -591,6 +603,9 @@
     };
 
     const listarRegistroCanceladas = async (cantidad = 50 ) => {
+
+        let fecha_inicio = document.getElementById("fecha_inicio").value;
+        let fecha_fin = document.getElementById("fecha_fin").value;
         let divTable = document.getElementById("tblRegistros");
         divTable.innerHTML = `
         <div class="d-flex justify-content-center my-5">
@@ -600,7 +615,7 @@
         </div>
         `;
 
-        let response = await obtenerOrdenesCanceladas();
+        let response = await obtenerOrdenesCanceladas(fecha_inicio, fecha_fin);
         const ordenes = response.data;
         var contenido = `
         <table id="tablaRegistros" class="table table-bordered table-striped">  

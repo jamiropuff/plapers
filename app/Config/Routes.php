@@ -103,8 +103,8 @@ $routes->get('panel/ordenes/lista_activas', 'OrdenesController::ordenes_activasJ
 $routes->get('panel/ordenes/orden/(:num)', 'OrdenesController::orden/$1');
 $routes->get('panel/ordenes/productos/(:num)', 'OrdenesController::productos/$1');
 $routes->get('panel/ordenes/finalizadas', 'OrdenesController::ordenes_finalizadas');
-$routes->get('panel/ordenes/lista_finalizadas', 'OrdenesController::ordenes_finalizadasJSON');
-$routes->get('panel/ordenes/lista_canceladas', 'OrdenesController::ordenes_canceladasJSON');
+$routes->post('panel/ordenes/lista_finalizadas', 'OrdenesController::ordenes_finalizadasJSON');
+$routes->post('panel/ordenes/lista_canceladas', 'OrdenesController::ordenes_canceladasJSON');
 $routes->get('panel/ordenes/canceladas', 'OrdenesController::ordenes_canceladas');
 $routes->get('uploads/(:segment)/(:any)', 'FileController::serveFile/$1/$2');
 

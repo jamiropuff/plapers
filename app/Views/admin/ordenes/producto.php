@@ -194,21 +194,25 @@ $productos = $Productos['Orden_Productos'];
                     $caracteres_linea3 = $producto['caracteres_linea3'];
 
 
-                    $id_categoria = 4;
-                    $id_posicion = 4;
-                    $id_color = 1;
+/* The above code is a commented-out section of PHP code. It appears to be assigning values to
+variables , , and , but the assignments are currently commented
+out using double forward slashes (//). This means that these lines of code are not currently active
+and will not be executed when the code is run. */
+                    // $id_categoria = 4;
+                    // $id_posicion = 4;
+                    // $id_color = 1;
 
-                    $texto_linea1 = "GUILLERM";
-                    $fuente_linea1 = 4;
-                    $caracteres_linea1 = 8;
+                    // $texto_linea1 = "GUILLERM";
+                    // $fuente_linea1 = 4;
+                    // $caracteres_linea1 = 8;
                     
-                    $texto_linea2 = "";
-                    $fuente_linea2 = "";
-                    $caracteres_linea2 = "";
+                    // $texto_linea2 = "";
+                    // $fuente_linea2 = "";
+                    // $caracteres_linea2 = "";
 
-                    $texto_linea3 = "";
-                    $fuente_linea3 = "";
-                    $caracteres_linea3 = "";
+                    // $texto_linea3 = "";
+                    // $fuente_linea3 = "";
+                    // $caracteres_linea3 = "";
 
 
 
@@ -217,7 +221,7 @@ $productos = $Productos['Orden_Productos'];
                     $claseL3 = "ff-tipo-" . $fuente_linea3 . " posicion-" . $id_posicion . " personaliza-" . $caracteres_linea3 . " letra-color-" . $id_color . " linea-3";
 
                     $acabado = $producto['id_terminado'];
-                    $acabado = 1;
+                    // $acabado = 1;
 
                     //echo "acabado: ".$acabado."<br>";
 
@@ -229,7 +233,7 @@ $productos = $Productos['Orden_Productos'];
                         $img_acabado = "acabado/" . $id_categoria . "/acabado-pl.png";
                     }
 
-                    $producto['foto'] = "https://plapers.com.mx/public/fotos/10/EUR_62.png";
+                    // $producto['foto'] = "https://plapers.com.mx/public/fotos/10/EUR_62.png";
 
                     ?>
 

@@ -113,193 +113,198 @@
 
 
 <!-- CATEGORIAS PLACAS area start here -->
-<div class="row">
+<section>
+    <div class="container">
 
-    <!-- PLACAS AMERICANAS-->
-    <div class="col-12 col-md-6 mb-50">
-        <div id="app">
-            <div class="sub-title text-center mb-25 wow fadeInUp" data-wow-delay=".1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
-                <h3><span class="title-icon"></span> Placas Americanas <span class="title-icon"></span>
-                </h3>
-            </div>
-            <div class="demo-slider-container">
+        <div class="row bor-bottom">
 
-                <div class="demo-slider-wrap">
-                    <div class="demo-slider swipercardsamericana">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide cards-slider">
-                                <!-- card back side content -->
-                                <!--<div class="cards-stack-back"><img src="assets/images/home-plapers/categoria-placas/placa-americana/home-categoria-americana-A.png" /></div>-->
-                                <!-- card front side content -->
-                                <div class="cards-stack-front"><img src="assets/images/home-plapers/categoria-placas/placa-americana/home-categoria-americana-A.png" /></div>
+            <!-- PLACAS AMERICANAS-->
+            <div class="col-12 col-md-6 mb-50">
+                <div id="app">
+                    <div class="sub-title text-center mb-25 wow fadeInUp" data-wow-delay=".1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+                        <h3><span class="title-icon"></span> Placas Americanas <span class="title-icon"></span>
+                        </h3>
+                    </div>
+                    <div class="demo-slider-container">
+
+                        <div class="demo-slider-wrap">
+                            <div class="demo-slider swipercardsamericana">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide cards-slider">
+                                        <!-- card back side content -->
+                                        <!--<div class="cards-stack-back"><img src="assets/images/home-plapers/categoria-placas/placa-americana/home-categoria-americana-A.png" /></div>-->
+                                        <!-- card front side content -->
+                                        <div class="cards-stack-front"><img src="assets/images/home-plapers/categoria-placas/placa-americana/home-categoria-americana-A.png" /></div>
+                                    </div>
+
+                                    <div class="swiper-slide cards-slider">
+                                        <!--<div class="cards-stack-back"><img src="assets/images/home-plapers/categoria-placas/placa-americana/home-categoria-americana-B.png" /></div>-->
+                                        <div class="cards-stack-front"><img src="assets/images/home-plapers/categoria-placas/placa-americana/home-categoria-americana-B.png" /></div>
+                                    </div>
+
+                                    <div class="swiper-slide cards-slider">
+                                        <!--<div class="cards-stack-back"><img src="assets/images/home-plapers/categoria-placas/placa-americana/home-categoria-americana-C.png" /></div>-->
+                                        <div class="cards-stack-front"><img src="assets/images/home-plapers/categoria-placas/placa-americana/home-categoria-americana-C.png" /></div>
+                                    </div>
+
+                                    <div class="swiper-slide cards-slider">
+                                        <!--<div class="cards-stack-back"><img src="assets/images/home-plapers/categoria-placas/placa-americana/home-categoria-americana-D.png" /></div>-->
+                                        <div class="cards-stack-front"><img src="assets/images/home-plapers/categoria-placas/placa-americana/home-categoria-americana-D.png" /></div>
+                                    </div>
+
+
+                                </div>
                             </div>
-
-                            <div class="swiper-slide cards-slider">
-                                <!--<div class="cards-stack-back"><img src="assets/images/home-plapers/categoria-placas/placa-americana/home-categoria-americana-B.png" /></div>-->
-                                <div class="cards-stack-front"><img src="assets/images/home-plapers/categoria-placas/placa-americana/home-categoria-americana-B.png" /></div>
-                            </div>
-
-                            <div class="swiper-slide cards-slider">
-                                <!--<div class="cards-stack-back"><img src="assets/images/home-plapers/categoria-placas/placa-americana/home-categoria-americana-C.png" /></div>-->
-                                <div class="cards-stack-front"><img src="assets/images/home-plapers/categoria-placas/placa-americana/home-categoria-americana-C.png" /></div>
-                            </div>
-
-                            <div class="swiper-slide cards-slider">
-                                <!--<div class="cards-stack-back"><img src="assets/images/home-plapers/categoria-placas/placa-americana/home-categoria-americana-D.png" /></div>-->
-                                <div class="cards-stack-front"><img src="assets/images/home-plapers/categoria-placas/placa-americana/home-categoria-americana-D.png" /></div>
-                            </div>
-
-
                         </div>
                     </div>
+
+                </div>
+                <div class="text-center mb-15 wow fadeInUp" data-wow-delay=".1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+                    <a class="btn-one-light ml-20" href="placa-americana.php" data-animation="fadeInUp"
+                        data-delay="1.9s"><span>Comprar ahora</span></a>
+                </div>
+            </div>
+
+
+            <!-- PLACAS EUROPEAS-->
+            <div class="col-12 col-md-6 mb-50">
+                <div id="app">
+                    <div class="sub-title text-center mb-25 wow fadeInUp" data-wow-delay=".1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+                        <h3><span class="title-icon"></span> Placas Europeas <span class="title-icon"></span>
+                        </h3>
+                    </div>
+                    <div class="demo-slider-container">
+
+                        <div class="demo-slider-wrap">
+                            <div class="demo-slider swipercardseuropea">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide cards-slider">
+                                        <!-- card back side content -->
+                                        <!--<div class="cards-stack-back"><img src="assets/images/home-plapers/categoria-placas/placa-europea/home-categoria-europea-A.png" /></div>-->
+                                        <!-- card front side content -->
+                                        <div class="cards-stack-front"><img src="assets/images/home-plapers/categoria-placas/placa-europea/home-categoria-europea-A.png" /></div>
+                                    </div>
+
+                                    <div class="swiper-slide cards-slider">
+                                        <!-- <div class="cards-stack-back"><img src="assets/images/home-plapers/categoria-placas/placa-europea/home-categoria-europea-B.png" /></div>-->
+                                        <div class="cards-stack-front"><img src="assets/images/home-plapers/categoria-placas/placa-europea/home-categoria-europea-B.png" /></div>
+                                    </div>
+
+                                    <div class="swiper-slide cards-slider">
+                                        <!--  <div class="cards-stack-back"><img src="assets/images/home-plapers/categoria-placas/placa-europea/home-categoria-europea-C.png" /></div>-->
+                                        <div class="cards-stack-front"><img src="assets/images/home-plapers/categoria-placas/placa-europea/home-categoria-europea-C.png" /></div>
+                                    </div>
+
+                                    <div class="swiper-slide cards-slider">
+                                        <!--<div class="cards-stack-back"><img src="assets/images/home-plapers/categoria-placas/placa-europea/home-categoria-europea-D.png" /></div>-->
+                                        <div class="cards-stack-front"><img src="assets/images/home-plapers/categoria-placas/placa-europea/home-categoria-europea-D.png" /></div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mb-15 wow fadeInUp" data-wow-delay=".1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+                    <a class="btn-one-light ml-20" href="#" data-animation="fadeInUp"
+                        data-delay="1.9s"><span>Comprar ahora</span></a>
+                </div>
+            </div>
+
+            <!-- PLACAS EUROMINI-->
+            <div class="col-12 col-md-6 mb-50">
+                <div id="app">
+                    <div class="sub-title text-center mb-25 wow fadeInUp" data-wow-delay=".1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+                        <h3><span class="title-icon"></span> Placas Euromini <span class="title-icon"></span>
+                        </h3>
+                    </div>
+                    <div class="demo-slider-container">
+
+                        <div class="demo-slider-wrap">
+                            <div class="demo-slider swipercardseuromini">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide cards-slider">
+                                        <!-- card back side content -->
+                                        <!-- <div class="cards-stack-back"><img src="assets/images/placas-plapers/eurimini/EUM_1.png" /></div>-->
+                                        <!-- card front side content -->
+                                        <div class="cards-stack-front"><img src="assets/images/home-plapers/categoria-placas/placa-euromini/home-categoria-min-europea-A.png" /></div>
+                                    </div>
+
+                                    <div class="swiper-slide cards-slider">
+                                        <!-- <div class="cards-stack-back"><img src="assets/images/placas-plapers/eurimini/EUM_2.png" /></div>-->
+                                        <div class="cards-stack-front"><img src="assets/images/home-plapers/categoria-placas/placa-euromini/home-categoria-min-europea-B.png" /></div>
+                                    </div>
+
+                                    <div class="swiper-slide cards-slider">
+                                        <!--<div class="cards-stack-back"><img src="assets/images/placas-plapers/eurimini/EUM_3.png" /></div>-->
+                                        <div class="cards-stack-front"><img src="assets/images/home-plapers/categoria-placas/placa-euromini/home-categoria-min-europea-C.png" /></div>
+                                    </div>
+
+                                    <div class="swiper-slide cards-slider">
+                                        <!-- <div class="cards-stack-back"><img src="assets/images/placas-plapers/eurimini/EUM_4.png" /></div>-->
+                                        <div class="cards-stack-front"><img src="assets/images/home-plapers/categoria-placas/placa-euromini/home-categoria-min-europea-D.png" /></div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mb-15 wow fadeInUp" data-wow-delay=".1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+                    <a class="btn-one-light ml-20" href="#" data-animation="fadeInUp"
+                        data-delay="1.9s"><span>Comprar ahora</span></a>
+                </div>
+            </div>
+
+            <!-- PLACAS BICICLETA-->
+            <div class="col-12 col-md-6 mb-50">
+                <div id="app">
+                    <div class="sub-title text-center mb-15 wow fadeInUp" data-wow-delay=".1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+                        <h3><span class="title-icon"></span> Placas Bicicleta <span class="title-icon"></span>
+                        </h3>
+                    </div>
+                    <div class="demo-slider-container">
+
+                        <div class="demo-slider-wrap">
+                            <div class="demo-slider swipercardsbicicleta">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide cards-slider">
+                                        <!-- card back side content -->
+                                        <!-- <div class="cards-stack-back"><img src="assets/images/placas-plapers/bicicleta/BIC_1.png" /></div>-->
+                                        <!-- card front side content -->
+                                        <div class="cards-stack-front"><img src="assets/images/home-plapers/categoria-placas/placa-bicicleta/home-categoria-bici-A.png" /></div>
+                                    </div>
+
+                                    <div class="swiper-slide cards-slider">
+                                        <!-- <div class="cards-stack-back"><img src="assets/images/placas-plapers/bicicleta/BIC_2.png" /></div>-->
+                                        <div class="cards-stack-front"><img src="assets/images/home-plapers/categoria-placas/placa-bicicleta/home-categoria-bici-B.png" /></div>
+                                    </div>
+
+                                    <div class="swiper-slide cards-slider">
+                                        <!--<div class="cards-stack-back"><img src="assets/images/placas-plapers/bicicleta/BIC_3.png" /></div>-->
+                                        <div class="cards-stack-front"><img src="assets/images/home-plapers/categoria-placas/placa-bicicleta/home-categoria-bici-C.png" /></div>
+                                    </div>
+
+                                    <div class="swiper-slide cards-slider">
+                                        <!--<div class="cards-stack-back"><img src="assets/images/placas-plapers/bicicleta/BIC_4.png" /></div>-->
+                                        <div class="cards-stack-front"><img src="assets/images/home-plapers/categoria-placas/placa-bicicleta/home-categoria-bici-D.png" /></div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mb-15 wow fadeInUp" data-wow-delay=".1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+                    <a class="btn-one-light ml-20" href="#" data-animation="fadeInUp"
+                        data-delay="1.9s"><span>Comprar ahora</span></a>
                 </div>
             </div>
 
         </div>
-        <div class="text-center mb-15 wow fadeInUp" data-wow-delay=".1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
-            <a class="btn-one-light ml-20" href="placa-americana.php" data-animation="fadeInUp"
-                data-delay="1.9s"><span>Comprar ahora</span></a>
-        </div>
     </div>
-
-
-    <!-- PLACAS EUROPEAS-->
-    <div class="col-12 col-md-6 mb-50">
-        <div id="app">
-            <div class="sub-title text-center mb-25 wow fadeInUp" data-wow-delay=".1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
-                <h3><span class="title-icon"></span> Placas Europeas <span class="title-icon"></span>
-                </h3>
-            </div>
-            <div class="demo-slider-container">
-
-                <div class="demo-slider-wrap">
-                    <div class="demo-slider swipercardseuropea">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide cards-slider">
-                                <!-- card back side content -->
-                                <!--<div class="cards-stack-back"><img src="assets/images/home-plapers/categoria-placas/placa-europea/home-categoria-europea-A.png" /></div>-->
-                                <!-- card front side content -->
-                                <div class="cards-stack-front"><img src="assets/images/home-plapers/categoria-placas/placa-europea/home-categoria-europea-A.png" /></div>
-                            </div>
-
-                            <div class="swiper-slide cards-slider">
-                                <!-- <div class="cards-stack-back"><img src="assets/images/home-plapers/categoria-placas/placa-europea/home-categoria-europea-B.png" /></div>-->
-                                <div class="cards-stack-front"><img src="assets/images/home-plapers/categoria-placas/placa-europea/home-categoria-europea-B.png" /></div>
-                            </div>
-
-                            <div class="swiper-slide cards-slider">
-                                <!--  <div class="cards-stack-back"><img src="assets/images/home-plapers/categoria-placas/placa-europea/home-categoria-europea-C.png" /></div>-->
-                                <div class="cards-stack-front"><img src="assets/images/home-plapers/categoria-placas/placa-europea/home-categoria-europea-C.png" /></div>
-                            </div>
-
-                            <div class="swiper-slide cards-slider">
-                                <!--<div class="cards-stack-back"><img src="assets/images/home-plapers/categoria-placas/placa-europea/home-categoria-europea-D.png" /></div>-->
-                                <div class="cards-stack-front"><img src="assets/images/home-plapers/categoria-placas/placa-europea/home-categoria-europea-D.png" /></div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="text-center mb-15 wow fadeInUp" data-wow-delay=".1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
-            <a class="btn-one-light ml-20" href="#" data-animation="fadeInUp"
-                data-delay="1.9s"><span>Comprar ahora</span></a>
-        </div>
-    </div>
-
-    <!-- PLACAS EUROMINI-->
-    <div class="col-12 col-md-6 mb-50">
-        <div id="app">
-            <div class="sub-title text-center mb-25 wow fadeInUp" data-wow-delay=".1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
-                <h3><span class="title-icon"></span> Placas Euromini <span class="title-icon"></span>
-                </h3>
-            </div>
-            <div class="demo-slider-container">
-
-                <div class="demo-slider-wrap">
-                    <div class="demo-slider swipercardseuromini">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide cards-slider">
-                                <!-- card back side content -->
-                                <!-- <div class="cards-stack-back"><img src="assets/images/placas-plapers/eurimini/EUM_1.png" /></div>-->
-                                <!-- card front side content -->
-                                <div class="cards-stack-front"><img src="assets/images/home-plapers/categoria-placas/placa-euromini/home-categoria-min-europea-A.png" /></div>
-                            </div>
-
-                            <div class="swiper-slide cards-slider">
-                                <!-- <div class="cards-stack-back"><img src="assets/images/placas-plapers/eurimini/EUM_2.png" /></div>-->
-                                <div class="cards-stack-front"><img src="assets/images/home-plapers/categoria-placas/placa-euromini/home-categoria-min-europea-B.png" /></div>
-                            </div>
-
-                            <div class="swiper-slide cards-slider">
-                                <!--<div class="cards-stack-back"><img src="assets/images/placas-plapers/eurimini/EUM_3.png" /></div>-->
-                                <div class="cards-stack-front"><img src="assets/images/home-plapers/categoria-placas/placa-euromini/home-categoria-min-europea-C.png" /></div>
-                            </div>
-
-                            <div class="swiper-slide cards-slider">
-                                <!-- <div class="cards-stack-back"><img src="assets/images/placas-plapers/eurimini/EUM_4.png" /></div>-->
-                                <div class="cards-stack-front"><img src="assets/images/home-plapers/categoria-placas/placa-euromini/home-categoria-min-europea-D.png" /></div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="text-center mb-15 wow fadeInUp" data-wow-delay=".1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
-            <a class="btn-one-light ml-20" href="#" data-animation="fadeInUp"
-                data-delay="1.9s"><span>Comprar ahora</span></a>
-        </div>
-    </div>
-
-    <!-- PLACAS BICICLETA-->
-    <div class="col-12 col-md-6 mb-50">
-        <div id="app">
-            <div class="sub-title text-center mb-15 wow fadeInUp" data-wow-delay=".1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
-                <h3><span class="title-icon"></span> Placas Bicicleta <span class="title-icon"></span>
-                </h3>
-            </div>
-            <div class="demo-slider-container">
-
-                <div class="demo-slider-wrap">
-                    <div class="demo-slider swipercardsbicicleta">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide cards-slider">
-                                <!-- card back side content -->
-                                <!-- <div class="cards-stack-back"><img src="assets/images/placas-plapers/bicicleta/BIC_1.png" /></div>-->
-                                <!-- card front side content -->
-                                <div class="cards-stack-front"><img src="assets/images/home-plapers/categoria-placas/placa-bicicleta/home-categoria-bici-A.png" /></div>
-                            </div>
-
-                            <div class="swiper-slide cards-slider">
-                                <!-- <div class="cards-stack-back"><img src="assets/images/placas-plapers/bicicleta/BIC_2.png" /></div>-->
-                                <div class="cards-stack-front"><img src="assets/images/home-plapers/categoria-placas/placa-bicicleta/home-categoria-bici-B.png" /></div>
-                            </div>
-
-                            <div class="swiper-slide cards-slider">
-                                <!--<div class="cards-stack-back"><img src="assets/images/placas-plapers/bicicleta/BIC_3.png" /></div>-->
-                                <div class="cards-stack-front"><img src="assets/images/home-plapers/categoria-placas/placa-bicicleta/home-categoria-bici-C.png" /></div>
-                            </div>
-
-                            <div class="swiper-slide cards-slider">
-                                <!--<div class="cards-stack-back"><img src="assets/images/placas-plapers/bicicleta/BIC_4.png" /></div>-->
-                                <div class="cards-stack-front"><img src="assets/images/home-plapers/categoria-placas/placa-bicicleta/home-categoria-bici-D.png" /></div>
-                            </div>
-
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="text-center mb-15 wow fadeInUp" data-wow-delay=".1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
-            <a class="btn-one-light ml-20" href="#" data-animation="fadeInUp"
-                data-delay="1.9s"><span>Comprar ahora</span></a>
-        </div>
-    </div>
-
-</div>
+</section>
 <!-- CATEGORIAS PLACAS area end here -->
 
 

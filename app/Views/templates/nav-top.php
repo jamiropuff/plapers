@@ -90,7 +90,7 @@
 ?>
 <!-- Header area start here -->
 <div class="top__header pt-30 pb-30">
-    <div class="container-fluid">
+    <div class="container">
         <div class="top__wrapper">
             <a href="<?= base_url() ?>/index.php" class="main__logo">
                 <img src="<?= base_url() ?>/assets/images/logo-plapers/logo-plapers.svg" alt="logo Plapers">

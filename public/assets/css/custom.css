@@ -1,5 +1,5 @@
 /* Ajuste boostrap para celular en horizontal */
-.row {
+/* .row {
     --bs-gutter-x: 0;
     --bs-gutter-y: 0;
     display: flex;
@@ -7,7 +7,7 @@
     margin-top: calc(-1 * var(--bs-gutter-y));
     margin-right: calc(-.5 * var(--bs-gutter-x));
     margin-left: calc(-.5 * var(--bs-gutter-x));
-}
+} */
 /* .container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
     --bs-gutter-x: 0;
     --bs-gutter-y: 0;
@@ -61,7 +61,7 @@
 .demo-slider-container {
   align-self: center;
   width: 100%;
-  /*max-width: 412px;*/
+  max-width: 412px;
   position: relative;
   padding: 0 16px;
   box-sizing: border-box;

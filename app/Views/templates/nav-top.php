@@ -93,7 +93,7 @@
     <div class="container">
         <div class="top__wrapper">
             <a href="<?= base_url() ?>/index.php" class="main__logo">
-                <img src="<?= base_url() ?>/assets/images/logo-plapers/logo-plapers.svg" alt="logo Plapers">
+                <img src="<?= base_url() ?>/assets/images/logo-plapers/logo-plapers.svg" alt="logo Plapers" style="width: 370px;">
             </a>
 
             <div class="account__wrap">

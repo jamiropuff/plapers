@@ -90,46 +90,63 @@
 ?>
 <!-- Header area start here -->
 <div class="top__header pt-30 pb-30">
-    <div class="container">
+    <div class="container-fluid">
         <div class="top__wrapper">
             <a href="<?= base_url() ?>/index.php" class="main__logo">
                 <img src="<?= base_url() ?>/assets/images/logo-plapers/logo-plapers.svg" alt="logo Plapers">
             </a>
-            <!--<div class="search__wrp">
-                    <input placeholder="Search for" aria-label="Search">
-                    <button><i class="fa-solid fa-search"></i></button>
-                </div>-->
+
             <div class="account__wrap">
-                <div class="account d-flex align-items-center">
+
+                <div class="header-wrapper-desktop d-lg-flex d-none">
+                    <ul class="main-menu-desktop">
+                        <li>
+                            <a href="web/tienda">TIENDA</a>
+                        </li>                        
+                        <li>
+                            <a href="web/acerca_de">NOSOTROS</a>
+                        </li>
+                        <li>
+                            <a href="#">GALERÍA</a>
+                        </li>
+                        <li>
+                            <a href="#">FAQ</a>
+                        </li>
+                        <li>
+                            <a href="#">CONTACTO</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="account d-flex d-lg-none align-items-center">
                     <div class="user__icon">
                         <a href="#0">
                             <i class="fa-regular fa-user"></i>
                         </a>
                     </div>
-                    <a href="#0" class="acc__cont">
-                        <span>
-                            Mi Cuenta
-                        </span>
-                    </a>
                 </div>
-                <div class="cart d-flex align-items-center">
+                <div class="d-none d-lg-flex align-items-center">
+                    <div class="user__icon">
+                        <a href="#0">
+                            <i class="fa-regular fa-user"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="cart d-flex d-lg-none align-items-center">
                     <span class="cart__icon">
                         <i class="fa-regular fa-cart-shopping"></i>
                     </span>
-                    <a href="#0" class="c__one">
-                        <span>
-                            $0.00
-                        </span>
-                    </a>
-                    <span class="one">
-                        0
+                </div>
+                <div class="d-none d-lg-flex align-items-center">
+                    <span class="cart__icon">
+                        <i class="fa-regular fa-cart-shopping"></i>
                     </span>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<header class="header-section">
+<header class="header-section d-lg-none">
     <div class="container">
         <div class="header-wrapper">
             <div class="header-bar d-lg-none">

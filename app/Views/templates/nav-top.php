@@ -102,7 +102,7 @@
                     <ul class="main-menu-desktop">
                         <li>
                             <a href="web/tienda">TIENDA</a>
-                        </li>                        
+                        </li>
                         <li>
                             <a href="web/acerca_de">NOSOTROS</a>
                         </li>

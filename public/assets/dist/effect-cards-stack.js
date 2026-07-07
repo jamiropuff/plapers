@@ -149,7 +149,9 @@
       } else {
         transitionEndTarget = transformElements.filter(transformEl => {
           const el = transformEl.classList.contains('swiper-slide-transform') ? getSlide(transformEl) : transformEl;
-          return swiper.getSlideIndex(el) === activeIndex;
+          // return swiper.getSlideIndex(el) === activeIndex;
+          // return [...swiper.slides].indexOf(el) === activeIndex;
+          return el.classList.contains('swiper-slide-active');
         });
       }
       transitionEndTarget.forEach(el => {

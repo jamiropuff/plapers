@@ -25,9 +25,9 @@
 <!-- Text slider area end here -->
 
 <!-- PERSONALZA TU PLACA area start here -->
-<section class="get-now-area pt-30 pb-115">
+<section class="get-now-area pt-30 pb-80">
     <div class="container">
-        <div class="row align-items-center">
+        <div class="row align-items-center bor-bottom">
             <div class="col-xl-6">
                 <!--<h4 class="mb-30 wow fadeInUp" data-wow-delay=".1s"><img src="assets/images/icon/fire.svg"
                                 alt="icon">
@@ -116,14 +116,29 @@
 <section>
     <div class="container">
 
-        <div class="row bor-bottom">
+        <div class="row bor-bottom justify-content-center">
+
+            <div class="col-12 text-center pb-115">
+                <div class="section-title pb-20">DISEÑOS UNICOS PARA TI</div>
+                <div class="section-subtitle pb-20">Explora todos los diseños</div>
+                <div class="section-description pb-20">Desliza, descubre y elige la placa perfecta para ti.</div>
+            </div>
 
             <!-- PLACAS AMERICANAS-->
-            <div class="col-12 col-md-6 mb-50">
+            <div class="col-10 col-md-6 mb-50 position-relative">
+                <!-- Solo Mobile -->
+                <div class="img-desliza-mobile d-block d-lg-none">
+                    <img src="assets/images/home-plapers/varios/desliza.png" alt="Desliza">
+                </div>
+
                 <div id="app">
+                    <!-- Solo Desktop -->
+                    <div class="img-desliza-desktop d-none d-lg-block">
+                        <img src="assets/images/home-plapers/varios/desliza.png" alt="Desliza">
+                    </div>
+
                     <div class="sub-title text-center mb-25 wow fadeInUp" data-wow-delay=".1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
-                        <h3><span class="title-icon"></span> Placas Americanas <span class="title-icon"></span>
-                        </h3>
+                        <h3 class="sub-title-plates">Placas Americanas</h3>
                     </div>
                     <div class="demo-slider-container">
 
@@ -167,11 +182,20 @@
 
 
             <!-- PLACAS EUROPEAS-->
-            <div class="col-12 col-md-6 mb-50">
+            <div class="col-10 col-md-6 mb-50 position-relative">
+                <!-- Solo Mobile -->
+                <div class="img-desliza-mobile d-block d-lg-none">
+                    <img src="assets/images/home-plapers/varios/desliza.png" alt="Desliza">
+                </div>
+
                 <div id="app">
+                    <!-- Solo Desktop -->
+                    <div class="img-desliza-desktop d-none d-lg-block">
+                        <img src="assets/images/home-plapers/varios/desliza.png" alt="Desliza">
+                    </div>
+
                     <div class="sub-title text-center mb-25 wow fadeInUp" data-wow-delay=".1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
-                        <h3><span class="title-icon"></span> Placas Europeas <span class="title-icon"></span>
-                        </h3>
+                        <h3 class="sub-title-plates">Placas Europeas</h3>
                     </div>
                     <div class="demo-slider-container">
 
@@ -212,11 +236,20 @@
             </div>
 
             <!-- PLACAS EUROMINI-->
-            <div class="col-12 col-md-6 mb-50">
+            <div class="col-10 col-md-6 mb-50 position-relative">
+                <!-- Solo Mobile -->
+                <div class="img-desliza-mobile d-block d-lg-none">
+                    <img src="assets/images/home-plapers/varios/desliza.png" alt="Desliza">
+                </div>
+
                 <div id="app">
+                    <!-- Solo Desktop -->
+                    <div class="img-desliza-desktop d-none d-lg-block">
+                        <img src="assets/images/home-plapers/varios/desliza.png" alt="Desliza">
+                    </div>
+
                     <div class="sub-title text-center mb-25 wow fadeInUp" data-wow-delay=".1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
-                        <h3><span class="title-icon"></span> Placas Euromini <span class="title-icon"></span>
-                        </h3>
+                        <h3 class="sub-title-plates">Placas Euromini</h3>
                     </div>
                     <div class="demo-slider-container">
 
@@ -257,11 +290,20 @@
             </div>
 
             <!-- PLACAS BICICLETA-->
-            <div class="col-12 col-md-6 mb-50">
+            <div class="col-10 col-md-6 mb-50 position-relative">
+                <!-- Solo Mobile -->
+                <div class="img-desliza-mobile d-block d-lg-none">
+                    <img src="assets/images/home-plapers/varios/desliza.png" alt="Desliza">
+                </div>
+
                 <div id="app">
+                    <!-- Solo Desktop -->
+                    <div class="img-desliza-desktop d-none d-lg-block">
+                        <img src="assets/images/home-plapers/varios/desliza.png" alt="Desliza">
+                    </div>
+
                     <div class="sub-title text-center mb-15 wow fadeInUp" data-wow-delay=".1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
-                        <h3><span class="title-icon"></span> Placas Bicicleta <span class="title-icon"></span>
-                        </h3>
+                        <h3 class="sub-title-plates">Placas Bicicleta</h3>
                     </div>
                     <div class="demo-slider-container">
 

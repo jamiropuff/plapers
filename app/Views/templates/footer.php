@@ -296,3 +296,29 @@
 
 <script src="<?= base_url() ?>/assets/dist/effect-cards-stack.js"></script>
 <script src="<?= base_url() ?>/assets/js/home.js"></script>
+
+<script>
+    $(window).on("scroll", function () {
+
+    if ($(window).width() >= 992) {
+
+        if ($(this).scrollTop() > 100) {
+            $(".top__header").addClass("fixed");
+        } else {
+            $(".top__header").removeClass("fixed");
+        }
+
+    }
+
+});
+
+$(window).on("scroll resize", function(){
+
+    if($(window).width() >= 992){
+        $("body").css("padding-top", $(".top__header").outerHeight());
+    }else{
+        $("body").css("padding-top", "0");
+    }
+
+});
+</script>

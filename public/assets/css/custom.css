@@ -1,3 +1,15 @@
+:root {
+    --color-principal: #DD0C5D;
+}
+
+.bg-principal {
+    background-color: var(--color-principal);
+}
+
+.color-principal {
+    color: var(--color-principal);
+}
+
 /* Menu desktop */
 .header-wrapper-desktop {
     display: flex;
@@ -40,6 +52,15 @@
     overflow: hidden;
     width: 100%;
     position: relative;
+}
+
+.btn-ver-mas{
+    background-color: var(--color-principal);
+    color: #fff;
+    border-radius: 8px;
+    padding: 10px 60px;
+    text-decoration: none;
+    font-weight: 500;
 }
 
 .demo-slider-container {
@@ -118,7 +139,7 @@
 }
 
 .section-title {
-    color: #DD0C5D;
+    color: var(--color-principal);
     font-family: Inter;
     font-weight: 600;
     font-style: Semi Bold;

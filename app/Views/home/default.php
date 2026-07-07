@@ -43,7 +43,7 @@
                     <p class="fw-600 wow fadeInUp" data-wow-delay=".3s">Creamos placas únicas, diseñadas totalmente a tu gusto.<br> Tú eliges el estilo, colores y detalles… <br>Nosotros lo hacemos realidad.</p>
 
                     <div class="pt-25 wow fadeInUp" data-wow-delay=".1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
-                        <a class="btn-one-light ml-20" href="#" data-animation="fadeInUp"
+                        <a class="btn-ver-mas ml-20" href="#" data-animation="fadeInUp"
                             data-delay="1.9s"><span>Ver más</span></a>
                     </div>
 
@@ -175,8 +175,8 @@
 
                 </div>
                 <div class="text-center mb-15 wow fadeInUp" data-wow-delay=".1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
-                    <a class="btn-one-light ml-20" href="placa-americana.php" data-animation="fadeInUp"
-                        data-delay="1.9s"><span>Comprar ahora</span></a>
+                    <a class="btn-ver-mas ml-20" href="placa-americana.php" data-animation="fadeInUp"
+                        data-delay="1.9s"><span>Ver más</span></a>
                 </div>
             </div>
 
@@ -230,8 +230,8 @@
                     </div>
                 </div>
                 <div class="text-center mb-15 wow fadeInUp" data-wow-delay=".1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
-                    <a class="btn-one-light ml-20" href="#" data-animation="fadeInUp"
-                        data-delay="1.9s"><span>Comprar ahora</span></a>
+                    <a class="btn-ver-mas ml-20" href="#" data-animation="fadeInUp"
+                        data-delay="1.9s"><span>Ver más</span></a>
                 </div>
             </div>
 
@@ -284,8 +284,8 @@
                     </div>
                 </div>
                 <div class="text-center mb-15 wow fadeInUp" data-wow-delay=".1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
-                    <a class="btn-one-light ml-20" href="#" data-animation="fadeInUp"
-                        data-delay="1.9s"><span>Comprar ahora</span></a>
+                    <a class="btn-ver-mas ml-20" href="#" data-animation="fadeInUp"
+                        data-delay="1.9s"><span>Ver más</span></a>
                 </div>
             </div>
 
@@ -339,8 +339,8 @@
                     </div>
                 </div>
                 <div class="text-center mb-15 wow fadeInUp" data-wow-delay=".1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
-                    <a class="btn-one-light ml-20" href="#" data-animation="fadeInUp"
-                        data-delay="1.9s"><span>Comprar ahora</span></a>
+                    <a class="btn-ver-mas ml-20" href="#" data-animation="fadeInUp"
+                        data-delay="1.9s"><span>Ver más</span></a>
                 </div>
             </div>
 

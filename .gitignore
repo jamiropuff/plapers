@@ -33,3 +33,9 @@ composer.phar
 
 # Testing
 .phpunit.result.cache
+
+#writable / debugbar y session
+/writable/debugbar
+/writable/session
+
+.gitignore

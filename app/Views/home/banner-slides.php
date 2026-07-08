@@ -1,61 +1,36 @@
-<!-- Banner area start here -->
-<section class="banner-two">
-    <div class="swiper banner-two__slider">
-        <div class="swiper-wrapper">
+<section class="custom-hero-slide" style="position: relative; max-width: 1920px; margin: 0 auto; background-color: #050a1f;">
+    <picture>
+        <source media="(max-width: 991px)" srcset="<?= base_url('img/main-phones.jpg') ?>">
+        <img src="<?= base_url('img/main.jpg') ?>" class="hero-bg-img" alt="Banner">
+    </picture>
 
-            <div class="swiper-slide">
-                <div class="slide-bg" data-background="<?= base_url() ?>/assets/images/home-plapers/slider-plapers/plapers-slide-A.jpg"></div>
-                <div class="container">
-                    <div class="banner-two__content">
-                        <h4 data-animation="fadeInUp" data-delay="1s"><img src="<?= base_url() ?>/assets/images/icon/fire.svg"
-                                alt="icon"> LLEGASTE <span class="primary-color">AL LUGAR</span> INDICADO</h4>
-                        <h1 data-animation="fadeInUp" data-delay="1.3s">Encuentra tu estilo <br>
-                            y <span class="primary-color">personal&iacute;zalo</span></h1>
-                        <p class="mt-40" data-animation="fadeInUp" data-delay="1.5s">Contamos con diversos modelos
-                            <br> de placas en 4 formatos diferentes
-                        </p>
-                        <div class="banner-two__info mt-30" data-animation="fadeInUp" data-delay="1.7s">
-                            <span class="mb-10">Precios desde </span>
-                            <h3>$126.00</h3>
-                        </div>
-                        <div class="btn-wrp mt-65">
-                            <a href="#" class="btn-one" data-animation="fadeInUp"
-                                data-delay="1.8s"><span>Comprar ahora</span></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="swiper-slide">
-                <div class="slide-bg" data-background="<?= base_url() ?>/assets/images/home-plapers/slider-plapers/plapers-slide-B.jpg"></div>
-                <div class="container">
-                    <div class="banner-two__content">
-                        <h4 data-animation="fadeInUp" data-delay="1s"><img src="<?= base_url() ?>/assets/images/icon/fire.svg"
-                                alt="icon"> LLEGASTE <span class="primary-color">AL LUGAR</span> INDICADO</h4>
-                        <h1 data-animation="fadeInUp" data-delay="1.3s">Usamos alta tecnolog&iacute;a<br>
-                            para garantizar la mejor <span class="primary-color">calidad</span></h1>
-                        <p class="mt-40" data-animation="fadeInUp" data-delay="1.5s">Somos una empresa
-                            <br> 100% mexicana
-                        </p>
-                        <div class="banner-two__info mt-30" data-animation="fadeInUp" data-delay="1.7s">
-                            <span class="mb-10">Precios desde</span>
-                            <h3>$126.00</h3>
-                        </div>
-                        <div class="btn-wrp mt-65">
-                            <a href="shop.html" class="btn-one" data-animation="fadeInUp"
-                                data-delay="1.8s"><span>Compra ahora</span></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            
-        </div>
+    <!-- Price badge - visible on all screen sizes, positioned over the image -->
+    <div class="hero-price-badge">
+        <span class="price-from">DESDE</span>
+        <span class="price-val">$126</span>
+        <span class="price-cur">MXN</span>
     </div>
-    <div class="banner-two__arry-btn">
-        <button class="arry-prev mb-15 banner-two__arry-prev"><i class="fa-light fa-chevron-left"></i></button>
-        <button class="arry-next active banner-two__arry-next"><i
-                class="fa-light fa-chevron-right"></i></button>
+    
+    <div class="hero-content-wrapper">
+        <div class="container-fluid h-100" style="padding-left: 8%; padding-right: 5%;">
+            <div class="row align-items-center h-100">
+                <div class="col-lg-5 hero-text-col">
+                    <h4 class="hero-subtitle d-none d-lg-block">LLEGASTE AL LUGAR INDICADO</h4>
+                    <h1 class="hero-title mobile-resize">
+                        Placas decorativas <br>
+                        <span class="text-pink">personalizadas</span> <br>
+                        a tu estilo
+                    </h1>
+                    <div class="btn-wrp mt-4 mt-lg-5">
+                        <a href="shop.html" class="btn-hero-pink"><span>Personaliza tu placa</span></a>
+                    </div>
+                </div>
+                <div class="col-lg-7 hero-image-col d-none d-lg-block" style="position: relative;">
+                    <div class="hero-plates-wrapper">
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 <!-- Banner area end here -->

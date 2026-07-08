@@ -59,13 +59,21 @@
 ?>
 
 <!-- Footer area start here -->
-<footer class="footer-area bg-image" data-background="<?= base_url() ?>/assets/images/footer-plapers/footer-bg-plapers.jpg">
+<footer class="footer-area" style="background-color: #151515;">
     <div class="container">
-        <div class="footer__wrp pt-65 pb-65 bor-top bor-bottom">
+        <!-- Logo at the top as requested -->
+        <div class="row justify-content-center pt-60 pb-40">
+            <div class="col-12 text-center">
+                <a href="index.php" class="logo d-inline-block">
+                    <img src="<?= base_url() ?>/assets/images/logo-plapers/logo-plapers.svg" alt="logo Plapers footer" style="max-width: 220px;">
+                </a>
+            </div>
+        </div>
+
+        <div class="footer__wrp pb-50 bor-bottom">
             <div class="row g-4">
                 <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-duration="1.1s" data-wow-delay=".1s">
                     <div class="footer__item">
-                        <!-- <h4 class="footer-title">Customer Service</h4> -->
                         <ul>
                             <li><a href="#"><span></span>Placas Americanas</a></li>
                             <li><a href="#"><span></span>Placas Europeas</a></li>
@@ -76,7 +84,6 @@
                 </div>
                 <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-duration="1.2s" data-wow-delay=".2s">
                     <div class="footer__item">
-                        <!-- <h4 class="footer-title">Get to Know Us</h4> -->
                         <ul>
                             <li><a href="#"><span></span>Nosotros</a></li>
                             <li><a href="#"><span></span>Galer&iacute;a</a></li>
@@ -86,7 +93,6 @@
                 </div>
                 <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-duration="1.3s" data-wow-delay=".3s">
                     <div class="footer__item">
-                        <!-- <h4 class="footer-title">vapes new collections</h4> -->
                         <ul>
                             <li><a href="#"><span></span>FAQS</a></li>
                             <li><a href="#"><span></span>Contacto</a></li>
@@ -110,11 +116,8 @@
                 </div>
             </div>
         </div>
-        <div class="footer__copy-text pt-35 pb-35">
-            <a href="index.php" class="logo d-block">
-                <img src="<?= base_url() ?>/assets/images/logo-plapers/logo-plapers.svg" alt="logo Plapers footer">
-            </a>
-            <p>&copy; Copyright 2026 Todos los derechos Reservados</p>
+        <div class="footer__copy-text pt-35 pb-35 d-flex align-items-center justify-content-between flex-wrap gap-3">
+            <p class="m-0">&copy; Copyright 2026 Todos los derechos Reservados</p>
             <a href="#0" class="payment d-block image">
                 <img src="<?= base_url() ?>/assets/images/icon/payment.png" alt="icon">
             </a>
@@ -297,28 +300,28 @@
 <script src="<?= base_url() ?>/assets/dist/effect-cards-stack.js"></script>
 <script src="<?= base_url() ?>/assets/js/home.js"></script>
 
-<script>
-    $(window).on("scroll", function () {
-
+    <script>
+function updateHeaderOnScroll() {
     if ($(window).width() >= 992) {
-
         if ($(this).scrollTop() > 100) {
             $(".top__header").addClass("fixed");
         } else {
             $(".top__header").removeClass("fixed");
         }
-
     }
+}
 
-});
-
-$(window).on("scroll resize", function(){
-
-    if($(window).width() >= 992){
+function setBodyPadding() {
+    if ($(window).width() >= 992) {
         $("body").css("padding-top", $(".top__header").outerHeight());
-    }else{
+    } else {
         $("body").css("padding-top", "0");
     }
+}
 
-});
+$(window).on("scroll", updateHeaderOnScroll);
+
+$(window).on("resize", setBodyPadding);
+
+setBodyPadding();
 </script>

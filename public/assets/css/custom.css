@@ -168,22 +168,23 @@
 
 }
 
-/* Menú se mantiene fijo al hacer scroll */
+/* Menú siempre fijo en desktop */
 @media (min-width:992px) {
 
   .top__header {
-    transition: all .3s ease;
-  }
-
-  .top__header.fixed {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 9999;
+    background: #000000;
+    transition: none;
+    animation: none;
+  }
+
+  .top__header.fixed {
     background: #fff;
     box-shadow: 0 5px 20px rgba(0, 0, 0, .12);
-    animation: slideDown .3s ease;
   }
 
 }
@@ -382,9 +383,14 @@
 /* Mobile Hero Redesign */
 .hero-content-wrapper {
   position: relative;
-  padding: 25px 20px 35px;
+  padding: 25px 20px 180px;
   text-align: left;
   z-index: 2;
+}
+
+.custom-hero-slide picture {
+  display: block;
+  line-height: 0;
 }
 
 .hero-bg-img {
@@ -404,7 +410,28 @@
 /* Mobile layout: image on top, text below */
 @media (max-width: 991px) {
   .custom-hero-slide {
-    min-height: auto;
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .custom-hero-slide picture {
+    position: relative;
+    display: block;
+  }
+
+  .custom-hero-slide picture::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40%;
+    background: linear-gradient(to top, #050a1f 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 1;
   }
 
   .hero-bg-img {
@@ -418,24 +445,24 @@
   /* Badge positioned over the image on mobile */
   .hero-price-badge {
     top: auto;
-    bottom: calc(35% + 20px);
-    right: 15px;
-    width: 70px;
-    height: 70px;
+    bottom: calc(35% + 135px);
+    right: 75px;
+    width: 80px;
+    height: 80px;
     border-width: 2px;
   }
 
   .hero-price-badge .price-from {
-    font-size: 8px;
+    font-size: 9px;
   }
 
   .hero-price-badge .price-val {
-    font-size: 22px;
+    font-size: 26px;
     margin: 1px 0;
   }
 
   .hero-price-badge .price-cur {
-    font-size: 9px;
+    font-size: 10px;
   }
 
   .hero-content-wrapper {
@@ -475,21 +502,22 @@
   }
 
   .hero-price-badge {
-    width: 60px;
-    height: 60px;
-    right: 10px;
+    width: 70px;
+    height: 70px;
+    right: 65px;
+    bottom: calc(35% + 135px);
   }
 
   .hero-price-badge .price-from {
-    font-size: 7px;
+    font-size: 8px;
   }
 
   .hero-price-badge .price-val {
-    font-size: 18px;
+    font-size: 22px;
   }
 
   .hero-price-badge .price-cur {
-    font-size: 8px;
+    font-size: 9px;
   }
 
   .btn-hero-pink {
@@ -509,9 +537,9 @@
   }
 
   .hero-bg-img {
-    max-height: 900px;
+    max-height: 542px;
     object-fit: cover;
-    object-position: center top;
+    object-position: right 5%;
   }
 
   .mobile-resize {
@@ -519,8 +547,8 @@
   }
 
   .hero-price-badge {
-    top: 32%;
-    right: 30px;
+    top: 48%;
+    right: 40px;
     width: 100px;
     height: 100px;
   }
@@ -544,8 +572,8 @@
   }
 
   .hero-price-badge {
-    top: 30%;
-    right: 40px;
+    top: 46%;
+    right: 50px;
     width: 120px;
     height: 120px;
   }
@@ -564,13 +592,18 @@
 }
 
 @media (min-width: 1400px) {
+  .hero-bg-img {
+    max-height: 711px;
+    object-position: right 3%;
+  }
+
   .mobile-resize {
     font-size: 50px !important;
   }
 
   .hero-price-badge {
-    top: 28%;
-    right: 50px;
+    top: 43%;
+    right: 75px;
     width: 140px;
     height: 140px;
   }
@@ -594,8 +627,8 @@
   }
 
   .hero-price-badge {
-    top: 26%;
-    right: 60px;
+    top: 41%;
+    right: 85px;
     width: 150px;
     height: 150px;
   }
@@ -619,8 +652,8 @@
   }
 
   .hero-price-badge {
-    top: 24%;
-    right: 80px;
+    top: 39%;
+    right: 105px;
     width: 170px;
     height: 170px;
   }
@@ -644,7 +677,6 @@
   /* Dark blue/black background */
   position: relative;
   overflow: hidden;
-  min-height: 600px;
 }
 
 .hero-neon-bg {
@@ -763,3 +795,67 @@
 .header-bar span {
   display: none !important;
 }
+
+/* =========================================================================
+   SECOND SECTION (PERSONALIZA TU PLACA)
+   ========================================================================= */
+
+.custom-section-2 {
+  position: relative;
+}
+
+.custom-slider-2 {
+  position: relative;
+  padding: 0 40px; /* Space for arrows */
+}
+
+/* Custom transparent arrows for the second section */
+.custom-arrow-2 {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent !important;
+  border: none !important;
+  color: #ffffff;
+  font-size: 32px;
+  z-index: 10;
+  cursor: pointer;
+  padding: 10px;
+  transition: all 0.3s ease;
+  width: auto;
+  height: auto;
+  box-shadow: none !important;
+}
+
+.custom-arrow-2:hover {
+  color: #ff2a75;
+  background: transparent !important;
+}
+
+.custom-arrow-left {
+  left: 0;
+}
+
+.custom-arrow-right {
+  right: 0;
+}
+
+/* Rotation + 3D effect for the plates in the slider */
+.custom-slider-2 .swiper {
+  overflow: hidden;
+}
+
+.plate-rotated {
+  max-width: 85%;
+  height: auto;
+  border-radius: 10px;
+  transform: perspective(800px) rotateY(-5deg) rotate(-3deg);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.5));
+}
+
+.plate-rotated:hover {
+  transform: perspective(800px) rotateY(0deg) rotate(0deg);
+  filter: drop-shadow(0 20px 35px rgba(0, 0, 0, 0.6));
+}
+

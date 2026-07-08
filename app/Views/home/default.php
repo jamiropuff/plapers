@@ -25,85 +25,67 @@
 <!-- Text slider area end here -->
 
 <!-- PERSONALZA TU PLACA area start here -->
-<section class="pt-30 pb-80">
+<section class="pt-30 pb-80 custom-section-2">
     <div class="container">
-        <div class="row align-items-center justify-content-center bor-bottom">
-            <div class="col-xl-5">
-                <!--<h4 class="mb-30 wow fadeInUp" data-wow-delay=".1s"><img src="assets/images/icon/fire.svg"
-                                alt="icon">
-                            OBTEN <span class="primary-color">50% DE DESCUENTO</span> AHORA</h4>-->
-                <div class="section-header d-flex align-items-center wow fadeInUp" data-wow-delay=".2s">
-                    <span class="title-icon mr-10"></span>
-                    <h2 class="text-uppercase pb-15">TU IDEA MERECE ALGO ÚNICO</h2>
+        <div class="row align-items-center justify-content-center">
+            <div class="col-lg-5 text-center text-lg-start">
+                <div class="section-header wow fadeInUp" data-wow-delay=".2s">
+                    <h2 class="text-uppercase pb-15 text-white text-center text-lg-start" style="font-size: 32px; font-weight: 800; line-height: 1.2;">
+                        TU IDEA <span style="color: #ff2a75;">MERECE</span><br>
+                        ALGO <span style="color: #ff2a75;">ÚNICO</span>
+                    </h2>
                 </div>
                 <div class="get-now__content">
-                    <!-- <div class="get-info py-4 wow fadeInUp" data-wow-delay=".2s">
-                                <del>$99.00</del> <span>$49.00</span>
-                            </div>-->
-                    <p class="fw-600 wow fadeInUp" data-wow-delay=".3s">Creamos placas únicas, diseñadas totalmente a tu gusto.<br> Tú eliges el estilo, colores y detalles… <br>Nosotros lo hacemos realidad.</p>
+                    <p class="wow fadeInUp text-white mt-3 text-center text-lg-start" data-wow-delay=".3s" style="font-size: 15px; font-weight: 400; line-height: 1.6; opacity: 0.9;">
+                        Convierte una frase, nombre, fecha o diseño en una placa decorativa hecha a tu estilo.
+                    </p>
 
-                    <div class="pt-25 wow fadeInUp" data-wow-delay=".1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
-                        <a class="btn-ver-mas ml-20" href="#" data-animation="fadeInUp"
-                            data-delay="1.9s"><span>Ver más</span></a>
-                    </div>
-
-                    <!-- <ul class="pt-30 pb-30 bor-bottom wow fadeInUp" data-wow-delay=".3s">
-                                <li>Aplica en placas Americanas</li>
-                                <li>Cupón $61.99, Código: PROMO2</li>
-                                <li>Válido solo por 15 días</li>
-                            </ul>-->
-                    <div class="time-up d-flex flex-wrap align-items-center gap-5 mt-30 wow fadeInUp"
-                        data-wow-delay=".4s">
-                        <!--<div class="info">
-                                    <h4>¡Date prisa!</h4>
-                                    <span>La promoción termina en:</span>
-                                </div>
-                                <div class="d-flex gap-2 align-items-center">
-                                    <div class="get-time">
-                                        <h3 id="day">00</h3>
-                                        <span>Días</span>
-                                    </div>
-                                    <div class="get-time">
-                                        <h3 id="hour">00</h3>
-                                        <span>Hr</span>
-                                    </div>
-                                    <div class="get-time">
-                                        <h3 id="min">00</h3>
-                                        <span>Min</span>
-                                    </div>
-                                    <div class="get-time">
-                                        <h3 id="sec">00</h3>
-                                        <span>Sec</span>
-                                    </div>
-                                </div>-->
+                    <div class="pt-40 wow fadeInUp d-none d-lg-block" data-wow-delay=".1s">
+                        <a class="btn-hero-pink" href="#"><span>Ver diseños</span></a>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-6">
-                <div class="get-now__image mt-5 mt-xl-0">
-                    <div class="get-bg-image">
-                        <img src="assets/images/home-plapers/promocion-del-mes-plapers/promocion-plapers-bg.png" alt="image">
-                    </div>
+            <div class="col-lg-6">
+                <div class="get-now__image mt-5 mt-lg-0 custom-slider-2">
                     <div class="swiper get__slider">
                         <div class="swiper-wrapper">
+                            <!-- Plate 1 -->
                             <div class="swiper-slide">
-                                <div class="image">
-                                    <img src="assets/images/home-plapers/promocion-del-mes-plapers/promocion-plapers-1.png" alt="image">
+                                <div class="image text-center">
+                                    <img src="assets/images/home-plapers/categoria-placas/placa-americana/home-categoria-americana-A.png" alt="Placa 1" class="plate-rotated">
                                 </div>
                             </div>
+                            <!-- Plate 2 -->
                             <div class="swiper-slide">
-                                <div class="image">
-                                    <img src="assets/images/home-plapers/promocion-del-mes-plapers/promocion-plapers-2.png" alt="image">
+                                <div class="image text-center">
+                                    <img src="assets/images/home-plapers/categoria-placas/placa-americana/home-categoria-americana-B.png" alt="Placa 2" class="plate-rotated">
+                                </div>
+                            </div>
+                            <!-- Plate 3 -->
+                            <div class="swiper-slide">
+                                <div class="image text-center">
+                                    <img src="assets/images/home-plapers/categoria-placas/placa-americana/home-categoria-americana-C.png" alt="Placa 3" class="plate-rotated">
+                                </div>
+                            </div>
+                            <!-- Plate 4 -->
+                            <div class="swiper-slide">
+                                <div class="image text-center">
+                                    <img src="assets/images/home-plapers/categoria-placas/placa-americana/home-categoria-americana-D.png" alt="Placa 4" class="plate-rotated">
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <button class="get-now-arry get-now__arry-left">
+                    <button class="custom-arrow-2 custom-arrow-left get-now__arry-left">
                         <i class="fa-light fa-chevron-left"></i>
                     </button>
-                    <button class="get-now-arry get-now__arry-right text-warning">
+                    <button class="custom-arrow-2 custom-arrow-right get-now__arry-right">
                         <i class="fa-light fa-chevron-right"></i>
                     </button>
+                </div>
+                
+                <!-- Mobile button -->
+                <div class="pt-40 wow fadeInUp text-center d-block d-lg-none" data-wow-delay=".1s">
+                    <a class="btn-hero-pink w-100" style="max-width: 300px; padding: 15px 0; font-size: 16px; margin: 0 auto;" href="#"><span>Ver diseños</span></a>
                 </div>
             </div>
         </div>
@@ -351,196 +333,77 @@
 
 
 <!-- ACCESORIOS / DESTACADOS start here -->
-<section class="destacados-area pb-100">
+<section class="accesorios-area pb-100 pt-50">
     <div class="container">
-        <div class="row g-4">
-            <!-- ACCESORIOS start area-->
-            <div class="col-lg-6">
-                <div class="banner__item">
-                    <div class="image">
-                        <img src="assets/images/home-plapers/accesorios-plapers/home-accesorios-.png" alt="image">
+        <!-- Section Header -->
+        <div class="row justify-content-center mb-50">
+            <div class="col-lg-8 text-center">
+                <span class="d-block mb-10 text-uppercase" style="color: #ff2a75; font-size: 14px; font-weight: 700; letter-spacing: 1px;">ACCESORIOS</span>
+                <h2 class="text-white mb-20" style="font-weight: 700; font-size: 36px;">Detalles que hacen única tu placa</h2>
+                <p class="text-white mx-auto" style="opacity: 0.9; max-width: 500px;">Agrega accesorios y complementos para darle el toque final a tu diseño.</p>
+            </div>
+        </div>
+
+        <!-- Products Grid -->
+        <div class="row g-4 mb-50">
+            <!-- Product 1 -->
+            <div class="col-6 col-lg-3">
+                <div class="product-item-custom">
+                    <div class="image mb-15">
+                        <img src="assets/images/home-plapers/destacados-plapers/home-destacado-A.png" alt="product" class="w-100" style="border-radius: 8px;">
                     </div>
-                    <div class="banner__content">
-                        <!-- <h5 class="wow fadeInUp" data-wow-delay=".1s"
-                                    style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;"><img
-                                        src="assets/images/icon/fire.svg" alt="icon"> GET <span
-                                        class="primary-color">25% OFF</span> NOW
-                                </h5>-->
-                        <h1 class="wow fadeInUp" data-wow-delay=".2s"
-                            style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;"><span class="primary-color">ACCESORIOS</span></h1>
-                        <a class="btn-one wow fadeInUp mt-65" data-wow-delay=".3s" href="shop.html"
-                            style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;"><span>Comprar</span></a>
+                    <div class="content">
+                        <h5 class="text-white text-uppercase mb-2" style="font-size: 13px; font-weight: 500; letter-spacing: 0.5px;">ESCUDO AGUILA BLANCA</h5>
+                        <div class="price text-white" style="font-size: 18px; font-weight: 600;">$49.50</div>
                     </div>
                 </div>
             </div>
-            <!-- ACCESORIOS end area -->
-
-            <!-- DESTACADOS start area -->
-            <div class="col-lg-6">
-                <div class="swiper product__slider swiper-initialized swiper-horizontal swiper-pointer-events swiper-backface-hidden">
-                    <div class="swiper-wrapper" id="swiper-wrapper-b8fa367cf8ffd4f4" aria-live="off" style="transform: translate3d(-1140px, 0px, 0px); transition-duration: 0ms;"><!--<div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-prev" data-swiper-slide-index="1" role="group" aria-label="2 / 3" style="width: 261px; margin-right: 24px;">
-                                    <div class="product__slider-item bor">
-                                        <a href="#0" class="wishlist"><i class="fa-regular fa-heart"></i></a>
-                                        <a href="shop-single.html" class="product__image pt-20 d-block">
-                                            <img src="assets/images/product/product-image2.png" alt="image">
-                                        </a>
-                                        <div class="product__content">
-                                            <h4 class="mb-15"><a class="primary-hover" href="shop-single.html">HUELLITAS</a></h4>
-                                            <del>$74.50</del><span class="primary-color ml-10">$49.50</span>
-                                            <div class="star mt-20">
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div><div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active" data-swiper-slide-index="2" role="group" aria-label="3 / 3" style="width: 261px; margin-right: 24px;">
-                                    <div class="product__slider-item bor">
-                                        <a href="#0" class="wishlist"><i class="fa-regular fa-heart"></i></a>
-                                        <a href="shop-single.html" class="product__image pt-20 d-block">
-                                            <img src="assets/images/product/product-image3.png" alt="image">
-                                        </a>
-                                        <div class="product__content">
-                                            <h4 class="mb-15"><a class="primary-hover" href="shop-single.html">NASCAR BLANCA</a></h4>
-                                            <del>$74.50</del><span class="primary-color ml-10">$49.50</span>
-                                            <div class="star mt-20">
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>-->
-                        <div class="swiper-slide swiper-slide-duplicate-next" data-swiper-slide-index="0" role="group" aria-label="1 / 4" style="width: 261px; margin-right: 24px;">
-                            <div class="product__slider-item bor">
-                                <a href="#0" class="wishlist"><i class="fa-regular fa-heart"></i></a>
-                                <a href="#" class="product__image pt-20 d-block">
-                                    <img src="assets/images/home-plapers/destacados-plapers/home-destacado-A.png" alt="image">
-                                </a>
-                                <div class="product__content">
-                                    <h4 class="mb-15"><a class="primary-hover" href="#">ESCUDO AGUILA BLANCA</a></h4>
-                                    <del>$74.50</del><span class="primary-color ml-10">$49.50</span>
-                                    <div class="star mt-20">
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide swiper-slide-prev" data-swiper-slide-index="1" role="group" aria-label="2 / 4" style="width: 261px; margin-right: 24px;">
-                            <div class="product__slider-item bor">
-                                <a href="#0" class="wishlist"><i class="fa-regular fa-heart"></i></a>
-                                <a href="#" class="product__image pt-20 d-block">
-                                    <img src="assets/images/home-plapers/destacados-plapers/home-destacado-B.png" alt="image">
-                                </a>
-                                <div class="product__content">
-                                    <h4 class="mb-15"><a class="primary-hover" href="#">MOSAICO</a></h4>
-                                    <del>$74.50</del><span class="primary-color ml-10">$49.50</span>
-                                    <div class="star mt-20">
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide swiper-slide-active" data-swiper-slide-index="2" role="group" aria-label="3 / 4" style="width: 261px; margin-right: 24px;">
-                            <div class="product__slider-item bor">
-                                <a href="#0" class="wishlist"><i class="fa-regular fa-heart"></i></a>
-                                <a href="#" class="product__image pt-20 d-block">
-                                    <img src="assets/images/home-plapers/destacados-plapers/home-destacado-C.png" alt="image">
-                                </a>
-                                <div class="product__content">
-                                    <h4 class="mb-15"><a class="primary-hover" href="#">NASCAR AZUL</a></h4>
-                                    <del>$74.50</del><span class="primary-color ml-10">$49.50</span>
-                                    <div class="star mt-20">
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide swiper-slide-duplicate swiper-slide-next" data-swiper-slide-index="3" role="group" aria-label="4 / 4" style="width: 261px; margin-right: 24px;">
-                            <div class="product__slider-item bor">
-                                <a href="#0" class="wishlist"><i class="fa-regular fa-heart"></i></a>
-                                <a href="#" class="product__image pt-20 d-block">
-                                    <img src="assets/images/home-plapers/destacados-plapers/home-destacado-D.png" alt="image">
-                                </a>
-                                <div class="product__content">
-                                    <h4 class="mb-15"><a class="primary-hover" href="#">BANDERA FRANCIA</a></h4>
-                                    <del>$74.50</del><span class="primary-color ml-10">$49.50</span>
-                                    <div class="star mt-20">
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
+            <!-- Product 2 -->
+            <div class="col-6 col-lg-3">
+                <div class="product-item-custom">
+                    <div class="image mb-15">
+                        <img src="assets/images/home-plapers/destacados-plapers/home-destacado-B.png" alt="product" class="w-100" style="border-radius: 8px;">
                     </div>
-                    <div class="dot product__dot mt-40 swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 1"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 2"></span><span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 3" aria-current="true"></span></div>
-                    <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+                    <div class="content">
+                        <h5 class="text-white text-uppercase mb-2" style="font-size: 13px; font-weight: 500; letter-spacing: 0.5px;">MOSAICO</h5>
+                        <div class="price text-white" style="font-size: 18px; font-weight: 600;">$49.50</div>
+                    </div>
                 </div>
             </div>
-            <!-- DESTACADOS end area-->
+            <!-- Product 3 -->
+            <div class="col-6 col-lg-3">
+                <div class="product-item-custom">
+                    <div class="image mb-15">
+                        <img src="assets/images/home-plapers/destacados-plapers/home-destacado-C.png" alt="product" class="w-100" style="border-radius: 8px;">
+                    </div>
+                    <div class="content">
+                        <h5 class="text-white text-uppercase mb-2" style="font-size: 13px; font-weight: 500; letter-spacing: 0.5px;">NASCAR AZUL</h5>
+                        <div class="price text-white" style="font-size: 18px; font-weight: 600;">$49.50</div>
+                    </div>
+                </div>
+            </div>
+            <!-- Product 4 -->
+            <div class="col-6 col-lg-3">
+                <div class="product-item-custom">
+                    <div class="image mb-15">
+                        <img src="assets/images/home-plapers/destacados-plapers/home-destacado-D.png" alt="product" class="w-100" style="border-radius: 8px;">
+                    </div>
+                    <div class="content">
+                        <h5 class="text-white text-uppercase mb-2" style="font-size: 13px; font-weight: 500; letter-spacing: 0.5px;">BANDERA FRANCIA</h5>
+                        <div class="price text-white" style="font-size: 18px; font-weight: 600;">$49.50</div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+        <!-- Button -->
+        <div class="row justify-content-center">
+            <div class="col-auto">
+                <a href="#" class="btn-hero-pink" style="padding: 12px 40px;"><span>Ver más</span></a>
+            </div>
         </div>
     </div>
 </section>
 <!-- ACCESORIOS / DESTACADOS area end here -->
 
-
-<!-- Brand area start here -->
-
-<section class="discount-area bg-image" data-background="assets/images/home-plapers/redes-sociales-plapers/redes-sociales-bg.jpg" style="background-image: url(&quot;assets/images/home-plapers/redes-sociales-plapers/redes-sociales-bg.jpg&quot;);">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-6">
-                <div class="image mb-5 mb-lg-0"><img src="assets/images/home-plapers/redes-sociales-plapers/redes-sociales-plapers.png" alt="image"></div>
-            </div>
-            <div class="col-lg-6">
-                <div class="discount__item ps-0 pb-5 pb-lg-0 ps-lg-5">
-                    <div class="section-header">
-                        <div class="section-title-icon wow fadeInUp" data-wow-delay=".1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
-                            <span class="title-icon mr-10"></span>
-                            <h2>Síguenos en Facebook <br>e Instagram</h2>
-                        </div>
-                        <!--<p class="mt-30 mb-55 wow fadeInUp" data-wow-delay=".2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">Sell globally in minutes with
-                                    localized currencies languages, and
-                                    <br>
-                                    experie in every
-                                    market. only a variety of vaping
-                                    products
-                                </p>-->
-                        <!--<a class="btn-one wow fadeInUp" data-wow-delay=".3s" href="shop.html" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;"><span>Shop
-                                        Now</span></a>
-                                <a class="off-btn wow fadeInUp" data-wow-delay=".4s" href="#0" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;"><img class="mr-10" src="assets/images/icon/fire.svg" alt="icon"> GET <span class="primary-color">25%
-                                        OFF</span> NOW</a>-->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Brand area end here -->
+

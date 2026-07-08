@@ -8,6 +8,12 @@
     <title>PLAPERS</title>
     <!-- Favicon img -->
     <link rel="shortcut icon" href="<?= base_url() ?>/assets/images/favicon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com" rel="stylesheet">
+
+
     <!-- Bootstarp min css -->
     <link rel="stylesheet" href="<?= base_url() ?>/assets/css/bootstrap.min.css">
     <!-- All min css -->
@@ -30,8 +36,8 @@
 </head>
 
 <body>
-  <!-- Loader -->
-  <div id="loading1" class="loading-invisible" style="display:none;">
+    <!-- Loader -->
+    <div id="loading1" class="loading-invisible" style="display:none;">
         <div class="loading-spinner">
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: none; display: block; shape-rendering: auto;" width="204px" height="204px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
                 <circle cx="50" cy="50" r="0" fill="none" stroke="#013369" stroke-width="3">

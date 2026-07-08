@@ -99,7 +99,6 @@
 .img-desliza-desktop {
   position: absolute;
   top: 35%;
-  left: 80px;
 }
 
 .img-desliza-desktop img {
@@ -116,12 +115,20 @@
   height: 120px;
 }
 
+.left-80 {
+  left: 80px;
+}
+
+.right-80 {
+  right: 80px;
+}
+
 .section-description {
   color: #FFFFFF;
-  font-family: Inter;
+  font-family: 'Inter', sans-serif; /* Se agrega 'sans-serif' como respaldo */
   font-weight: 400;
-  font-style: Regular;
-  font-size: 16px;
+  font-style: normal; /* Cambiado de 'Regular' a 'normal' */
+  font-size: 18px;
   line-height: 25px;
   letter-spacing: 0%;
   text-align: center;
@@ -129,9 +136,9 @@
 
 .section-subtitle {
   color: #FFFFFF;
-  font-family: Inter;
+  font-family: 'Inter', sans-serif; /* Se agrega 'sans-serif' como respaldo */
   font-weight: 700;
-  font-style: Bold;
+  font-style: normal; /* Cambiado de 'Bold' a 'normal' */
   font-size: 45px;
   line-height: 100%;
   letter-spacing: 0%;
@@ -140,9 +147,9 @@
 
 .section-title {
   color: var(--color-principal);
-  font-family: Inter;
+  font-family: 'Inter', sans-serif; /* Se agrega 'sans-serif' como respaldo */
   font-weight: 600;
-  font-style: Semi Bold;
+  font-style: semi-bold; /* Cambiado de 'Semi Bold' a 'semi-bold' */
   font-size: 22px;
   line-height: 100%;
   letter-spacing: 0%;
@@ -151,9 +158,9 @@
 
 .sub-title-plates {
   color: #FFFFFF;
-  font-family: Inter;
+  font-family: 'Inter', sans-serif; /* Se agrega 'sans-serif' como respaldo */
   font-weight: 700;
-  font-style: Bold;
+  font-style: bold; /* Cambiado de 'Bold' a 'bold' */
   font-size: 25px;
   line-height: 100%;
   letter-spacing: 0%;
@@ -755,4 +762,4 @@
 /* Hide the old hamburger spans just in case */
 .header-bar span {
   display: none !important;
-}
+}

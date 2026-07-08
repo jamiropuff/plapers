@@ -25,10 +25,10 @@
 <!-- Text slider area end here -->
 
 <!-- PERSONALZA TU PLACA area start here -->
-<section class="get-now-area pt-30 pb-80">
+<section class="pt-30 pb-80">
     <div class="container">
-        <div class="row align-items-center bor-bottom">
-            <div class="col-xl-6">
+        <div class="row align-items-center justify-content-center bor-bottom">
+            <div class="col-xl-5">
                 <!--<h4 class="mb-30 wow fadeInUp" data-wow-delay=".1s"><img src="assets/images/icon/fire.svg"
                                 alt="icon">
                             OBTEN <span class="primary-color">50% DE DESCUENTO</span> AHORA</h4>-->
@@ -133,7 +133,7 @@
 
                 <div id="app">
                     <!-- Solo Desktop -->
-                    <div class="img-desliza-desktop d-none d-lg-block">
+                    <div class="img-desliza-desktop left-80 d-none d-lg-block">
                         <img src="assets/images/home-plapers/varios/desliza.png" alt="Desliza">
                     </div>
 
@@ -190,7 +190,7 @@
 
                 <div id="app">
                     <!-- Solo Desktop -->
-                    <div class="img-desliza-desktop d-none d-lg-block">
+                    <div class="img-desliza-desktop right-80 d-none d-lg-block">
                         <img src="assets/images/home-plapers/varios/desliza.png" alt="Desliza">
                     </div>
 
@@ -244,7 +244,7 @@
 
                 <div id="app">
                     <!-- Solo Desktop -->
-                    <div class="img-desliza-desktop d-none d-lg-block">
+                    <div class="img-desliza-desktop left-80 d-none d-lg-block">
                         <img src="assets/images/home-plapers/varios/desliza.png" alt="Desliza">
                     </div>
 
@@ -298,7 +298,7 @@
 
                 <div id="app">
                     <!-- Solo Desktop -->
-                    <div class="img-desliza-desktop d-none d-lg-block">
+                    <div class="img-desliza-desktop right-80 d-none d-lg-block">
                         <img src="assets/images/home-plapers/varios/desliza.png" alt="Desliza">
                     </div>
 

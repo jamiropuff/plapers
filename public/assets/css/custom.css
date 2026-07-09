@@ -410,7 +410,7 @@
 /* Mobile layout: image on top, text below */
 @media (max-width: 991px) {
   .custom-hero-slide {
-    min-height: 100vh;
+    /*min-height: 100vh;*/
     position: relative;
     display: flex;
     flex-direction: column;

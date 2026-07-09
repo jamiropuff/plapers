@@ -1,4 +1,4 @@
-<section class="custom-hero-slide" style="position: relative; max-width: 1920px; margin: 0 auto; background-color: #050a1f;">
+<section class="custom-hero-slide" style="position: relative; margin: 0 auto; background-color: #050a1f;">
     <picture>
         <source media="(max-width: 991px)" srcset="<?= base_url('img/main-phones.jpg') ?>">
         <img src="<?= base_url('img/main.jpg') ?>" class="hero-bg-img" alt="Banner">

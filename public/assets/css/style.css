@@ -4690,7 +4690,7 @@ input {
 
 .text-slider {
   overflow: hidden;
-  font-size: 40px;
+  font-size: 30px;
   line-height: 65px;
   color: var(--heading-color);
   text-transform: capitalize;

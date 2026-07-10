@@ -350,11 +350,11 @@
             <div class="col-6 col-lg-3">
                 <div class="product-item-custom">
                     <div class="image mb-15">
-                        <img src="assets/images/home-plapers/destacados-plapers/home-destacado-A.png" alt="product" class="w-100" style="border-radius: 8px;">
+                        <img src="<?= base_url('assets/images/home-plapers/destacados-plapers/home-destacado-A.png') ?>" alt="product" class="w-100" style="border-radius: 8px;">
                     </div>
                     <div class="content">
-                        <h5 class="text-white text-uppercase mb-2" style="font-size: 13px; font-weight: 500; letter-spacing: 0.5px;">ESCUDO AGUILA BLANCA</h5>
-                        <div class="price text-white" style="font-size: 18px; font-weight: 600;">$49.50</div>
+                        <h5 class="text-white text-uppercase mb-2" style="font-size: 13px; font-weight: 500; letter-spacing: 0.5px;">PORTA PLACA AMERICANO NEGRO</h5>
+                        <!-- <div class="price text-white" style="font-size: 18px; font-weight: 600;">$49.50</div> -->
                     </div>
                 </div>
             </div>
@@ -362,11 +362,11 @@
             <div class="col-6 col-lg-3">
                 <div class="product-item-custom">
                     <div class="image mb-15">
-                        <img src="assets/images/home-plapers/destacados-plapers/home-destacado-B.png" alt="product" class="w-100" style="border-radius: 8px;">
+                        <img src="<?= base_url('assets/images/home-plapers/destacados-plapers/home-destacado-B.png') ?>" alt="product" class="w-100" style="border-radius: 8px;">
                     </div>
                     <div class="content">
-                        <h5 class="text-white text-uppercase mb-2" style="font-size: 13px; font-weight: 500; letter-spacing: 0.5px;">MOSAICO</h5>
-                        <div class="price text-white" style="font-size: 18px; font-weight: 600;">$49.50</div>
+                        <h5 class="text-white text-uppercase mb-2" style="font-size: 13px; font-weight: 500; letter-spacing: 0.5px;">PORTA PLACA AMERICANO ROJO</h5>
+                        <!-- <div class="price text-white" style="font-size: 18px; font-weight: 600;">$49.50</div> -->
                     </div>
                 </div>
             </div>
@@ -374,11 +374,11 @@
             <div class="col-6 col-lg-3">
                 <div class="product-item-custom">
                     <div class="image mb-15">
-                        <img src="assets/images/home-plapers/destacados-plapers/home-destacado-C.png" alt="product" class="w-100" style="border-radius: 8px;">
+                        <img src="<?= base_url('assets/images/home-plapers/destacados-plapers/home-destacado-C.png') ?>" alt="product" class="w-100" style="border-radius: 8px;">
                     </div>
                     <div class="content">
-                        <h5 class="text-white text-uppercase mb-2" style="font-size: 13px; font-weight: 500; letter-spacing: 0.5px;">NASCAR AZUL</h5>
-                        <div class="price text-white" style="font-size: 18px; font-weight: 600;">$49.50</div>
+                        <h5 class="text-white text-uppercase mb-2" style="font-size: 13px; font-weight: 500; letter-spacing: 0.5px;">PORTA PLACA EUROPEO</h5>
+                        <!-- <div class="price text-white" style="font-size: 18px; font-weight: 600;">$49.50</div> -->
                     </div>
                 </div>
             </div>
@@ -386,11 +386,11 @@
             <div class="col-6 col-lg-3">
                 <div class="product-item-custom">
                     <div class="image mb-15">
-                        <img src="assets/images/home-plapers/destacados-plapers/home-destacado-D.png" alt="product" class="w-100" style="border-radius: 8px;">
+                        <img src="<?= base_url('assets/images/home-plapers/destacados-plapers/home-destacado-D.png') ?>" alt="product" class="w-100" style="border-radius: 8px;">
                     </div>
                     <div class="content">
-                        <h5 class="text-white text-uppercase mb-2" style="font-size: 13px; font-weight: 500; letter-spacing: 0.5px;">BANDERA FRANCIA</h5>
-                        <div class="price text-white" style="font-size: 18px; font-weight: 600;">$49.50</div>
+                        <h5 class="text-white text-uppercase mb-2" style="font-size: 13px; font-weight: 500; letter-spacing: 0.5px;">BASE PARA PLACA</h5>
+                        <!-- <div class="price text-white" style="font-size: 18px; font-weight: 600;">$49.50</div> -->
                     </div>
                 </div>
             </div>
@@ -406,4 +406,4 @@
 </section>
 <!-- ACCESORIOS / DESTACADOS area end here -->
 
-
+

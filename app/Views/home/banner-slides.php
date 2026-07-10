@@ -1,7 +1,7 @@
-<section class="custom-hero-slide" style="position: relative; margin: 0 auto; background-color: #050a1f;">
-    <picture>
+<section class="custom-hero-slide" style="position: relative; margin: 0 auto; background-color: #050a1f; height: 100vh;">
+    <picture style="height: 100vh;">
         <source media="(max-width: 991px)" srcset="<?= base_url('img/main-phones.jpg') ?>">
-        <img src="<?= base_url('img/main.jpg') ?>" class="hero-bg-img" alt="Banner">
+        <img src="<?= base_url('img/main.jpg') ?>" class="hero-bg-img" alt="Banner" style="max-height: 100%; width: 100%; object-fit: cover; height: 100%;">
     </picture>
 
     <!-- Price badge - visible on all screen sizes, positioned over the image -->

@@ -136,19 +136,6 @@ $routes->post('panel/catalogos/productos/desactiva', 'ProductosController::desac
 
 
 
-// Degree 
-// $routes->post('panel/degree/list', 'AdminDegreeController::list');
-// $routes->post('panel/degree/academic_degree', 'AdminDegreeController::academic_degree');
-
-// Events
-// $routes->get('panel/events', 'AdminEventsController::events');
-// $routes->post('panel/events/add', 'AdminEventsController::add');
-// $routes->post('panel/events/upd', 'AdminEventsController::upd');
-// $routes->post('panel/events/del', 'AdminEventsController::del');
-
-// Events
-// $routes->post('panel/events/list', 'AdminEventsController::list');
-
 // Password
 $routes->get('panel/password', 'UserController::password');
 $routes->post('panel/password/upd', 'UserController::upd_pass');

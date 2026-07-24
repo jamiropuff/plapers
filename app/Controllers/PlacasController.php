@@ -2,9 +2,9 @@
 
 namespace App\Controllers;
 
-class Home extends BaseController
+class PlacasController extends BaseController
 {
-    public function index()
+    public function tienda()
     {
 
         // $data_footer = array(
@@ -19,8 +19,7 @@ class Home extends BaseController
         echo view('templates/nav-top');
         // echo view('templates/sidebar-right');
         //echo view('templates/breadcrumb',$data_breadcrumb);
-        echo view('home/banner-slides');
-        echo view('home/default');
+        echo view('store/default');
         echo view('templates/footer');
         // echo view('scripts/scripts');
         echo view('templates/close');
@@ -41,7 +40,6 @@ class Home extends BaseController
         echo view('templates/nav-top');
         // echo view('templates/sidebar-right');
         //echo view('templates/breadcrumb',$data_breadcrumb);
-        echo view('aboutus/banner');
         echo view('aboutus/default');
         echo view('templates/footer');
         // echo view('scripts/scripts');

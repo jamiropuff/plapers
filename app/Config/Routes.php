@@ -38,30 +38,28 @@ $routes->set404Override();
 /**********************************************************************/
 /* Website */
 /**********************************************************************/
+// Home
 $routes->get('/', 'Home::index');
+//Se cciones
 $routes->get('/web/acerca_de', 'Home::acerca_de');
 $routes->get('/web/galeria', 'Home::galeria');
 $routes->get('/web/faqs', 'Home::faqs');
 $routes->get('/web/contacto', 'Home::contacto');
 
+// Tienda
+$routes->get('placas/tienda', 'Placas::tienda');
 $routes->get('placas/americana', 'Placas::americana');
 $routes->get('placas/europea', 'Placas::europea');
 $routes->get('placas/bicicleta', 'Placas::bicicleta');
 $routes->get('placas/euromini', 'Placas::euromini');
-$routes->get('accesorios', 'Home::accesorios');
-
-// $routes->post('solicitar_informacion', 'Home::solicitar_informacion');
+$routes->get('accesorios', 'Placas::accesorios');
 
 
 // Footer
-$routes->get('sitios-interes', 'Home::sitios_interes');
-$routes->get('terminos-y-condiciones', 'Home::terminos_condiciones');
 $routes->get('aviso-de-privacidad', 'Home::aviso_privacidad');
-$routes->get('clinica-psicoterapeutica', 'Home::clinica_psicoterapeutica');
 
 
 // Contact
-$routes->get('contacto', 'Home::contacto');
 $routes->post('enviar_contacto', 'Home::enviar_contacto');
 
 

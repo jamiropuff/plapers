@@ -47,12 +47,12 @@ $routes->get('/web/faqs', 'Home::faqs');
 $routes->get('/web/contacto', 'Home::contacto');
 
 // Tienda
-$routes->get('placas/tienda', 'Placas::tienda');
-$routes->get('placas/americana', 'Placas::americana');
-$routes->get('placas/europea', 'Placas::europea');
-$routes->get('placas/bicicleta', 'Placas::bicicleta');
-$routes->get('placas/euromini', 'Placas::euromini');
-$routes->get('accesorios', 'Placas::accesorios');
+$routes->get('/placas/tienda', 'Placas::tienda');
+$routes->get('/placas/americana', 'Placas::americana');
+$routes->get('/placas/europea', 'Placas::europea');
+$routes->get('/placas/bicicleta', 'Placas::bicicleta');
+$routes->get('/placas/euromini', 'Placas::euromini');
+$routes->get('/accesorios', 'Placas::accesorios');
 
 
 // Footer

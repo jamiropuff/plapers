@@ -3470,18 +3470,25 @@ input {
 .product-title {
   color: #434343;
   font-size: 16px;
-  font-weight: 700;
-  margin-bottom: 10px;
+  font-weight: 400;
+  /* margin-bottom: 10px; */
   overflow: hidden;
   text-overflow: ellipsis;
   text-transform: uppercase;
   white-space: nowrap;
 }
 
+.product-title span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  width: 100%;
+}
+
 .product__content del,
 .product__content span {
-  font-size: 20px;
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: 400;
 }
 
 .product__item {

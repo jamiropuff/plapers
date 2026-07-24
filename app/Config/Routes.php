@@ -39,10 +39,19 @@ $routes->set404Override();
 /* Website */
 /**********************************************************************/
 $routes->get('/', 'Home::index');
-$routes->get('web/acerca_de', 'Home::acerca_de');
-$routes->post('solicitar_informacion', 'Home::solicitar_informacion');
+$routes->get('/web/acerca_de', 'Home::acerca_de');
+$routes->get('/web/galeria', 'Home::galeria');
+$routes->get('/web/faqs', 'Home::faqs');
+$routes->get('/web/contacto', 'Home::contacto');
 
-$routes->get('list_degree', 'AdminDegreeController::list_degree');
+$routes->get('placas/americana', 'Placas::americana');
+$routes->get('placas/europea', 'Placas::europea');
+$routes->get('placas/bicicleta', 'Placas::bicicleta');
+$routes->get('placas/euromini', 'Placas::euromini');
+$routes->get('accesorios', 'Home::accesorios');
+
+// $routes->post('solicitar_informacion', 'Home::solicitar_informacion');
+
 
 // Footer
 $routes->get('sitios-interes', 'Home::sitios_interes');
@@ -50,27 +59,6 @@ $routes->get('terminos-y-condiciones', 'Home::terminos_condiciones');
 $routes->get('aviso-de-privacidad', 'Home::aviso_privacidad');
 $routes->get('clinica-psicoterapeutica', 'Home::clinica_psicoterapeutica');
 
-// Educative offer
-$routes->get('oferta-educativa', 'DegreeController::oferta_educativa');
-
-// Degree Programs
-$routes->get('licenciaturas', 'DegreeController::licenciaturas');
-$routes->get('maestrias', 'DegreeController::maestrias');
-$routes->get('doctorados', 'DegreeController::doctorados');
-$routes->get('bachillerato', 'DegreeController::bachillerato');
-
-// Scholarship & Agreements
-$routes->get('becas-y-convenios', 'Home::becasconvenios');
-
-// School Campus
-$routes->get('planteles', 'Home::planteles');
-
-// Parkinson
-$routes->get('parkinson', 'Home::parkinson');
-
-// Magazine Thanatos
-$routes->get('revista-thanatos', 'Home::revista_thanatos');
-$routes->get('revista-thanatos/revista/(:any)', 'Home::revista_show/$1');
 
 // Contact
 $routes->get('contacto', 'Home::contacto');

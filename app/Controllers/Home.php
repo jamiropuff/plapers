@@ -51,40 +51,66 @@ class Home extends BaseController
         echo view('templates/close');
     }
 
+    public function galeria()
+    {
+
+        // $data_footer = array(
+        //     'grade' => '',
+        //     'menu' => 'inicio',
+        //     'visitas' => $visitas,
+        //     'eventos' => $eventos,
+        //     'menu_oferta' => $menu_oferta
+        // );
+
+        echo view('templates/header');
+        echo view('templates/nav-top');
+        // echo view('templates/sidebar-right');
+        //echo view('templates/breadcrumb',$data_breadcrumb);
+        echo view('gallery/default');
+        echo view('templates/footer');
+        // echo view('scripts/scripts');
+        echo view('templates/close');
+    }
+
+    public function faqs()
+    {
+
+        // $data_footer = array(
+        //     'grade' => '',
+        //     'menu' => 'inicio',
+        //     'visitas' => $visitas,
+        //     'eventos' => $eventos,
+        //     'menu_oferta' => $menu_oferta
+        // );
+
+        echo view('templates/header');
+        echo view('templates/nav-top');
+        // echo view('templates/sidebar-right');
+        //echo view('templates/breadcrumb',$data_breadcrumb);
+        echo view('faqs/default');
+        echo view('templates/footer');
+        // echo view('scripts/scripts');
+        echo view('templates/close');
+    }
+
     public function contacto()
     {
 
-        // Contador de Visitas
-        $contadorModel = new ContadorModel();
-        $visitas = $contadorModel->findColumn('visitas');
-
-        // Oferta Educativa para el menú
-        $ofertaEducativaModel = new OfertaEducativaModel();
-
-        $menu_oferta = $ofertaEducativaModel->select('id, id_grado_academico, oferta_educativa, titulo, titulo_menu, is_deleted, updated_at')
-            ->where('is_deleted', 0)
-            ->orderBy('id_grado_academico ASC', 'id ASC')
-            ->findAll();
-
-
-        $data_breadcrumb = array(
-            'title' => 'Contacto'
-        );
-
-        $data_footer = array(
-            'grade' => '',
-            'menu' => 'contacto',
-            'visitas' => $visitas,
-            'menu_oferta' => $menu_oferta,
-        );
+        // $data_footer = array(
+        //     'grade' => '',
+        //     'menu' => 'inicio',
+        //     'visitas' => $visitas,
+        //     'eventos' => $eventos,
+        //     'menu_oferta' => $menu_oferta
+        // );
 
         echo view('templates/header');
-        echo view('templates/nav-top', $data_footer);
-        echo view('templates/sidebar-right');
-        echo view('contact/banner', $data_breadcrumb);
-        echo view('contact/contacto');
-        echo view('templates/footer', $data_footer);
-        echo view('scripts/scripts');
+        echo view('templates/nav-top');
+        // echo view('templates/sidebar-right');
+        //echo view('templates/breadcrumb',$data_breadcrumb);
+        echo view('contact/default');
+        echo view('templates/footer');
+        // echo view('scripts/scripts');
         echo view('templates/close');
     }
 
@@ -238,10 +264,10 @@ class Home extends BaseController
         );
 
         echo view('admin/templates/header');
-        echo view('admin/templates/nav-top',$data_session);
+        echo view('admin/templates/nav-top', $data_session);
         echo view('admin/templates/nav-aside');
-        echo view('admin/templates/breadcrumb',$data_breadcrumb);
-        echo view('admin/home/default',$data_main);
-        echo view('admin/templates/footer',$data_footer);
+        echo view('admin/templates/breadcrumb', $data_breadcrumb);
+        echo view('admin/home/default', $data_main);
+        echo view('admin/templates/footer', $data_footer);
     }
 }

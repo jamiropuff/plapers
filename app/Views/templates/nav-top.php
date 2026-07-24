@@ -103,19 +103,19 @@
                         <a href="<?= base_url() ?>" class="nav-inicio-link">INICIO</a>
                     </li>
                     <li>
-                        <a href="web/tienda">TIENDA</a>
+                        <a href="<?= base_url('placas/tienda') ?>">TIENDA</a>
                     </li>
                     <li>
-                        <a href="web/acerca_de">NOSOTROS</a>
+                        <a href="<?= base_url('web/acerca_de') ?>">NOSOTROS</a>
                     </li>
                     <li>
-                        <a href="#">GALERÍA</a>
+                        <a href="<?= base_url('web/galeria') ?>">GALERÍA</a>
                     </li>
                     <li>
-                        <a href="#">FAQS</a>
+                        <a href="<?= base_url('web/faqs') ?>">FAQS</a>
                     </li>
                     <li>
-                        <a href="#">CONTACTO</a>
+                        <a href="<?= base_url('web/contacto') ?>">CONTACTO</a>
                     </li>
                 </ul>
             </div>
@@ -162,46 +162,46 @@
             <!-- header-bar moved to top__header -->
             <ul class="main-menu">
                 <li>
-                    <a href="#0">TIENDA <i class="fa-regular fa-angle-down"></i></a>
+                    <a href="<?= base_url('placas/tienda') ?>">TIENDA <i class="fa-regular fa-angle-down"></i></a>
                     <ul class="sub-menu">
                         <li class="subtwohober">
-                            <a href="placa-americana.php">
+                            <a href="<?= base_url('placas/americana') ?>">
                                 Placa Americana
                             </a>
                         </li>
                         <li class="subtwohober">
-                            <a href="#">
+                            <a href="<?= base_url('placas/europea') ?>">
                                 Placa Europea
                             </a>
                         </li>
                         <li class="subtwohober">
-                            <a href="#">
+                            <a href="<?= base_url('placas/euromini') ?>">
                                 Placa Euromini
                             </a>
                         </li>
                         <li class="subtwohober">
-                            <a href="#">
+                            <a href="<?= base_url('placas/bicicleta') ?>">
                                 Placa Bicicleta
                             </a>
                         </li>
                         <li class="subtwohober">
-                            <a href="#">
+                            <a href="<?= base_url('accesorios') ?>">
                                 Accesorios
                             </a>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <a href="web/acerca_de">NOSOTROS</a>
+                    <a href="<?= base_url('web/acerca_de') ?>">NOSOTROS</a>
                 </li>
                 <li>
-                    <a href="#">GALERÍA</a>
+                    <a href="<?= base_url('web/galeria') ?>">GALERÍA</a>
                 </li>
                 <li>
-                    <a href="#">FAQ</a>
+                    <a href="<?= base_url('web/faqs') ?>">FAQS</a>
                 </li>
                 <li>
-                    <a href="#">CONTACTO</a>
+                    <a href="<?= base_url('web/contacto') ?>">CONTACTO</a>
                 </li>
             </ul>
         </div>

@@ -272,6 +272,39 @@
     transition:.8s;
 
 }
+/*
+.product__item{
+    background:#091226;
+    border-radius:12px;
+    padding:18px;
+    transition:all .35s ease;
+}
+
+.product__item:hover{
+    background:#0c1730;
+    transform:translateY(-8px);
+    box-shadow:0 15px 35px rgba(0,0,0,.35);
+}
+*/
+/*
+.product__item{
+    background:#091226;
+    border-radius:12px;
+    transition:all .35s ease;
+    overflow:hidden;
+}
+
+.product__item:hover{
+    background:#0c1730;
+    transform:translateY(-8px);
+    box-shadow:0 15px 35px rgba(0,0,0,.35);
+}
+
+.product__content{
+    padding:15px;
+}
+*/
+/* Placas*/
 
 /* Menú siempre fijo en desktop */
 @media (min-width:992px) {

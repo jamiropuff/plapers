@@ -103,7 +103,29 @@
                         <a href="<?= base_url() ?>" class="nav-inicio-link">INICIO</a>
                     </li>
                     <li>
-                        <a href="<?= base_url('placas/tienda') ?>">TIENDA</a>
+                        <a href="#">TIENDA <i class="fa-regular fa-angle-down"></i></a>
+                        <ul class="sub-menu">
+                            <li class="subtwohober">
+                                <a href="<?= base_url('placas/americana') ?>">
+                                    Americana
+                                </a>
+                            </li>
+                            <li class="subtwohober">
+                                <a href="<?= base_url('placas/europea') ?>">
+                                    Europea
+                                </a>
+                            </li>
+                            <li class="subtwohober">
+                                <a href="<?= base_url('placas/euromini') ?>">
+                                    Euromini
+                                </a>
+                            </li>
+                            <li class="subtwohober">
+                                <a href="<?= base_url('placas/bicicleta') ?>">
+                                    Bicicleta
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                     <li>
                         <a href="<?= base_url('web/acerca_de') ?>">NOSOTROS</a>
@@ -162,7 +184,7 @@
             <!-- header-bar moved to top__header -->
             <ul class="main-menu">
                 <li>
-                    <a href="<?= base_url('placas/tienda') ?>">TIENDA <i class="fa-regular fa-angle-down"></i></a>
+                    <a href="#">TIENDA <i class="fa-regular fa-angle-down"></i></a>
                     <ul class="sub-menu">
                         <li class="subtwohober">
                             <a href="<?= base_url('placas/americana') ?>">

@@ -51,6 +51,26 @@ CSS TABLE OF CONTENTS
 			element.siblings("li").find("ul").slideUp(300, "swing");
 		}
 	});
+	
+	$(".header-bar").on("click", function (e) {
+		$(".main-menu-desktop, .header-bar").toggleClass("active");
+	});
+	$(".main-menu-desktop li a").on("click", function (e) {
+		var element = $(this).parent("li");
+		if (element.hasClass("open")) {
+			element.removeClass("open");
+			element.find("li").removeClass("open");
+			element.find("ul").slideUp(300, "swing");
+		} else {
+			element.addClass("open");
+			element.children("ul").slideDown(300, "swing");
+			element.siblings("li").children("ul").slideUp(300, "swing");
+			element.siblings("li").removeClass("open");
+			element.siblings("li").find("li").removeClass("open");
+			element.siblings("li").find("ul").slideUp(300, "swing");
+		}
+	});
+
 	var fixed_top = $(".header-section");
 	$(window).on("scroll", function () {
 		if ($(this).scrollTop() > 220) {

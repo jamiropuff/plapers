@@ -5,7 +5,7 @@
     <section class="product-area pt-130 pb-130">
         <div class="container">
             <div class="pb-20 bor-bottom shop-page-wrp d-flex justify-content-between align-items-center mb-65">
-                <p class="fw-600">Placas en formato Americano (15 x 30 cms.) con diferentes materiales, acabados, diseños y con elección a que la personalices.</p>
+                <p class="fw-600"><?= $Descripcion; ?></p>
                 <div class="short">
                     <select name="shortList" id="shortList">
                         <option value="0">Todo</option>

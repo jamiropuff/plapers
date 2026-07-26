@@ -77,7 +77,7 @@ class Placas extends BaseController
         $data = array(
             'Titulo' => "Placa Euromini",
             'Descripcion' => "Placas en formato Euromini (7 x 46 cms.) con diferentes materiales, acabados, diseños y con elección a que la personalices.",
-            'Placas' => $productoModel->lista(1, 4)
+            'Placas' => $productoModel->lista(1, 3)
 
         );
 
@@ -94,19 +94,20 @@ class Placas extends BaseController
     public function bicicleta()
     {
 
-        // $data_footer = array(
-        //     'grade' => '',
-        //     'menu' => 'inicio',
-        //     'visitas' => $visitas,
-        //     'eventos' => $eventos,
-        //     'menu_oferta' => $menu_oferta
-        // );
+        $productoModel = new ProductoModel();
+
+        $data = array(
+            'Titulo' => "Placa Bicicleta",
+            'Descripcion' => "Placas en formato Bicicleta (8 X 14 CMS.) con diferentes acabados, diseños y con elección a que la personalices.",
+            'Placas' => $productoModel->lista(1, 1)
+
+        );
 
         echo view('templates/header');
         echo view('templates/nav-top');
         // echo view('templates/sidebar-right');
         //echo view('templates/breadcrumb',$data_breadcrumb);
-        echo view('store/bicicleta');
+        echo view('store/default', $data);
         echo view('templates/footer');
         // echo view('scripts/scripts');
         echo view('templates/close');

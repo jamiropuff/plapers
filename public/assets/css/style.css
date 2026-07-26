@@ -2731,7 +2731,7 @@ input {
   border-bottom: unset;
 }
 
-.menu-fixed .header-wrapper .main-menu .logo {
+.menu-fixed .header-wrapper .main-menu .logo, .menu-fixed .header-wrapper-desktop .main-menu-desktop .logo {
   display: block;
 }
 
@@ -2744,34 +2744,34 @@ input {
   padding: 16px 0;
 }
 
-.header-wrapper .main-menu {
+.header-wrapper .main-menu, .header-wrapper-desktop .main-menu-desktop {
   position: relative;
   display: flex;
   align-items: center;
 }
 
-.header-wrapper .main-menu .logo {
+.header-wrapper .main-menu .logo, .header-wrapper-desktop .main-menu-desktop .logo {
   display: none;
 }
 
-.header-wrapper .main-menu li {
+.header-wrapper .main-menu li, .header-wrapper-desktop .main-menu-desktop li {
   transition: all 0.6s;
   position: relative;
   text-transform: capitalize;
   border-radius: initial;
 }
 
-.header-wrapper .main-menu li:not(:last-child) {
+.header-wrapper .main-menu li:not(:last-child), .header-wrapper-desktop .main-menu-desktop li:not(:last-child) {
   margin-right: 38px;
 }
 
 @media (max-width: 1199px) {
-  .header-wrapper .main-menu li:not(:last-child) {
+  .header-wrapper .main-menu li:not(:last-child), .header-wrapper-desktop .main-menu-desktop li:not(:last-child) {
     margin-right: 20px;
   }
 }
 
-.header-wrapper .main-menu li a {
+.header-wrapper .main-menu li a, .header-wrapper-desktop .main-menu-desktop li a {
   color: var(--white);
   font-weight: 600;
   font-size: 14px;
@@ -2779,11 +2779,11 @@ input {
   padding: 15px 0;
 }
 
-.header-wrapper .main-menu li a:hover {
+.header-wrapper .main-menu li a:hover, .header-wrapper-desktop .main-menu-desktop li a:hover {
   color: var(--azul-plapers);
 }
 
-.header-wrapper .main-menu li .sub-menu {
+.header-wrapper .main-menu li .sub-menu, .header-wrapper-desktop .main-menu-desktop li .sub-menu {
   border-radius: 10px;
   margin: 0 10px 10px 10px;
   display: none;
@@ -2791,7 +2791,7 @@ input {
 }
 
 @media (min-width: 992px) {
-  .header-wrapper .main-menu li .sub-menu {
+  .header-wrapper .main-menu li .sub-menu, .header-wrapper-desktop .main-menu-desktop li .sub-menu {
     position: absolute;
     top: 100%;
     left: -10px;
@@ -2805,16 +2805,16 @@ input {
   }
 }
 
-.header-wrapper .main-menu li .sub-menu li {
+.header-wrapper .main-menu li .sub-menu li, .header-wrapper-desktop .main-menu-desktop li .sub-menu li {
   margin-right: 0;
   transition: all 0.4s !important;
 }
 
-.header-wrapper .main-menu li .sub-menu li:not(:last-child) {
+.header-wrapper .main-menu li .sub-menu li:not(:last-child), .header-wrapper-desktop .main-menu-desktop li .sub-menu li:not(:last-child) {
   border-bottom: 1px solid #d9d9d9;
 }
 
-.header-wrapper .main-menu li .sub-menu li a {
+.header-wrapper .main-menu li .sub-menu li a, .header-wrapper-desktop .main-menu-desktop li .sub-menu li a {
   color: var(--black);
   text-transform: capitalize;
   font-weight: 600;
@@ -2823,16 +2823,16 @@ input {
   padding: 8px 20px;
 }
 
-.header-wrapper .main-menu li .sub-menu li a i {
+.header-wrapper .main-menu li .sub-menu li a i, .header-wrapper-desktop .main-menu-desktop li .sub-menu li a i {
   font-size: 14px !important;
 }
 
-.header-wrapper .main-menu li .sub-menu li:hover a {
+.header-wrapper .main-menu li .sub-menu li:hover a, .header-wrapper-desktop .main-menu-desktop li .sub-menu li:hover a {
   margin-left: 10px;
   color: var(--rojo-plapers);
 }
 
-.header-wrapper .main-menu li:hover .sub-menu {
+.header-wrapper .main-menu li:hover .sub-menu, .header-wrapper-desktop .main-menu-desktop li:hover .sub-menu {
   opacity: 1;
   visibility: visible;
 }

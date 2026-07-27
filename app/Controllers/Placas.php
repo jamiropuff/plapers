@@ -106,6 +106,28 @@ class Placas extends BaseController
         echo view('templates/close');
     }
 
+    public function detalleJSON()
+    {
+        $productoModel = new ProductoModel();
+
+        $Id_Placa = service('uri')->getSegment(3);
+
+        if ($Id_Placa === 0) {
+            $response["Code"] = INVALID_REQUEST;
+            $response["Msg"] = "Se requiere id de producto";
+        } else {
+            $response["Code"] = REQUEST_SUCCESS;
+            $response["Producto"] = $productoModel->busca($Id_Placa);
+        }
+
+        $response = array(
+            'Titulo' => "Detalle de producto",
+            'Producto'  => $productoModel->busca($Id_Placa)
+        );
+
+        return $this->response->setJSON($response);
+    }
+
     public function accesorios()
     {
 

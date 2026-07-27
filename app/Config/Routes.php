@@ -54,6 +54,7 @@ $routes->get('/placas/bicicleta', 'Placas::bicicleta');
 $routes->get('/placas/euromini', 'Placas::euromini');
 
 $routes->get('/placas/detalle/(:num)', 'Placas::detalle/$1');
+$routes->get('/placas/detalles_producto/(:num)', 'Placas::detalleJSON/$1');
 $routes->get('/accesorios', 'Placas::accesorios');
 
 

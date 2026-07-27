@@ -35,7 +35,7 @@ class CategoriaModel extends Model
     /* =======================
        LISTA SUBCATEGORÍAS
        ======================= */
-    public function lista_subcategorias($id_categoria, $activo = '')
+    public function lista_subcategorias($activo = '', $id_categoria)
     {
         $builder = $this->db->table('cat_subcategorias cs')
             ->select('cs.nom_subcategoria, cs.id_subcategoria, cs.activo')

@@ -180,6 +180,15 @@
 
 }
 
+.title-placas {
+  display: block;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 30px;
+  text-transform: uppercase;
+}
+
 /* Placas */
 .product__item img {
   transition: transform .35s ease,
@@ -200,7 +209,6 @@
 }
 
 .product__item:hover {
-
   box-shadow:
     0 12px 30px rgba(255, 0, 120, .18),
     0 0 15px rgba(0, 170, 255, .12);
@@ -211,81 +219,60 @@
 }
 
 .product__item:hover .product-title {
-
   color: #ff0b68;
-
 }
 
-.secondary-color{
-
-    transition:.3s;
-
+.secondary-color {
+  transition: .3s;
 }
 
-.product__item:hover .secondary-color{
-
-    color:white;
-
-    transform:scale(1.05);
-
-    display:inline-block;
-
+.product__item:hover .secondary-color {
+  color: white;
+  transform: scale(1.05);
+  display: inline-block;
 }
 
-.product__image{
-
-    position:relative;
-
-    overflow:hidden;
-
+.product__image {
+  position: relative;
+  overflow: hidden;
 }
 
-.product__image::after{
-
-    content:"";
-
-    position:absolute;
-
-    top:0;
-
-    left:-140%;
-
-    width:45%;
-
-    height:100%;
-
-    background:linear-gradient(
-        110deg,
-        transparent,
-        rgba(255,255,255,.45),
-        transparent
-    );
-
-    transform:skewX(-20deg);
-
+.product__image::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -140%;
+  width: 45%;
+  height: 100%;
+  background: linear-gradient(110deg,
+      transparent,
+      rgba(255, 255, 255, .45),
+      transparent);
+  transform: skewX(-20deg);
 }
 
-.product__item:hover .product__image::after{
-
-    left:180%;
-
-    transition:.8s;
-
-}
-/*
-.product__item{
-    background:#091226;
-    border-radius:12px;
-    padding:18px;
-    transition:all .35s ease;
+.product__item:hover .product__image::after {
+  left: 180%;
+  transition: .8s;
 }
 
-.product__item:hover{
-    background:#0c1730;
-    transform:translateY(-8px);
-    box-shadow:0 15px 35px rgba(0,0,0,.35);
+
+.product__item {
+  background: #091226;
+  border-radius: 12px;
+  padding: 18px;
+  transition: all .35s ease;
+  box-shadow:
+    0 12px 30px rgba(255, 0, 120, .18),
+    0 0 15px rgba(0, 170, 255, .12);
 }
-*/
+
+.product__item:hover {
+  background: #0c1730;
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, .35);
+}
+
 /*
 .product__item{
     background:#091226;

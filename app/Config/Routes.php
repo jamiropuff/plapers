@@ -52,6 +52,8 @@ $routes->get('/placas/americana', 'Placas::americana');
 $routes->get('/placas/europea', 'Placas::europea');
 $routes->get('/placas/bicicleta', 'Placas::bicicleta');
 $routes->get('/placas/euromini', 'Placas::euromini');
+
+$routes->get('/placas/detalle/(:num)', 'Placas::detalle/$1');
 $routes->get('/accesorios', 'Placas::accesorios');
 
 

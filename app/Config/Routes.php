@@ -42,9 +42,13 @@ $routes->set404Override();
 $routes->get('/', 'Home::index');
 //Se cciones
 $routes->get('/web/acerca_de', 'Home::acerca_de');
+$routes->get('/acerca_de', 'Home::acerca_de'); // Alias para acceso directo
 $routes->get('/web/galeria', 'Home::galeria');
+$routes->get('/galeria', 'Home::galeria'); // Alias para acceso directo
 $routes->get('/web/faqs', 'Home::faqs');
+$routes->get('/faqs', 'Home::faqs'); // Alias para acceso directo
 $routes->get('/web/contacto', 'Home::contacto');
+$routes->get('/contacto', 'Home::contacto'); // Alias para acceso directo
 
 // Tienda
 $routes->get('/placas/tienda', 'Placas::tienda');

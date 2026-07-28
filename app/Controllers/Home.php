@@ -15,8 +15,9 @@ class Home extends BaseController
         //     'menu_oferta' => $menu_oferta
         // );
 
+        $data_nav = ['menu_activo' => 'inicio'];
         echo view('templates/header');
-        echo view('templates/nav-top');
+        echo view('templates/nav-top', $data_nav);
         // echo view('templates/sidebar-right');
         //echo view('templates/breadcrumb',$data_breadcrumb);
         echo view('home/banner-slides');
@@ -37,11 +38,12 @@ class Home extends BaseController
         //     'menu_oferta' => $menu_oferta
         // );
 
+        $data_nav = ['menu_activo' => 'nosotros'];
         echo view('templates/header');
-        echo view('templates/nav-top');
+        echo view('templates/nav-top', $data_nav);
         // echo view('templates/sidebar-right');
         //echo view('templates/breadcrumb',$data_breadcrumb);
-        echo view('aboutus/banner');
+        // echo view('aboutus/banner'); // Comentado temporalmente porque no existe este archivo
         echo view('aboutus/default');
         echo view('templates/footer');
         // echo view('scripts/scripts');
@@ -59,8 +61,9 @@ class Home extends BaseController
         //     'menu_oferta' => $menu_oferta
         // );
 
+        $data_nav = ['menu_activo' => 'galeria'];
         echo view('templates/header');
-        echo view('templates/nav-top');
+        echo view('templates/nav-top', $data_nav);
         // echo view('templates/sidebar-right');
         //echo view('templates/breadcrumb',$data_breadcrumb);
         echo view('gallery/default');
@@ -80,8 +83,9 @@ class Home extends BaseController
         //     'menu_oferta' => $menu_oferta
         // );
 
+        $data_nav = ['menu_activo' => 'faqs'];
         echo view('templates/header');
-        echo view('templates/nav-top');
+        echo view('templates/nav-top', $data_nav);
         // echo view('templates/sidebar-right');
         //echo view('templates/breadcrumb',$data_breadcrumb);
         echo view('faqs/default');
@@ -101,8 +105,9 @@ class Home extends BaseController
         //     'menu_oferta' => $menu_oferta
         // );
 
+        $data_nav = ['menu_activo' => 'contacto'];
         echo view('templates/header');
-        echo view('templates/nav-top');
+        echo view('templates/nav-top', $data_nav);
         // echo view('templates/sidebar-right');
         //echo view('templates/breadcrumb',$data_breadcrumb);
         echo view('contact/default');

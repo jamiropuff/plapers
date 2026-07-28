@@ -100,7 +100,7 @@
             <div class="header-wrapper-desktop d-lg-flex d-none">
                 <ul class="main-menu-desktop d-flex align-items-center mb-0 list-unstyled gap-3 gap-xl-4 flex-wrap justify-content-center">
                     <li>
-                        <a href="<?= base_url() ?>" class="nav-inicio-link">INICIO</a>
+                        <a href="<?= base_url() ?>" class="<?= (isset($menu_activo) && $menu_activo == 'inicio') ? 'nav-inicio-link' : '' ?>">INICIO</a>
                     </li>
                     <li>
                         <a href="#">TIENDA <i class="fa-regular fa-angle-down"></i></a>
@@ -128,16 +128,16 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="<?= base_url('web/acerca_de') ?>">NOSOTROS</a>
+                        <a href="<?= base_url('web/acerca_de') ?>" class="<?= (isset($menu_activo) && $menu_activo == 'nosotros') ? 'nav-inicio-link' : '' ?>">NOSOTROS</a>
                     </li>
                     <li>
-                        <a href="<?= base_url('web/galeria') ?>">GALERÍA</a>
+                        <a href="<?= base_url('web/galeria') ?>" class="<?= (isset($menu_activo) && $menu_activo == 'galeria') ? 'nav-inicio-link' : '' ?>">GALERÍA</a>
                     </li>
                     <li>
-                        <a href="<?= base_url('web/faqs') ?>">FAQS</a>
+                        <a href="<?= base_url('web/faqs') ?>" class="<?= (isset($menu_activo) && $menu_activo == 'faqs') ? 'nav-inicio-link' : '' ?>">FAQS</a>
                     </li>
                     <li>
-                        <a href="<?= base_url('web/contacto') ?>">CONTACTO</a>
+                        <a href="<?= base_url('web/contacto') ?>" class="<?= (isset($menu_activo) && $menu_activo == 'contacto') ? 'nav-inicio-link' : '' ?>">CONTACTO</a>
                     </li>
                 </ul>
             </div>
@@ -214,16 +214,16 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="<?= base_url('web/acerca_de') ?>">NOSOTROS</a>
+                    <a href="<?= base_url('web/acerca_de') ?>" class="<?= (isset($menu_activo) && $menu_activo == 'nosotros') ? 'nav-inicio-link' : '' ?>">NOSOTROS</a>
                 </li>
                 <li>
-                    <a href="<?= base_url('web/galeria') ?>">GALERÍA</a>
+                    <a href="<?= base_url('web/galeria') ?>" class="<?= (isset($menu_activo) && $menu_activo == 'galeria') ? 'nav-inicio-link' : '' ?>">GALERÍA</a>
                 </li>
                 <li>
-                    <a href="<?= base_url('web/faqs') ?>">FAQS</a>
+                    <a href="<?= base_url('web/faqs') ?>" class="<?= (isset($menu_activo) && $menu_activo == 'faqs') ? 'nav-inicio-link' : '' ?>">FAQS</a>
                 </li>
                 <li>
-                    <a href="<?= base_url('web/contacto') ?>">CONTACTO</a>
+                    <a href="<?= base_url('web/contacto') ?>" class="<?= (isset($menu_activo) && $menu_activo == 'contacto') ? 'nav-inicio-link' : '' ?>">CONTACTO</a>
                 </li>
             </ul>
         </div>

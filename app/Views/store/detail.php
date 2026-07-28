@@ -2,104 +2,6 @@
         /* ============================================================
            ESTILOS COMPLETOS (SCSS convertido a CSS)
            ============================================================ */
-
-        /* ----- Variables de colores ----- */
-        .selector-color--item {
-            min-width: 30px;
-            min-height: 30px;
-            border-radius: 50%;
-            display: inline-block;
-            margin-right: 0.5rem;
-            cursor: pointer;
-            border: 2px solid #ddd;
-            transition: border-color 0.2s;
-        }
-
-        .selector-color--item:hover {
-            border-color: #e74c3c;
-        }
-
-        /* Colores dinámicos */
-        .selector-color-1 {
-            background: #065389;
-        }
-
-        .selector-color-2 {
-            background: #1f42a7;
-        }
-
-        .selector-color-3 {
-            background: #000000;
-        }
-
-        .selector-color-4 {
-            background: #ffffff;
-            border-color: #ccc;
-        }
-
-        .selector-color-5 {
-            background: #f79822;
-        }
-
-        .selector-color-6 {
-            background: #ed3125;
-        }
-
-        .selector-color-7 {
-            background: #0b7052;
-        }
-
-        .selector-color-8 {
-            background: #696a6c;
-        }
-
-        .letra-color-1 {
-            color: #065389;
-        }
-
-        .letra-color-2 {
-            color: #1f42a7;
-        }
-
-        .letra-color-3 {
-            color: #000000;
-        }
-
-        .letra-color-4 {
-            color: #ffffff;
-            text-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .letra-color-5 {
-            color: #f79822;
-        }
-
-        .letra-color-6 {
-            color: #ed3125;
-        }
-
-        .letra-color-7 {
-            color: #0b7052;
-        }
-
-        .letra-color-8 {
-            color: #696a6c;
-        }
-
-        /* ----- Layout general ----- */
-        #placa {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-
-        .placa--img {
-            align-self: center;
-            width: 100%;
-        }
-
         /* ----- Estilos base para líneas de texto ----- */
         .linea-1,
         .linea-2,
@@ -107,7 +9,6 @@
             position: absolute;
             z-index: 3;
             text-transform: uppercase;
-            font-weight: bold;
             width: 94%;
             padding: 0 2%;
             text-align: center;
@@ -115,854 +16,27 @@
         }
 
         .linea-1 {
-            top: 10%;
-        }
-
-        .linea-2 {
-            top: 30%;
-        }
-
-        .linea-3 {
-            top: 50%;
-        }
-
-        /* ----- Fuentes ----- */
-        .ff-tipo-0 {
-            font-family: 'Arial', sans-serif;
-        }
-
-        .ff-tipo-1 {
-            font-family: 'Times New Roman', serif;
-        }
-
-        .ff-tipo-2 {
-            font-family: 'Courier New', monospace;
-        }
-
-        .ff-tipo-3 {
-            font-family: 'Georgia', serif;
-        }
-
-        .ff-tipo-4 {
-            font-family: 'Impact', fantasy;
-        }
-
-        /* ----- Categoría 1: Bicicleta ----- */
-        .categoria-1 .posicion-4 {
-            width: 94%;
-            z-index: 3;
-            position: absolute;
-            padding: 0 2%;
-            text-align: center;
-        }
-
-        .categoria-1 .posicion-4.personaliza-7 {
-            top: 34%;
-            font-size: 3.5rem;
-            letter-spacing: -1px;
-        }
-
-        /* ----- Categoría 2: Americana ----- */
-        /* Posición 1 */
-        .categoria-2 .posicion-1 {
-            width: 94%;
-            z-index: 3;
-            position: absolute;
-            padding: 0 2%;
-            text-align: center;
-        }
-
-        .categoria-2 .posicion-1.personaliza-15 {
-            top: 15%;
-            font-size: 7.2rem;
-        }
-
-        .categoria-2 .posicion-1.personaliza-7 {
-            top: 48%;
-            font-size: 7rem;
-        }
-
-        .categoria-2 .posicion-1.personaliza-11 {
-            top: 48%;
-            font-size: 7.5rem;
-        }
-
-        /* Posición 2 */
-        .categoria-2 .posicion-2 {
-            width: 94%;
-            z-index: 3;
-            position: absolute;
-            padding: 0 2%;
-            text-align: center;
-        }
-
-        .categoria-2 .posicion-2.personaliza-15 {
-            font-size: 7.5rem;
-        }
-
-        .categoria-2 .posicion-2.personaliza-15.linea-1 {
             top: 12%;
         }
 
-        .categoria-2 .posicion-2.personaliza-15.linea-2 {
+        .linea-2 {
             top: 34%;
         }
 
-        .categoria-2 .posicion-2.personaliza-15.linea-3 {
+        .linea-3 {
             top: 56%;
         }
 
-        /* Posición 3 */
-        .categoria-2 .posicion-3 {
-            width: 94%;
-            z-index: 3;
-            position: absolute;
-            padding: 0 2%;
-            text-align: center;
-        }
 
-        .categoria-2 .posicion-3.personaliza-8 {
-            font-size: 8.5rem;
-        }
-
-        .categoria-2 .posicion-3.personaliza-8.linea-1 {
-            top: 18%;
-        }
-
-        .categoria-2 .posicion-3.personaliza-8.linea-2 {
-            top: 50%;
-        }
-
-        /* Posición 4 */
-        .categoria-2 .posicion-4 {
-            width: 94%;
-            z-index: 3;
-            position: absolute;
-            padding: 0 2%;
-            text-align: center;
-        }
-
-        .categoria-2 .posicion-4.personaliza-7 {
-            top: 38%;
-            font-size: 7rem;
-        }
-
-        .categoria-2 .posicion-4.personaliza-11 {
-            top: 35%;
-            font-size: 7rem;
-        }
-
-        /* Posición 5 */
-        .categoria-2 .posicion-5 {
-            width: 94%;
-            z-index: 3;
-            position: absolute;
-            padding: 0 2%;
-            text-align: center;
-        }
-
-        .categoria-2 .posicion-5.personaliza-7 {
-            top: 22%;
-            font-size: 7rem;
-        }
-
-        .categoria-2 .posicion-5.personaliza-11 {
-            top: 21%;
-            font-size: 7.5rem;
-        }
-
-        .categoria-2 .posicion-5.personaliza-15 {
-            top: 53%;
-            font-size: 7.2rem;
-        }
-
-        /* ----- Categoría 3: Euromini ----- */
-        .categoria-3 .posicion-4 {
-            width: 94%;
-            z-index: 3;
-            position: absolute;
-            padding: 0 2% 0 12%;
-            text-align: center;
-        }
-
-        .categoria-3 .posicion-4.ff-tipo-4.personaliza-11 {
-            padding: 0 2%;
-        }
-
-        .categoria-3 .posicion-4.personaliza-9 {
-            top: 14%;
-            font-size: 3rem;
-        }
-
-        .categoria-3 .posicion-4.personaliza-11 {
-            top: 13%;
-            font-size: 3.2rem;
-        }
-
-        /* ----- Categoría 4: Europea ----- */
-        .categoria-4 .posicion-4 {
-            width: 94%;
-            z-index: 3;
-            padding: 0 2% 0 12%;
-            position: absolute;
-            text-align: center;
-        }
-
-        .categoria-4 .posicion-4.ff-tipo-2.personaliza-5 {
-            padding: 0 2% 0 21%;
-        }
-
-        .categoria-4 .posicion-4.ff-tipo-2.personaliza-8 {
-            padding: 0 2%;
-        }
-
-        .categoria-4 .posicion-4.ff-tipo-3.personaliza-6 {
-            padding: 0 2% 0 21%;
-        }
-
-        .categoria-4 .posicion-4.ff-tipo-3.personaliza-10 {
-            padding: 0 2%;
-            width: 88%;
-        }
-
-        .categoria-4 .posicion-4.ff-tipo-4.personaliza-5 {
-            padding: 0 2% 0 21%;
-        }
-
-        .categoria-4 .posicion-4.ff-tipo-4.personaliza-9 {
-            padding: 0 2%;
-        }
-
-        .categoria-4 .posicion-4.personaliza-5 {
-            top: 30%;
-            font-size: 4.5rem;
-        }
-
-        .categoria-4 .posicion-4.personaliza-6 {
-            top: 30%;
-            font-size: 4.5rem;
-        }
-
-        .categoria-4 .posicion-4.personaliza-7 {
-            top: 25%;
-            font-size: 3.5rem;
-        }
-
-        .categoria-4 .posicion-4.personaliza-8 {
-            top: 20%;
-            font-size: 3.4rem;
-        }
-
-        .categoria-4 .posicion-4.personaliza-9 {
-            top: 19%;
-            font-size: 3.8rem;
-            letter-spacing: 1px;
-        }
-
-        .categoria-4 .posicion-4.personaliza-10 {
-            top: 25%;
-            font-size: 3.6rem;
-        }
-
-        /* ============================================================
-           MEDIA QUERIES
-           ============================================================ */
-
-        /* ----- Tablet (480px - 768px) ----- */
-        @media (min-width: 480px) and (max-width: 768px) {
-            .categoria-1 .posicion-4.personaliza-7 {
-                top: 40%;
-                font-size: 5.5rem;
-                letter-spacing: -1px;
-            }
-
-            .categoria-2 .posicion-1.personaliza-15 {
-                top: 19%;
-                font-size: 13rem;
-            }
-
-            .categoria-2 .posicion-1.personaliza-7 {
-                top: 54%;
-                font-size: 11rem;
-            }
-
-            .categoria-2 .posicion-1.personaliza-11 {
-                top: 55%;
-                font-size: 11rem;
-            }
-
-            .categoria-2 .posicion-2.personaliza-15 {
-                font-size: 12.3rem;
-            }
-
-            .categoria-2 .posicion-2.personaliza-15.linea-1 {
-                top: 16%;
-            }
-
-            .categoria-2 .posicion-2.personaliza-15.linea-2 {
-                top: 40%;
-            }
-
-            .categoria-2 .posicion-2.personaliza-15.linea-3 {
-                top: 63%;
-            }
-
-            .categoria-2 .posicion-3.personaliza-8 {
-                font-size: 14rem;
-            }
-
-            .categoria-2 .posicion-3.personaliza-8.linea-1 {
-                top: 21%;
-            }
-
-            .categoria-2 .posicion-3.personaliza-8.linea-2 {
-                top: 56%;
-            }
-
-            .categoria-2 .posicion-4.personaliza-7 {
-                top: 45%;
-                font-size: 11rem;
-            }
-
-            .categoria-2 .posicion-4.personaliza-11 {
-                top: 41%;
-                font-size: 11rem;
-            }
-
-            .categoria-2 .posicion-5.personaliza-7 {
-                top: 27%;
-                font-size: 11rem;
-            }
-
-            .categoria-2 .posicion-5.personaliza-11 {
-                top: 25%;
-                font-size: 11.8rem;
-            }
-
-            .categoria-2 .posicion-5.personaliza-15 {
-                top: 60%;
-                font-size: 13rem;
-            }
-
-            .categoria-3 .posicion-4.ff-tipo-4.personaliza-11 {
-                padding: 0 2%;
-            }
-
-            .categoria-3 .posicion-4.personaliza-9 {
-                top: 22%;
-                font-size: 5rem;
-            }
-
-            .categoria-3 .posicion-4.personaliza-11 {
-                top: 28%;
-                font-size: 5.2rem;
-            }
-
-            .categoria-4 .posicion-4.ff-tipo-2.personaliza-5 {
-                padding: 0 2% 0 21%;
-            }
-
-            .categoria-4 .posicion-4.ff-tipo-2.personaliza-8 {
-                padding: 0 2%;
-            }
-
-            .categoria-4 .posicion-4.ff-tipo-3.personaliza-6 {
-                padding: 0 2% 0 21%;
-            }
-
-            .categoria-4 .posicion-4.ff-tipo-3.personaliza-10 {
-                padding: 0 2%;
-                width: 88%;
-            }
-
-            .categoria-4 .posicion-4.ff-tipo-4.personaliza-5 {
-                padding: 0 2% 0 21%;
-            }
-
-            .categoria-4 .posicion-4.ff-tipo-4.personaliza-9 {
-                padding: 0 2%;
-            }
-
-            .categoria-4 .posicion-4.personaliza-5 {
-                top: 38%;
-                font-size: 7rem;
-            }
-
-            .categoria-4 .posicion-4.personaliza-6 {
-                top: 46%;
-                font-size: 9.5rem;
-            }
-
-            .categoria-4 .posicion-4.personaliza-7 {
-                top: 33%;
-                font-size: 6rem;
-            }
-
-            .categoria-4 .posicion-4.personaliza-8 {
-                top: 29%;
-                font-size: 6rem;
-            }
-
-            .categoria-4 .posicion-4.personaliza-9 {
-                top: 27%;
-                font-size: 6.0rem;
-            }
-
-            .categoria-4 .posicion-4.personaliza-10 {
-                top: 32%;
-                font-size: 5.0rem;
-            }
-        }
-
-        /* ----- Tablet grande (768px - 1024px) ----- */
-        @media (min-width: 768px) and (max-width: 1024px) {
-            .categoria-1 .posicion-4.personaliza-7 {
-                top: 42%;
-                font-size: 3.6rem;
-                letter-spacing: -1px;
-            }
-
-            .categoria-2 .posicion-1.personaliza-15 {
-                top: 20%;
-                font-size: 9rem;
-            }
-
-            .categoria-2 .posicion-1.personaliza-7 {
-                top: 58%;
-                font-size: 7.5rem;
-            }
-
-            .categoria-2 .posicion-1.personaliza-11 {
-                top: 60%;
-                font-size: 7.5rem;
-            }
-
-            .categoria-2 .posicion-2.personaliza-15 {
-                font-size: 9rem;
-            }
-
-            .categoria-2 .posicion-2.personaliza-15.linea-1 {
-                top: 16%;
-            }
-
-            .categoria-2 .posicion-2.personaliza-15.linea-2 {
-                top: 43%;
-            }
-
-            .categoria-2 .posicion-2.personaliza-15.linea-3 {
-                top: 70%;
-            }
-
-            .categoria-2 .posicion-3.personaliza-8 {
-                font-size: 9rem;
-            }
-
-            .categoria-2 .posicion-3.personaliza-8.linea-1 {
-                top: 22%;
-            }
-
-            .categoria-2 .posicion-3.personaliza-8.linea-2 {
-                top: 62%;
-            }
-
-            .categoria-2 .posicion-4.personaliza-7 {
-                top: 45%;
-                font-size: 8rem;
-            }
-
-            .categoria-2 .posicion-4.personaliza-11 {
-                top: 43%;
-                font-size: 8rem;
-            }
-
-            .categoria-2 .posicion-5.personaliza-7 {
-                top: 28%;
-                font-size: 7.5rem;
-            }
-
-            .categoria-2 .posicion-5.personaliza-11 {
-                top: 27%;
-                font-size: 8rem;
-            }
-
-            .categoria-2 .posicion-5.personaliza-15 {
-                top: 66%;
-                font-size: 9rem;
-            }
-
-            .categoria-3 .posicion-4.ff-tipo-4.personaliza-11 {
-                padding: 0 2%;
-            }
-
-            .categoria-3 .posicion-4.personaliza-9 {
-                top: 23%;
-                font-size: 3.6rem;
-            }
-
-            .categoria-3 .posicion-4.personaliza-11 {
-                top: 24%;
-                font-size: 3.4rem;
-            }
-
-            .categoria-4 .posicion-4.ff-tipo-2.personaliza-5 {
-                padding: 0 2% 0 21%;
-            }
-
-            .categoria-4 .posicion-4.ff-tipo-2.personaliza-8 {
-                padding: 0 2%;
-            }
-
-            .categoria-4 .posicion-4.ff-tipo-3.personaliza-6 {
-                padding: 0 2% 0 21%;
-            }
-
-            .categoria-4 .posicion-4.ff-tipo-3.personaliza-10 {
-                padding: 0 2%;
-                width: 88%;
-            }
-
-            .categoria-4 .posicion-4.ff-tipo-4.personaliza-5 {
-                padding: 0 2% 0 21%;
-            }
-
-            .categoria-4 .posicion-4.ff-tipo-4.personaliza-9 {
-                padding: 0 2%;
-            }
-
-            .categoria-4 .posicion-4.personaliza-5 {
-                top: 43%;
-                font-size: 4.5rem;
-            }
-
-            .categoria-4 .posicion-4.personaliza-6 {
-                top: 39%;
-                font-size: 6.0rem;
-            }
-
-            .categoria-4 .posicion-4.personaliza-7 {
-                top: 38%;
-                font-size: 4rem;
-            }
-
-            .categoria-4 .posicion-4.personaliza-8 {
-                top: 36%;
-                font-size: 4.2rem;
-            }
-
-            .categoria-4 .posicion-4.personaliza-9 {
-                top: 31%;
-                font-size: 4.2rem;
-            }
-
-            .categoria-4 .posicion-4.personaliza-10 {
-                top: 36%;
-                font-size: 4.2rem;
-            }
-        }
-
-        /* ----- Desktop pequeño (1024px - 1280px) ----- */
-        @media (min-width: 1024px) and (max-width: 1280px) {
-            .categoria-1 .posicion-4.personaliza-7 {
-                top: 44%;
-                font-size: 5.0rem;
-                letter-spacing: -1px;
-            }
-
-            .categoria-2 .posicion-1.personaliza-15 {
-                top: 22%;
-                font-size: 12rem;
-            }
-
-            .categoria-2 .posicion-1.personaliza-7 {
-                top: 61%;
-                font-size: 10rem;
-            }
-
-            .categoria-2 .posicion-1.personaliza-11 {
-                top: 62%;
-                font-size: 13rem;
-            }
-
-            .categoria-2 .posicion-2.personaliza-15 {
-                font-size: 11rem;
-            }
-
-            .categoria-2 .posicion-2.personaliza-15.linea-1 {
-                top: 18%;
-            }
-
-            .categoria-2 .posicion-2.personaliza-15.linea-2 {
-                top: 45%;
-            }
-
-            .categoria-2 .posicion-2.personaliza-15.linea-3 {
-                top: 72%;
-            }
-
-            .categoria-2 .posicion-3.personaliza-8 {
-                font-size: 13.2rem;
-            }
-
-            .categoria-2 .posicion-3.personaliza-8.linea-1 {
-                top: 24%;
-            }
-
-            .categoria-2 .posicion-3.personaliza-8.linea-2 {
-                top: 63%;
-            }
-
-            .categoria-2 .posicion-4.personaliza-7 {
-                top: 48%;
-                font-size: 10rem;
-            }
-
-            .categoria-2 .posicion-4.personaliza-11 {
-                top: 45%;
-                font-size: 11rem;
-            }
-
-            .categoria-2 .posicion-5.personaliza-7 {
-                top: 31%;
-                font-size: 10rem;
-            }
-
-            .categoria-2 .posicion-5.personaliza-11 {
-                top: 28%;
-                font-size: 13rem;
-            }
-
-            .categoria-2 .posicion-5.personaliza-15 {
-                top: 68%;
-                font-size: 12rem;
-            }
-
-            .categoria-3 .posicion-4.ff-tipo-4.personaliza-11 {
-                padding: 0 2%;
-            }
-
-            .categoria-3 .posicion-4.personaliza-9 {
-                top: 30%;
-                font-size: 4.5rem;
-            }
-
-            .categoria-3 .posicion-4.personaliza-11 {
-                top: 29%;
-                font-size: 4.5rem;
-            }
-
-            .categoria-4 .posicion-4.ff-tipo-2.personaliza-5 {
-                padding: 0 2% 0 21%;
-            }
-
-            .categoria-4 .posicion-4.ff-tipo-2.personaliza-8 {
-                padding: 0 2%;
-            }
-
-            .categoria-4 .posicion-4.ff-tipo-3.personaliza-6 {
-                padding: 0 2% 0 21%;
-            }
-
-            .categoria-4 .posicion-4.ff-tipo-3.personaliza-10 {
-                padding: 0 2%;
-                width: 92%;
-            }
-
-            .categoria-4 .posicion-4.ff-tipo-4.personaliza-5 {
-                padding: 0 2% 0 21%;
-            }
-
-            .categoria-4 .posicion-4.ff-tipo-4.personaliza-9 {
-                padding: 0 2%;
-            }
-
-            .categoria-4 .posicion-4.personaliza-5 {
-                top: 46%;
-                font-size: 6rem;
-            }
-
-            .categoria-4 .posicion-4.personaliza-6 {
-                top: 46%;
-                font-size: 7.5rem;
-            }
-
-            .categoria-4 .posicion-4.personaliza-7 {
-                top: 42%;
-                font-size: 5rem;
-            }
-
-            .categoria-4 .posicion-4.personaliza-8 {
-                top: 36%;
-                font-size: 5.5rem;
-            }
-
-            .categoria-4 .posicion-4.personaliza-9 {
-                top: 35%;
-                font-size: 5.5rem;
-            }
-
-            .categoria-4 .posicion-4.personaliza-10 {
-                top: 42%;
-                font-size: 5.0rem;
-            }
-        }
-
-        /* ----- Desktop grande (1280px+) ----- */
-        @media (min-width: 1280px) {
-            .categoria-1 .posicion-4.personaliza-7 {
-                top: 45%;
-                font-size: 6.1rem;
-                letter-spacing: -1px;
-            }
-
-            .categoria-2 .posicion-1.personaliza-15 {
-                top: 22%;
-                font-size: 14rem;
-            }
-
-            .categoria-2 .posicion-1.personaliza-7 {
-                top: 62%;
-                font-size: 12rem;
-            }
-
-            .categoria-2 .posicion-1.personaliza-11 {
-                top: 62%;
-                font-size: 13rem;
-            }
-
-            .categoria-2 .posicion-2.personaliza-15 {
-                font-size: 13rem;
-            }
-
-            .categoria-2 .posicion-2.personaliza-15.linea-1 {
-                top: 19%;
-            }
-
-            .categoria-2 .posicion-2.personaliza-15.linea-2 {
-                top: 45%;
-            }
-
-            .categoria-2 .posicion-2.personaliza-15.linea-3 {
-                top: 72%;
-            }
-
-            .categoria-2 .posicion-3.personaliza-8 {
-                font-size: 15rem;
-            }
-
-            .categoria-2 .posicion-3.personaliza-8.linea-1 {
-                top: 24%;
-            }
-
-            .categoria-2 .posicion-3.personaliza-8.linea-2 {
-                top: 65%;
-            }
-
-            .categoria-2 .posicion-4.personaliza-7 {
-                top: 48%;
-                font-size: 12rem;
-            }
-
-            .categoria-2 .posicion-4.personaliza-11 {
-                top: 46%;
-                font-size: 13rem;
-            }
-
-            .categoria-2 .posicion-5.personaliza-7 {
-                top: 31%;
-                font-size: 12rem;
-            }
-
-            .categoria-2 .posicion-5.personaliza-11 {
-                top: 30%;
-                font-size: 13rem;
-            }
-
-            .categoria-2 .posicion-5.personaliza-15 {
-                top: 69%;
-                font-size: 14rem;
-            }
-
-            .categoria-3 .posicion-4.ff-tipo-4.personaliza-11 {
-                padding: 0 2%;
-            }
-
-            .categoria-3 .posicion-4.personaliza-9 {
-                top: 34%;
-                font-size: 5.5rem;
-            }
-
-            .categoria-3 .posicion-4.personaliza-11 {
-                top: 34%;
-                font-size: 5.3rem;
-            }
-
-            .categoria-4 .posicion-4.ff-tipo-2.personaliza-5 {
-                padding: 0 2% 0 21%;
-            }
-
-            .categoria-4 .posicion-4.ff-tipo-2.personaliza-8 {
-                padding: 0 2%;
-                letter-spacing: 0.20rem;
-            }
-
-            .categoria-4 .posicion-4.ff-tipo-3.personaliza-6 {
-                padding: 0 2% 0 21%;
-            }
-
-            .categoria-4 .posicion-4.ff-tipo-3.personaliza-10 {
-                padding: 0 2%;
-                width: 94%;
-            }
-
-            .categoria-4 .posicion-4.ff-tipo-4.personaliza-5 {
-                padding: 0 2% 0 21%;
-            }
-
-            .categoria-4 .posicion-4.ff-tipo-4.personaliza-9 {
-                padding: 0 2%;
-            }
-
-            .categoria-4 .posicion-4.personaliza-5 {
-                top: 46%;
-                font-size: 8rem;
-            }
-
-            .categoria-4 .posicion-4.personaliza-6 {
-                top: 46%;
-                font-size: 9.0rem;
-                letter-spacing: -7px;
-            }
-
-            .categoria-4 .posicion-4.personaliza-7 {
-                top: 42%;
-                font-size: 6.5rem;
-            }
-
-            .categoria-4 .posicion-4.personaliza-8 {
-                top: 40%;
-                font-size: 6rem;
-            }
-
-            .categoria-4 .posicion-4.personaliza-9 {
-                top: 40%;
-                font-size: 6.5rem;
-                letter-spacing: 1.5px;
-            }
-
-            .categoria-4 .posicion-4.personaliza-10 {
-                top: 44%;
-                font-size: 6.0rem;
-            }
-        }
 
         /* ============================================================
            OTROS ESTILOS DE LA PÁGINA
            ============================================================ */
 
-        .posicionSeleccionada {
+        /* .posicionSeleccionada {
             padding-bottom: 1rem;
             border-bottom: 2px solid #ef3b3d;
-        }
+        } */
 
         .mb-80 {
             margin-bottom: 80px;
@@ -1222,16 +296,7 @@
             display: block;
         }
 
-        .posicion-container img {
-            max-width: 60px;
-            border-radius: 4px;
-            border: 2px solid transparent;
-            transition: border-color 0.2s;
-        }
 
-        .posicion-container img.seleccionada {
-            border-color: #e74c3c;
-        }
 
         .opcion-caracteres {
             cursor: pointer;
@@ -1286,27 +351,34 @@
                             <div class="row">
 
                                 <!-- ===== COLUMNA IZQUIERDA: PLACA ===== -->
-                                <div class="col-md-5 col-sm-5 col-xs-12" id="placa">
-                                    <div id="textoL1" class="linea-1 ff-tipo-0 posicion-1 personaliza-7 letra-color-1" style="text-transform: uppercase;">Linea 1</div>
-                                    <div id="textoL2" class="linea-2 ff-tipo-0 posicion-1 personaliza-7 letra-color-1" style="display:none;">Linea 2</div>
-                                    <div id="textoL3" class="linea-3 ff-tipo-0 posicion-1 personaliza-7 letra-color-1" style="display:none;">Linea 3</div>
+                                <div class="col-md-5 col-sm-5 col-xs-12">
+                                    <div class="row" id="placa" style="--bs-gutter-x:0rem; --bs-gutter-y:0rem;">
+                                        <div id="textoL1" class="linea-1 ff-tipo-0 posicion-1 personaliza-7 letra-color-1" style="text-transform: uppercase;">Linea 1</div>
+                                        <div id="textoL2" class="linea-2 ff-tipo-0 posicion-1 personaliza-7 letra-color-1" style="display:none;">Linea 2</div>
+                                        <div id="textoL3" class="linea-3 ff-tipo-0 posicion-1 personaliza-7 letra-color-1" style="display:none;">Linea 3</div>
 
-                                    <div class="imgs-zoom-area" style="position: relative; top:0; left:0;">
-                                        <img class="placa--img" id="zoom_03" src="" data-zoom-image="" alt="" style="position: relative; top:0; left:0;" />
-                                        <img id="acabadoCordon" style="position: absolute; top:0; left:0; display:none;" src="" />
-                                        <img id="acabadoCharolaSC3" style="position: absolute; top:0; left:0; display:none;" src="" />
-                                        <img id="acabadoCharolaSC4" style="position: absolute; top:0; left:0; display:none;" src="" />
-                                        <img id="acabadoPlano" style="position: absolute; top:0; left:0; display:none;" src="" />
+                                        <div class="imgs-zoom-area" style="position: relative; top:0; left:0;">
+                                            <img class="placa--img" id="zoom_03" src="" data-zoom-image="" alt="" style="position: relative; top:0; left:0;" />
+                                            <img id="acabadoCordonSC2" style="position: absolute; top:0; left:0; display:none;" src="" />
+                                            <img id="acabadoCharolaSC3" style="position: absolute; top:0; left:0; display:none;" src="" />
+                                            <img id="acabadoCharolaSC4" style="position: absolute; top:0; left:0; display:none;" src="" />
+                                            <img id="acabadoPlano" style="position: absolute; top:0; left:0; display:none;" src="" />
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="single-product-info">
+                                            <h2 class="text-white-1 font-700" id="nombreProducto">Cargando...</h2>
+                                            <h6 class="brand-name-2" id="claveProducto">-</h6>
+                                            <img id="cintilloPromo" src="" class="new-detail" style="display:none;" />
+                                        </div>
                                     </div>
                                 </div>
 
                                 <!-- ===== COLUMNA DERECHA ===== -->
                                 <div class="col-md-7 col-sm-7 col-xs-12">
-                                    <div class="single-product-info">
-                                        <h2 class="text-black-1 font-700" id="nombreProducto">Cargando...</h2>
-                                        <h6 class="brand-name-2" id="claveProducto">-</h6>
-                                        <img id="cintilloPromo" src="" class="new-detail" style="display:none;" />
-                                    </div>
+
                                     <hr />
 
                                     <div class="single-product-tab">
@@ -1592,7 +664,7 @@
             container.innerHTML = '';
             state.posiciones.forEach(function(pos, index) {
                 var img = document.createElement('img');
-                img.style.width = '10%';
+                img.style.width = '12%';
                 img.style.marginRight = '2.5%';
                 img.style.cursor = 'pointer';
                 img.className = 'mb-5';
@@ -1847,7 +919,7 @@
             fotoPlaca.dataset.zoomImage = state.foto;
 
             // Acabados overlay
-            var cordon = document.getElementById('acabadoCordon');
+            var cordon = document.getElementById('acabadoCordonSC2');
             var charolaSC3 = document.getElementById('acabadoCharolaSC3');
             var charolaSC4 = document.getElementById('acabadoCharolaSC4');
             var plano = document.getElementById('acabadoPlano');
@@ -1856,6 +928,8 @@
             charolaSC3.style.display = 'none';
             charolaSC4.style.display = 'none';
             plano.style.display = 'none';
+
+            console.log('Renderizando acabado:', state.acabado, 'Cat:', cat, 'Subcat:', subcat);
 
             if (state.acabado == 1) {
                 cordon.style.display = 'block';
@@ -1891,7 +965,7 @@
             if (state.opcionesAcabado.includes(2)) {
                 charolaDiv.style.display = 'block';
                 document.getElementById('acabadoCharolaImg').src = CONFIG.DIR_IMG + '/acabado/' + cat + '/acabado_charola_th.png';
-                charolaDiv.classList.toggle('posicionSeleccionada', state.acabado == 2);
+                // charolaDiv.classList.toggle('posicionSeleccionada', state.acabado == 2);
             } else {
                 charolaDiv.style.display = 'none';
             }
@@ -1899,7 +973,7 @@
             if (state.opcionesAcabado.includes(1)) {
                 cordonDiv.style.display = 'block';
                 document.getElementById('acabadoCordonImg').src = CONFIG.DIR_IMG + '/acabado/' + cat + '/acabado_cordon_th.png';
-                cordonDiv.classList.toggle('posicionSeleccionada', state.acabado == 1);
+                // cordonDiv.classList.toggle('posicionSeleccionada', state.acabado == 1);
             } else {
                 cordonDiv.style.display = 'none';
             }

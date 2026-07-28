@@ -1,0 +1,952 @@
+@charset "UTF-8";
+
+.selector-color--item {
+    min-width: 30px;
+    min-height: 30px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 0.5rem;
+}
+
+.selector-color-1 {
+    border: 1px solid #666;
+    background: #065389;
+}
+
+.letra-color-1 {
+    color: #065389;
+}
+
+.selector-color-2 {
+    border: 1px solid #666;
+    background: #1f42a7;
+}
+
+.letra-color-2 {
+    color: #1f42a7;
+}
+
+.selector-color-3 {
+    border: 1px solid #666;
+    background: #000000;
+}
+
+.letra-color-3 {
+    color: #000000;
+}
+
+.selector-color-4 {
+    border: 1px solid #666;
+    background: #ffffff;
+}
+
+.letra-color-4 {
+    color: #ffffff;
+}
+
+.selector-color-5 {
+    border: 1px solid #666;
+    background: #f79822;
+}
+
+.letra-color-5 {
+    color: #f79822;
+}
+
+.selector-color-6 {
+    border: 1px solid #666;
+    background: #ed3125;
+}
+
+.letra-color-6 {
+    color: #ed3125;
+}
+
+.selector-color-7 {
+    border: 1px solid #666;
+    background: #0b7052;
+}
+
+.letra-color-7 {
+    color: #0b7052;
+}
+
+.selector-color-8 {
+    border: 1px solid #666;
+    background: #696a6c;
+}
+
+.letra-color-8 {
+    color: #696a6c;
+}
+
+#placa {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin: 10% auto;
+    padding: 0;
+}
+
+.placa--img {
+    align-self: center;
+}
+
+/* Bicicleta */
+.categoria-1 .posicion-4 {
+    width: 94%;
+    z-index: 3;
+    position: absolute;
+    padding: 0 2%;
+    text-align: center;
+}
+
+.categoria-1 .posicion-4.personaliza-7 {
+    top: 34%;
+    font-size: 3.5rem;
+    letter-spacing: -1px;
+}
+
+/* Americana Posición 1 */
+.categoria-2 .posicion-1 {
+    width: 94%;
+    z-index: 3;
+    position: absolute;
+    padding: 0 2%;
+    text-align: center;
+}
+
+.categoria-2 .posicion-1.personaliza-15 {
+    top: 15%;
+    font-size: 7.2rem;
+}
+
+.categoria-2 .posicion-1.personaliza-7 {
+    top: 48%;
+    font-size: 7rem;
+}
+
+.categoria-2 .posicion-1.personaliza-11 {
+    top: 48%;
+    font-size: 7.5rem;
+}
+
+/* Americana Posición 2 */
+.categoria-2 .posicion-2 {
+    width: 94%;
+    z-index: 3;
+    position: absolute;
+    padding: 0 2%;
+    text-align: center;
+}
+
+.categoria-2 .posicion-2.personaliza-15 {
+    font-size: 7.5rem;
+}
+
+.categoria-2 .posicion-2.personaliza-15.linea-1 {
+    top: 12%;
+}
+
+.categoria-2 .posicion-2.personaliza-15.linea-2 {
+    top: 34%;
+}
+
+.categoria-2 .posicion-2.personaliza-15.linea-3 {
+    top: 56%;
+}
+
+/* Americana Posición 3 */
+.categoria-2 .posicion-3 {
+    width: 94%;
+    z-index: 3;
+    position: absolute;
+    padding: 0 2%;
+    text-align: center;
+}
+
+.categoria-2 .posicion-3.personaliza-8 {
+    font-size: 8.5rem;
+}
+
+.categoria-2 .posicion-3.personaliza-8.linea-1 {
+    top: 18%;
+}
+
+.categoria-2 .posicion-3.personaliza-8.linea-2 {
+    top: 50%;
+}
+
+/* Americana Posición 4 */
+.categoria-2 .posicion-4 {
+    width: 94%;
+    z-index: 3;
+    position: absolute;
+    padding: 0 2%;
+    text-align: center;
+}
+
+.categoria-2 .posicion-4.personaliza-7 {
+    top: 38%;
+    font-size: 7rem;
+}
+
+.categoria-2 .posicion-4.personaliza-11 {
+    top: 35%;
+    font-size: 7rem;
+}
+
+/* Americana Posición 5 */
+.categoria-2 .posicion-5 {
+    width: 94%;
+    z-index: 3;
+    position: absolute;
+    padding: 0 2%;
+    text-align: center;
+}
+
+.categoria-2 .posicion-5.personaliza-7 {
+    top: 22%;
+    font-size: 7rem;
+}
+
+.categoria-2 .posicion-5.personaliza-11 {
+    top: 21%;
+    font-size: 7.5rem;
+}
+
+.categoria-2 .posicion-5.personaliza-15 {
+    top: 53%;
+    font-size: 7.2rem;
+}
+
+/* Euromini */
+.categoria-3 .posicion-4 {
+    width: 94%;
+    z-index: 3;
+    position: absolute;
+    padding: 0 2% 0 12%;
+    text-align: center;
+}
+
+.categoria-3 .posicion-4.ff-tipo-4.personaliza-11 {
+    padding: 0 2%;
+}
+
+.categoria-3 .posicion-4.personaliza-9 {
+    top: 14%;
+    font-size: 3rem;
+}
+
+.categoria-3 .posicion-4.personaliza-11 {
+    top: 13%;
+    font-size: 3.2rem;
+}
+
+/* Europea */
+.categoria-4 .posicion-4 {
+    width: 94%;
+    z-index: 3;
+    padding: 0 2% 0 12%;
+    position: absolute;
+    text-align: center;
+}
+
+.categoria-4 .posicion-4.ff-tipo-2.personaliza-5 {
+    padding: 0 2% 0 21%;
+}
+
+.categoria-4 .posicion-4.ff-tipo-2.personaliza-8 {
+    padding: 0 2%;
+}
+
+.categoria-4 .posicion-4.ff-tipo-3.personaliza-6 {
+    padding: 0 2% 0 21%;
+}
+
+.categoria-4 .posicion-4.ff-tipo-3.personaliza-10 {
+    padding: 0 2%;
+    /*margin-left: 14px;*/
+    width: 88%;
+}
+
+.categoria-4 .posicion-4.ff-tipo-4.personaliza-5 {
+    padding: 0 2% 0 21%;
+}
+
+.categoria-4 .posicion-4.ff-tipo-4.personaliza-9 {
+    padding: 0 2%;
+}
+
+.categoria-4 .posicion-4.personaliza-5 {
+    top: 30%;
+    font-size: 4.5rem;
+}
+
+.categoria-4 .posicion-4.personaliza-6 {
+    top: 30%;
+    font-size: 4.5rem;
+}
+
+.categoria-4 .posicion-4.personaliza-7 {
+    top: 25%;
+    font-size: 3.5rem;
+}
+
+.categoria-4 .posicion-4.personaliza-8 {
+    top: 20%;
+    font-size: 3.4rem;
+}
+
+.categoria-4 .posicion-4.personaliza-9 {
+    top: 19%;
+    font-size: 3.8rem;
+    letter-spacing: 1px;
+}
+
+.categoria-4 .posicion-4.personaliza-10 {
+    top: 25%;
+    font-size: 3.6rem;
+}
+
+@media (min-width: 480px) and (max-width: 768px) {
+
+    /* Bicicleta */
+    .categoria-1 .posicion-4.personaliza-7 {
+        top: 40%;
+        font-size: 5.5rem;
+        letter-spacing: -1px;
+    }
+
+    /* Americana Posición 1 */
+    .categoria-2 .posicion-1.personaliza-15 {
+        top: 19%;
+        font-size: 13rem;
+    }
+
+    .categoria-2 .posicion-1.personaliza-7 {
+        top: 54%;
+        font-size: 11rem;
+    }
+
+    .categoria-2 .posicion-1.personaliza-11 {
+        top: 55%;
+        font-size: 11rem;
+    }
+
+    /* Americana Posición 2 */
+    .categoria-2 .posicion-2.personaliza-15 {
+        font-size: 12.3rem;
+    }
+
+    .categoria-2 .posicion-2.personaliza-15.linea-1 {
+        top: 16%;
+    }
+
+    .categoria-2 .posicion-2.personaliza-15.linea-2 {
+        top: 40%;
+    }
+
+    .categoria-2 .posicion-2.personaliza-15.linea-3 {
+        top: 63%;
+    }
+
+    /* Americana Posición 3 */
+    .categoria-2 .posicion-3.personaliza-8 {
+        font-size: 14rem;
+    }
+
+    .categoria-2 .posicion-3.personaliza-8.linea-1 {
+        top: 21%;
+    }
+
+    .categoria-2 .posicion-3.personaliza-8.linea-2 {
+        top: 56%;
+    }
+
+    /* Americana Posición 4 */
+    .categoria-2 .posicion-4.personaliza-7 {
+        top: 45%;
+        font-size: 11rem;
+    }
+
+    .categoria-2 .posicion-4.personaliza-11 {
+        top: 41%;
+        font-size: 11rem;
+    }
+
+    /* Americana Posición 5 */
+    .categoria-2 .posicion-5.personaliza-7 {
+        top: 27%;
+        font-size: 11rem;
+    }
+
+    .categoria-2 .posicion-5.personaliza-11 {
+        top: 25%;
+        font-size: 11.8rem;
+    }
+
+    .categoria-2 .posicion-5.personaliza-15 {
+        top: 60%;
+        font-size: 13rem;
+    }
+
+    /* Euromini */
+    .categoria-3 .posicion-4.ff-tipo-4.personaliza-11 {
+        padding: 0 2%;
+    }
+
+    .categoria-3 .posicion-4.personaliza-9 {
+        top: 22%;
+        font-size: 5rem;
+    }
+
+    .categoria-3 .posicion-4.personaliza-11 {
+        top: 28%;
+        font-size: 5.2rem;
+    }
+
+    /* Europea */
+    .categoria-4 .posicion-4.ff-tipo-2.personaliza-5 {
+        padding: 0 2% 0 21%;
+    }
+
+    .categoria-4 .posicion-4.ff-tipo-2.personaliza-8 {
+        padding: 0 2%;
+    }
+
+    .categoria-4 .posicion-4.ff-tipo-3.personaliza-6 {
+        padding: 0 2% 0 21%;
+    }
+
+    .categoria-4 .posicion-4.ff-tipo-3.personaliza-10 {
+        padding: 0 2%;
+        /*margin-left: 14px;*/
+        width: 88%;
+    }
+
+    .categoria-4 .posicion-4.ff-tipo-4.personaliza-5 {
+        padding: 0 2% 0 21%;
+    }
+
+    .categoria-4 .posicion-4.ff-tipo-4.personaliza-9 {
+        padding: 0 2%;
+    }
+
+    .categoria-4 .posicion-4.personaliza-5 {
+        top: 38%;
+        font-size: 7rem;
+    }
+
+    .categoria-4 .posicion-4.personaliza-6 {
+        top: 46%;
+        font-size: 9.5rem;
+    }
+
+    .categoria-4 .posicion-4.personaliza-7 {
+        top: 33%;
+        font-size: 6rem;
+    }
+
+    .categoria-4 .posicion-4.personaliza-8 {
+        top: 29%;
+        font-size: 6rem;
+    }
+
+    .categoria-4 .posicion-4.personaliza-9 {
+        top: 27%;
+        font-size: 6.0rem;
+    }
+
+    .categoria-4 .posicion-4.personaliza-10 {
+        top: 32%;
+        font-size: 5.0rem;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    /* Bicicleta */
+    .categoria-1 .posicion-4.personaliza-7 {
+        top: 42%;
+        font-size: 3.6rem;
+        letter-spacing: -1px;
+    }
+
+    /* Americana Posición 1 */
+    .categoria-2 .posicion-1.personaliza-15 {
+        top: 20%;
+        font-size: 9rem;
+    }
+
+    .categoria-2 .posicion-1.personaliza-7 {
+        top: 58%;
+        font-size: 7.5rem;
+    }
+
+    .categoria-2 .posicion-1.personaliza-11 {
+        top: 60%;
+        font-size: 7.5rem;
+    }
+
+    /* Americana Posición 2 */
+    .categoria-2 .posicion-2.personaliza-15 {
+        font-size: 9rem;
+    }
+
+    .categoria-2 .posicion-2.personaliza-15.linea-1 {
+        top: 16%;
+    }
+
+    .categoria-2 .posicion-2.personaliza-15.linea-2 {
+        top: 43%;
+    }
+
+    .categoria-2 .posicion-2.personaliza-15.linea-3 {
+        top: 70%;
+    }
+
+    /* Americana Posición 3 */
+    .categoria-2 .posicion-3.personaliza-8 {
+        font-size: 9rem;
+    }
+
+    .categoria-2 .posicion-3.personaliza-8.linea-1 {
+        top: 22%;
+    }
+
+    .categoria-2 .posicion-3.personaliza-8.linea-2 {
+        top: 62%;
+    }
+
+    /* Americana Posición 4 */
+    .categoria-2 .posicion-4.personaliza-7 {
+        top: 45%;
+        font-size: 8rem;
+    }
+
+    .categoria-2 .posicion-4.personaliza-11 {
+        top: 43%;
+        font-size: 8rem;
+    }
+
+    /* Americana Posición 5 */
+    .categoria-2 .posicion-5.personaliza-7 {
+        top: 28%;
+        font-size: 7.5rem;
+    }
+
+    .categoria-2 .posicion-5.personaliza-11 {
+        top: 27%;
+        font-size: 8rem;
+    }
+
+    .categoria-2 .posicion-5.personaliza-15 {
+        top: 66%;
+        font-size: 9rem;
+    }
+
+    /* Euromini */
+    .categoria-3 .posicion-4.ff-tipo-4.personaliza-11 {
+        padding: 0 2%;
+    }
+
+    .categoria-3 .posicion-4.personaliza-9 {
+        top: 23%;
+        font-size: 3.6rem;
+    }
+
+    .categoria-3 .posicion-4.personaliza-11 {
+        top: 24%;
+        font-size: 3.4rem;
+    }
+
+    /* Europea */
+    .categoria-4 .posicion-4.ff-tipo-2.personaliza-5 {
+        padding: 0 2% 0 21%;
+    }
+
+    .categoria-4 .posicion-4.ff-tipo-2.personaliza-8 {
+        padding: 0 2%;
+    }
+
+    .categoria-4 .posicion-4.ff-tipo-3.personaliza-6 {
+        padding: 0 2% 0 21%;
+    }
+
+    .categoria-4 .posicion-4.ff-tipo-3.personaliza-10 {
+        padding: 0 2%;
+        /*margin-left: 14px;*/
+        width: 88%;
+    }
+
+    .categoria-4 .posicion-4.ff-tipo-4.personaliza-5 {
+        padding: 0 2% 0 21%;
+    }
+
+    .categoria-4 .posicion-4.ff-tipo-4.personaliza-9 {
+        padding: 0 2%;
+    }
+
+    .categoria-4 .posicion-4.personaliza-5 {
+        top: 43%;
+        font-size: 4.5rem;
+    }
+
+    .categoria-4 .posicion-4.personaliza-6 {
+        top: 39%;
+        font-size: 6.0rem;
+    }
+
+    .categoria-4 .posicion-4.personaliza-7 {
+        top: 38%;
+        font-size: 4rem;
+    }
+
+    .categoria-4 .posicion-4.personaliza-8 {
+        top: 36%;
+        font-size: 4.2rem;
+    }
+
+    .categoria-4 .posicion-4.personaliza-9 {
+        top: 31%;
+        font-size: 4.2rem;
+    }
+
+    .categoria-4 .posicion-4.personaliza-10 {
+        top: 36%;
+        font-size: 4.2rem;
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1280px) {
+
+    /* Bicicleta */
+    .categoria-1 .posicion-4.personaliza-7 {
+        top: 44%;
+        font-size: 5.0rem;
+        letter-spacing: -1px;
+    }
+
+    /* Americana Posición 1 */
+    .categoria-2 .posicion-1.personaliza-15 {
+        top: 22%;
+        font-size: 12rem;
+    }
+
+    .categoria-2 .posicion-1.personaliza-7 {
+        top: 61%;
+        font-size: 10rem;
+    }
+
+    .categoria-2 .posicion-1.personaliza-11 {
+        top: 62%;
+        font-size: 13rem;
+    }
+
+    /* Americana Posición 2 */
+    .categoria-2 .posicion-2.personaliza-15 {
+        font-size: 11rem;
+    }
+
+    .categoria-2 .posicion-2.personaliza-15.linea-1 {
+        top: 18%;
+    }
+
+    .categoria-2 .posicion-2.personaliza-15.linea-2 {
+        top: 45%;
+    }
+
+    .categoria-2 .posicion-2.personaliza-15.linea-3 {
+        top: 72%;
+    }
+
+    /* Americana Posición 3 */
+    .categoria-2 .posicion-3.personaliza-8 {
+        font-size: 13.2rem;
+    }
+
+    .categoria-2 .posicion-3.personaliza-8.linea-1 {
+        top: 24%;
+    }
+
+    .categoria-2 .posicion-3.personaliza-8.linea-2 {
+        top: 63%;
+    }
+
+    /* Americana Posición 4 */
+    .categoria-2 .posicion-4.personaliza-7 {
+        top: 48%;
+        font-size: 10rem;
+    }
+
+    .categoria-2 .posicion-4.personaliza-11 {
+        top: 45%;
+        font-size: 11rem;
+    }
+
+    /* Americana Posición 5 */
+    .categoria-2 .posicion-5.personaliza-7 {
+        top: 31%;
+        font-size: 10rem;
+    }
+
+    .categoria-2 .posicion-5.personaliza-11 {
+        top: 28%;
+        font-size: 13rem;
+    }
+
+    .categoria-2 .posicion-5.personaliza-15 {
+        top: 68%;
+        font-size: 12rem;
+    }
+
+    /* Euromini */
+    .categoria-3 .posicion-4.ff-tipo-4.personaliza-11 {
+        padding: 0 2%;
+    }
+
+    .categoria-3 .posicion-4.personaliza-9 {
+        top: 30%;
+        font-size: 4.5rem;
+    }
+
+    .categoria-3 .posicion-4.personaliza-11 {
+        top: 29%;
+        font-size: 4.5rem;
+    }
+
+    /* Europea */
+    .categoria-4 .posicion-4.ff-tipo-2.personaliza-5 {
+        padding: 0 2% 0 21%;
+    }
+
+    .categoria-4 .posicion-4.ff-tipo-2.personaliza-8 {
+        padding: 0 2%;
+    }
+
+    .categoria-4 .posicion-4.ff-tipo-3.personaliza-6 {
+        padding: 0 2% 0 21%;
+    }
+
+    .categoria-4 .posicion-4.ff-tipo-3.personaliza-10 {
+        padding: 0 2%;
+        /*margin-left: 16px;*/
+        width: 92%;
+    }
+
+    .categoria-4 .posicion-4.ff-tipo-4.personaliza-5 {
+        padding: 0 2% 0 21%;
+    }
+
+    .categoria-4 .posicion-4.ff-tipo-4.personaliza-9 {
+        padding: 0 2%;
+    }
+
+    .categoria-4 .posicion-4.personaliza-5 {
+        top: 46%;
+        font-size: 6rem;
+    }
+
+    .categoria-4 .posicion-4.personaliza-6 {
+        top: 46%;
+        font-size: 7.5rem;
+    }
+
+    .categoria-4 .posicion-4.personaliza-7 {
+        top: 42%;
+        font-size: 5rem;
+    }
+
+    .categoria-4 .posicion-4.personaliza-8 {
+        top: 36%;
+        font-size: 5.5rem;
+    }
+
+    .categoria-4 .posicion-4.personaliza-9 {
+        top: 35%;
+        font-size: 5.5rem;
+    }
+
+    .categoria-4 .posicion-4.personaliza-10 {
+        top: 42%;
+        font-size: 5.0rem;
+    }
+}
+
+@media (min-width: 1280px) {
+
+    /* Bicicleta */
+    .categoria-1 .posicion-4.personaliza-7 {
+        top: 45%;
+        font-size: 6.1rem;
+        letter-spacing: -1px;
+    }
+
+    /* Americana Posición 1 */
+    .categoria-2 .posicion-1.personaliza-15 {
+        top: 22%;
+        font-size: 14rem;
+    }
+
+    .categoria-2 .posicion-1.personaliza-7 {
+        top: 62%;
+        font-size: 12rem;
+    }
+
+    .categoria-2 .posicion-1.personaliza-11 {
+        top: 62%;
+        font-size: 13rem;
+    }
+
+    /* Americana Posición 2 */
+    .categoria-2 .posicion-2.personaliza-15 {
+        font-size: 13rem;
+    }
+
+    .categoria-2 .posicion-2.personaliza-15.linea-1 {
+        top: 19%;
+    }
+
+    .categoria-2 .posicion-2.personaliza-15.linea-2 {
+        top: 45%;
+    }
+
+    .categoria-2 .posicion-2.personaliza-15.linea-3 {
+        top: 72%;
+    }
+
+    /* Americana Posición 3 */
+    .categoria-2 .posicion-3.personaliza-8 {
+        font-size: 15rem;
+    }
+
+    .categoria-2 .posicion-3.personaliza-8.linea-1 {
+        top: 24%;
+    }
+
+    .categoria-2 .posicion-3.personaliza-8.linea-2 {
+        top: 65%;
+    }
+
+    /* Americana Posición 4 */
+    .categoria-2 .posicion-4.personaliza-7 {
+        top: 48%;
+        font-size: 12rem;
+    }
+
+    .categoria-2 .posicion-4.personaliza-11 {
+        top: 46%;
+        font-size: 13rem;
+    }
+
+    /* Americana Posición 5 */
+    .categoria-2 .posicion-5.personaliza-7 {
+        top: 31%;
+        font-size: 12rem;
+    }
+
+    .categoria-2 .posicion-5.personaliza-11 {
+        top: 30%;
+        font-size: 13rem;
+    }
+
+    .categoria-2 .posicion-5.personaliza-15 {
+        top: 69%;
+        font-size: 14rem;
+    }
+
+    /* Euromini */
+    .categoria-3 .posicion-4.ff-tipo-4.personaliza-11 {
+        padding: 0 2%;
+    }
+
+    .categoria-3 .posicion-4.personaliza-9 {
+        top: 34%;
+        font-size: 5.5rem;
+    }
+
+    .categoria-3 .posicion-4.personaliza-11 {
+        top: 34%;
+        font-size: 5.3rem;
+    }
+
+    /* Europea */
+    .categoria-4 .posicion-4.ff-tipo-2.personaliza-5 {
+        padding: 0 2% 0 21%;
+    }
+
+    .categoria-4 .posicion-4.ff-tipo-2.personaliza-8 {
+        padding: 0 2%;
+        letter-spacing: 0.20rem;
+    }
+
+    .categoria-4 .posicion-4.ff-tipo-3.personaliza-6 {
+        padding: 0 2% 0 21%;
+    }
+
+    .categoria-4 .posicion-4.ff-tipo-3.personaliza-10 {
+        padding: 0 2%;
+        /*margin-left: 18px;*/
+        width: 94%;
+    }
+
+    .categoria-4 .posicion-4.ff-tipo-4.personaliza-5 {
+        padding: 0 2% 0 21%;
+    }
+
+    .categoria-4 .posicion-4.ff-tipo-4.personaliza-9 {
+        padding: 0 2%;
+    }
+
+    .categoria-4 .posicion-4.personaliza-5 {
+        top: 46%;
+        font-size: 5rem;
+    }
+
+    .categoria-4 .posicion-4.personaliza-6 {
+        top: 46%;
+        font-size: 9.0rem;
+        letter-spacing: -7px;
+    }
+
+    .categoria-4 .posicion-4.personaliza-7 {
+        top: 42%;
+        font-size: 6.5rem;
+    }
+
+    .categoria-4 .posicion-4.personaliza-8 {
+        top: 40%;
+        font-size: 3.6rem;
+    }
+
+    .categoria-4 .posicion-4.personaliza-9 {
+        top: 40%;
+        font-size: 6.5rem;
+        letter-spacing: 1.5px;
+    }
+
+    .categoria-4 .posicion-4.personaliza-10 {
+        top: 44%;
+        font-size: 3.8rem;
+    }
+}
+
+.posicionSeleccionada {
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #ef3b3d;
+}
+
+.posicion-container img {
+    max-width: 70px;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    padding: 2px;
+    
+}
+
+.posicion-container img.seleccionada {
+    border: 2px solid #e74c3c;
+}

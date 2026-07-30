@@ -1,66 +1,144 @@
-<!-- About area start here -->
-<section class="discount-area about-area pt-130">
+<!-- CONTACT AREA START -->
+<section class="contact-section" style="background-color: #050b14; padding: 100px 0; min-height: 100vh;">
     <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-6">
-                <div class="image position-relative">
-                    <img class="radius-10" src="<?= base_url() ?>/assets/images/acerca-de-plapers/img-nosotros.jpg" alt="image">
-                </div>
+        
+        <!-- Header -->
+        <div class="row mb-5">
+            <div class="col-12 text-center text-md-start px-4 px-lg-3">
+                <span style="color: #E91E63; font-weight: 700; font-size: 14px; letter-spacing: 1px;" class="text-uppercase d-block mb-3 mt-4 mt-lg-0">CONTACTO</span>
+                <h2 class="text-white fw-bold mb-4" style="font-size: 2.5rem; line-height: 1.2;">Ponte en contacto con nosotros</h2>
+                <p style="color: #d1d5db; line-height: 1.8; font-size: 15px; max-width: 650px;" class="mb-5 mx-auto mx-md-0">
+                    ¿Tienes alguna duda, comentario o necesitas ayuda con tu pedido personalizado? Escríbenos y nuestro equipo te responderá a la brevedad posible para brindarte la mejor atención.
+                </p>
             </div>
-            <div class="col-lg-6">
-                <div class="discount__item pl-30">
-                    <div class="section-header">
-                        <div class="section-title-icon">
-                            <span class="title-icon mr-10"></span>
-                            <h2>PLAPERS: Fabricante de placas personalizadas</h2>
+        </div>
+
+        <div class="row g-5 px-3 px-lg-0">
+            <!-- Contact Info -->
+            <div class="col-lg-5">
+                <div class="contact-info-wrapper h-100" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 45px 40px;">
+                    <div class="d-flex align-items-start mb-5">
+                        <div class="icon-box me-4 mt-1" style="color: #E91E63; font-size: 24px;">
+                            <i class="fa-solid fa-phone"></i>
                         </div>
-                        <p class="mt-30 mb-30"><span class="bold">PLAPERS©</span> empresa orgullosamente MEXICANA, con amplia experiencia en la fabricación y distribución de placas personalizadas de tipo “DECORATIVO”, ha contribuido desde la década de los noventas a impulsar la creatividad de nuestros clientes al ofrecer la oportunidad de personalizar nuestros productos a su gusto con materiales de alta calidad, dando como consecuencia que día con día se vaya logrando la aceptación de un mayor número de consumidores a nivel nacional.</p>
-
-                        <p class="mb-55">Nuestras placas, porta placas y bases de escritorios son una excelente opción para dar un regalo original; dado que cuenta con una amplia gama de posibilidades de ocupar nuestros productos como decoración en casas, oficinas, automóviles, bicicletas, motocicletas o cualquier otro lugar que nuestro cliente imagine.</p>
+                        <div>
+                            <h4 class="text-white fw-bold mb-2" style="font-size: 1.1rem;">Oficina PLAPERS</h4>
+                            <p style="color: #9ca3af; margin: 0; font-size: 15px;"><a href="tel:+525556861612" style="color: #e5e7eb; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#E91E63'" onmouseout="this.style.color='#e5e7eb'">+52 (55) 5686 1612</a></p>
+                        </div>
                     </div>
+
+                    <div class="d-flex align-items-start mb-5">
+                        <div class="icon-box me-4 mt-1" style="color: #E91E63; font-size: 24px;">
+                            <i class="fa-regular fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-white fw-bold mb-2" style="font-size: 1.1rem;">Contacto: Ventas</h4>
+                            <p style="color: #9ca3af; margin: 0; font-size: 15px;"><a href="mailto:ventas@plapers.com.mx" style="color: #e5e7eb; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#E91E63'" onmouseout="this.style.color='#e5e7eb'">ventas@plapers.com.mx</a></p>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-start mb-5">
+                        <div class="icon-box me-4 mt-1" style="color: #E91E63; font-size: 24px;">
+                            <i class="fa-regular fa-clock"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-white fw-bold mb-2" style="font-size: 1.1rem;">Horario de atención</h4>
+                            <p style="color: #9ca3af; margin: 0; font-size: 15px; line-height: 1.6;">Lunes a Viernes de 09:00 a 18:00 hrs.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-5 pt-3" style="border-top: 1px solid rgba(255,255,255,0.06);">
+                        <h4 class="text-white fw-bold mb-3" style="font-size: 1rem;">Síguenos en nuestras redes</h4>
+                        <div class="d-flex gap-3">
+                            <a href="https://www.youtube.com/channel/UCcTYyOQ_rNj1N0eUqi-rzBg" target="_blank" class="social-btn" title="YouTube">
+                                <i class="fa-brands fa-youtube"></i>
+                            </a>
+                            <a href="https://x.com/Plapers" target="_blank" class="social-btn" title="X (Twitter)">
+                                <i class="fa-brands fa-x-twitter"></i>
+                            </a>
+                            <a href="https://www.facebook.com/Plapers" target="_blank" class="social-btn" title="Facebook">
+                                <i class="fa-brands fa-facebook-f"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="col-lg-7">
+                <div class="contact-form-wrapper" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 45px 40px;">
+                    <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Mensaje enviado exitosamente (Demo)');">
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <label class="text-white mb-2" style="font-size: 14px; font-weight: 500;">Nombre completo</label>
+                                <input type="text" class="custom-input w-100" placeholder="Ej. Juan Pérez" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="text-white mb-2" style="font-size: 14px; font-weight: 500;">Teléfono (WhatsApp)</label>
+                                <input type="tel" class="custom-input w-100" placeholder="Ej. 55 1234 5678" required>
+                            </div>
+                            <div class="col-12">
+                                <label class="text-white mb-2" style="font-size: 14px; font-weight: 500;">Correo electrónico</label>
+                                <input type="email" class="custom-input w-100" placeholder="ejemplo@correo.com" required>
+                            </div>
+                            <div class="col-12">
+                                <label class="text-white mb-2" style="font-size: 14px; font-weight: 500;">Mensaje</label>
+                                <textarea class="custom-input w-100" rows="6" placeholder="¿En qué podemos ayudarte el día de hoy?" required></textarea>
+                            </div>
+                            <div class="col-12 mt-4 pt-2">
+                                <button type="submit" class="btn w-100 text-white submit-btn" style="background-color: #E91E63; padding: 15px; font-weight: 600; font-size: 15px; border-radius: 6px; transition: all 0.3s; border: none;">
+                                    Enviar mensaje
+                                </button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
+        
     </div>
 </section>
-<!-- About area end here -->
 
-<!-- Ad banner area start here -->
-<section class="ad-banner-area">
-    <div class="container-fluid">
-        <div class="row g-4 pt-100">
-            <div class="col-lg-4 p-0">
-                <div class="ad-banner__item">
-                    <div class="bg-image" data-background="<?= base_url() ?>/assets/images/acerca-de-plapers/mision.jpg"></div>
-                    <div class="ad-banner__content left right pt-130 pb-130">
-                        <h2 class="mb-20 wow fadeInUp" data-wow-delay=".1s">MISIÓN</h2>
-                        <p class="wow fadeInUp" data-wow-delay=".2s">Personalizar y desarrollar productos al consumidor que quiera un producto original y novedoso, con materiales y procesos de la más alta calidad, así como seguir mejorando procesos para tener una mejora continua en todos los productos que como resultado da el poder expandir nuestro mercado.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 p-0">
-                <div class="ad-banner__item">
-                    <div class="bg-image" data-background="<?= base_url() ?>/assets/images/acerca-de-plapers/vision.jpg"></div>
-                    <div class="ad-banner__content left right pt-130 pb-130">
-                        <h2 class="mb-20 wow fadeInDown" data-wow-delay=".1s">MISIÓN</h2>
-                        <p class="wow fadeInDown" data-wow-delay=".2s">Mantener la calidad e innovación en nuestros productos sin perder de vista la calidad y durabilidad para llegar a ser una empresa competitiva en el mercado nacional.<br><br><br></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 p-0">
-                <div class="ad-banner__item">
-                    <div class="bg-image" data-background="<?= base_url() ?>/assets/images/acerca-de-plapers/valores.jpg"></div>
-                    <div class="ad-banner__content left right pt-130 pb-130">
-                        <h2 class="mb-20 wow fadeInUp" data-wow-delay=".1s">VALORES</h2>
-                        <p class="wow fadeInUp" data-wow-delay=".2s">Honestidad que busca ganar la confianza de nuestros clientes; atención y esmero al momento de hacer su compra; trato amable, cordialidad y eficaz, que genere confianza para que su compra sea satisfactoria.<br><br></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Ad banner area end here -->
-
-<!-- Blog area start here -->
-
-<!-- Blog area end here -->
+<style>
+    .custom-input {
+        background: #080f1c;
+        border: 1px solid rgba(255,255,255,0.08);
+        color: #fff;
+        padding: 15px 20px;
+        border-radius: 6px;
+        transition: all 0.3s ease;
+        outline: none;
+        font-size: 15px;
+    }
+    .custom-input:focus {
+        border-color: #E91E63;
+        background: #0b1426;
+        box-shadow: 0 0 0 3px rgba(233, 30, 99, 0.15);
+    }
+    .custom-input::placeholder {
+        color: #6b7280;
+    }
+    .submit-btn:hover {
+        background-color: #d81b60 !important;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(233, 30, 99, 0.3);
+    }
+    .social-btn {
+        width: 42px; 
+        height: 42px; 
+        border-radius: 50%; 
+        background: #080f1c; 
+        border: 1px solid rgba(255,255,255,0.06);
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+        color: #fff; 
+        transition: all 0.3s;
+    }
+    .social-btn:hover {
+        background: #E91E63;
+        border-color: #E91E63;
+        transform: translateY(-2px);
+    }
+</style>
+<!-- CONTACT AREA END -->

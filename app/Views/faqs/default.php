@@ -1,66 +1,191 @@
-<!-- About area start here -->
-<section class="discount-area about-area pt-130">
+<!-- FAQS AREA START -->
+<section class="faqs-section" style="background-color: #050b14; padding: 100px 0; min-height: 100vh;">
     <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-6">
-                <div class="image position-relative">
-                    <img class="radius-10" src="<?= base_url() ?>/assets/images/acerca-de-plapers/img-nosotros.jpg" alt="image">
-                </div>
+        
+        <!-- Top Section: Image and Text -->
+        <div class="row align-items-center mb-5">
+            <!-- Mobile: Image goes first via order classes -->
+            <div class="col-lg-6 order-1 text-center mb-4 mb-lg-0">
+                <img src="<?= base_url('img/otros/faqs.png') ?>" alt="FAQs Plapers" class="img-fluid" style="filter: drop-shadow(0 25px 25px rgba(0,0,0,0.6)); max-width: 100%; max-height: 350px; object-fit: contain;">
             </div>
-            <div class="col-lg-6">
-                <div class="discount__item pl-30">
-                    <div class="section-header">
-                        <div class="section-title-icon">
-                            <span class="title-icon mr-10"></span>
-                            <h2>PLAPERS: Fabricante de placas personalizadas</h2>
+            <div class="col-lg-6 order-2 text-start px-4 px-lg-3">
+                <span style="color: #E91E63; font-weight: 700; font-size: 14px; letter-spacing: 1px;" class="text-uppercase d-block mb-3 mt-4 mt-lg-0">FAQS</span>
+                <h2 class="text-white fw-bold mb-4" style="font-size: 2.2rem; line-height: 1.2;">Preguntas frecuentes</h2>
+                <p style="color: #d1d5db; line-height: 1.8; font-size: 15px; text-align: justify;" class="mb-4">
+                    Consulta la información más importante antes de realizar tu pedido: cómo personalizar tu placa, qué textos puedes usar, tiempos estimados de producción, condiciones de envío, cambios, cancelaciones y recomendaciones de cuidado.
+                </p>
+            </div>
+        </div>
+
+        <!-- Accordion Section -->
+        <div class="row justify-content-center mt-5 px-3 px-lg-0">
+            <div class="col-lg-12">
+                <div class="custom-accordion">
+                    <!-- Item 1 -->
+                    <div class="faq-item">
+                        <button class="faq-btn">
+                            ¿Las placas son oficiales?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-content">
+                            <p>No, nuestras placas son de carácter 100% decorativo y novedoso. No sustituyen a una placa oficial emitida por el gobierno y no deben usarse con ese fin en vehículos que circulen por vías públicas.</p>
                         </div>
-                        <p class="mt-30 mb-30"><span class="bold">PLAPERS©</span> empresa orgullosamente MEXICANA, con amplia experiencia en la fabricación y distribución de placas personalizadas de tipo “DECORATIVO”, ha contribuido desde la década de los noventas a impulsar la creatividad de nuestros clientes al ofrecer la oportunidad de personalizar nuestros productos a su gusto con materiales de alta calidad, dando como consecuencia que día con día se vaya logrando la aceptación de un mayor número de consumidores a nivel nacional.</p>
-
-                        <p class="mb-55">Nuestras placas, porta placas y bases de escritorios son una excelente opción para dar un regalo original; dado que cuenta con una amplia gama de posibilidades de ocupar nuestros productos como decoración en casas, oficinas, automóviles, bicicletas, motocicletas o cualquier otro lugar que nuestro cliente imagine.</p>
+                    </div>
+                    <!-- Item 2 -->
+                    <div class="faq-item">
+                        <button class="faq-btn">
+                            ¿Puedo personalizar cualquier texto?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-content">
+                            <p>Sí, puedes personalizar tus placas con el texto, números o combinaciones que prefieras, siempre y cuando se ajuste al límite de caracteres permitido para el tipo de placa seleccionada.</p>
+                        </div>
+                    </div>
+                    <!-- Item 3 -->
+                    <div class="faq-item">
+                        <button class="faq-btn">
+                            ¿Puedo revisar mi diseño antes de comprar?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-content">
+                            <p>¡Claro que sí! Contamos con un pre-visualizador en nuestra tienda que te permite ver cómo quedará tu placa personalizada antes de agregarla al carrito y realizar tu compra.</p>
+                        </div>
+                    </div>
+                    <!-- Item 4 -->
+                    <div class="faq-item">
+                        <button class="faq-btn">
+                            ¿Cuánto tarda la producción?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-content">
+                            <p>El tiempo estimado de producción es de 2 a 5 días hábiles, dependiendo del volumen de pedidos y el tipo de placa. Una vez terminada, procedemos inmediatamente con el envío.</p>
+                        </div>
+                    </div>
+                    <!-- Item 5 -->
+                    <div class="faq-item">
+                        <button class="faq-btn">
+                            ¿Hacen envíos a todo México?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-content">
+                            <p>Sí, realizamos envíos a toda la República Mexicana. Trabajamos con las mejores paqueterías para asegurar que tu placa llegue en perfectas condiciones hasta la puerta de tu casa.</p>
+                        </div>
+                    </div>
+                    <!-- Item 6 -->
+                    <div class="faq-item">
+                        <button class="faq-btn">
+                            ¿Puedo cancelar o cambiar mi pedido?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-content">
+                            <p>Debido a que nuestros productos son personalizados y fabricados sobre pedido, las cancelaciones o cambios solo pueden realizarse dentro de las primeras 2 horas posteriores a la confirmación de compra.</p>
+                        </div>
+                    </div>
+                    <!-- Item 7 -->
+                    <div class="faq-item">
+                        <button class="faq-btn">
+                            ¿Qué cuidados necesita mi placa?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-content">
+                            <p>Nuestras placas están hechas con materiales de alta calidad, pero te recomendamos limpiarlas solo con agua y jabón suave. Evita el uso de solventes o productos químicos abrasivos para no dañar los acabados.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
-<!-- About area end here -->
 
-<!-- Ad banner area start here -->
-<section class="ad-banner-area">
-    <div class="container-fluid">
-        <div class="row g-4 pt-100">
-            <div class="col-lg-4 p-0">
-                <div class="ad-banner__item">
-                    <div class="bg-image" data-background="<?= base_url() ?>/assets/images/acerca-de-plapers/mision.jpg"></div>
-                    <div class="ad-banner__content left right pt-130 pb-130">
-                        <h2 class="mb-20 wow fadeInUp" data-wow-delay=".1s">MISIÓN</h2>
-                        <p class="wow fadeInUp" data-wow-delay=".2s">Personalizar y desarrollar productos al consumidor que quiera un producto original y novedoso, con materiales y procesos de la más alta calidad, así como seguir mejorando procesos para tener una mejora continua en todos los productos que como resultado da el poder expandir nuestro mercado.</p>
+        <!-- Contact Section -->
+        <div class="row mt-5 pt-4">
+            <div class="col-lg-12">
+                <div class="d-flex flex-column flex-md-row align-items-center justify-content-center justify-content-md-between p-4" style="background: transparent;">
+                    <div class="text-center text-md-start mb-4 mb-md-0 d-flex flex-column align-items-center align-items-md-start mx-auto mx-md-0">
+                        <h3 class="text-white fw-bold mb-2" style="font-size: 1.25rem;">¿No encontraste tu respuesta?</h3>
+                        <p style="color: #d1d5db; margin: 0; font-size: 14px; max-width: 450px;">Escríbenos y te ayudamos a resolver cualquier duda sobre tu placa personalizada.</p>
                     </div>
-                </div>
-            </div>
-            <div class="col-lg-4 p-0">
-                <div class="ad-banner__item">
-                    <div class="bg-image" data-background="<?= base_url() ?>/assets/images/acerca-de-plapers/vision.jpg"></div>
-                    <div class="ad-banner__content left right pt-130 pb-130">
-                        <h2 class="mb-20 wow fadeInDown" data-wow-delay=".1s">MISIÓN</h2>
-                        <p class="wow fadeInDown" data-wow-delay=".2s">Mantener la calidad e innovación en nuestros productos sin perder de vista la calidad y durabilidad para llegar a ser una empresa competitiva en el mercado nacional.<br><br><br></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 p-0">
-                <div class="ad-banner__item">
-                    <div class="bg-image" data-background="<?= base_url() ?>/assets/images/acerca-de-plapers/valores.jpg"></div>
-                    <div class="ad-banner__content left right pt-130 pb-130">
-                        <h2 class="mb-20 wow fadeInUp" data-wow-delay=".1s">VALORES</h2>
-                        <p class="wow fadeInUp" data-wow-delay=".2s">Honestidad que busca ganar la confianza de nuestros clientes; atención y esmero al momento de hacer su compra; trato amable, cordialidad y eficaz, que genere confianza para que su compra sea satisfactoria.<br><br></p>
-                    </div>
+                    <a href="<?= base_url('web/contacto') ?>" class="btn text-white text-center mt-3 mt-md-0 mx-auto mx-md-0" style="background-color: #E91E63; padding: 12px 35px; border: none; font-weight: 500; border-radius: 4px; transition: all 0.3s;">Contacto</a>
                 </div>
             </div>
         </div>
+        
     </div>
 </section>
-<!-- Ad banner area end here -->
 
-<!-- Blog area start here -->
+<style>
+    .faq-item {
+        background-color: transparent;
+        border: 1px solid rgba(255,255,255,0.06);
+        border-radius: 4px;
+        margin-bottom: 8px;
+        overflow: hidden;
+    }
+    .faq-btn {
+        background: #080f1c; /* Slightly lighter than background */
+        color: #e5e7eb;
+        width: 100%;
+        text-align: left;
+        padding: 16px 24px;
+        border: none;
+        outline: none;
+        font-size: 15px;
+        font-weight: 400;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+    .faq-btn:hover {
+        background: #0b1426;
+    }
+    .faq-icon {
+        color: #E91E63;
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 1;
+        transition: transform 0.3s ease;
+    }
+    .faq-btn.active .faq-icon {
+        transform: rotate(45deg); /* Turns + into x */
+    }
+    .faq-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+        background: #080f1c;
+    }
+    .faq-content p {
+        padding: 0 24px 20px;
+        margin: 0;
+        color: #9ca3af;
+        font-size: 14px;
+        line-height: 1.6;
+    }
+</style>
 
-<!-- Blog area end here -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const faqBtns = document.querySelectorAll('.faq-btn');
+        
+        faqBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Check if this is already active
+                const isActive = this.classList.contains('active');
+                
+                // Close all
+                faqBtns.forEach(b => {
+                    b.classList.remove('active');
+                    b.nextElementSibling.style.maxHeight = null;
+                });
+                
+                // If it wasn't active, open it
+                if (!isActive) {
+                    this.classList.add('active');
+                    const content = this.nextElementSibling;
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+            });
+        });
+    });
+</script>
+<!-- FAQS AREA END -->

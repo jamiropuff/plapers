@@ -1,4 +1,4 @@
-<?php echo "<pre>", var_dump($Galeria), "</pre>"; ?>
+<?php //echo "<pre>", var_dump($Galeria), "</pre>"; ?>
 <main>
 
     <!-- Product area start here -->

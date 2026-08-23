@@ -293,6 +293,31 @@
 */
 /* Placas*/
 
+/* Galeria */
+.product__item_gallery img {
+  transition: transform .35s ease,
+    filter .35s ease;
+}
+
+.product__item_gallery:hover img {
+  transform: scale(1.06);
+  filter: brightness(1.08);
+}
+
+.product__item_gallery {
+  transition: all .3s ease;
+}
+
+.product__item_gallery:hover {
+  transform: translateY(-8px);
+}
+
+/* .product__item_gallery:hover {
+  box-shadow:
+    0 12px 30px rgba(237, 50, 138, 0.18),
+    0 0 15px rgba(0, 170, 255, .12);
+} */
+
 /* Menú siempre fijo en desktop */
 @media (min-width:992px) {
 

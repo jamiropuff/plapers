@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controllers;
+use App\Models\GaleriaModel;
 
 class Home extends BaseController
 {
@@ -53,22 +54,18 @@ class Home extends BaseController
     public function galeria()
     {
 
-        // $data_footer = array(
-        //     'grade' => '',
-        //     'menu' => 'inicio',
-        //     'visitas' => $visitas,
-        //     'eventos' => $eventos,
-        //     'menu_oferta' => $menu_oferta
-        // );
+        $galeriaModel = new GaleriaModel();
 
-        $data_nav = ['menu_activo' => 'galeria'];
+        $data = array(
+            'Titulo' => "Galeria",
+            'Descripcion' => "",
+            'Galeria' => $galeriaModel->obtiene_galeria()
+        );
+
         echo view('templates/header');
-        echo view('templates/nav-top', $data_nav);
-        // echo view('templates/sidebar-right');
-        //echo view('templates/breadcrumb',$data_breadcrumb);
-        echo view('gallery/default');
+        echo view('templates/nav-top');
+        echo view('gallery/default', $data);
         echo view('templates/footer');
-        // echo view('scripts/scripts');
         echo view('templates/close');
     }
 

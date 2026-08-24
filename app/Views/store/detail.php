@@ -306,19 +306,19 @@
             transition: border-color 0.2s;
         }
 
-        .opcion-caracteres.seleccionada {
+        /* .opcion-caracteres.seleccionada {
             border-color: #e74c3c;
-        }
+        } */
 
         .opcion-caracteres img {
             max-width: 100%;
         }
 
-        .opcion-caracteres h6 {
+        /* .opcion-caracteres h6 {
             text-align: center;
             font-weight: 600;
             font-size: 13px;
-        }
+        } */
 
         @media (max-width: 768px) {
             .col-xs-4 {
@@ -554,8 +554,8 @@
             },
             acabado: 1,
             textoL1: 'Linea 1',
-            textoL2: '',
-            textoL3: '',
+            textoL2: 'Linea 2',
+            textoL3: 'Linea 3',
             posicionActiva: 0,
             opcionesCaracteresL1: [7],
             opcionesCaracteresL2: [],
@@ -567,6 +567,12 @@
             numCaracteresL1: 7,
             numCaracteresL2: 0,
             numCaracteresL3: 0,
+            indiceSeleccionadoL1: 0, // NUEVO: índice seleccionado para L1
+            indiceSeleccionadoL2: 0, // NUEVO: índice seleccionado para L2
+            indiceSeleccionadoL3: 0, // NUEVO: índice seleccionado para L3
+            fuenteActualL1: 0, // NUEVO: fuente actual para L1
+            fuenteActualL2: 0, // NUEVO: fuente actual para L2
+            fuenteActualL3: 0, // NUEVO: fuente actual para L3
             cantidad: 1,
             colorSeleccionado: 1,
             foto: '',
@@ -581,12 +587,14 @@
         //  FUNCIONES AUXILIARES
         // ============================================================
         function getUrlParams() {
+            console.log('getUrlParams');
             var path = window.location.pathname;
             var parts = path.split('/detalle/');
             return parts.length > 1 ? parts[1] : null;
         }
 
         function getAbreviaCat(idCat) {
+            console.log('getAbreviaCat', idCat);
             var map = {
                 '1': 'BIC',
                 '2': 'AME',
@@ -597,11 +605,15 @@
         }
 
         function getCategoriaClase(idCat) {
+            console.log('getCategoriaClase', idCat);
             return 'categoria-' + (idCat || '1');
         }
 
         function getClaseL1() {
-            return 'ff-tipo-' + (state.opcionesFuentesL1[0] || 0) +
+            console.log('getClaseL1');
+            // Obtener la fuente seleccionada usando el índice almacenado
+            var fuenteSeleccionada = state.opcionesFuentesL1[state.indiceSeleccionadoL1] || state.opcionesFuentesL1[0];
+            return 'ff-tipo-' + fuenteSeleccionada +
                 ' posicion-' + state.posicionActiva +
                 ' personaliza-' + state.numCaracteresL1 +
                 ' letra-color-' + state.colorSeleccionado +
@@ -609,8 +621,10 @@
         }
 
         function getClaseL2() {
+            console.log('getClaseL2');
             if (state.numCaracteresL2 === 0 || !state.opcionesFuentesL2.length) return 'linea-2';
-            return 'ff-tipo-' + state.opcionesFuentesL2[0] +
+            // Usar la fuente actual almacenada
+            return 'ff-tipo-' + state.fuenteActualL2 +
                 ' posicion-' + state.posicionActiva +
                 ' personaliza-' + state.numCaracteresL2 +
                 ' letra-color-' + state.colorSeleccionado +
@@ -618,8 +632,10 @@
         }
 
         function getClaseL3() {
+            console.log('getClaseL3');
             if (state.numCaracteresL3 === 0 || !state.opcionesFuentesL3.length) return 'linea-3';
-            return 'ff-tipo-' + state.opcionesFuentesL3[0] +
+            // Usar la fuente actual almacenada
+            return 'ff-tipo-' + state.fuenteActualL3 +
                 ' posicion-' + state.posicionActiva +
                 ' personaliza-' + state.numCaracteresL3 +
                 ' letra-color-' + state.colorSeleccionado +
@@ -627,6 +643,7 @@
         }
 
         function actualizarClasesTexto() {
+            console.log('actualizarClasesTexto');
             var el1 = document.getElementById('textoL1');
             var el2 = document.getElementById('textoL2');
             var el3 = document.getElementById('textoL3');
@@ -660,6 +677,7 @@
         // ============================================================
 
         function renderizarPosiciones() {
+            console.log('renderizarPosiciones');
             var container = document.getElementById('posicionesContainer');
             container.innerHTML = '';
             state.posiciones.forEach(function(pos, index) {
@@ -680,6 +698,7 @@
         }
 
         function renderizarOpcionesLinea(linea) {
+            console.log('renderizarOpcionesLinea', linea);
             var containerId = linea === 1 ? 'opcionesL1' : (linea === 2 ? 'opcionesL2' : 'opcionesL3');
             var container = document.getElementById(containerId);
             if (!container) return;
@@ -697,6 +716,8 @@
                 return;
             }
 
+            console.log('chars: ', chars, 'fuentes: ', fuentes, 'numActual: ', numActual);
+
             chars.forEach(function(opcion, index) {
                 var div = document.createElement('div');
                 div.className = 'col-xs-4 opcion-caracteres';
@@ -711,6 +732,7 @@
                 var fuente = fuentes[index] || 0;
                 var lineaLabel = linea === 1 ? '' : (linea === 2 ? '_L2' : '_L3');
                 img.src = CONFIG.DIR_IMG + '/detalles/' + state.abreviaCat + '_' + opcion + 'L_' + fuente + lineaLabel + '.svg';
+                console.log('img.src', img.src);
                 img.alt = '';
 
                 div.appendChild(h6);
@@ -725,6 +747,7 @@
         }
 
         function renderizarColores(colores) {
+            console.log('renderizarColores', colores);
             var container = document.getElementById('coloresContainer');
             container.innerHTML = '';
             colores.forEach(function(color) {
@@ -739,6 +762,7 @@
         }
 
         function renderizarResenas(resenas) {
+            console.log('renderizarResenas', resenas);
             var container = document.getElementById('reseñasContainer');
             container.innerHTML = '';
             if (!resenas || resenas.length === 0) {
@@ -795,6 +819,7 @@
         // ============================================================
 
         function cambiaLayout(seleccion) {
+            console.log('cambiaLayout', seleccion);
             var pos = state.posiciones[seleccion];
             if (!pos) return;
 
@@ -802,23 +827,37 @@
             state.opcionesCaracteresL1 = pos.caracteres_linea_1 ? pos.caracteres_linea_1.split(',') : [7];
             state.opcionesFuentesL1 = pos.id_fuente_linea_1 ? pos.id_fuente_linea_1.split(',') : [0];
 
+            // Inicializar índices y fuentes actuales para L1
+            state.indiceSeleccionadoL1 = 0;
+            state.fuenteActualL1 = state.opcionesFuentesL1[0] || 0;
+
             if (pos.caracteres_linea_2) {
                 state.opcionesCaracteresL2 = pos.caracteres_linea_2.split(',');
                 state.opcionesFuentesL2 = pos.id_fuente_linea_2.split(',');
+                // Inicializar índices y fuentes actuales para L2
+                state.indiceSeleccionadoL2 = 0;
+                state.fuenteActualL2 = state.opcionesFuentesL2[0] || 0;
                 document.getElementById('linea2Container').style.display = 'block';
             } else {
                 state.opcionesCaracteresL2 = [];
                 state.opcionesFuentesL2 = [];
+                state.indiceSeleccionadoL2 = 0;
+                state.fuenteActualL2 = 0;
                 document.getElementById('linea2Container').style.display = 'none';
             }
 
             if (pos.caracteres_linea_3) {
                 state.opcionesCaracteresL3 = pos.caracteres_linea_3.split(',');
                 state.opcionesFuentesL3 = pos.id_fuente_linea_3.split(',');
+                // Inicializar índices y fuentes actuales para L3
+                state.indiceSeleccionadoL3 = 0;
+                state.fuenteActualL3 = state.opcionesFuentesL3[0] || 0;
                 document.getElementById('linea3Container').style.display = 'block';
             } else {
                 state.opcionesCaracteresL3 = [];
                 state.opcionesFuentesL3 = [];
+                state.indiceSeleccionadoL3 = 0;
+                state.fuenteActualL3 = 0;
                 document.getElementById('linea3Container').style.display = 'none';
             }
 
@@ -858,28 +897,100 @@
             actualizarCategoria();
         }
 
+        // function cambiaLayout(seleccion) {
+        //     console.log('cambiaLayout', seleccion);
+        //     var pos = state.posiciones[seleccion];
+        //     if (!pos) return;
+
+        //     state.posicionActiva = pos.id_posicion;
+        //     state.opcionesCaracteresL1 = pos.caracteres_linea_1 ? pos.caracteres_linea_1.split(',') : [7];
+        //     state.opcionesFuentesL1 = pos.id_fuente_linea_1 ? pos.id_fuente_linea_1.split(',') : [0];
+
+        //     if (pos.caracteres_linea_2) {
+        //         state.opcionesCaracteresL2 = pos.caracteres_linea_2.split(',');
+        //         state.opcionesFuentesL2 = pos.id_fuente_linea_2.split(',');
+        //         document.getElementById('linea2Container').style.display = 'block';
+        //     } else {
+        //         state.opcionesCaracteresL2 = [];
+        //         state.opcionesFuentesL2 = [];
+        //         document.getElementById('linea2Container').style.display = 'none';
+        //     }
+
+        //     if (pos.caracteres_linea_3) {
+        //         state.opcionesCaracteresL3 = pos.caracteres_linea_3.split(',');
+        //         state.opcionesFuentesL3 = pos.id_fuente_linea_3.split(',');
+        //         document.getElementById('linea3Container').style.display = 'block';
+        //     } else {
+        //         state.opcionesCaracteresL3 = [];
+        //         state.opcionesFuentesL3 = [];
+        //         document.getElementById('linea3Container').style.display = 'none';
+        //     }
+
+        //     state.numCaracteresL1 = state.opcionesCaracteresL1[0] || 7;
+        //     state.numCaracteresL2 = state.opcionesCaracteresL2.length ? state.opcionesCaracteresL2[0] : 0;
+        //     state.numCaracteresL3 = state.opcionesCaracteresL3.length ? state.opcionesCaracteresL3[0] : 0;
+
+        //     // Actualizar inputs
+        //     document.getElementById('inputL1').maxLength = state.numCaracteresL1;
+        //     if (state.textoL1.length > state.numCaracteresL1) {
+        //         state.textoL1 = state.textoL1.substring(0, state.numCaracteresL1);
+        //         document.getElementById('inputL1').value = state.textoL1;
+        //     }
+
+        //     if (state.numCaracteresL2 > 0) {
+        //         document.getElementById('inputL2').maxLength = state.numCaracteresL2;
+        //         if (state.textoL2.length > state.numCaracteresL2) {
+        //             state.textoL2 = state.textoL2.substring(0, state.numCaracteresL2);
+        //             document.getElementById('inputL2').value = state.textoL2;
+        //         }
+        //     }
+
+        //     if (state.numCaracteresL3 > 0) {
+        //         document.getElementById('inputL3').maxLength = state.numCaracteresL3;
+        //         if (state.textoL3.length > state.numCaracteresL3) {
+        //             state.textoL3 = state.textoL3.substring(0, state.numCaracteresL3);
+        //             document.getElementById('inputL3').value = state.textoL3;
+        //         }
+        //     }
+
+        //     renderizarOpcionesLinea(1);
+        //     if (state.opcionesCaracteresL2.length) renderizarOpcionesLinea(2);
+        //     if (state.opcionesCaracteresL3.length) renderizarOpcionesLinea(3);
+
+        //     renderizarPosiciones();
+        //     actualizarClasesTexto();
+        //     actualizarCategoria();
+        // }
+
         function cambiaNumCaracteres(linea, seleccion) {
+            console.log('cambiaNumCaracteres', linea, seleccion);
+
             if (linea === 1) {
+                state.indiceSeleccionadoL1 = seleccion;
                 state.numCaracteresL1 = parseInt(state.opcionesCaracteresL1[seleccion]);
-                state.opcionesFuentesL1 = [state.opcionesFuentesL1[seleccion]];
+                state.fuenteActualL1 = state.opcionesFuentesL1[seleccion];
                 document.getElementById('inputL1').maxLength = state.numCaracteresL1;
                 if (state.textoL1.length > state.numCaracteresL1) {
                     state.textoL1 = state.textoL1.substring(0, state.numCaracteresL1);
                     document.getElementById('inputL1').value = state.textoL1;
                 }
                 renderizarOpcionesLinea(1);
+
             } else if (linea === 2) {
+                state.indiceSeleccionadoL2 = seleccion;
                 state.numCaracteresL2 = parseInt(state.opcionesCaracteresL2[seleccion]);
-                state.opcionesFuentesL2 = [state.opcionesFuentesL2[seleccion]];
+                state.fuenteActualL2 = state.opcionesFuentesL2[seleccion];
                 document.getElementById('inputL2').maxLength = state.numCaracteresL2;
                 if (state.textoL2.length > state.numCaracteresL2) {
                     state.textoL2 = state.textoL2.substring(0, state.numCaracteresL2);
                     document.getElementById('inputL2').value = state.textoL2;
                 }
                 renderizarOpcionesLinea(2);
+
             } else if (linea === 3) {
+                state.indiceSeleccionadoL3 = seleccion;
                 state.numCaracteresL3 = parseInt(state.opcionesCaracteresL3[seleccion]);
-                state.opcionesFuentesL3 = [state.opcionesFuentesL3[seleccion]];
+                state.fuenteActualL3 = state.opcionesFuentesL3[seleccion];
                 document.getElementById('inputL3').maxLength = state.numCaracteresL3;
                 if (state.textoL3.length > state.numCaracteresL3) {
                     state.textoL3 = state.textoL3.substring(0, state.numCaracteresL3);
@@ -887,22 +998,59 @@
                 }
                 renderizarOpcionesLinea(3);
             }
+
             actualizarClasesTexto();
         }
 
+        // function cambiaNumCaracteres(linea, seleccion) {
+        //     console.log('cambiaNumCaracteres', linea, seleccion);
+        //     if (linea === 1) {
+        //         state.indiceSeleccionadoL1 = seleccion;
+        //         state.numCaracteresL1 = parseInt(state.opcionesCaracteresL1[seleccion]);
+        //         document.getElementById('inputL1').maxLength = state.numCaracteresL1;
+        //         if (state.textoL1.length > state.numCaracteresL1) {
+        //             state.textoL1 = state.textoL1.substring(0, state.numCaracteresL1);
+        //             document.getElementById('inputL1').value = state.textoL1;
+        //         }
+        //         renderizarOpcionesLinea(1);
+        //     } else if (linea === 2) {
+        //         state.indiceSeleccionadoL2 = seleccion;
+        //         state.numCaracteresL2 = parseInt(state.opcionesCaracteresL2[seleccion]);
+        //         document.getElementById('inputL2').maxLength = state.numCaracteresL2;
+        //         if (state.textoL2.length > state.numCaracteresL2) {
+        //             state.textoL2 = state.textoL2.substring(0, state.numCaracteresL2);
+        //             document.getElementById('inputL2').value = state.textoL2;
+        //         }
+        //         renderizarOpcionesLinea(2);
+        //     } else if (linea === 3) {
+        //         state.indiceSeleccionadoL3 = seleccion;
+        //         state.numCaracteresL3 = parseInt(state.opcionesCaracteresL3[seleccion]);
+        //         document.getElementById('inputL3').maxLength = state.numCaracteresL3;
+        //         if (state.textoL3.length > state.numCaracteresL3) {
+        //             state.textoL3 = state.textoL3.substring(0, state.numCaracteresL3);
+        //             document.getElementById('inputL3').value = state.textoL3;
+        //         }
+        //         renderizarOpcionesLinea(3);
+        //     }
+        //     actualizarClasesTexto();
+        // }
+
         function cambiaColor(seleccion) {
+            console.log('cambiaColor', seleccion);
             state.colorSeleccionado = seleccion;
             actualizarClasesTexto();
             renderizarColores(state.datosPlaca.colores || []);
         }
 
         function cambiaAcabado(seleccion) {
+            console.log('cambiaAcabado', seleccion);
             state.acabado = seleccion;
             actualizarFoto();
             renderizarAcabados();
         }
 
         function actualizarFoto() {
+            console.log('actualizarFoto');
             var p = state.datosPlaca;
             var cat = p.id_categoria || 0;
             var subcat = p.id_subcategoria || 0;
@@ -958,6 +1106,7 @@
         }
 
         function renderizarAcabados() {
+            console.log('renderizarAcabados');
             var cat = state.datosPlaca.id_categoria || 0;
             var charolaDiv = document.getElementById('acabadoCharola');
             var cordonDiv = document.getElementById('acabadoCordon');
@@ -996,6 +1145,7 @@
         }
 
         function actualizarCategoria() {
+            console.log('actualizarCategoria');
             var placa = document.getElementById('placa');
             var catClase = getCategoriaClase(state.datosPlaca.id_categoria);
             // Remover clases categoria-* existentes
@@ -1005,6 +1155,7 @@
         }
 
         function actualizarTextoPlaca() {
+            console.log('actualizarTextoPlaca');
             state.textoL1 = document.getElementById('inputL1').value || '';
             state.textoL2 = document.getElementById('inputL2').value || '';
             state.textoL3 = document.getElementById('inputL3').value || '';
@@ -1015,6 +1166,7 @@
         //  CARGA DE PRODUCTO
         // ============================================================
         function cargarProducto(idPlaca) {
+            console.log('cargarProducto', idPlaca);
             fetch(CONFIG.API_URL + '/placas/detalles_producto/' + idPlaca)
                 .then(function(response) {
                     return response.json();
@@ -1031,6 +1183,7 @@
         }
 
         function renderizarProducto() {
+            console.log('renderizarProducto');
             var p = state.datosPlaca;
             state.abreviaCat = getAbreviaCat(p.id_categoria);
             state.categoriaClase = getCategoriaClase(p.id_categoria);
@@ -1140,6 +1293,7 @@
         // ============================================================
 
         function checaRegex(evento) {
+            console.log('checaRegex', evento.key);
             var key = evento.key;
             if (key === 'Backspace' || key === 'Tab' || key === 'ArrowLeft' || key === 'ArrowRight' ||
                 key === 'Delete' || key === 'Home' || key === 'End') {
@@ -1151,6 +1305,7 @@
         }
 
         function agregarACarrito() {
+            console.log('agregarACarrito');
             var producto = {
                 id_producto: state.datosPlaca.id_producto,
                 nom_producto: state.datosPlaca.nom_producto,

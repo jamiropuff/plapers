@@ -195,13 +195,9 @@
         }
 
         .font-leyenda-detalle {
-            font-size: 12px;
-            color: #888;
-            background: #f9f9f9;
-            padding: 12px;
-            border-radius: 6px;
-            border-left: 3px solid #e74c3c;
-            margin-bottom: 15px;
+            color: #ef3b3d;
+            font-size: 1.2rem;
+            font-weight: 700;
         }
 
         .single-product-tab .tab-content {
@@ -373,19 +369,12 @@
                                             <h6 class="brand-name-2" id="claveProducto">-</h6>
                                             <img id="cintilloPromo" src="" class="new-detail" style="display:none;" />
                                         </div>
-                                    </div>
-                                </div>
 
-                                <!-- ===== COLUMNA DERECHA ===== -->
-                                <div class="col-md-7 col-sm-7 col-xs-12">
 
-                                    <hr />
 
-                                    <div class="single-product-tab">
+                                    <div class="single-product-tab" style="margin-top: 40px;border: 1px solid #fff;border-radius: 20px;">
                                         <ul class="reviews-tab mb-40">
-                                            <li class="active"><a data-tab="disena">Diseña tu placa</a></li>
-                                            <li>|</li>
-                                            <li><a data-tab="descrip">Descripción</a></li>
+                                            <li class="active"><a data-tab="descrip">Descripción</a></li>
                                             <li>|</li>
                                             <li><a data-tab="ejemplo">Ejemplo</a></li>
                                             <li>|</li>
@@ -394,73 +383,8 @@
 
                                         <div class="tab-content mb-30">
 
-                                            <!-- TAB DISEÑA -->
-                                            <div class="tab-pane active" id="disena" style="overflow-y: scroll; max-height:50vh;">
-                                                <div class="col-md-12 text-left posicion-container" id="posicionesContainer"></div>
-
-                                                <div class="col-md-12 posicion clearfix pb-50">
-                                                    <h6 class="widget-title border-left mb-20">Línea 1:</h6>
-                                                    <div class="row" id="opcionesL1"></div>
-                                                    <p class="font-signos" id="signosL1">Símbolos permitidos: ( )</p>
-                                                    <input type="text" style="width:50% !important; text-transform:uppercase;" maxlength="15" id="inputL1" placeholder="Línea 1" />
-                                                </div>
-
-                                                <div class="col-md-12 posicion clearfix pb-50" id="linea2Container">
-                                                    <h6 class="widget-title border-left mb-20">Línea 2:</h6>
-                                                    <div class="row" id="opcionesL2"></div>
-                                                    <p class="font-signos" id="signosL2">Símbolos permitidos: ( )</p>
-                                                    <input type="text" style="width:50% !important; text-transform:uppercase;" maxlength="15" id="inputL2" placeholder="Línea 2" />
-                                                </div>
-
-                                                <div class="col-md-12 posicion clearfix pb-50" id="linea3Container">
-                                                    <h6 class="widget-title border-left mb-20">Línea 3:</h6>
-                                                    <div class="row" id="opcionesL3"></div>
-                                                    <p class="font-signos" id="signosL3">Símbolos permitidos: ( )</p>
-                                                    <input type="text" style="width:50% !important; text-transform:uppercase;" maxlength="15" id="inputL3" placeholder="Línea 3" />
-                                                </div>
-
-                                                <div class="col-md-12 mb-3">
-                                                    <h6 class="widget-title border-left mb-20">Acabados:</h6>
-                                                    <div class="col-md-6" style="cursor:pointer;" id="acabadoCharola" onclick="cambiaAcabado(2)">
-                                                        <img src="" id="acabadoCharolaImg" style="max-width:100%;" />
-                                                        <p class="mt-15 ml-20">Tipo Charola</p>
-                                                    </div>
-                                                    <div class="col-md-6" style="cursor:pointer;" id="acabadoCordon" onclick="cambiaAcabado(1)">
-                                                        <img src="" id="acabadoCordonImg" style="max-width:100%;" />
-                                                        <p class="mt-15 ml-20">Tipo Cordón</p>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-12">
-                                                    <div class="single-pro-color-rating clearfix pb-40">
-                                                        <div class="sin-pro-color f-left">
-                                                            <p class="color-title border-left f-left">Color</p>
-                                                            <div class="f-left selector-color" id="coloresContainer"></div>
-                                                        </div>
-                                                        <div class="col-md-6 sin-pro-action f-left ml-20"></div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-12 plus-minus-pro-action clearfix">
-                                                    <div class="sin-plus-minus f-left">
-                                                        <p class="color-title border-left f-left mr-5">Cantidad</p>
-                                                        <div class="cart-plus-minus f-left">
-                                                            <input type="number" value="1" name="qtybutton" id="cantidad" class="cart-plus-minus-box" min="1" />
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-12 mt-2">
-                                                    <div class="font-leyenda-detalle">IMPORTANTE: Si utilizas símbolos NO PERMITIDOS, tu pedido NO PODRÁ SER PROCESADO. CONSULTA NUESTRAS POLÍTICAS DE VENTAS PARA CONOCER NUESTRAS RESTRICCIONES.</div>
-                                                </div>
-
-                                                <div class="col-md-12 mt-2">
-                                                    <button class="btn btn-primary" onclick="agregarACarrito()">Agregar al carrito</button>
-                                                </div>
-                                            </div>
-
                                             <!-- TAB DESCRIPCIÓN -->
-                                            <div class="tab-pane" id="descrip">
+                                            <div class="tab-pane active" id="descrip">
                                                 <div class="col-md-12 medida-placa mb-40">
                                                     <h6 class="widget-title border-left mb-20" id="medidaPlaca">0 x 0 cm.</h6>
                                                     <img id="medidaImg" src="" alt="" style="max-width:100%;" />
@@ -502,6 +426,84 @@
                                             </div>
 
                                         </div>
+                                    </div>
+
+
+
+
+                                    </div>
+                                </div>
+
+                                <!-- ===== COLUMNA DERECHA ===== -->
+                                <div class="col-md-7 col-sm-7 col-xs-12">
+
+                                    <hr />
+
+                                            <div id="disena" >
+                                                <div class="col-md-12 text-left posicion-container" id="posicionesContainer"></div>
+
+                                                <div class="col-md-12 posicion clearfix pb-50">
+                                                    <h6 class="widget-title border-left mb-20">Línea 1:</h6>
+                                                    <div class="row" id="opcionesL1"></div>
+                                                    <p class="font-signos" id="signosL1">Símbolos permitidos: ( )</p>
+                                                    <input type="text" style="width:50% !important; text-transform:uppercase;" maxlength="15" id="inputL1" placeholder="Línea 1" />
+                                                </div>
+
+                                                <div class="col-md-12 posicion clearfix pb-50" id="linea2Container">
+                                                    <h6 class="widget-title border-left mb-20">Línea 2:</h6>
+                                                    <div class="row" id="opcionesL2"></div>
+                                                    <p class="font-signos" id="signosL2">Símbolos permitidos: ( )</p>
+                                                    <input type="text" style="width:50% !important; text-transform:uppercase;" maxlength="15" id="inputL2" placeholder="Línea 2" />
+                                                </div>
+
+                                                <div class="col-md-12 posicion clearfix pb-50" id="linea3Container">
+                                                    <h6 class="widget-title border-left mb-20">Línea 3:</h6>
+                                                    <div class="row" id="opcionesL3"></div>
+                                                    <p class="font-signos" id="signosL3">Símbolos permitidos: ( )</p>
+                                                    <input type="text" style="width:50% !important; text-transform:uppercase;" maxlength="15" id="inputL3" placeholder="Línea 3" />
+                                                </div>
+
+                                                <div class="col-md-12 mb-3">
+                                                    <h6 class="widget-title border-left mb-20">Acabados:</h6>
+                                                    <div class="col-md-5" style="cursor:pointer;" id="acabadoCharola" onclick="cambiaAcabado(2)">
+                                                        <img src="" id="acabadoCharolaImg" style="max-width:100%;" />
+                                                        <p class="mt-15 ml-20">Tipo Charola</p>
+                                                    </div>
+                                                    <div class="col-md-5" style="cursor:pointer;" id="acabadoCordon" onclick="cambiaAcabado(1)">
+                                                        <img src="" id="acabadoCordonImg" style="max-width:100%;" />
+                                                        <p class="mt-15 ml-20">Tipo Cordón</p>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-12">
+                                                    <div class="single-pro-color-rating clearfix pb-40">
+                                                        <div class="sin-pro-color f-left">
+                                                            <p class="color-title border-left f-left">Color</p>
+                                                            <div class="f-left selector-color" id="coloresContainer"></div>
+                                                        </div>
+                                                        <div class="col-md-6 sin-pro-action f-left ml-20"></div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-12 plus-minus-pro-action clearfix">
+                                                    <div class="sin-plus-minus f-left">
+                                                        <p class="color-title border-left f-left mr-5">Cantidad</p>
+                                                        <div class="cart-plus-minus f-left">
+                                                            <input type="number" value="1" name="qtybutton" id="cantidad" class="cart-plus-minus-box" min="1" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-12 mt-2">
+                                                    <div class="font-leyenda-detalle">IMPORTANTE: Si utilizas símbolos NO PERMITIDOS, tu pedido NO PODRÁ SER PROCESADO. CONSULTA NUESTRAS POLÍTICAS DE VENTAS PARA CONOCER NUESTRAS RESTRICCIONES.</div>
+                                                </div>
+
+                                                <div class="col-md-12 mt-2">
+                                                    <button class="btn btn-primary" onclick="agregarACarrito()">Agregar al carrito</button>
+                                                </div>
+                                            </div>
+
+                                            
                                     </div>
                                 </div>
                             </div>
@@ -687,7 +689,7 @@
                 img.style.cursor = 'pointer';
                 img.className = 'mb-5';
                 if (pos.id_posicion == state.posicionActiva) img.classList.add('seleccionada');
-                img.src = CONFIG.DIR_IMG + '/posiciones/p' + pos.id_posicion + '.jpg';
+                img.src = CONFIG.DIR_IMG + '/posiciones/p' + pos.id_posicion + '.png';
                 img.onclick = (function(i) {
                     return function() {
                         cambiaLayout(i);
@@ -720,7 +722,7 @@
 
             chars.forEach(function(opcion, index) {
                 var div = document.createElement('div');
-                div.className = 'col-xs-4 opcion-caracteres';
+                div.className = 'col-4 opcion-caracteres';
                 if (opcion == numActual) div.classList.add('seleccionada');
 
                 var h6 = document.createElement('h6');
@@ -1112,7 +1114,7 @@
             var cordonDiv = document.getElementById('acabadoCordon');
 
             if (state.opcionesAcabado.includes(2)) {
-                charolaDiv.style.display = 'block';
+                charolaDiv.style.display = 'inline-block';
                 document.getElementById('acabadoCharolaImg').src = CONFIG.DIR_IMG + '/acabado/' + cat + '/acabado_charola_th.png';
                 // charolaDiv.classList.toggle('posicionSeleccionada', state.acabado == 2);
             } else {
@@ -1120,7 +1122,7 @@
             }
 
             if (state.opcionesAcabado.includes(1)) {
-                cordonDiv.style.display = 'block';
+                cordonDiv.style.display = 'inline-block';
                 document.getElementById('acabadoCordonImg').src = CONFIG.DIR_IMG + '/acabado/' + cat + '/acabado_cordon_th.png';
                 // cordonDiv.classList.toggle('posicionSeleccionada', state.acabado == 1);
             } else {
@@ -1131,13 +1133,13 @@
             var descCharola = document.getElementById('descAcabadoCharola');
             var descCordon = document.getElementById('descAcabadoCordon');
             if (state.opcionesAcabado.includes(2)) {
-                descCharola.style.display = 'block';
+                descCharola.style.display = 'inline-block';
                 descCharola.querySelector('img').src = CONFIG.DIR_IMG + '/acabado/' + cat + '/acabado_charola.png';
             } else {
                 descCharola.style.display = 'none';
             }
             if (state.opcionesAcabado.includes(1)) {
-                descCordon.style.display = 'block';
+                descCordon.style.display = 'inline-block';
                 descCordon.querySelector('img').src = CONFIG.DIR_IMG + '/acabado/' + cat + '/acabado_cordon.png';
             } else {
                 descCordon.style.display = 'none';

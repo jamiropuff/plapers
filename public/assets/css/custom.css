@@ -1,7 +1,76 @@
+/****************************************/
+/* Generales */
 :root {
   --color-principal: #DD0C5D;
 }
 
+.mb-80 {
+  margin-bottom: 80px;
+}
+
+.mb-40 {
+  margin-bottom: 40px;
+}
+
+.mb-30 {
+  margin-bottom: 30px;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
+}
+
+.mb-5 {
+  margin-bottom: 5px;
+}
+
+.mt-15 {
+  margin-top: 15px;
+}
+
+.mt-30 {
+  margin-top: 30px;
+}
+
+.mt-2 {
+  margin-top: 2rem;
+}
+
+.ml-20 {
+  margin-left: 20px;
+}
+
+.mr-5 {
+  margin-right: 5px;
+}
+
+.pb-50 {
+  padding-bottom: 50px;
+}
+
+.pb-40 {
+  padding-bottom: 40px;
+}
+
+.pb-30 {
+  padding-bottom: 30px;
+}
+
+.pt-30 {
+  padding-top: 30px;
+}
+
+.f-left {
+  float: left;
+}
+
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Generales */
 .bg-principal {
   background-color: var(--color-principal);
 }
@@ -75,6 +144,12 @@
   border-radius: inherit;
 }
 
+.columna-placa {
+    position: sticky;
+    top: 130px;
+    align-self: flex-start;
+}
+
 .demo-slider-container {
   align-self: center;
   width: 100%;
@@ -94,6 +169,11 @@
   flex-shrink: 0;
   position: absolute;
   inset: 0;
+}
+
+#disena {
+  margin-left: 40px;
+  margin-top: 8%;
 }
 
 .fs-10 {
@@ -189,6 +269,7 @@
   text-transform: uppercase;
 }
 
+/*******************************************/
 /* Placas */
 .product__item img {
   transition: transform .35s ease,
@@ -317,6 +398,15 @@
     0 12px 30px rgba(237, 50, 138, 0.18),
     0 0 15px rgba(0, 170, 255, .12);
 } */
+
+.single-product-tab {
+  background: #091226;
+  border-radius: 12px;
+  margin-top: 40px;
+  padding: 18px;
+  transition: all .35s ease;
+  box-shadow: 0 12px 30px rgba(255, 0, 120, .18), 0 0 15px rgba(0, 170, 255, .12);
+}
 
 /* Menú siempre fijo en desktop */
 @media (min-width:992px) {

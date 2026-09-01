@@ -59,7 +59,7 @@
 ?>
 
 <!-- Footer area start here -->
-<footer class="footer-area" style="background-color: #151515;">
+<footer class="footer-area bg-image" data-background="../../assets/images/footer/footer-bg.jpg" style='background-color: #151515; background-image: url("../../assets/images/footer/footer-bg.jpg");'>
     <div class="container">
         <!-- Logo at the top as requested -->
         <div class="row justify-content-center pt-60 pb-40">

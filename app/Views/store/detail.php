@@ -38,71 +38,7 @@
             border-bottom: 2px solid #ef3b3d;
         } */
 
-        .mb-80 {
-            margin-bottom: 80px;
-        }
 
-        .mb-40 {
-            margin-bottom: 40px;
-        }
-
-        .mb-30 {
-            margin-bottom: 30px;
-        }
-
-        .mb-20 {
-            margin-bottom: 20px;
-        }
-
-        .mb-5 {
-            margin-bottom: 5px;
-        }
-
-        .mt-15 {
-            margin-top: 15px;
-        }
-
-        .mt-30 {
-            margin-top: 30px;
-        }
-
-        .mt-2 {
-            margin-top: 2rem;
-        }
-
-        .ml-20 {
-            margin-left: 20px;
-        }
-
-        .mr-5 {
-            margin-right: 5px;
-        }
-
-        .pb-50 {
-            padding-bottom: 50px;
-        }
-
-        .pb-40 {
-            padding-bottom: 40px;
-        }
-
-        .pb-30 {
-            padding-bottom: 30px;
-        }
-
-        .pt-30 {
-            padding-top: 30px;
-        }
-
-        .f-left {
-            float: left;
-        }
-
-        .clearfix::after {
-            content: "";
-            display: table;
-            clear: both;
-        }
 
         .font-700 {
             font-weight: 700;
@@ -196,8 +132,9 @@
 
         .font-leyenda-detalle {
             color: #ef3b3d;
-            font-size: 1.2rem;
+            font-size: 0.9rem;
             font-weight: 700;
+            margin: 20px 0;
         }
 
         .single-product-tab .tab-content {
@@ -372,61 +309,61 @@
 
 
 
-                                    <div class="single-product-tab" style="margin-top: 40px;border: 1px solid #fff;border-radius: 20px;">
-                                        <ul class="reviews-tab mb-40">
-                                            <li class="active"><a data-tab="descrip">Descripción</a></li>
-                                            <li>|</li>
-                                            <li><a data-tab="ejemplo">Ejemplo</a></li>
-                                            <li>|</li>
-                                            <li><a data-tab="coments">Reseñas</a></li>
-                                        </ul>
+                                        <div class="single-product-tab">
+                                            <ul class="reviews-tab mb-40">
+                                                <li class="active"><a data-tab="descrip">Descripción</a></li>
+                                                <li>|</li>
+                                                <li><a data-tab="ejemplo">Ejemplo</a></li>
+                                                <li>|</li>
+                                                <li><a data-tab="coments">Reseñas</a></li>
+                                            </ul>
 
-                                        <div class="tab-content mb-30">
+                                            <div class="tab-content mb-30">
 
-                                            <!-- TAB DESCRIPCIÓN -->
-                                            <div class="tab-pane active" id="descrip">
-                                                <div class="col-md-12 medida-placa mb-40">
-                                                    <h6 class="widget-title border-left mb-20" id="medidaPlaca">0 x 0 cm.</h6>
-                                                    <img id="medidaImg" src="" alt="" style="max-width:100%;" />
-                                                </div>
-                                                <hr />
-                                                <div class="col-md-12 mb-40">
-                                                    <p id="descripcionTexto"></p>
-                                                    <p><b>TIEMPO DE ENTREGA A MÁS TARDAR 8 DÍAS HÁBILES UNA VEZ QUE HACES TU PEDIDO Y RECIBIMOS TU PAGO.</b></p>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <h6 class="widget-title border-left mb-20">Acabados:</h6>
-                                                    <div class="charola col-md-6" id="descAcabadoCharola">
-                                                        <img src="" style="width:100%;" />
-                                                        <p class="mt-15 ml-20">Tipo Charola</p>
+                                                <!-- TAB DESCRIPCIÓN -->
+                                                <div class="tab-pane active" id="descrip">
+                                                    <div class="col-md-12 medida-placa mb-40">
+                                                        <h6 class="widget-title border-left mb-20" id="medidaPlaca">0 x 0 cm.</h6>
+                                                        <img id="medidaImg" src="" alt="" style="max-width:100%;" />
                                                     </div>
-                                                    <div class="col-md-6 charola" id="descAcabadoCordon">
-                                                        <img src="" style="width:100%;" />
-                                                        <p class="mt-15 ml-20">Tipo Cordón</p>
+                                                    <hr />
+                                                    <div class="col-md-12 mb-40">
+                                                        <p id="descripcionTexto"></p>
+                                                        <p><b>TIEMPO DE ENTREGA A MÁS TARDAR 8 DÍAS HÁBILES UNA VEZ QUE HACES TU PEDIDO Y RECIBIMOS TU PAGO.</b></p>
                                                     </div>
+                                                    <div class="col-md-12">
+                                                        <h6 class="widget-title border-left mb-20">Acabados:</h6>
+                                                        <div class="charola col-md-6" id="descAcabadoCharola">
+                                                            <img src="" style="width:100%;" />
+                                                            <p class="mt-15 ml-20">Tipo Charola</p>
+                                                        </div>
+                                                        <div class="col-md-6 charola" id="descAcabadoCordon">
+                                                            <img src="" style="width:100%;" />
+                                                            <p class="mt-15 ml-20">Tipo Cordón</p>
+                                                        </div>
+                                                    </div>
+                                                    <p class="text-danger" style="font-weight:bold;">PLACAS DE USO DECORATIVO, NO SUSTITUYEN PLACAS OFICIALES</p>
                                                 </div>
-                                                <p class="text-danger" style="font-weight:bold;">PLACAS DE USO DECORATIVO, NO SUSTITUYEN PLACAS OFICIALES</p>
-                                            </div>
 
-                                            <!-- TAB EJEMPLO -->
-                                            <div class="tab-pane" id="ejemplo">
-                                                <div class="medida-placa mb-40">
-                                                    <img class="img-responsive" id="ejemploImg" src="" alt="" style="max-width:100%;" />
-                                                </div>
-                                            </div>
-
-                                            <!-- TAB RESEÑAS -->
-                                            <div class="tab-pane" id="coments">
-                                                <div class="col-md-12 medida-placa mb-40">
-                                                    <div class="post-comments mb-60">
-                                                        <h4 class="blog-section-title border-left mb-30">Comentarios de este producto</h4>
-                                                        <div id="reseñasContainer"></div>
+                                                <!-- TAB EJEMPLO -->
+                                                <div class="tab-pane" id="ejemplo">
+                                                    <div class="medida-placa mb-40">
+                                                        <img class="img-responsive" id="ejemploImg" src="" alt="" style="max-width:100%;" />
                                                     </div>
                                                 </div>
-                                            </div>
 
+                                                <!-- TAB RESEÑAS -->
+                                                <div class="tab-pane" id="coments">
+                                                    <div class="col-md-12 medida-placa mb-40">
+                                                        <div class="post-comments mb-60">
+                                                            <h4 class="blog-section-title border-left mb-30">Comentarios de este producto</h4>
+                                                            <div id="reseñasContainer"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
                                         </div>
-                                    </div>
 
 
 
@@ -437,74 +374,72 @@
                                 <!-- ===== COLUMNA DERECHA ===== -->
                                 <div class="col-md-7 col-sm-7 col-xs-12">
 
-                                    <hr />
+                                    <div id="disena">
+                                        <h6 class="widget-title border-left mb-20">Posición:</h6>
+                                        <div class="col-md-12 text-left posicion-container" id="posicionesContainer"></div>
 
-                                            <div id="disena" >
-                                                <div class="col-md-12 text-left posicion-container" id="posicionesContainer"></div>
+                                        <div class="col-md-12 posicion clearfix pb-50">
+                                            <h6 class="widget-title border-left mb-20">Línea 1:</h6>
+                                            <div class="row" id="opcionesL1"></div>
+                                            <p class="font-signos" id="signosL1">Símbolos permitidos: ( )</p>
+                                            <input type="text" style="width:50% !important; text-transform:uppercase;" maxlength="15" id="inputL1" placeholder="Línea 1" />
+                                        </div>
 
-                                                <div class="col-md-12 posicion clearfix pb-50">
-                                                    <h6 class="widget-title border-left mb-20">Línea 1:</h6>
-                                                    <div class="row" id="opcionesL1"></div>
-                                                    <p class="font-signos" id="signosL1">Símbolos permitidos: ( )</p>
-                                                    <input type="text" style="width:50% !important; text-transform:uppercase;" maxlength="15" id="inputL1" placeholder="Línea 1" />
+                                        <div class="col-md-12 posicion clearfix pb-50" id="linea2Container">
+                                            <h6 class="widget-title border-left mb-20">Línea 2:</h6>
+                                            <div class="row" id="opcionesL2"></div>
+                                            <p class="font-signos" id="signosL2">Símbolos permitidos: ( )</p>
+                                            <input type="text" style="width:50% !important; text-transform:uppercase;" maxlength="15" id="inputL2" placeholder="Línea 2" />
+                                        </div>
+
+                                        <div class="col-md-12 posicion clearfix pb-50" id="linea3Container">
+                                            <h6 class="widget-title border-left mb-20">Línea 3:</h6>
+                                            <div class="row" id="opcionesL3"></div>
+                                            <p class="font-signos" id="signosL3">Símbolos permitidos: ( )</p>
+                                            <input type="text" style="width:50% !important; text-transform:uppercase;" maxlength="15" id="inputL3" placeholder="Línea 3" />
+                                        </div>
+
+                                        <div class="col-md-12 mb-3">
+                                            <h6 class="widget-title border-left mb-20">Acabados:</h6>
+                                            <div class="col-md-5" style="cursor:pointer;" id="acabadoCharola" onclick="cambiaAcabado(2)">
+                                                <img src="" id="acabadoCharolaImg" style="max-width:100%;" />
+                                                <p class="mt-15 ml-20">Tipo Charola</p>
+                                            </div>
+                                            <div class="col-md-5" style="cursor:pointer;" id="acabadoCordon" onclick="cambiaAcabado(1)">
+                                                <img src="" id="acabadoCordonImg" style="max-width:100%;" />
+                                                <p class="mt-15 ml-20">Tipo Cordón</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="single-pro-color-rating clearfix pb-40">
+                                                <div class="sin-pro-color f-left">
+                                                    <p class="color-title border-left f-left">Color</p>
+                                                    <div class="f-left selector-color" id="coloresContainer"></div>
                                                 </div>
+                                                <div class="col-md-6 sin-pro-action f-left ml-20"></div>
+                                            </div>
+                                        </div>
 
-                                                <div class="col-md-12 posicion clearfix pb-50" id="linea2Container">
-                                                    <h6 class="widget-title border-left mb-20">Línea 2:</h6>
-                                                    <div class="row" id="opcionesL2"></div>
-                                                    <p class="font-signos" id="signosL2">Símbolos permitidos: ( )</p>
-                                                    <input type="text" style="width:50% !important; text-transform:uppercase;" maxlength="15" id="inputL2" placeholder="Línea 2" />
-                                                </div>
-
-                                                <div class="col-md-12 posicion clearfix pb-50" id="linea3Container">
-                                                    <h6 class="widget-title border-left mb-20">Línea 3:</h6>
-                                                    <div class="row" id="opcionesL3"></div>
-                                                    <p class="font-signos" id="signosL3">Símbolos permitidos: ( )</p>
-                                                    <input type="text" style="width:50% !important; text-transform:uppercase;" maxlength="15" id="inputL3" placeholder="Línea 3" />
-                                                </div>
-
-                                                <div class="col-md-12 mb-3">
-                                                    <h6 class="widget-title border-left mb-20">Acabados:</h6>
-                                                    <div class="col-md-5" style="cursor:pointer;" id="acabadoCharola" onclick="cambiaAcabado(2)">
-                                                        <img src="" id="acabadoCharolaImg" style="max-width:100%;" />
-                                                        <p class="mt-15 ml-20">Tipo Charola</p>
-                                                    </div>
-                                                    <div class="col-md-5" style="cursor:pointer;" id="acabadoCordon" onclick="cambiaAcabado(1)">
-                                                        <img src="" id="acabadoCordonImg" style="max-width:100%;" />
-                                                        <p class="mt-15 ml-20">Tipo Cordón</p>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-12">
-                                                    <div class="single-pro-color-rating clearfix pb-40">
-                                                        <div class="sin-pro-color f-left">
-                                                            <p class="color-title border-left f-left">Color</p>
-                                                            <div class="f-left selector-color" id="coloresContainer"></div>
-                                                        </div>
-                                                        <div class="col-md-6 sin-pro-action f-left ml-20"></div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-12 plus-minus-pro-action clearfix">
-                                                    <div class="sin-plus-minus f-left">
-                                                        <p class="color-title border-left f-left mr-5">Cantidad</p>
-                                                        <div class="cart-plus-minus f-left">
-                                                            <input type="number" value="1" name="qtybutton" id="cantidad" class="cart-plus-minus-box" min="1" />
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-12 mt-2">
-                                                    <div class="font-leyenda-detalle">IMPORTANTE: Si utilizas símbolos NO PERMITIDOS, tu pedido NO PODRÁ SER PROCESADO. CONSULTA NUESTRAS POLÍTICAS DE VENTAS PARA CONOCER NUESTRAS RESTRICCIONES.</div>
-                                                </div>
-
-                                                <div class="col-md-12 mt-2">
-                                                    <button class="btn btn-primary" onclick="agregarACarrito()">Agregar al carrito</button>
+                                        <div class="col-md-12 plus-minus-pro-action clearfix">
+                                            <div class="sin-plus-minus f-left">
+                                                <p class="color-title border-left f-left mr-5">Cantidad</p>
+                                                <div class="cart-plus-minus f-left">
+                                                    <input type="number" value="1" name="qtybutton" id="cantidad" class="cart-plus-minus-box" min="1" />
                                                 </div>
                                             </div>
+                                        </div>
 
-                                            
+                                        <div class="col-md-12 mt-2">
+                                            <div class="font-leyenda-detalle">IMPORTANTE: Si utilizas símbolos NO PERMITIDOS, tu pedido NO PODRÁ SER PROCESADO. CONSULTA NUESTRAS POLÍTICAS DE VENTAS PARA CONOCER NUESTRAS RESTRICCIONES.</div>
+                                        </div>
+
+                                        <div class="col-md-12 mt-2">
+                                            <button class="btn btn-primary" onclick="agregarACarrito()">Agregar al carrito</button>
+                                        </div>
                                     </div>
+
+
                                 </div>
                             </div>
                         </div>
@@ -512,6 +447,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
     <!-- ============================================================
@@ -684,7 +620,7 @@
             container.innerHTML = '';
             state.posiciones.forEach(function(pos, index) {
                 var img = document.createElement('img');
-                img.style.width = '12%';
+                img.style.width = '18%';
                 img.style.marginRight = '2.5%';
                 img.style.cursor = 'pointer';
                 img.className = 'mb-5';
@@ -755,7 +691,11 @@
             colores.forEach(function(color) {
                 var div = document.createElement('div');
                 div.className = 'selector-color--item selector-color-' + color.id_color;
-                if (color.id_color == state.colorSeleccionado) div.style.borderColor = '#e74c3c';
+                if (color.id_color == state.colorSeleccionado) {
+                    console.log('Color seleccionado: ', color.id_color);
+                    div.style.borderColor = '#e74c3c';
+                    div.style.borderWidth = '2px';
+                }
                 div.onclick = function() {
                     cambiaColor(color.id_color);
                 };
@@ -899,71 +839,6 @@
             actualizarCategoria();
         }
 
-        // function cambiaLayout(seleccion) {
-        //     console.log('cambiaLayout', seleccion);
-        //     var pos = state.posiciones[seleccion];
-        //     if (!pos) return;
-
-        //     state.posicionActiva = pos.id_posicion;
-        //     state.opcionesCaracteresL1 = pos.caracteres_linea_1 ? pos.caracteres_linea_1.split(',') : [7];
-        //     state.opcionesFuentesL1 = pos.id_fuente_linea_1 ? pos.id_fuente_linea_1.split(',') : [0];
-
-        //     if (pos.caracteres_linea_2) {
-        //         state.opcionesCaracteresL2 = pos.caracteres_linea_2.split(',');
-        //         state.opcionesFuentesL2 = pos.id_fuente_linea_2.split(',');
-        //         document.getElementById('linea2Container').style.display = 'block';
-        //     } else {
-        //         state.opcionesCaracteresL2 = [];
-        //         state.opcionesFuentesL2 = [];
-        //         document.getElementById('linea2Container').style.display = 'none';
-        //     }
-
-        //     if (pos.caracteres_linea_3) {
-        //         state.opcionesCaracteresL3 = pos.caracteres_linea_3.split(',');
-        //         state.opcionesFuentesL3 = pos.id_fuente_linea_3.split(',');
-        //         document.getElementById('linea3Container').style.display = 'block';
-        //     } else {
-        //         state.opcionesCaracteresL3 = [];
-        //         state.opcionesFuentesL3 = [];
-        //         document.getElementById('linea3Container').style.display = 'none';
-        //     }
-
-        //     state.numCaracteresL1 = state.opcionesCaracteresL1[0] || 7;
-        //     state.numCaracteresL2 = state.opcionesCaracteresL2.length ? state.opcionesCaracteresL2[0] : 0;
-        //     state.numCaracteresL3 = state.opcionesCaracteresL3.length ? state.opcionesCaracteresL3[0] : 0;
-
-        //     // Actualizar inputs
-        //     document.getElementById('inputL1').maxLength = state.numCaracteresL1;
-        //     if (state.textoL1.length > state.numCaracteresL1) {
-        //         state.textoL1 = state.textoL1.substring(0, state.numCaracteresL1);
-        //         document.getElementById('inputL1').value = state.textoL1;
-        //     }
-
-        //     if (state.numCaracteresL2 > 0) {
-        //         document.getElementById('inputL2').maxLength = state.numCaracteresL2;
-        //         if (state.textoL2.length > state.numCaracteresL2) {
-        //             state.textoL2 = state.textoL2.substring(0, state.numCaracteresL2);
-        //             document.getElementById('inputL2').value = state.textoL2;
-        //         }
-        //     }
-
-        //     if (state.numCaracteresL3 > 0) {
-        //         document.getElementById('inputL3').maxLength = state.numCaracteresL3;
-        //         if (state.textoL3.length > state.numCaracteresL3) {
-        //             state.textoL3 = state.textoL3.substring(0, state.numCaracteresL3);
-        //             document.getElementById('inputL3').value = state.textoL3;
-        //         }
-        //     }
-
-        //     renderizarOpcionesLinea(1);
-        //     if (state.opcionesCaracteresL2.length) renderizarOpcionesLinea(2);
-        //     if (state.opcionesCaracteresL3.length) renderizarOpcionesLinea(3);
-
-        //     renderizarPosiciones();
-        //     actualizarClasesTexto();
-        //     actualizarCategoria();
-        // }
-
         function cambiaNumCaracteres(linea, seleccion) {
             console.log('cambiaNumCaracteres', linea, seleccion);
 
@@ -1004,43 +879,11 @@
             actualizarClasesTexto();
         }
 
-        // function cambiaNumCaracteres(linea, seleccion) {
-        //     console.log('cambiaNumCaracteres', linea, seleccion);
-        //     if (linea === 1) {
-        //         state.indiceSeleccionadoL1 = seleccion;
-        //         state.numCaracteresL1 = parseInt(state.opcionesCaracteresL1[seleccion]);
-        //         document.getElementById('inputL1').maxLength = state.numCaracteresL1;
-        //         if (state.textoL1.length > state.numCaracteresL1) {
-        //             state.textoL1 = state.textoL1.substring(0, state.numCaracteresL1);
-        //             document.getElementById('inputL1').value = state.textoL1;
-        //         }
-        //         renderizarOpcionesLinea(1);
-        //     } else if (linea === 2) {
-        //         state.indiceSeleccionadoL2 = seleccion;
-        //         state.numCaracteresL2 = parseInt(state.opcionesCaracteresL2[seleccion]);
-        //         document.getElementById('inputL2').maxLength = state.numCaracteresL2;
-        //         if (state.textoL2.length > state.numCaracteresL2) {
-        //             state.textoL2 = state.textoL2.substring(0, state.numCaracteresL2);
-        //             document.getElementById('inputL2').value = state.textoL2;
-        //         }
-        //         renderizarOpcionesLinea(2);
-        //     } else if (linea === 3) {
-        //         state.indiceSeleccionadoL3 = seleccion;
-        //         state.numCaracteresL3 = parseInt(state.opcionesCaracteresL3[seleccion]);
-        //         document.getElementById('inputL3').maxLength = state.numCaracteresL3;
-        //         if (state.textoL3.length > state.numCaracteresL3) {
-        //             state.textoL3 = state.textoL3.substring(0, state.numCaracteresL3);
-        //             document.getElementById('inputL3').value = state.textoL3;
-        //         }
-        //         renderizarOpcionesLinea(3);
-        //     }
-        //     actualizarClasesTexto();
-        // }
-
         function cambiaColor(seleccion) {
             console.log('cambiaColor', seleccion);
             state.colorSeleccionado = seleccion;
             actualizarClasesTexto();
+            actualizarFoto();
             renderizarColores(state.datosPlaca.colores || []);
         }
 
@@ -1308,36 +1151,81 @@
 
         function agregarACarrito() {
             console.log('agregarACarrito');
+
+            // Obtener las clases completas de cada línea desde el DOM
+            var linea1Element = document.getElementById('textoL1');
+            var linea2Element = document.getElementById('textoL2');
+            var linea3Element = document.getElementById('textoL3');
+
+            var claseLinea1 = linea1Element ? linea1Element.className : '';
+            var claseLinea2 = linea2Element ? linea2Element.className : '';
+            var claseLinea3 = linea3Element ? linea3Element.className : '';
+
+
+            // Obtener la foto directamente del HTML
+            var fotoElement = document.getElementById('zoom_03');
+            var fotoURL = fotoElement ? fotoElement.src : '';
+
+            // Obtener el precio del producto
+            var precioUnitario = state.datosPlaca.precio_unitario || state.datosPlaca.precio || 0;
+            var cantidad = parseInt(document.getElementById('cantidad').value) || 1;
+            var precioTotal = parseFloat(precioUnitario) * cantidad;
+
+            // Mapeo de categorías para obtener el nombre
+            var categoriasMap = {
+                1: 'Placa bicicleta',
+                2: 'Placa americana',
+                3: 'Placa euromini',
+                4: 'Placa europea'
+            };
+
             var producto = {
                 id_producto: state.datosPlaca.id_producto,
                 nom_producto: state.datosPlaca.nom_producto,
-                cantidad: parseInt(document.getElementById('cantidad').value) || 1,
+                descripcion: state.datosPlaca.descripcion || '',
+                cantidad: cantidad,
+                precio_unitario: precioUnitario.toString(),
+                precio: precioTotal,
+                nom_categoria: categoriasMap[state.datosPlaca.id_categoria] || 'Accesorios',
+                id_categoria: state.datosPlaca.id_categoria.toString(),
                 personalizacion: {
                     posicion: state.posicionActiva,
                     linea1: {
                         texto: state.textoL1.toUpperCase(),
                         fuente: state.opcionesFuentesL1[0],
-                        caracteres: state.numCaracteresL1
+                        caracteres: state.numCaracteresL1,
+                        clase: claseLinea1.trim()
                     },
                     linea2: {
                         texto: state.textoL2.toUpperCase(),
                         fuente: state.opcionesFuentesL2[0] || 0,
-                        caracteres: state.numCaracteresL2
+                        caracteres: state.numCaracteresL2,
+                        clase: claseLinea2.trim()
                     },
                     linea3: {
                         texto: state.textoL3.toUpperCase(),
                         fuente: state.opcionesFuentesL3[0] || 0,
-                        caracteres: state.numCaracteresL3
+                        caracteres: state.numCaracteresL3,
+                        clase: claseLinea3.trim()
                     },
                     color: state.colorSeleccionado,
                     acabado: state.acabado
-                }
+                },
+                foto: fotoURL || ''
             };
+
             console.log('Agregando al carrito:', producto);
-            alert('Producto agregado al carrito!\n' + JSON.stringify(producto, null, 2));
+
+            // Guardar en localStorage (array de productos)
+            var carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+            carrito.push(producto);
+            localStorage.setItem('carrito', JSON.stringify(carrito));
+
+            // Mostrar mensaje de éxito
+            // alert('Producto agregado al carrito!\n' + JSON.stringify(producto, null, 2));
 
             var url_categoria = '';
-            switch (state.datosPlaca.id_categoria) {
+            switch (parseInt(state.datosPlaca.id_categoria)) {
                 case 1:
                     url_categoria = 'bicicleta';
                     break;
@@ -1354,9 +1242,12 @@
                     url_categoria = 'accesorios';
                     break;
             }
-            setTimeout(function() {
-                window.location.href = '/placas/' + url_categoria;
-            }, 3000);
+
+            console.log('Redirigiendo a /placas/' + url_categoria + ' en 3 segundos...');
+
+            // setTimeout(function() {
+            //     window.location.href = '/placas/' + url_categoria;
+            // }, 3000);
         }
 
         // ============================================================

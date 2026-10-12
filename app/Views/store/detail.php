@@ -1258,9 +1258,9 @@
 
             console.log('Redirigiendo a /placas/' + url_categoria + ' en 3 segundos...');
 
-            // setTimeout(function() {
-            //     window.location.href = '/placas/' + url_categoria;
-            // }, 3000);
+            setTimeout(function() {
+                window.location.href = '/placas/' + url_categoria;
+            }, 3000);
         }
 
         // ============================================================

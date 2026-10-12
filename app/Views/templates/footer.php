@@ -300,6 +300,11 @@
 <script src="<?= base_url() ?>/assets/dist/effect-cards-stack.js"></script>
 <script src="<?= base_url() ?>/assets/js/home.js"></script>
 
+
+<script>
+    const BASE_URL = '<?= base_url() ?>';
+</script>
+
 <!-- Carrito Js -->
 <script src="<?= base_url() ?>/js/placas/carrito.js"></script>
 

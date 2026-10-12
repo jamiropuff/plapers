@@ -61,6 +61,9 @@ $routes->get('/placas/detalle/(:num)', 'Placas::detalle/$1');
 $routes->get('/placas/detalles_producto/(:num)', 'Placas::detalleJSON/$1');
 $routes->get('/accesorios', 'Placas::accesorios');
 
+// Carrito
+$routes->get('/carrito', 'CarritoController::carrito');
+
 
 // Footer
 $routes->get('aviso-de-privacidad', 'Home::aviso_privacidad');

@@ -242,6 +242,133 @@ function actualizarContadorCarrito() {
     });
 }
 
+function renderizarCarrito() {
+    const productos = cargarCarrito();
+
+    const escritorio = document.getElementById('carrito-desktop');
+    const movil = document.getElementById('carrito-mobile');
+
+    if (!escritorio || !movil) return;
+
+    const moneda = new Intl.NumberFormat('es-MX', {
+        style: 'currency',
+        currency: 'MXN'
+    });
+
+    function escapar(valor) {
+        return String(valor ?? '').replace(/[&<>"']/g, c => ({
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            '"': '&quot;',
+            "'": '&#39;'
+        })[c]);
+    }
+
+    function generarProducto(producto, indice, esMovil = false) {
+        const cantidad = Math.max(1, parseInt(producto.cantidad, 10) || 1);
+        const precio = Math.max(0, Number(producto.precio_unitario) || 0);
+        const total = precio * cantidad;
+        const p = producto.personalizacion || {};
+
+        const lineas = [1, 2, 3]
+            .filter(n => p['linea' + n]?.texto)
+            .map(n => `<div>Línea ${n}: ${escapar(p['linea' + n].texto)}</div>`)
+            .join('');
+
+        const imagen = producto.foto
+            ? `<img src="${escapar(producto.foto)}"
+                    alt="${escapar(producto.nom_producto)}"
+                    style="width:85px;height:auto;object-fit:contain">`
+            : '';
+
+        const detalles = `
+            <div>
+                <h4>${escapar(producto.nom_producto)}</h4>
+                <div class="text-muted">${escapar(producto.nom_categoria)}</div>
+                ${lineas}
+                <div>Color: <div class="selector-color--item selector-color-${escapar(p.color ?? '')}"></div></div>
+                <div>Distribución: <img class="" src="${BASE_URL}/img/posiciones/p${escapar(p.posicion ?? '')}.png" style="width: 70px; border: 1px solid #ffffff; border-radius: 10px;"></div>
+                <div>Acabado: ${escapar(p.acabado ?? '')}</div>
+            </div>`;
+
+        if (esMovil) {
+            return `
+                <div class="product p-4 bor-top bor-bottom"
+                     data-indice="${indice}">
+                    <div class="product-details d-flex align-items-center gap-3">
+                        ${imagen}${detalles}
+                    </div>
+                    <div class="mt-3">
+                        Precio: ${moneda.format(precio)}
+                    </div>
+                    <div class="product-quantity mt-2">
+                        <label>Cantidad:</label>
+                        <input type="number" min="1" step="1"
+                               class="form-control carrito-cantidad"
+                               data-indice="${indice}" value="${cantidad}">
+                    </div>
+                    <div class="mt-2">
+                        Total: <strong>${moneda.format(total)}</strong>
+                    </div>
+                    <button type="button" class="remove-product mt-2"
+                            data-indice="${indice}">Eliminar ×</button>
+                </div>`;
+        }
+
+        return `
+            <div class="product p-4 bor-top bor-bottom d-flex
+                        justify-content-between align-items-center"
+                 data-indice="${indice}">
+                <div class="product-details d-flex align-items-center gap-3"
+                     style="width:40%">
+                    ${imagen}${detalles}
+                </div>
+                <div class="product-price text-center" style="width:15%">
+                    ${moneda.format(precio)}
+                </div>
+                <div class="product-quantity text-center" style="width:15%">
+                    <input type="number" min="1" step="1"
+                           class="form-control carrito-cantidad mx-auto"
+                           style="width:75px"
+                           data-indice="${indice}" value="${cantidad}">
+                </div>
+                <div class="product-line-price text-center" style="width:15%">
+                    ${moneda.format(total)}
+                </div>
+                <div class="product-removal text-center" style="width:10%">
+                    <button type="button" class="remove-product"
+                            data-indice="${indice}" aria-label="Eliminar">
+                        <i class="fa-solid fa-x heading-color"></i>
+                    </button>
+                </div>
+            </div>`;
+    }
+
+    const vacio = `
+        <div class="p-4 text-center">
+            Tu carrito está vacío.
+            <a href="/tienda">Seguir comprando</a>
+        </div>`;
+
+    escritorio.innerHTML = productos.length
+        ? productos.map((p, i) => generarProducto(p, i)).join('')
+        : vacio;
+
+    movil.innerHTML = productos.length
+        ? productos.map((p, i) => generarProducto(p, i, true)).join('')
+        : vacio;
+
+    const totales = calcularTotales(productos);
+    const subtotal = moneda.format(totales.totalCompra);
+
+    document.getElementById('cart-subtotal-desktop').textContent = subtotal;
+    document.getElementById('cart-subtotal-mobile').textContent = subtotal;
+
+    actualizarContadorCarrito();
+}
+
+
 // Al cargar o refrescar la página
 document.addEventListener('DOMContentLoaded', actualizarContadorCarrito);
 
@@ -254,3 +381,45 @@ window.addEventListener('storage', event => {
         actualizarContadorCarrito();
     }
 });
+
+// Cambiar cantidades desde cualquiera de las dos vistas.
+document.addEventListener('change', function (event) {
+    if (!event.target.matches('.carrito-cantidad')) return;
+
+    const indice = Number(event.target.dataset.indice);
+    const cantidad = Number(event.target.value);
+
+    if (!Number.isInteger(cantidad) || cantidad < 1) {
+        renderizarCarrito();
+        return;
+    }
+
+    try {
+        actualizarCantidadCarrito(indice, cantidad);
+        renderizarCarrito();
+    } catch (error) {
+        console.error(error);
+        renderizarCarrito();
+    }
+});
+
+// Eliminar una partida.
+document.addEventListener('click', function (event) {
+    const boton = event.target.closest('.remove-product');
+    if (!boton) return;
+
+    removerProductoCarrito(Number(boton.dataset.indice));
+    renderizarCarrito();
+});
+
+// Cargar el carrito al entrar o refrescar la página.
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', renderizarCarrito);
+} else {
+    renderizarCarrito();
+}
+
+// Permitir actualizar la vista cuando se modifica el carrito.
+window.addEventListener('carrito:actualizado', renderizarCarrito);
+
+

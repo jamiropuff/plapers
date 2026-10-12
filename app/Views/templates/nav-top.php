@@ -158,17 +158,17 @@
                         </a>
                     </div>
                     <div class="cart__icon position-relative">
-                        <a href="#0" class="text-white fs-5">
+                        <a href="<?= base_url() ?>/carrito" class="text-white fs-5">
                             <i class="fa-regular fa-cart-shopping"></i>
                             <span class="cart-badge-dot">0</span>
                         </a>
                     </div>
                 </div>
                 <div class="cart d-flex d-lg-none align-items-center">
-                    <span class="cart__icon position-relative">
+                    <a href="<?= base_url() ?>/carrito" class="cart__icon position-relative">
                         <i class="fa-regular fa-cart-shopping"></i>
                         <span class="cart-badge-dot">0</span>
-                    </span>
+                    </a>
                 </div>
                 <!-- Mobile Hamburger Menu -->
                 <div class="header-bar d-lg-none ms-3" style="margin-left: 10px; cursor: pointer;">

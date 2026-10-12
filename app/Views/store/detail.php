@@ -280,130 +280,71 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="single-product-area mb-80">
+                        <div id="contenedorProductoDetalle" class="single-product-area mb-80">
                             <div class="row">
 
                                 <!-- ===== COLUMNA IZQUIERDA: PLACA ===== -->
-                                <div class="col-md-5 col-sm-5 col-xs-12">
-                                    <div class="row" id="placa" style="--bs-gutter-x:0rem; --bs-gutter-y:0rem;">
-                                        <div id="textoL1" class="linea-1 ff-tipo-0 posicion-1 personaliza-7 letra-color-1" style="text-transform: uppercase;">Linea 1</div>
-                                        <div id="textoL2" class="linea-2 ff-tipo-0 posicion-1 personaliza-7 letra-color-1" style="display:none;">Linea 2</div>
-                                        <div id="textoL3" class="linea-3 ff-tipo-0 posicion-1 personaliza-7 letra-color-1" style="display:none;">Linea 3</div>
+                                <div class="col-md-5 col-sm-5 col-xs-12" style="position: relative;">
+                                    <div class="placa-sticky">
+                                        <div class="row" id="placa" style="--bs-gutter-x:0rem; --bs-gutter-y:0rem;">
+                                            <div id="textoL1" class="linea-1 ff-tipo-0 posicion-1 personaliza-7 letra-color-1" style="text-transform: uppercase;">Linea 1</div>
+                                            <div id="textoL2" class="linea-2 ff-tipo-0 posicion-1 personaliza-7 letra-color-1" style="display:none;">Linea 2</div>
+                                            <div id="textoL3" class="linea-3 ff-tipo-0 posicion-1 personaliza-7 letra-color-1" style="display:none;">Linea 3</div>
 
-                                        <div class="imgs-zoom-area" style="position: relative; top:0; left:0;">
-                                            <img class="placa--img" id="zoom_03" src="" data-zoom-image="" alt="" style="position: relative; top:0; left:0;" />
-                                            <img id="acabadoCordonSC2" style="position: absolute; top:0; left:0; display:none;" src="" />
-                                            <img id="acabadoCharolaSC3" style="position: absolute; top:0; left:0; display:none;" src="" />
-                                            <img id="acabadoCharolaSC4" style="position: absolute; top:0; left:0; display:none;" src="" />
-                                            <img id="acabadoPlano" style="position: absolute; top:0; left:0; display:none;" src="" />
-                                        </div>
-
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="single-product-info">
-                                            <h2 class="text-white-1 font-700" id="nombreProducto">Cargando...</h2>
-                                            <h6 class="brand-name-2" id="claveProducto">-</h6>
-                                            <img id="cintilloPromo" src="" class="new-detail" style="display:none;" />
-                                        </div>
-
-
-
-                                        <div class="single-product-tab">
-                                            <ul class="reviews-tab mb-40">
-                                                <li class="active"><a data-tab="descrip">Descripción</a></li>
-                                                <li>|</li>
-                                                <li><a data-tab="ejemplo">Ejemplo</a></li>
-                                                <li>|</li>
-                                                <li><a data-tab="coments">Reseñas</a></li>
-                                            </ul>
-
-                                            <div class="tab-content mb-30">
-
-                                                <!-- TAB DESCRIPCIÓN -->
-                                                <div class="tab-pane active" id="descrip">
-                                                    <div class="col-md-12 medida-placa mb-40">
-                                                        <h6 class="widget-title border-left mb-20" id="medidaPlaca">0 x 0 cm.</h6>
-                                                        <img id="medidaImg" src="" alt="" style="max-width:100%;" />
-                                                    </div>
-                                                    <hr />
-                                                    <div class="col-md-12 mb-40">
-                                                        <p id="descripcionTexto"></p>
-                                                        <p><b>TIEMPO DE ENTREGA A MÁS TARDAR 8 DÍAS HÁBILES UNA VEZ QUE HACES TU PEDIDO Y RECIBIMOS TU PAGO.</b></p>
-                                                    </div>
-                                                    <div class="col-md-12">
-                                                        <h6 class="widget-title border-left mb-20">Acabados:</h6>
-                                                        <div class="charola col-md-6" id="descAcabadoCharola">
-                                                            <img src="" style="width:100%;" />
-                                                            <p class="mt-15 ml-20">Tipo Charola</p>
-                                                        </div>
-                                                        <div class="col-md-6 charola" id="descAcabadoCordon">
-                                                            <img src="" style="width:100%;" />
-                                                            <p class="mt-15 ml-20">Tipo Cordón</p>
-                                                        </div>
-                                                    </div>
-                                                    <p class="text-danger" style="font-weight:bold;">PLACAS DE USO DECORATIVO, NO SUSTITUYEN PLACAS OFICIALES</p>
-                                                </div>
-
-                                                <!-- TAB EJEMPLO -->
-                                                <div class="tab-pane" id="ejemplo">
-                                                    <div class="medida-placa mb-40">
-                                                        <img class="img-responsive" id="ejemploImg" src="" alt="" style="max-width:100%;" />
-                                                    </div>
-                                                </div>
-
-                                                <!-- TAB RESEÑAS -->
-                                                <div class="tab-pane" id="coments">
-                                                    <div class="col-md-12 medida-placa mb-40">
-                                                        <div class="post-comments mb-60">
-                                                            <h4 class="blog-section-title border-left mb-30">Comentarios de este producto</h4>
-                                                            <div id="reseñasContainer"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
+                                            <div class="imgs-zoom-area" style="position: relative; top:0; left:0;">
+                                                <img class="placa--img" id="zoom_03" src="" data-zoom-image="" alt="" style="position: relative; top:0; left:0;" />
+                                                <img id="acabadoCordonSC2" style="position: absolute; top:0; left:0; display:none;" src="" />
+                                                <img id="acabadoCharolaSC3" style="position: absolute; top:0; left:0; display:none;" src="" />
+                                                <img id="acabadoCharolaSC4" style="position: absolute; top:0; left:0; display:none;" src="" />
+                                                <img id="acabadoPlano" style="position: absolute; top:0; left:0; display:none;" src="" />
                                             </div>
+
                                         </div>
-
-
-
-
                                     </div>
+
+
                                 </div>
 
                                 <!-- ===== COLUMNA DERECHA ===== -->
                                 <div class="col-md-7 col-sm-7 col-xs-12">
 
                                     <div id="disena">
-                                        <h6 class="widget-title border-left mb-20">Posición:</h6>
+
+                                        <div class="single-product-info mb-4">
+                                            <h2 class="text-white-1 font-700" id="nombreProducto">Cargando...</h2>
+                                            <h6 class="brand-name-2" id="claveProducto">-</h6>
+                                            <img id="cintilloPromo" src="" class="new-detail" style="display:none;" />
+                                        </div>
+
+                                        <h6 class="widget-title border-left mb-2">Posición:</h6>
                                         <div class="col-md-12 text-left posicion-container" id="posicionesContainer"></div>
 
-                                        <div class="col-md-12 posicion clearfix pb-50">
-                                            <h6 class="widget-title border-left mb-20">Línea 1:</h6>
+                                        <div class="col-md-12 posicion clearfix pb-30">
+                                            <h6 class="widget-title border-left mb-1">Línea 1:</h6>
                                             <div class="row" id="opcionesL1"></div>
                                             <p class="font-signos" id="signosL1">Símbolos permitidos: ( )</p>
-                                            <input type="text" style="width:50% !important; text-transform:uppercase;" maxlength="15" id="inputL1" placeholder="Línea 1" />
+                                            <input type="text" style="width:50% !important;text-transform:uppercase; border-radius: 10px;padding: 3px;" maxlength="15" id="inputL1" placeholder="Línea 1" />
                                         </div>
 
-                                        <div class="col-md-12 posicion clearfix pb-50" id="linea2Container">
-                                            <h6 class="widget-title border-left mb-20">Línea 2:</h6>
+                                        <div class="col-md-12 posicion clearfix pb-30" id="linea2Container">
+                                            <h6 class="widget-title border-left mb-2">Línea 2:</h6>
                                             <div class="row" id="opcionesL2"></div>
                                             <p class="font-signos" id="signosL2">Símbolos permitidos: ( )</p>
-                                            <input type="text" style="width:50% !important; text-transform:uppercase;" maxlength="15" id="inputL2" placeholder="Línea 2" />
+                                            <input type="text" style="width:50% !important;text-transform:uppercase; border-radius: 10px;padding: 3px;" maxlength="15" id="inputL2" placeholder="Línea 2" />
                                         </div>
 
-                                        <div class="col-md-12 posicion clearfix pb-50" id="linea3Container">
-                                            <h6 class="widget-title border-left mb-20">Línea 3:</h6>
+                                        <div class="col-md-12 posicion clearfix pb-30" id="linea3Container">
+                                            <h6 class="widget-title border-left mb-2">Línea 3:</h6>
                                             <div class="row" id="opcionesL3"></div>
                                             <p class="font-signos" id="signosL3">Símbolos permitidos: ( )</p>
-                                            <input type="text" style="width:50% !important; text-transform:uppercase;" maxlength="15" id="inputL3" placeholder="Línea 3" />
+                                            <input type="text" style="width:50% !important;text-transform:uppercase; border-radius: 10px;padding: 3px;" maxlength="15" id="inputL3" placeholder="Línea 3" />
                                         </div>
 
                                         <div class="col-md-12 mb-3">
-                                            <h6 class="widget-title border-left mb-20">Acabados:</h6>
+                                            <h6 class="widget-title border-left mb-2">Acabados:</h6>
                                             <div class="col-md-5" style="cursor:pointer;" id="acabadoCharola" onclick="cambiaAcabado(2)">
                                                 <img src="" id="acabadoCharolaImg" style="max-width:100%;" />
-                                                <p class="mt-15 ml-20">Tipo Charola</p>
+                                                <p class="mt-10 ml-20">Tipo Charola</p>
                                             </div>
                                             <div class="col-md-5" style="cursor:pointer;" id="acabadoCordon" onclick="cambiaAcabado(1)">
                                                 <img src="" id="acabadoCordonImg" style="max-width:100%;" />
@@ -412,7 +353,7 @@
                                         </div>
 
                                         <div class="col-md-12">
-                                            <div class="single-pro-color-rating clearfix pb-40">
+                                            <div class="single-pro-color-rating clearfix pb-20">
                                                 <div class="sin-pro-color f-left">
                                                     <p class="color-title border-left f-left">Color</p>
                                                     <div class="f-left selector-color" id="coloresContainer"></div>
@@ -437,7 +378,76 @@
                                         <div class="col-md-12 mt-2">
                                             <button class="btn btn-primary" onclick="agregarACarrito()">Agregar al carrito</button>
                                         </div>
+
+
+
+                                        <div class="row mt-4">
+                                            <div class="container">
+
+                                                <div class="single-product-tab" style="width: 90%; background: url(<?= base_url() ?>/assets/images/bg/discount-bg.jpg); background-position:right;">
+                                                    <ul class="reviews-tab mb-40">
+                                                        <li class="active"><a data-tab="descrip">Descripción</a></li>
+                                                        <li>|</li>
+                                                        <li><a data-tab="ejemplo">Ejemplo</a></li>
+                                                        <li>|</li>
+                                                        <li><a data-tab="coments">Reseñas</a></li>
+                                                    </ul>
+
+                                                    <div class="tab-content mb-30">
+
+                                                        <!-- TAB DESCRIPCIÓN -->
+                                                        <div class="tab-pane active" id="descrip">
+                                                            <div class="col-md-12 medida-placa mb-40">
+                                                                <h6 class="widget-title border-left mb-20" id="medidaPlaca">0 x 0 cm.</h6>
+                                                                <img id="medidaImg" src="" alt="" style="max-width:100%;" />
+                                                            </div>
+                                                            <hr />
+                                                            <div class="col-md-12 mb-40">
+                                                                <p id="descripcionTexto"></p>
+                                                                <p><b>TIEMPO DE ENTREGA A MÁS TARDAR 8 DÍAS HÁBILES UNA VEZ QUE HACES TU PEDIDO Y RECIBIMOS TU PAGO.</b></p>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <h6 class="widget-title border-left mb-20">Acabados:</h6>
+                                                                <div class="charola col-md-6" id="descAcabadoCharola">
+                                                                    <img src="" style="width:100%;" />
+                                                                    <p class="mt-15 ml-20">Tipo Charola</p>
+                                                                </div>
+                                                                <div class="col-md-6 charola" id="descAcabadoCordon">
+                                                                    <img src="" style="width:100%;" />
+                                                                    <p class="mt-15 ml-20">Tipo Cordón</p>
+                                                                </div>
+                                                            </div>
+                                                            <p class="text-danger" style="font-weight:bold;">PLACAS DE USO DECORATIVO, NO SUSTITUYEN PLACAS OFICIALES</p>
+                                                        </div>
+
+                                                        <!-- TAB EJEMPLO -->
+                                                        <div class="tab-pane" id="ejemplo">
+                                                            <div class="medida-placa mb-40">
+                                                                <img class="img-responsive" id="ejemploImg" src="" alt="" style="max-width:100%;" />
+                                                            </div>
+                                                        </div>
+
+                                                        <!-- TAB RESEÑAS -->
+                                                        <div class="tab-pane" id="coments">
+                                                            <div class="col-md-12 medida-placa mb-40">
+                                                                <div class="post-comments mb-60">
+                                                                    <h4 class="blog-section-title border-left mb-30">Comentarios de este producto</h4>
+                                                                    <div id="reseñasContainer"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
                                     </div>
+
+
+
+
+
 
 
                                 </div>
@@ -623,7 +633,7 @@
                 img.style.width = '18%';
                 img.style.marginRight = '2.5%';
                 img.style.cursor = 'pointer';
-                img.className = 'mb-5';
+                img.className = 'mb-4';
                 if (pos.id_posicion == state.posicionActiva) img.classList.add('seleccionada');
                 img.src = CONFIG.DIR_IMG + '/posiciones/p' + pos.id_posicion + '.png';
                 img.onclick = (function(i) {
@@ -662,7 +672,7 @@
                 if (opcion == numActual) div.classList.add('seleccionada');
 
                 var h6 = document.createElement('h6');
-                h6.className = 'mb-20';
+                h6.className = 'mb-1';
                 h6.textContent = opcion + ' letras';
 
                 var img = document.createElement('img');
@@ -762,8 +772,10 @@
 
         function cambiaLayout(seleccion) {
             console.log('cambiaLayout', seleccion);
+            console.log('state: ',state)
             var pos = state.posiciones[seleccion];
             if (!pos) return;
+
 
             state.posicionActiva = pos.id_posicion;
             state.opcionesCaracteresL1 = pos.caracteres_linea_1 ? pos.caracteres_linea_1.split(',') : [7];
@@ -812,6 +824,7 @@
             if (state.textoL1.length > state.numCaracteresL1) {
                 state.textoL1 = state.textoL1.substring(0, state.numCaracteresL1);
                 document.getElementById('inputL1').value = state.textoL1;
+                document.getElementById('inputL1').placeholder = state.textoL1;
             }
 
             if (state.numCaracteresL2 > 0) {
@@ -819,6 +832,7 @@
                 if (state.textoL2.length > state.numCaracteresL2) {
                     state.textoL2 = state.textoL2.substring(0, state.numCaracteresL2);
                     document.getElementById('inputL2').value = state.textoL2;
+                    document.getElementById('inputL2').placeholder = state.textoL2;
                 }
             }
 
@@ -827,6 +841,7 @@
                 if (state.textoL3.length > state.numCaracteresL3) {
                     state.textoL3 = state.textoL3.substring(0, state.numCaracteresL3);
                     document.getElementById('inputL3').value = state.textoL3;
+                    document.getElementById('inputL3').placeholder = state.textoL3;
                 }
             }
 
@@ -1217,9 +1232,7 @@
             console.log('Agregando al carrito:', producto);
 
             // Guardar en localStorage (array de productos)
-            var carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-            carrito.push(producto);
-            localStorage.setItem('carrito', JSON.stringify(carrito));
+            agregarProductoCarrito(producto, cantidad);
 
             // Mostrar mensaje de éxito
             // alert('Producto agregado al carrito!\n' + JSON.stringify(producto, null, 2));
@@ -1324,3 +1337,43 @@
         window.checaRegex = checaRegex;
         window.cargarProducto = cargarProducto;
     </script>
+
+    <script>
+(function () {
+    const placa = document.querySelector('.placa-sticky');
+    const contenedor = document.getElementById(
+        'contenedorProductoDetalle'
+    );
+
+    if (!placa || !contenedor) return;
+
+    function limitarPlaca() {
+        const esMovil = window.innerWidth <= 767;
+        const topOriginal = esMovil ? 75 : 180;
+        const margenInferior = 20;
+
+        const rectContenedor = contenedor.getBoundingClientRect();
+        const alturaPlaca = placa.offsetHeight;
+
+        // Posición normal mientras estamos dentro del producto.
+        const topMaximo = rectContenedor.bottom
+            - alturaPlaca
+            - margenInferior;
+
+        // Al acercarse al final, la placa acompaña al contenedor.
+        const nuevoTop = Math.min(topOriginal, topMaximo);
+
+        placa.style.top = nuevoTop + 'px';
+    }
+
+    window.addEventListener('scroll', limitarPlaca, {
+        passive: true
+    });
+
+    window.addEventListener('resize', limitarPlaca);
+
+    window.addEventListener('load', limitarPlaca);
+
+    limitarPlaca();
+})();
+</script>

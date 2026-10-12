@@ -300,28 +300,32 @@
 <script src="<?= base_url() ?>/assets/dist/effect-cards-stack.js"></script>
 <script src="<?= base_url() ?>/assets/js/home.js"></script>
 
-    <script>
-function updateHeaderOnScroll() {
-    if ($(window).width() >= 992) {
-        if ($(this).scrollTop() > 100) {
-            $(".top__header").addClass("fixed");
-        } else {
-            $(".top__header").removeClass("fixed");
+<!-- Carrito Js -->
+<script src="<?= base_url() ?>/js/placas/carrito.js"></script>
+
+
+<script>
+    function updateHeaderOnScroll() {
+        if ($(window).width() >= 992) {
+            if ($(this).scrollTop() > 100) {
+                $(".top__header").addClass("fixed");
+            } else {
+                $(".top__header").removeClass("fixed");
+            }
         }
     }
-}
 
-function setBodyPadding() {
-    if ($(window).width() >= 992) {
-        $("body").css("padding-top", $(".top__header").outerHeight());
-    } else {
-        $("body").css("padding-top", "0");
+    function setBodyPadding() {
+        if ($(window).width() >= 992) {
+            $("body").css("padding-top", $(".top__header").outerHeight());
+        } else {
+            $("body").css("padding-top", "0");
+        }
     }
-}
 
-$(window).on("scroll", updateHeaderOnScroll);
+    $(window).on("scroll", updateHeaderOnScroll);
 
-$(window).on("resize", setBodyPadding);
+    $(window).on("resize", setBodyPadding);
 
-setBodyPadding();
+    setBodyPadding();
 </script>

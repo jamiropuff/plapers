@@ -9,13 +9,13 @@ use App\Models\CategoriaModel;
 class CarritoController extends BaseController
 {
 
-    protected $ctalogosModel;
+    protected $catalogosModel;
     protected $productoModel;
     protected $categoriaModel;
 
     public function __construct()
     {
-        $this->ctalogosModel = new CatalogosModel();
+        $this->catalogosModel = new CatalogosModel();
         $this->productoModel = new ProductoModel();
         $this->categoriaModel = new CategoriaModel();
     }
@@ -39,7 +39,7 @@ class CarritoController extends BaseController
     {
         $method = $this->request->getMethod(true);
         if ($method === 'GET') {
-            $response = $this->ctalogosModel->catalogos();
+            $response = $this->catalogosModel->catalogos();
         } else {
             $response['Code'] = METHOD_NOT_ALLOWED;
             $response['Msg'] = MSG_METHOD_NOT_ALLOWED;

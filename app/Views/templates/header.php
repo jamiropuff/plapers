@@ -34,6 +34,7 @@
     <link rel="stylesheet" href="<?= base_url() ?>/assets/css/detalle.build.css">
     <!-- Style css -->
     <link rel="stylesheet" href="<?= base_url() ?>/assets/css/style.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/css/placas-front.css">
     <link rel="stylesheet" href="<?= base_url() ?>/assets/css/custom.css">
 </head>
 

@@ -294,6 +294,8 @@
 <script src="<?= base_url() ?>/assets/js/isotope.pkgd.min.js"></script>
 <!-- Waypoints Js -->
 <script src="<?= base_url() ?>/assets/js/jquery.waypoints.js"></script>
+<!-- SweetAlert2 Js -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <!-- Script Js -->
 <script src="<?= base_url() ?>/assets/js/script.js"></script>
 

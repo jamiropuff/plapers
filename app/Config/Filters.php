@@ -25,6 +25,7 @@ class Filters extends BaseConfig
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
         'authAdmin' => AuthRoleFilter::class,
+        'authCliente' => AuthRoleFilter::class,
     ];
 
     /**
@@ -75,6 +76,19 @@ class Filters extends BaseConfig
             'before' => [
                 'panel/*',
             ]
-        ]
+        ],
+
+        'authCliente' => [
+            'before' => [
+                'mi-cuenta',
+                'mi-cuenta/*',
+                'mis-compras',
+                'mis-compras/*',
+                'mis-direcciones',
+                'mis-direcciones/*',
+                'domicilio-fiscal',
+                'domicilio-fiscal/*',
+            ]
+        ],
     ];
 }

@@ -10,28 +10,42 @@ class AuthRoleFilter implements FilterInterface
 {
     public function before(RequestInterface $request, $arguments = null)
     {
-
         $session = session();
 
-        if (!$session) {
-            //return redirect('panel');
+        // Validar que exista una sesión autenticada.
+        if (
+            !$session->has('User_ID') ||
+            !$session->has('Rol')
+        ) {
+            return redirect()->to(
+                empty($arguments) || !in_array('2', $arguments, true)
+                    ? ADMIN_HOME . 'panel'
+                    : base_url('login')
+            );
+        }
+
+        // Roles permitidos definidos en Routes.php.
+        $rolesPermitidos = array_map(
+            'intval',
+            $arguments ?? []
+        );
+
+        // Validar permisos.
+        if (!in_array((int) $session->Rol, $rolesPermitidos, true)) {
+
+            if ((int) $session->Rol === 2) {
+                return redirect()->to(base_url('mi-cuenta'));
+            }
+
             return redirect()->to(ADMIN_HOME . 'panel');
         }
-
-        $rolesPermitidos = [1, 3, 4, 5];
-
-        if (!in_array($session->Rol, $rolesPermitidos)) {
-            return redirect()->to(ADMIN_HOME.'panel');
-        }
-
-        // if($session->Rol != 1){
-        //     //return redirect('panel');
-        //     return redirect()->to(ADMIN_HOME.'panel');
-        // }
     }
 
-    public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)
-    {
-        // Do something here
+    public function after(
+        RequestInterface $request,
+        ResponseInterface $response,
+        $arguments = null
+    ) {
+        // Sin acciones posteriores.
     }
 }

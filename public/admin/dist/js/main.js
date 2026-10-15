@@ -33,14 +33,14 @@ const login = () => {
 
             }else{
                 console.log("success process")
-                window.self.location='/panel/home';
+                window.self.location='/';
             }
 
 
         },
         error: function (obj, error, objError){
             var error = objError;
-            // console.log('Error al obtener el resultado. '+ error);
+            console.log('Error al obtener el resultado. '+ error);
         }
     })
 }

@@ -153,7 +153,7 @@
                 </div>
                 <div class="d-none d-lg-flex align-items-center gap-4">
                     <div class="user__icon">
-                        <a href="#0" class="text-white fs-5">
+                        <a href="<?= base_url() ?>/login" class="text-white fs-5">
                             <i class="fa-regular fa-user"></i>
                         </a>
                     </div>

@@ -307,9 +307,13 @@
     const BASE_URL = '<?= base_url() ?>';
 </script>
 
+
+<script src="<?= base_url() ?>/js/main.js"></script>
+
+<?php if ($Titulo == 'carrito'): ?>
 <!-- Carrito Js -->
 <script src="<?= base_url() ?>/js/placas/carrito.js"></script>
-
+<?php endif ?>
 
 <script>
     function updateHeaderOnScroll() {

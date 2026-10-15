@@ -40,7 +40,26 @@ $routes->set404Override();
 /**********************************************************************/
 // Home
 $routes->get('/', 'Home::index');
-//Se cciones
+// $routes->get('/home', 'Home::index');
+
+// Login de clientes
+$routes->get('/login', 'Home::iniciar_sesion');
+$routes->post('/login/autenticar', 'UserController::login_cliente');
+$routes->get('/login/salir', 'UserController::logout_cliente');
+
+// Área privada de clientes
+$routes->group('', ['filter' => 'authCliente:2'], static function ($routes) {
+
+    $routes->get('mi-cuenta', 'ClientesController::mi_cuenta');
+
+    $routes->get('mis-compras', 'ClientesController::mis_compras');
+
+    $routes->get('mis-direcciones', 'ClientesController::mis_direcciones');
+
+    $routes->get('domicilio-fiscal', 'ClientesController::domicilio_fiscal');
+});
+
+//Secciones
 $routes->get('/web/acerca_de', 'Home::acerca_de');
 $routes->get('/acerca_de', 'Home::acerca_de'); // Alias para acceso directo
 $routes->get('/web/galeria', 'Home::galeria');
@@ -79,79 +98,87 @@ $routes->post('enviar_contacto', 'Home::enviar_contacto');
 /* Admin */
 /**********************************************************************/
 $routes->get('panel', 'Home::admin');
-$routes->get('panel/home', 'Home::dashboard');
 
 // Login
 $routes->post('admin/login', 'UserController::login');
 $routes->get('admin/logout', 'UserController::logout');
 
-// Users
-$routes->get('panel/usuarios/user', 'UserController::ver_usuarios');
-$routes->get('panel/usuarios/staff', 'UserController::ver_usuarios');
-$routes->post('panel/usuarios/lista', 'UserController::usuariosJSON');
-// $routes->get('/users/create', 'UserController::crear_usuario');
-// $routes->get('/users/testpass', 'UserController::test_pass');
-// $routes->post('/users/update', 'UserController::update');
-// $routes->post('/users/delete', 'UserController::delete');
+$routes->group('', [
+    'filter' => 'authAdmin:1,3,4,5'
+], static function ($routes) {
 
-// Ordenes
-$routes->get('panel/ordenes/activas', 'OrdenesController::ordenes_activas');
-$routes->get('panel/ordenes/lista_activas', 'OrdenesController::ordenes_activasJSON');
-$routes->get('panel/ordenes/orden/(:num)', 'OrdenesController::orden/$1');
-$routes->get('panel/ordenes/productos/(:num)', 'OrdenesController::productos/$1');
-$routes->get('panel/ordenes/finalizadas', 'OrdenesController::ordenes_finalizadas');
-$routes->post('panel/ordenes/lista_finalizadas', 'OrdenesController::ordenes_finalizadasJSON');
-$routes->post('panel/ordenes/lista_canceladas', 'OrdenesController::ordenes_canceladasJSON');
-$routes->get('panel/ordenes/canceladas', 'OrdenesController::ordenes_canceladas');
-$routes->get('uploads/(:segment)/(:any)', 'FileController::serveFile/$1/$2');
+    $routes->get('panel/home', 'Home::dashboard');
 
-// Reportes
-$routes->get('panel/reportes/ver-reporte', 'ReportesController::ver_reporte');
-$routes->get('panel/reportes/lista', 'ReportesController::reporteJSON');
+    // Agrega aquí las rutas administrativas protegidas.
+    // Users
+    $routes->get('panel/usuarios/user', 'UserController::ver_usuarios');
+    $routes->get('panel/usuarios/staff', 'UserController::ver_usuarios');
+    $routes->post('panel/usuarios/lista', 'UserController::usuariosJSON');
+    // $routes->get('/users/create', 'UserController::crear_usuario');
+    // $routes->get('/users/testpass', 'UserController::test_pass');
+    // $routes->post('/users/update', 'UserController::update');
+    // $routes->post('/users/delete', 'UserController::delete');
 
-// Clientes
-$routes->get('panel/clientes/ver-clientes', 'ClientesController::ver_clientes');
-$routes->get('panel/clientes/lista', 'ClientesController::listaJSON');
-$routes->get('panel/clientes/info/(:num)', 'ClientesController::info/$1');
-$routes->post('panel/clientes/cambiar_tipo_usuario', 'ClientesController::cambiar_tipo_usuario');
+    // Ordenes
+    $routes->get('panel/ordenes/activas', 'OrdenesController::ordenes_activas');
+    $routes->get('panel/ordenes/lista_activas', 'OrdenesController::ordenes_activasJSON');
+    $routes->get('panel/ordenes/orden/(:num)', 'OrdenesController::orden/$1');
+    $routes->get('panel/ordenes/productos/(:num)', 'OrdenesController::productos/$1');
+    $routes->get('panel/ordenes/finalizadas', 'OrdenesController::ordenes_finalizadas');
+    $routes->post('panel/ordenes/lista_finalizadas', 'OrdenesController::ordenes_finalizadasJSON');
+    $routes->post('panel/ordenes/lista_canceladas', 'OrdenesController::ordenes_canceladasJSON');
+    $routes->get('panel/ordenes/canceladas', 'OrdenesController::ordenes_canceladas');
+    $routes->get('uploads/(:segment)/(:any)', 'FileController::serveFile/$1/$2');
 
-// Suscritos al boletín
-$routes->get('panel/boletin/suscritos', 'BoletinesController::lista_suscritos');
+    // Reportes
+    $routes->get('panel/reportes/ver-reporte', 'ReportesController::ver_reporte');
+    $routes->get('panel/reportes/lista', 'ReportesController::reporteJSON');
 
-// Categorias
-$routes->get('panel/catalogos/categorias', 'CategoriasController::lista');
-$routes->get('panel/catalogos/categorias/lista', 'CategoriasController::listaJSON');
-$routes->get('panel/catalogos/categorias/(:num)', 'CategoriasController::busca/$1');
-$routes->post('panel/catalogos/categorias/agrega', 'CategoriasController::agrega');
-$routes->post('panel/catalogos/categorias/edita', 'CategoriasController::edita');
-$routes->post('panel/catalogos/categorias/activa', 'CategoriasController::activa');
-$routes->post('panel/catalogos/categorias/desactiva', 'CategoriasController::desactiva');
+    // Clientes
+    $routes->get('panel/clientes/ver-clientes', 'ClientesController::ver_clientes');
+    $routes->get('panel/clientes/lista', 'ClientesController::listaJSON');
+    $routes->get('panel/clientes/info/(:num)', 'ClientesController::info/$1');
+    $routes->post('panel/clientes/cambiar_tipo_usuario', 'ClientesController::cambiar_tipo_usuario');
 
-// Subcategorias
-$routes->get('panel/catalogos/subcategorias', 'SubcategoriasController::lista');
-$routes->get('panel/catalogos/subcategorias/lista', 'SubcategoriasController::listaJSON');
-$routes->get('panel/catalogos/subcategorias/(:num)', 'SubcategoriasController::busca/$1');
-$routes->post('panel/catalogos/subcategorias/agrega', 'SubcategoriasController::agrega');
-$routes->post('panel/catalogos/subcategorias/edita', 'SubcategoriasController::edita');
-$routes->post('panel/catalogos/subcategorias/activa', 'SubcategoriasController::activa');
-$routes->post('panel/catalogos/subcategorias/desactiva', 'SubcategoriasController::desactiva');
+    // Suscritos al boletín
+    $routes->get('panel/boletin/suscritos', 'BoletinesController::lista_suscritos');
 
-// Productos
-$routes->get('panel/catalogos/productos', 'ProductosController::lista');
-$routes->get('panel/catalogos/productos/lista', 'ProductosController::listaJSON');
-$routes->get('panel/catalogos/productos/(:num)', 'ProductosController::busca/$1');
-$routes->post('panel/catalogos/productos/agrega', 'ProductosController::agrega');
-$routes->post('panel/catalogos/productos/edita', 'ProductosController::edita');
-$routes->post('panel/catalogos/productos/activa', 'ProductosController::activa');
-$routes->post('panel/catalogos/productos/desactiva', 'ProductosController::desactiva');
+    // Categorias
+    $routes->get('panel/catalogos/categorias', 'CategoriasController::lista');
+    $routes->get('panel/catalogos/categorias/lista', 'CategoriasController::listaJSON');
+    $routes->get('panel/catalogos/categorias/(:num)', 'CategoriasController::busca/$1');
+    $routes->post('panel/catalogos/categorias/agrega', 'CategoriasController::agrega');
+    $routes->post('panel/catalogos/categorias/edita', 'CategoriasController::edita');
+    $routes->post('panel/catalogos/categorias/activa', 'CategoriasController::activa');
+    $routes->post('panel/catalogos/categorias/desactiva', 'CategoriasController::desactiva');
+
+    // Subcategorias
+    $routes->get('panel/catalogos/subcategorias', 'SubcategoriasController::lista');
+    $routes->get('panel/catalogos/subcategorias/lista', 'SubcategoriasController::listaJSON');
+    $routes->get('panel/catalogos/subcategorias/(:num)', 'SubcategoriasController::busca/$1');
+    $routes->post('panel/catalogos/subcategorias/agrega', 'SubcategoriasController::agrega');
+    $routes->post('panel/catalogos/subcategorias/edita', 'SubcategoriasController::edita');
+    $routes->post('panel/catalogos/subcategorias/activa', 'SubcategoriasController::activa');
+    $routes->post('panel/catalogos/subcategorias/desactiva', 'SubcategoriasController::desactiva');
+
+    // Productos
+    $routes->get('panel/catalogos/productos', 'ProductosController::lista');
+    $routes->get('panel/catalogos/productos/lista', 'ProductosController::listaJSON');
+    $routes->get('panel/catalogos/productos/(:num)', 'ProductosController::busca/$1');
+    $routes->post('panel/catalogos/productos/agrega', 'ProductosController::agrega');
+    $routes->post('panel/catalogos/productos/edita', 'ProductosController::edita');
+    $routes->post('panel/catalogos/productos/activa', 'ProductosController::activa');
+    $routes->post('panel/catalogos/productos/desactiva', 'ProductosController::desactiva');
 
 
 
-// Password
-$routes->get('panel/password', 'UserController::password');
-$routes->post('panel/password/upd', 'UserController::upd_pass');
+    // Password
+    $routes->get('panel/password', 'UserController::password');
+    $routes->post('panel/password/upd', 'UserController::upd_pass');
+});
 
-$routes->get('(:any)', 'DegreeController::oferta_show');
+
+
 
 
 /*

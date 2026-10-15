@@ -36,6 +36,7 @@ class UserController extends BaseController
 
         $builder->where('username', $user); // verificamos si existe el usuario
         $builder->where('active', $active); // verificamos si existe el usuario
+        $builder->whereIn('tu.id_rol', [1, 3, 4, 5]);
         $usuario = $builder->get()->getFirstRow(); // Ejecutar la consulta y obtener el primer registro
 
         if (!$usuario) {
@@ -494,5 +495,116 @@ class UserController extends BaseController
         }
 
         return $this->response->setJSON($orden);
+    }
+
+
+    /******************************************************************************/
+    // Frontend
+    /******************************************************************************/
+
+    public function login_cliente()
+    {
+        $db = \Config\Database::connect();
+        $usuarioModel = new UsuarioModel();
+
+        $user = trim((string) $this->request->getPost('user'));
+        $pass = (string) $this->request->getPost('pass');
+
+        $response = array(
+            'status' => 1,
+            'message' => $this->request->getPost(),
+            'Code' => 200
+        );
+
+
+        return json_encode($response);
+
+        if ($user === '' || $pass === '') {
+            return redirect()->to(base_url('login'))
+                ->with('error', 'Ingresa tu correo y contraseña.');
+        }
+
+        $builder = $db->table('t_usuarios AS tu');
+
+        $builder->select('
+            tu.id_user,
+            tu.username,
+            tu.id_rol,
+            tu.password,
+            tu.correo_electronico,
+            tiu.nombres,
+            tiu.paterno,
+            tiu.materno
+        ');
+
+        $builder->join(
+            't_info_usuarios AS tiu',
+            'tiu.id_user = tu.id_user'
+        );
+
+        $builder->groupStart()
+            ->where('tu.username', $user)
+            ->orWhere('tu.correo_electronico', $user)
+            ->groupEnd();
+
+        $builder->where('tu.active', 1);
+        $builder->where('tu.id_rol', 2);
+
+        $usuario = $builder->get()->getFirstRow();
+
+        $usuarioModel = new \App\Models\UsuarioModel();
+
+        if (
+            !$usuario ||
+            !$usuarioModel->verifyPass($pass, $usuario->password)
+        ) {
+            return redirect()->to(base_url('login'))
+                ->with('error', 'Correo o contraseña incorrectos.');
+        }
+
+        // Evitar reutilización del identificador de sesión.
+
+        // Si faltan datos:
+        if ($user === '' || $pass === '') {
+            return $this->response->setJSON([
+                'status' => 0,
+                'message' => 'Ingresa tu usuario y contraseña.'
+            ]);
+        }
+
+        // Si las credenciales son incorrectas:
+        if (
+            !$usuario ||
+            !$usuarioModel->verifyPass($pass, $usuario->password)
+        ) {
+            return $this->response->setJSON([
+                'status' => 0,
+                'message' => 'Usuario o contraseña incorrectos.'
+            ]);
+        }
+
+        // Si las credenciales son correctas:
+        $session = session();
+        $session->regenerate(true);
+
+        $session->set([
+            'User_ID' => $usuario->id_user,
+            'User'    => $usuario->username,
+            'Nombres' => $usuario->nombres,
+            'Paterno' => $usuario->paterno,
+            'Rol'     => (int) $usuario->id_rol,
+        ]);
+
+        return $this->response->setJSON([
+            'status' => 1,
+            'message' => 'Inicio de sesión exitoso.'
+        ]);
+    }
+
+    public function logout_cliente()
+    {
+        session()->destroy();
+
+        return redirect()->to(base_url('login'));
     }
 }

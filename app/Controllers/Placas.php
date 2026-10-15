@@ -131,13 +131,10 @@ class Placas extends BaseController
     public function accesorios()
     {
 
-        // $data_footer = array(
-        //     'grade' => '',
-        //     'menu' => 'inicio',
-        //     'visitas' => $visitas,
-        //     'eventos' => $eventos,
-        //     'menu_oferta' => $menu_oferta
-        // );
+        $data = array(
+            'Titulo' => "Accesorios",
+            'Descripcion' => "",
+        );
 
         echo view('templates/header');
         echo view('templates/nav-top');

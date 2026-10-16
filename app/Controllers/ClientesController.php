@@ -471,8 +471,8 @@ class ClientesController extends BaseController
 
         $direcciones = $builder->get()->getResult();
 
-        $estados = $db->table('cat_estados')
-            ->orderBy('estado', 'ASC')
+        $estados = $db->table('plap_cat_estados')
+            ->orderBy('nombre_estado', 'ASC')
             ->get()
             ->getResultArray();
 

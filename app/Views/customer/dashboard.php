@@ -12,7 +12,7 @@
                                     <img src="<?= base_url() ?>/assets/images/icon/feature-icon3.png" alt="icon">
                                 </div>
                                 <div class="service__content">
-                                    <h4>Mi cuenta</h4>
+                                    <a href="<?= base_url('mi-cuenta') ?>"><h4>Mi cuenta</h4></a>
                                     <p>For all orders above $45</p>
                                 </div>
                             </div>
@@ -21,7 +21,7 @@
                                     <img src="<?= base_url() ?>/assets/images/icon/feature-icon4.png" alt="icon">
                                 </div>
                                 <div class="service__content">
-                                    <h4>Mis compras</h4>
+                                    <a href="<?= base_url('mis-compras') ?>"><h4>Mis compras</h4></a>
                                     <p>Confidence on all your devices</p>
                                 </div>
                             </div>
@@ -41,7 +41,7 @@
                                     <img src="<?= base_url() ?>/assets/images/icon/feature-icon1.png" alt="icon">
                                 </div>
                                 <div class="service__content">
-                                    <h4>Domicilio de Envío</h4>
+                                    <a href="<?= base_url('mis-direcciones') ?>"><h4>Domicilio de Envío</h4></a>
                                     <p>sayhello&gazacom</p>
                                 </div>
                             </div>
@@ -50,7 +50,7 @@
                                     <img src="<?= base_url() ?>/assets/images/icon/feature-icon2.png" alt="icon">
                                 </div>
                                 <div class="service__content">
-                                    <h4>Domicilio Fiscal</h4>
+                                    <a href="<?= base_url('domicilio-fiscal') ?>"><h4>Domicilio Fiscal</h4></a>
                                     <p>money back guranry</p>
                                 </div>
                             </div>

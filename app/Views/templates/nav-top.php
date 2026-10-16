@@ -144,16 +144,17 @@
 
             <!-- Right Icons -->
             <div class="account__wrap d-flex align-items-center">
+                <?php $userAccountUrl = (session()->has('User_ID') && (int)session('Rol') === 2) ? base_url('mi-cuenta') : base_url('login'); ?>
                 <div class="account d-flex d-lg-none align-items-center">
                     <div class="user__icon">
-                        <a href="#0">
+                        <a href="<?= $userAccountUrl ?>">
                             <i class="fa-regular fa-user"></i>
                         </a>
                     </div>
                 </div>
                 <div class="d-none d-lg-flex align-items-center gap-4">
                     <div class="user__icon">
-                        <a href="<?= base_url() ?>/login" class="text-white fs-5">
+                        <a href="<?= $userAccountUrl ?>" class="text-white fs-5" title="<?= (session()->has('User_ID') && (int)session('Rol') === 2) ? 'Mi Cuenta' : 'Iniciar Sesión' ?>">
                             <i class="fa-regular fa-user"></i>
                         </a>
                     </div>

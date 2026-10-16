@@ -294,6 +294,9 @@
 <script src="<?= base_url() ?>/assets/js/isotope.pkgd.min.js"></script>
 <!-- Waypoints Js -->
 <script src="<?= base_url() ?>/assets/js/jquery.waypoints.js"></script>
+<!-- Select2 Js -->
+<script src="<?= base_url() ?>/admin/assets/plugins/select2/js/select2.full.min.js"></script>
+<script src="<?= base_url() ?>/admin/assets/plugins/select2/js/i18n/es.js"></script>
 <!-- SweetAlert2 Js -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <!-- Script Js -->

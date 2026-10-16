@@ -1226,3 +1226,307 @@
 }
 
 /* Checkout Step 1*/
+
+/* ======================================================
+   PLAPERS MODERN AUTH (LOGIN & REGISTRO)
+   ====================================================== */
+.plap-auth-section {
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  padding: 60px 0;
+  background: radial-gradient(circle at 15% 20%, rgba(239, 59, 61, 0.08) 0%, transparent 45%),
+              radial-gradient(circle at 85% 80%, rgba(13, 110, 253, 0.06) 0%, transparent 45%),
+              #08090d;
+}
+
+.plap-auth-card {
+  background: #11141c;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+}
+
+.plap-auth-banner {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 45px 35px;
+}
+
+.plap-auth-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(8, 10, 14, 0.78) 0%, rgba(8, 10, 14, 0.94) 100%);
+  z-index: 1;
+}
+
+.plap-auth-banner > * {
+  position: relative;
+  z-index: 2;
+}
+
+.plap-auth-switcher {
+  display: flex;
+  background: #090b10;
+  padding: 5px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 25px;
+}
+
+.plap-auth-tab {
+  flex: 1;
+  text-align: center;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  color: #8b949e;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.plap-auth-tab:hover {
+  color: #ffffff;
+}
+
+.plap-auth-tab.active {
+  background: #ef3b3d;
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(239, 59, 61, 0.35);
+}
+
+.plap-auth-input-group {
+  position: relative;
+  margin-bottom: 18px;
+}
+
+.plap-auth-input-group .input-icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #6e7681;
+  font-size: 15px;
+  pointer-events: none;
+  transition: color 0.2s ease;
+  z-index: 4;
+}
+
+.plap-auth-input-group .form-control {
+  background-color: #161922 !important;
+  border: 1px solid #2a2f3d !important;
+  color: #ffffff !important;
+  border-radius: 10px !important;
+  padding: 12px 16px 12px 42px !important;
+  font-size: 14px !important;
+  transition: all 0.25s ease !important;
+}
+
+.plap-auth-input-group .form-control:focus {
+  border-color: #ef3b3d !important;
+  box-shadow: 0 0 0 3px rgba(239, 59, 61, 0.2) !important;
+  background-color: #1a1e29 !important;
+}
+
+.plap-auth-input-group:focus-within .input-icon {
+  color: #ef3b3d;
+}
+
+.plap-auth-btn-primary {
+  width: 100%;
+  padding: 13px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #ffffff;
+  background: linear-gradient(135deg, #ef3b3d 0%, #c41e20 100%);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(239, 59, 61, 0.35);
+}
+
+.plap-auth-btn-primary:hover {
+  background: linear-gradient(135deg, #ff4d4f 0%, #d42224 100%);
+  box-shadow: 0 8px 25px rgba(239, 59, 61, 0.5);
+  transform: translateY(-2px);
+  color: #ffffff;
+}
+
+.plap-auth-feature-pill {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  color: #d0d7de;
+  font-size: 14px;
+}
+
+.plap-auth-feature-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(239, 59, 61, 0.15);
+  color: #ef3b3d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+/* =========================================================
+   PLAPERS - SELECT2 DARK THEME & MODAL STYLING
+   ========================================================= */
+.select2-container {
+  display: block;
+  width: 100% !important;
+}
+
+.select2-container--default .select2-selection--single {
+  background-color: #000000 !important;
+  border: 1px solid #495057 !important;
+  border-radius: 6px !important;
+  height: 42px !important;
+  display: flex !important;
+  align-items: center !important;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+  color: #ffffff !important;
+  line-height: 40px !important;
+  padding-left: 14px !important;
+  padding-right: 32px !important;
+  font-size: 14px !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__placeholder {
+  color: #8b949e !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+  height: 40px !important;
+  right: 12px !important;
+  top: 1px !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow b {
+  border-color: #8b949e transparent transparent transparent !important;
+  border-width: 6px 5px 0 5px !important;
+}
+
+.select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b {
+  border-color: transparent transparent #8b949e transparent !important;
+  border-width: 0 5px 6px 5px !important;
+}
+
+.select2-container--default.select2-container--focus .select2-selection--single,
+.select2-container--default.select2-container--open .select2-selection--single {
+  border-color: #ef3b3d !important;
+  box-shadow: 0 0 0 3px rgba(239, 59, 61, 0.25) !important;
+  outline: none !important;
+}
+
+/* Select2 Dropdown */
+.select2-dropdown {
+  background-color: #161922 !important;
+  border: 1px solid #373e4e !important;
+  border-radius: 8px !important;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.8) !important;
+  z-index: 99999 !important;
+  overflow: hidden !important;
+}
+
+/* Search Box */
+.select2-search--dropdown {
+  padding: 10px !important;
+  background-color: #161922 !important;
+  border-bottom: 1px solid #2a2f3d !important;
+}
+
+.select2-search--dropdown .select2-search__field {
+  background-color: #0d0f14 !important;
+  color: #ffffff !important;
+  border: 1px solid #373e4e !important;
+  border-radius: 6px !important;
+  padding: 8px 12px !important;
+  font-size: 14px !important;
+  outline: none !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.select2-search--dropdown .select2-search__field:focus {
+  border-color: #ef3b3d !important;
+  box-shadow: 0 0 0 2px rgba(239, 59, 61, 0.2) !important;
+}
+
+/* Options / Results */
+.select2-results__options {
+  max-height: 220px !important;
+  overflow-y: auto !important;
+  padding: 4px !important;
+}
+
+.select2-results__options::-webkit-scrollbar {
+  width: 6px;
+}
+.select2-results__options::-webkit-scrollbar-track {
+  background: #161922;
+}
+.select2-results__options::-webkit-scrollbar-thumb {
+  background: #2a2f3d;
+  border-radius: 3px;
+}
+.select2-results__options::-webkit-scrollbar-thumb:hover {
+  background: #ef3b3d;
+}
+
+.select2-results__option {
+  padding: 10px 14px !important;
+  font-size: 14px !important;
+  color: #d0d7de !important;
+  background-color: transparent !important;
+  border-radius: 5px !important;
+  margin-bottom: 2px !important;
+  cursor: pointer !important;
+  transition: all 0.15s ease !important;
+}
+
+.select2-results__option--highlighted[aria-selected] {
+  background: linear-gradient(135deg, #ef3b3d 0%, #c41e20 100%) !important;
+  color: #ffffff !important;
+}
+
+.select2-results__option[aria-selected="true"] {
+  background-color: #232734 !important;
+  color: #ffffff !important;
+  font-weight: 600 !important;
+}
+
+.select2-results__message {
+  color: #8b949e !important;
+  padding: 12px !important;
+  font-size: 13px !important;
+  text-align: center !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__clear {
+  color: #8b949e !important;
+  margin-right: 10px !important;
+  font-size: 18px !important;
+}
+.select2-container--default .select2-selection--single .select2-selection__clear:hover {
+  color: #ef3b3d !important;
+}

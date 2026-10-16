@@ -26,6 +26,8 @@
     <link rel="stylesheet" href="<?= base_url() ?>/assets/css/animate.css">
     <!-- Nice select css -->
     <link rel="stylesheet" href="<?= base_url() ?>/assets/css/nice-select.css">
+    <!-- Select2 css -->
+    <link rel="stylesheet" href="<?= base_url() ?>/admin/assets/plugins/select2/css/select2.min.css">
 
     <link rel="stylesheet" href="<?= base_url() ?>/assets/dist/effect-cards-stack.css">
 

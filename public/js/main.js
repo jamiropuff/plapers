@@ -12,27 +12,22 @@ const loginCliente = () => {
         type: 'POST',
         data: { "user" : user, "pass" : pass },
         success: function(response){
-            console.log('success login');
-            console.log(response);
-            console.log(JSON.parse(response));
+            let respuesta = (typeof response === 'string') ? JSON.parse(response) : response;
 
-            respuesta = JSON.parse(response);
-
-            if(respuesta.status == 0){
-                console.log("error");
-                error_message = ` ** Las credenciales son incorrectas <br> ${respuesta.message} `;
+            if (respuesta.status == 0) {
+                let error_message = `
+                    <div class="alert alert-danger py-2 px-3 small mt-2 mb-3" role="alert">
+                        <i class="fa-solid fa-circle-exclamation me-1"></i> ${respuesta.message || 'Credenciales incorrectas'}
+                    </div>
+                `;
                 $("#error_login").html(error_message);
 
                 setTimeout(function(){ 
-                $("#error_login").html('');
-            }, 5000);
-
-            }else{
-                console.log("success process")
-                window.self.location='/home';
+                    $("#error_login").html('');
+                }, 5000);
+            } else {
+                window.location.href = respuesta.redirect || '/mi-cuenta';
             }
-
-
         },
         error: function (obj, error, objError){
             var error = objError;

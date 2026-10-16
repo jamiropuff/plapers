@@ -510,18 +510,12 @@ class UserController extends BaseController
         $user = trim((string) $this->request->getPost('user'));
         $pass = (string) $this->request->getPost('pass');
 
-        $response = array(
-            'status' => 1,
-            'message' => $this->request->getPost(),
-            'Code' => 200
-        );
-
-
-        return json_encode($response);
-
+        // Si faltan datos:
         if ($user === '' || $pass === '') {
-            return redirect()->to(base_url('login'))
-                ->with('error', 'Ingresa tu correo y contraseña.');
+            return $this->response->setJSON([
+                'status'  => 0,
+                'message' => 'Ingresa tu usuario y contraseña.'
+            ]);
         }
 
         $builder = $db->table('t_usuarios AS tu');
@@ -539,7 +533,8 @@ class UserController extends BaseController
 
         $builder->join(
             't_info_usuarios AS tiu',
-            'tiu.id_user = tu.id_user'
+            'tiu.id_user = tu.id_user',
+            'left'
         );
 
         $builder->groupStart()
@@ -552,33 +547,13 @@ class UserController extends BaseController
 
         $usuario = $builder->get()->getFirstRow();
 
-        $usuarioModel = new \App\Models\UsuarioModel();
-
-        if (
-            !$usuario ||
-            !$usuarioModel->verifyPass($pass, $usuario->password)
-        ) {
-            return redirect()->to(base_url('login'))
-                ->with('error', 'Correo o contraseña incorrectos.');
-        }
-
-        // Evitar reutilización del identificador de sesión.
-
-        // Si faltan datos:
-        if ($user === '' || $pass === '') {
-            return $this->response->setJSON([
-                'status' => 0,
-                'message' => 'Ingresa tu usuario y contraseña.'
-            ]);
-        }
-
         // Si las credenciales son incorrectas:
         if (
             !$usuario ||
             !$usuarioModel->verifyPass($pass, $usuario->password)
         ) {
             return $this->response->setJSON([
-                'status' => 0,
+                'status'  => 0,
                 'message' => 'Usuario o contraseña incorrectos.'
             ]);
         }
@@ -588,16 +563,18 @@ class UserController extends BaseController
         $session->regenerate(true);
 
         $session->set([
-            'User_ID' => $usuario->id_user,
+            'User_ID' => (int) $usuario->id_user,
             'User'    => $usuario->username,
-            'Nombres' => $usuario->nombres,
-            'Paterno' => $usuario->paterno,
+            'Nombres' => $usuario->nombres ?? $usuario->username,
+            'Paterno' => $usuario->paterno ?? '',
             'Rol'     => (int) $usuario->id_rol,
+            'Nom_Rol' => 'Cliente'
         ]);
 
         return $this->response->setJSON([
-            'status' => 1,
-            'message' => 'Inicio de sesión exitoso.'
+            'status'   => 1,
+            'message'  => 'Inicio de sesión exitoso.',
+            'redirect' => base_url('mi-cuenta')
         ]);
     }
 

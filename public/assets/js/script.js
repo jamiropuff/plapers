@@ -525,7 +525,7 @@ CSS TABLE OF CONTENTS
 
 	// Nice seclect area start here ***
 	$(document).ready(function () {
-		$("select").niceSelect();
+		$("select:not(.no-nice-select):not(.select2):not([data-no-nice-select])").niceSelect();
 	});
 	// Nice seclect area end here ***
 

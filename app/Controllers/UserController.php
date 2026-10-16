@@ -36,7 +36,7 @@ class UserController extends BaseController
 
         $builder->where('username', $user); // verificamos si existe el usuario
         $builder->where('active', $active); // verificamos si existe el usuario
-        $builder->whereIn('tu.id_rol', [1, 3, 4, 5]);
+        $builder->whereIn('id_rol', [1, 3, 4, 5]);
         $usuario = $builder->get()->getFirstRow(); // Ejecutar la consulta y obtener el primer registro
 
         if (!$usuario) {
@@ -131,14 +131,18 @@ class UserController extends BaseController
     {
         $usuarioModel = new UsuarioModel();
 
-        $clave = $this->request->getPost('clave');
-        $user_id = intval(1);
+        $clave = service('uri')->getSegment(3);
+        // $clave = $this->request->getPost('clave');
+        $user_id = intval(25);
+
+        echo "clave: " . $clave . "<br>";
+        echo "user_id: " . $user_id . "<br>";
 
 
         $usuario_action = $usuarioModel->update(
             $user_id,
             [
-                'pass' => $usuarioModel->passHash($clave)
+                'password' => $usuarioModel->passHash($clave)
             ]
 
         );
@@ -191,7 +195,7 @@ class UserController extends BaseController
     {
         $usuarioModel = new UsuarioModel();
 
-        //$verify = $usuarioModel->verifyPass('Master123#','$2y$10$RdNUU/v5QOsp.u5W2R.eieJ8RFHnVhDlYlqZzOc.LmLr1jNaWqOf.');
+        $verify = $usuarioModel->verifyPass('Master123#', '$2y$10$RdNUU/v5QOsp.u5W2R.eieJ8RFHnVhDlYlqZzOc.LmLr1jNaWqOf.');
         //var_dump($verify);
 
     }
@@ -509,96 +513,91 @@ class UserController extends BaseController
 
         $user = trim((string) $this->request->getPost('user'));
         $pass = (string) $this->request->getPost('pass');
+        $active = 1;
 
-        $response = array(
-            'status' => 1,
-            'message' => $this->request->getPost(),
-            'Code' => 200
-        );
-
-
-        return json_encode($response);
 
         if ($user === '' || $pass === '') {
-            return redirect()->to(base_url('login'))
-                ->with('error', 'Ingresa tu correo y contraseña.');
+            $response = array(
+                'status' => 0,
+                'message' => 'Ingresa tu correo y contraseña.',
+                'Code' => 200
+            );
         }
 
         $builder = $db->table('t_usuarios AS tu');
-
         $builder->select('
-            tu.id_user,
-            tu.username,
-            tu.id_rol,
-            tu.password,
-            tu.correo_electronico,
-            tiu.nombres,
-            tiu.paterno,
-            tiu.materno
+            tu.id_user, username, tu.id_rol, nom_rol, password, 
+            nombres, paterno, materno, correo_electronico, id_tipo_usuario
         ');
 
-        $builder->join(
-            't_info_usuarios AS tiu',
-            'tiu.id_user = tu.id_user'
-        );
+        $builder->join('cat_roles AS cr', 'tu.id_rol = cr.id_rol');
+        $builder->join('t_info_usuarios AS tiu', 'tiu.id_user = tu.id_user');
 
-        $builder->groupStart()
-            ->where('tu.username', $user)
-            ->orWhere('tu.correo_electronico', $user)
-            ->groupEnd();
-
-        $builder->where('tu.active', 1);
+        $builder->where('username', $user); // verificamos si existe el usuario
+        $builder->where('tu.active', $active);
         $builder->where('tu.id_rol', 2);
+
+        // $sql = $builder->getCompiledSelect();
+        // echo $sql;
+        // exit;
 
         $usuario = $builder->get()->getFirstRow();
 
-        $usuarioModel = new \App\Models\UsuarioModel();
-
-        if (
-            !$usuario ||
-            !$usuarioModel->verifyPass($pass, $usuario->password)
-        ) {
-            return redirect()->to(base_url('login'))
-                ->with('error', 'Correo o contraseña incorrectos.');
-        }
-
-        // Evitar reutilización del identificador de sesión.
-
-        // Si faltan datos:
-        if ($user === '' || $pass === '') {
-            return $this->response->setJSON([
+        if (!$usuario) {
+            $response = array(
                 'status' => 0,
-                'message' => 'Ingresa tu usuario y contraseña.'
-            ]);
+                'message' => 'Usuario y/o contraseña incorrectos'
+            );
+        } else {
+            if ($usuarioModel->verifyPass($pass, $usuario->password)) {
+
+                $token = "plap" . date("YmdHis") . "-u" . $usuario->id_user  . "-" . bin2hex(random_bytes(8));
+
+                $arr_session = array(
+                    'User_ID' => $usuario->id_user,
+                    'Token' => $token,
+                    'User' => $usuario->username,
+                    'Nombres' => $usuario->nombres,
+                    'Paterno' => $usuario->paterno,
+                    'Rol' => $usuario->id_rol,
+                    'Nom_Rol' => $usuario->nom_rol,
+                );
+
+                $user_action = $usuarioModel->update(
+                    $usuario->id_user,
+                    [
+                        'remember_token' => $token
+                    ]
+                );
+
+                $session = session();
+                $session->regenerate(true);
+                $session->set($arr_session);
+
+                setcookie("Username", $usuario->username, time() + (86400 * 30), "/"); // 86400 = 1 day
+                setcookie("Nombres", $usuario->nombres, time() + (86400 * 30), "/"); // 86400 = 1 day
+                setcookie("Paterno", $usuario->paterno, time() + (86400 * 30), "/"); // 86400 = 1 day
+                setcookie("Email", $usuario->correo_electronico, time() + (86400 * 30), "/"); // 86400 = 1 day
+                setcookie("Materno", $usuario->materno, time() + (86400 * 30), "/"); // 86400 = 1 day
+                setcookie("UserID", $usuario->id_user, time() + (86400 * 30), "/"); // 86400 = 1 day
+                setcookie("Tipo_Usuario", $usuario->id_tipo_usuario, time() + (86400 * 30), "/"); // 86400 = 1 day
+
+                $response = array(
+                    'status' => 1,
+                    'message' => 'Success',
+                    'Code' => 200
+                );
+            } else {
+                $response = array(
+                    'status' => 0,
+                    'message' => 'Usuario o contraseña incorrectos',
+                    'Code' => 400
+
+                );
+            }
         }
 
-        // Si las credenciales son incorrectas:
-        if (
-            !$usuario ||
-            !$usuarioModel->verifyPass($pass, $usuario->password)
-        ) {
-            return $this->response->setJSON([
-                'status' => 0,
-                'message' => 'Usuario o contraseña incorrectos.'
-            ]);
-        }
-
-        // Si las credenciales son correctas:
-        $session = session();
-        $session->regenerate(true);
-
-        $session->set([
-            'User_ID' => $usuario->id_user,
-            'User'    => $usuario->username,
-            'Nombres' => $usuario->nombres,
-            'Paterno' => $usuario->paterno,
-            'Rol'     => (int) $usuario->id_rol,
-        ]);
-
-        return $this->response->setJSON([
-            'status' => 1,
-            'message' => 'Inicio de sesión exitoso.'
-        ]);
+        return json_encode($response);
     }
 
     public function logout_cliente()

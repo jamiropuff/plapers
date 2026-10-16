@@ -40,24 +40,26 @@ $routes->set404Override();
 /**********************************************************************/
 // Home
 $routes->get('/', 'Home::index');
-// $routes->get('/home', 'Home::index');
 
 // Login de clientes
-$routes->get('/login', 'Home::iniciar_sesion');
-$routes->post('/login/autenticar', 'UserController::login_cliente');
-$routes->get('/login/salir', 'UserController::logout_cliente');
+$routes->get('login', 'Home::iniciar_sesion');
+$routes->post('login/autenticar', 'UserController::login_cliente');
+$routes->get('login/salir', 'UserController::logout_cliente');
+
+$routes->get('/cliente', 'Cliente::index');
 
 // Área privada de clientes
 $routes->group('', ['filter' => 'authCliente:2'], static function ($routes) {
 
-    $routes->get('mi-cuenta', 'ClientesController::mi_cuenta');
+    
 
-    $routes->get('mis-compras', 'ClientesController::mis_compras');
-
-    $routes->get('mis-direcciones', 'ClientesController::mis_direcciones');
-
-    $routes->get('domicilio-fiscal', 'ClientesController::domicilio_fiscal');
+    $routes->get('mi-cuenta', 'Cliente::mi_cuenta');
+    $routes->get('mis-compras', 'Cliente::mis_compras');
+    $routes->get('mis-direcciones', 'Cliente::mis_direcciones');
+    $routes->get('domicilio-fiscal', 'Cliente::domicilio_fiscal');
 });
+
+
 
 //Secciones
 $routes->get('/web/acerca_de', 'Home::acerca_de');
@@ -70,24 +72,26 @@ $routes->get('/web/contacto', 'Home::contacto');
 $routes->get('/contacto', 'Home::contacto'); // Alias para acceso directo
 
 // Tienda
-$routes->get('/placas/tienda', 'Placas::tienda');
-$routes->get('/placas/americana', 'Placas::americana');
-$routes->get('/placas/europea', 'Placas::europea');
-$routes->get('/placas/bicicleta', 'Placas::bicicleta');
-$routes->get('/placas/euromini', 'Placas::euromini');
+$routes->get('placas/tienda', 'Placas::tienda');
+$routes->get('placas/americana', 'Placas::americana');
+$routes->get('placas/europea', 'Placas::europea');
+$routes->get('placas/bicicleta', 'Placas::bicicleta');
+$routes->get('placas/euromini', 'Placas::euromini');
 
-$routes->get('/placas/detalle/(:num)', 'Placas::detalle/$1');
-$routes->get('/placas/detalles_producto/(:num)', 'Placas::detalleJSON/$1');
-$routes->get('/accesorios', 'Placas::accesorios');
+$routes->get('placas/detalle/(:num)', 'Placas::detalle/$1');
+$routes->get('placas/detalles_producto/(:num)', 'Placas::detalleJSON/$1');
+$routes->get('accesorios', 'Placas::accesorios');
 
 // Carrito
-$routes->get('/catalogos', 'CarritoController::catalogos');
-$routes->get('/carrito', 'CarritoController::carrito');
+$routes->get('catalogos', 'CarritoController::catalogos');
+$routes->get('carrito', 'CarritoController::carrito');
+// Checkout
+$routes->get('carrito/continuar', 'Cliente::continuar_compra');
+$routes->get('carrito/paso2', 'Cliente::paso2');
 
 
 // Footer
 $routes->get('aviso-de-privacidad', 'Home::aviso_privacidad');
-
 
 // Contact
 $routes->post('enviar_contacto', 'Home::enviar_contacto');
@@ -175,6 +179,8 @@ $routes->group('', [
     // Password
     $routes->get('panel/password', 'UserController::password');
     $routes->post('panel/password/upd', 'UserController::upd_pass');
+
+    // $routes->get('/password/upd/(:num)', 'UserController::upd_pass/$1'); // Solo para actualizar manualmente
 });
 
 

@@ -19,7 +19,7 @@
                             <h2 class="text-white mb-65">Bienvenido</h2>
 
                             <div class="form-area login__form">
-                                <div id="error_login"></div>
+                                <div id="error_login" class="text-danger"></div>
                                 <form>
                                     <input type="text" id="uname" name="user" placeholder="Usuario" autocomplete="username" required>
                                     <input class="mt-30" type="password" id="pwd" name="pass" placeholder="Contraseña" autocomplete="current-password" required>

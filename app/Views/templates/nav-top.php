@@ -1,92 +1,13 @@
 <?php
+$session = session();
 
-// $menu1 = ''; // inicio
-// $menu6 = ''; // becas_convenio
-// $menu7 = ''; // planteles
-// $menu8 = ''; // contacto
+$esClienteAutenticado =
+    $session->has('User_ID') &&
+    (int) $session->get('Rol') === 2;
 
-// //echo "<pre>", var_dump($menu_oferta), "</pre>";
-
-// $menu_bachillerato = [];
-// $menu_licenciatura = [];
-// $menu_maestria = [];
-// $menu_doctorado = [];
-
-// foreach ($menu_oferta as $menus){
-
-//   //echo "grado_academico: ".$menus->id_grado_academico."<br>";
-
-//   // Bachillerato
-//   if( isset($menus->id_grado_academico) && $menus->id_grado_academico == 1 ){
-
-//     $menu_bachillerato[] = array(
-//       'grado_academico'=>'bachillerato', 
-//       "oferta_educativa"=>$menus->oferta_educativa,
-//       "titulo_menu"=>$menus->titulo_menu
-//     );
-
-//   } // end if
-
-//   // Licenciaturas
-//   if( isset($menus->id_grado_academico) && $menus->id_grado_academico == 2 ){
-
-//     $menu_licenciatura[] = array(
-//       'grado_academico'=>'licenciaturas', 
-//       "oferta_educativa"=>$menus->oferta_educativa,
-//       "titulo_menu"=>$menus->titulo_menu
-//     );
-
-//   } // end if
-
-//   // Maestrías
-//   if( isset($menus->id_grado_academico) && $menus->id_grado_academico == 3 ){
-
-//     $menu_maestria[] = array(
-//       'grado_academico'=>'maestrias', 
-//       "oferta_educativa"=>$menus->oferta_educativa,
-//       "titulo_menu"=>$menus->titulo_menu
-//     );
-
-//   } // end if
-
-//   // Doctorados
-//   if( isset($menus->id_grado_academico) && $menus->id_grado_academico == 4 ){
-
-//     $menu_doctorado[] = array(
-//       'grado_academico'=>'doctorados', 
-//       "oferta_educativa"=>$menus->oferta_educativa,
-//       "titulo_menu"=>$menus->titulo_menu
-//     );
-
-//   } // end if
-
-
-// } // end foreach
-
-
-// if(isset($menu) && !empty($menu)){
-
-//   switch($menu){
-
-//     case 'inicio':
-//       $menu1 = 'active';
-//     break;
-
-//     case 'becas_convenios':
-//       $menu6 = 'active';
-//     break;
-
-//     case 'planteles':
-//       $menu7 = 'active';
-//     break;
-
-//     case 'contacto':
-//       $menu8 = 'active';
-//     break;
-
-//   }
-
-// }
+$urlUsuario = $esClienteAutenticado
+    ? base_url('cliente')
+    : base_url('login');
 ?>
 <!-- Header area start here -->
 <div class="top__header py-3" style="background-color: #000000;">
@@ -146,15 +67,15 @@
             <div class="account__wrap d-flex align-items-center">
                 <div class="account d-flex d-lg-none align-items-center">
                     <div class="user__icon">
-                        <a href="#0">
-                            <i class="fa-regular fa-user"></i>
+                        <a href="<?= esc($urlUsuario) ?>" aria-label="<?= $esClienteAutenticado ? 'Mi cuenta' : 'Iniciar sesión' ?>" title="<?= $esClienteAutenticado ? 'Mi cuenta' : 'Iniciar sesión' ?>">
+                            <?= $esClienteAutenticado ? '<i class="fa-solid fa-user-check"></i>' : '<i class="fa-regular fa-user"></i>' ?>
                         </a>
                     </div>
                 </div>
                 <div class="d-none d-lg-flex align-items-center gap-4">
                     <div class="user__icon">
-                        <a href="<?= base_url() ?>/login" class="text-white fs-5">
-                            <i class="fa-regular fa-user"></i>
+                        <a href="<?= esc($urlUsuario) ?>" class="text-white fs-5" aria-label="<?= $esClienteAutenticado ? 'Mi cuenta' : 'Iniciar sesión' ?>" title="<?= $esClienteAutenticado ? 'Mi cuenta' : 'Iniciar sesión' ?>">
+                            <?= $esClienteAutenticado ? '<i class="fa-solid fa-user-check"></i>' : '<i class="fa-regular fa-user"></i>' ?>
                         </a>
                     </div>
                     <div class="cart__icon position-relative">

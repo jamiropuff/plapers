@@ -305,14 +305,16 @@
 
 <script>
     const BASE_URL = '<?= base_url() ?>';
+    const CLAVE_CARRITO = 'Carrito';
 </script>
 
 
 <script src="<?= base_url() ?>/js/main.js"></script>
-
-<?php if ($Titulo == 'carrito'): ?>
-<!-- Carrito Js -->
 <script src="<?= base_url() ?>/js/placas/carrito.js"></script>
+
+<?php if ($Titulo == 'Carrito'): ?>
+<!-- Carrito Js -->
+<script src="<?= base_url() ?>/js/placas/visualizarCarrito.js"></script>
 <?php endif ?>
 
 <script>

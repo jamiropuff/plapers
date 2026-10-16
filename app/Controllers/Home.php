@@ -49,8 +49,9 @@ class Home extends BaseController
             'Galeria' => $galeriaModel->obtiene_galeria()
         );
 
+        $data_nav = ['menu_activo' => 'galeria'];
         echo view('templates/header');
-        echo view('templates/nav-top');
+        echo view('templates/nav-top', $data_nav);
         echo view('gallery/default', $data);
         echo view('templates/footer');
         echo view('templates/close');

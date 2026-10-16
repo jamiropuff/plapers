@@ -103,7 +103,7 @@
 
         </div>
 
-        <div id="placas">
+        <div id="placas" class="my-5">
             <!-- JavaScript inserta los productos aquí -->
         </div>
 

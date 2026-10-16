@@ -80,6 +80,8 @@ class Filters extends BaseConfig
 
         'authCliente' => [
             'before' => [
+                'dashboard',
+                'dashboard/*',
                 'mi-cuenta',
                 'mi-cuenta/*',
                 'mis-compras',

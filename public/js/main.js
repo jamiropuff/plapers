@@ -43,8 +43,6 @@ const loginCliente = (page = "") => {
                     window.location.href = `${BASE_URL}/cliente`;
                 }
             }
-
-
         },
         error: function (obj, error, objError) {
             var error = objError;

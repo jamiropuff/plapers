@@ -1,63 +1,5 @@
 </main>
 
-<?php
-// $menu_bachillerato = [];
-// $menu_licenciatura = [];
-// $menu_maestria = [];
-// $menu_doctorado = [];
-
-// foreach ($menu_oferta as $menus){
-
-//   //echo "grado_academico: ".$menus->id_grado_academico."<br>";
-
-//   // Bachillerato
-//   if( isset($menus->id_grado_academico) && $menus->id_grado_academico == 1 ){
-
-//     $menu_bachillerato[] = array(
-//       'grado_academico'=>'bachillerato', 
-//       "oferta_educativa"=>$menus->oferta_educativa,
-//       "titulo_menu"=>$menus->titulo_menu
-//     );
-
-//   } // end if
-
-//   // Licenciaturas
-//   if( isset($menus->id_grado_academico) && $menus->id_grado_academico == 2 ){
-
-//     $menu_licenciatura[] = array(
-//       'grado_academico'=>'licenciaturas', 
-//       "oferta_educativa"=>$menus->oferta_educativa,
-//       "titulo_menu"=>$menus->titulo_menu
-//     );
-
-//   } // end if
-
-//   // Maestrías
-//   if( isset($menus->id_grado_academico) && $menus->id_grado_academico == 3 ){
-
-//     $menu_maestria[] = array(
-//       'grado_academico'=>'maestrias', 
-//       "oferta_educativa"=>$menus->oferta_educativa,
-//       "titulo_menu"=>$menus->titulo_menu
-//     );
-
-//   } // end if
-
-//   // Doctorados
-//   if( isset($menus->id_grado_academico) && $menus->id_grado_academico == 4 ){
-
-//     $menu_doctorado[] = array(
-//       'grado_academico'=>'doctorados', 
-//       "oferta_educativa"=>$menus->oferta_educativa,
-//       "titulo_menu"=>$menus->titulo_menu
-//     );
-
-//   } // end if
-
-
-// } // end foreach
-?>
-
 <!-- Footer area start here -->
 <footer class="footer-area bg-image" data-background="../../assets/images/footer/footer-bg.jpg" style='background-color: #151515; background-image: url("../../assets/images/footer/footer-bg.jpg");'>
     <div class="container">
@@ -294,6 +236,9 @@
 <script src="<?= base_url() ?>/assets/js/isotope.pkgd.min.js"></script>
 <!-- Waypoints Js -->
 <script src="<?= base_url() ?>/assets/js/jquery.waypoints.js"></script>
+<!-- Select2 Js -->
+<script src="<?= base_url() ?>/admin/assets/plugins/select2/js/select2.full.min.js"></script>
+<script src="<?= base_url() ?>/admin/assets/plugins/select2/js/i18n/es.js"></script>
 <!-- SweetAlert2 Js -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <!-- Script Js -->

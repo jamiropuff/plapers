@@ -65,6 +65,7 @@ $urlUsuario = $esClienteAutenticado
 
             <!-- Right Icons -->
             <div class="account__wrap d-flex align-items-center">
+                <?php $userAccountUrl = (session()->has('User_ID') && (int)session('Rol') === 2) ? base_url('mi-cuenta') : base_url('login'); ?>
                 <div class="account d-flex d-lg-none align-items-center">
                     <div class="user__icon">
                         <a href="<?= esc($urlUsuario) ?>" aria-label="<?= $esClienteAutenticado ? 'Mi cuenta' : 'Iniciar sesión' ?>" title="<?= $esClienteAutenticado ? 'Mi cuenta' : 'Iniciar sesión' ?>">

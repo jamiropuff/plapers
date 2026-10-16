@@ -530,8 +530,11 @@ class UserController extends BaseController
             nombres, paterno, materno, correo_electronico, id_tipo_usuario
         ');
 
-        $builder->join('cat_roles AS cr', 'tu.id_rol = cr.id_rol');
-        $builder->join('t_info_usuarios AS tiu', 'tiu.id_user = tu.id_user');
+        $builder->join(
+            't_info_usuarios AS tiu',
+            'tiu.id_user = tu.id_user',
+            'left'
+        );
 
         $builder->where('username', $user); // verificamos si existe el usuario
         $builder->where('tu.active', $active);

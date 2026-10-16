@@ -48,18 +48,37 @@ $routes->get('login/salir', 'UserController::logout_cliente');
 
 $routes->get('/cliente', 'Cliente::index');
 
+// Registro de clientes
+$routes->get('/registro', 'RegistroController::index');
+$routes->get('/register', 'RegistroController::index');
+$routes->post('/registro/guardar', 'RegistroController::guardar');
+
 // Área privada de clientes
 $routes->group('', ['filter' => 'authCliente:2'], static function ($routes) {
 
-    
+    // Mi cuenta
+    $routes->get('mi-cuenta', 'ClientesController::mi_cuenta');
+    $routes->post('mi-cuenta/actualizar-datos', 'ClientesController::actualizar_datos');
+    $routes->post('mi-cuenta/cambiar-password', 'ClientesController::cambiar_password');
 
-    $routes->get('mi-cuenta', 'Cliente::mi_cuenta');
-    $routes->get('mis-compras', 'Cliente::mis_compras');
-    $routes->get('mis-direcciones', 'Cliente::mis_direcciones');
-    $routes->get('domicilio-fiscal', 'Cliente::domicilio_fiscal');
+    // Mis compras
+    $routes->get('mis-compras', 'ClientesController::mis_compras');
+    $routes->get('mis-compras/detalle/(:num)', 'ClientesController::detalle_compra/$1');
+
+    // Mis direcciones
+    $routes->get('mis-direcciones', 'ClientesController::mis_direcciones');
+    $routes->post('mis-direcciones/guardar', 'ClientesController::guardar_direccion');
+    $routes->get('mis-direcciones/obtener/(:num)', 'ClientesController::obtener_direccion/$1');
+    $routes->post('mis-direcciones/actualizar', 'ClientesController::actualizar_direccion');
+    $routes->post('mis-direcciones/eliminar/(:num)', 'ClientesController::eliminar_direccion/$1');
+
+    // Domicilio Fiscal
+    $routes->get('domicilio-fiscal', 'ClientesController::domicilio_fiscal');
+    $routes->post('domicilio-fiscal/guardar', 'ClientesController::guardar_domicilio_fiscal');
 });
 
-
+// Entorno de desarrollo: Simulación de sesión de cliente (sin tocar login)
+$routes->get('dev/sesion-cliente/(:num)', 'ClientesController::dev_simular_sesion/$1');
 
 //Secciones
 $routes->get('/web/acerca_de', 'Home::acerca_de');

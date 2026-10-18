@@ -73,13 +73,13 @@ class Cliente extends BaseController
         }
 
         $data = [
-            'Titulo' => 'Finalizar compra',
+            'Titulo' => 'Datos Adicionales',
             'Descripcion' => ''
         ];
 
         echo view('templates/header');
         echo view('templates/nav-top');
-        echo view('cart/paso2', $data);
+        echo view('store/step2', $data);
         echo view('templates/footer');
         echo view('templates/close');
     }

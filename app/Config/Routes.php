@@ -75,6 +75,20 @@ $routes->group('', ['filter' => 'authCliente:2'], static function ($routes) {
     // Domicilio Fiscal
     $routes->get('domicilio-fiscal', 'ClientesController::domicilio_fiscal');
     $routes->post('domicilio-fiscal/guardar', 'ClientesController::guardar_domicilio_fiscal');
+
+    // Checkout: Paso 2
+    $routes->get('carrito/paso2', 'Cliente::paso2');
+
+    // Datos del checkout
+    $routes->post('checkout/datos-facturacion', 'UserController::datos_facturacion');
+    $routes->post('checkout/datos-direccion', 'UserController::datos_direccion');
+
+    // Guardar datos nuevos
+    $routes->post('checkout/registrar-direccion', 'UserController::registra_direccion');
+    $routes->post('checkout/registrar-facturacion', 'UserController::registra_facturacion');
+
+    // Registrar la orden
+    $routes->post('checkout/guardar-orden', 'UserController::guarda_orden');
 });
 
 // Entorno de desarrollo: Simulación de sesión de cliente (sin tocar login)
@@ -101,12 +115,15 @@ $routes->get('placas/detalle/(:num)', 'Placas::detalle/$1');
 $routes->get('placas/detalles_producto/(:num)', 'Placas::detalleJSON/$1');
 $routes->get('accesorios', 'Placas::accesorios');
 
+
+//Catalogos
+$routes->get('catalogos', 'Catalogos::catalogos');
+
 // Carrito
-$routes->get('catalogos', 'CarritoController::catalogos');
 $routes->get('carrito', 'CarritoController::carrito');
 // Checkout
 $routes->get('carrito/continuar', 'Cliente::continuar_compra');
-$routes->get('carrito/paso2', 'Cliente::paso2');
+
 
 
 // Footer
@@ -199,7 +216,7 @@ $routes->group('', [
     $routes->get('panel/password', 'UserController::password');
     $routes->post('panel/password/upd', 'UserController::upd_pass');
 
-    // $routes->get('/password/upd/(:num)', 'UserController::upd_pass/$1'); // Solo para actualizar manualmente
+    //$routes->get('/password/upd/(:num)', 'UserController::upd_pass/$1'); // Solo para actualizar manualmente
 });
 
 

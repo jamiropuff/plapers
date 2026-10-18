@@ -34,25 +34,25 @@
                     <div class="card sub-bg text-white">
                         <div class="card-body">
 
-                            <h4 class="card-title fw-bold">Tipo de envío</h4>
+                            <h4 class="card-title fw-bold pt-3">Tipo de envío</h4>
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-6 py-2">
                                     <input class="form-check-input" type="radio" name="tipo_envio" value="true" id="defaultCheck1" />
                                     <label class="form-check-label fs-sm" for="defaultCheck1">Envio a domicilio</label>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-6 py-2">
                                     <input class="form-check-input" type="radio" name="tipo_envio" value="false" id="defaultCheck2" />
                                     <label class="form-check-label fs-sm" for="defaultCheck2">Recoger en oficina</label>
                                 </div>
                             </div>
 
-                            <h4 class="card-title fw-bold mt-4">Método de pago</h4>
+                            <h4 class="card-title fw-bold mt-4 pt-4">Método de pago</h4>
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-6 py-2">
                                     <input class="form-check-input" type="radio" name="metodo_pago" value="PAYPAL" id="defaultCheck3" />
                                     <label class="form-check-label fs-sm" for="defaultCheck3">Paypal</label>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-6 py-2">
                                     <input class="form-check-input" type="radio" name="metodo_pago" value="DEPOSITO" id="defaultCheck4" />
                                     <label class="form-check-label fs-sm" for="defaultCheck4">Depósito bancario</label>
                                 </div>
@@ -70,27 +70,27 @@
                             <h5 class="card-title fw-bold">Detalles de pago</h5>
                             <table style="width: 100%;">
                                 <tr style="border-bottom: 1px solid #6e6e6e;">
-                                    <td class="td-title-1">Cantidad de productos: </td>
-                                    <td class="td-title-2" id="tcantidad">
+                                    <td class="td-title-1 py-2">Cantidad de productos: </td>
+                                    <td class="td-title-2 py-2" id="tcantidad">
                                         0
                                         <small id="texplicacion" class="d-none">( 0 envío(s) )</small>
                                     </td>
                                 </tr>
                                 <tr style="border-bottom: 1px solid #6e6e6e;">
-                                    <td class="td-title-1">Subtotal</td>
-                                    <td class="td-title-2" id="tsubtotal">$ 0.00</td>
+                                    <td class="td-title-1 py-2">Subtotal</td>
+                                    <td class="td-title-2 py-2" id="tsubtotal">$ 0.00</td>
                                 </tr>
                                 <tr id="trEnvio" class="d-none" style="border-bottom: 1px solid #6e6e6e;">
-                                    <td class="td-title-1">Envío</td>
-                                    <td class="td-title-2" id="tenvio">$ 0.00</td>
+                                    <td class="td-title-1 py-2">Envío</td>
+                                    <td class="td-title-2 py-2" id="tenvio">$ 0.00</td>
                                 </tr>
                                 <tr style="border-bottom: 1px solid #6e6e6e;">
-                                    <td class="td-title-1">IVA</td>
-                                    <td class="td-title-2" id="tiva">$ 0.00</td>
+                                    <td class="td-title-1 py-2">IVA</td>
+                                    <td class="td-title-2 py-2" id="tiva">$ 0.00</td>
                                 </tr>
                                 <tr style="border-bottom: 1px solid #6e6e6e;">
-                                    <td class="order-total">Total a pagar</td>
-                                    <td class="order-total-price" id="ttotal">$ 0.00</td>
+                                    <td class="order-total py-2">Total a pagar</td>
+                                    <td class="order-total-price py-2" id="ttotal">$ 0.00</td>
                                 </tr>
                             </table>
                         </div>
@@ -114,7 +114,7 @@
             </div>
         </div>
 
-        <div>
+        <div class="mt-3">
             <button id="btn-siguiente-paso" class="btn btn-secondary" disabled type="button" onclick="verificaLogin()">Siguiente paso</button>
         </div>
 

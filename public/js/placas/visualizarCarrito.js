@@ -34,6 +34,110 @@ function mismaPersonalizacion(a, b) {
     );
 }
 
+
+/* =========================================================
+   DESCUENTOS DEL CARRITO
+   ========================================================= */
+
+let catalogoDescuentos = [];
+let catalogoDescuentosCargado = false;
+
+// Leer el tipo de usuario de la cookie.
+function obtenerTipoUsuario() {
+    const cookie = document.cookie
+        .split('; ')
+        .find(fila => fila.startsWith('Tipo_Usuario='));
+
+    return cookie ? Number(cookie.split('=').slice(1).join('=')) : 1;
+}
+
+// Consultar el catálogo de descuentos.
+async function cargarCatalogoDescuentos() {
+    try {
+        const url = `${BASE_URL.replace(/\/$/, '')}/catalogos`;
+
+        const respuesta = await fetch(url);
+
+        if (!respuesta.ok) {
+            throw new Error(`Error HTTP ${respuesta.status}`);
+        }
+
+        const catalogos = await respuesta.json();
+
+        catalogoDescuentos = catalogos.descuentos || [];
+
+        catalogoDescuentosCargado = true;
+
+        aplicarPreciosCarrito();
+
+        return true;
+
+    } catch (error) {
+        console.error('Error al cargar descuentos:', error);
+        return false;
+    }
+}
+
+// Aplicar los precios correspondientes a cada placa.
+function aplicarPreciosCarrito() {
+    if (!catalogoDescuentosCargado) {
+        return;
+    }
+
+    const productos = cargarCarrito();
+
+    if (!productos.length) {
+        return;
+    }
+
+    // Contar todas las placas del carrito.
+    const totalPlacas = productos.reduce((total, producto) => {
+        return total + (Number(producto.cantidad) || 0);
+    }, 0);
+
+    const tipoUsuario = obtenerTipoUsuario();
+
+    productos.forEach(producto => {
+        const categoria = Number(producto.id_categoria);
+
+        // Buscar la oferta correspondiente a la categoría y cantidad.
+        const oferta = catalogoDescuentos.find(item => {
+            const inicio = Number(item.rango_inicio);
+            const fin = Number(item.rango_fin);
+
+            return (
+                Number(item.id_categoria) === categoria &&
+                totalPlacas >= inicio &&
+                (fin === -1 || totalPlacas <= fin)
+            );
+        });
+
+        // Si no hay una oferta aplicable, conservar el precio actual.
+        if (!oferta) {
+            return;
+        }
+
+        // Tipo 2: precio con descuento.
+        // Tipo 1: precio normal.
+        const precio = Number(
+            tipoUsuario === 2
+                ? oferta.precio_final
+                : oferta.precio
+        );
+
+        if (!Number.isFinite(precio)) {
+            return;
+        }
+
+        producto.precio_unitario = precio;
+        producto.precio = precio * (Number(producto.cantidad) || 0);
+    });
+
+    // Persistir los precios para que la vista los utilice.
+    localStorage.setItem('Carrito', JSON.stringify(productos));
+}
+
+
 function renderizarCarrito() {
     const productos = cargarCarrito();
 
@@ -393,6 +497,7 @@ function validarPaso1() {
     boton.classList.toggle('btn-primary', valido);
 }
 
+
 // Mostrar alertas al cambiar las opciones.
 document.addEventListener('change', function (event) {
     const esDisclaimer = event.target.matches('#disclamer');
@@ -451,6 +556,11 @@ document.addEventListener('change', function (event) {
 });
 
 
+
+/* =========================================================
+   EVENTOS DEL CARRITO
+   ========================================================= */
+
 // Cambiar cantidades desde cualquiera de las dos vistas.
 document.addEventListener('change', function (event) {
     if (!event.target.matches('.carrito-cantidad')) return;
@@ -465,12 +575,20 @@ document.addEventListener('change', function (event) {
 
     try {
         actualizarCantidadCarrito(indice, cantidad);
+
+        // Recalcular precios según la cantidad total de placas.
+        aplicarPreciosCarrito();
+
         renderizarCarrito();
+        actualizarResumenPago();
+        validarPaso1();
+
     } catch (error) {
-        console.error(error);
+        console.error('Error al actualizar cantidad:', error);
         renderizarCarrito();
     }
 });
+
 
 // Eliminar una partida.
 document.addEventListener('click', function (event) {
@@ -478,34 +596,139 @@ document.addEventListener('click', function (event) {
     if (!boton) return;
 
     removerProductoCarrito(Number(boton.dataset.indice));
+
+    aplicarPreciosCarrito();
+
     renderizarCarrito();
+    actualizarResumenPago();
+    validarPaso1();
 });
 
-// Cargar el carrito al entrar o refrescar la página.
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', renderizarCarrito);
-} else {
+
+// Inicializar el carrito y cargar el catálogo de descuentos.
+async function inicializarCarrito() {
+    await cargarCatalogoDescuentos();
+
+    // Restaurar las opciones guardadas del checkout.
+    restaurarBorradorCheckout();
+
+    // Actualizar la vista del carrito.
     renderizarCarrito();
+    // actualizarResumenPago();
+    // validarPaso1();
 }
 
-// Permitir actualizar la vista cuando se modifica el carrito.
-window.addEventListener('carrito:actualizado', renderizarCarrito);
 
+// Cargar al entrar o refrescar la página.
+if (document.readyState === 'loading') {
+    document.addEventListener(
+        'DOMContentLoaded',
+        inicializarCarrito,
+        { once: true }
+    );
+} else {
+    inicializarCarrito();
+}
+
+
+// Actualizar la vista cuando el carrito cambie desde otro componente.
+window.addEventListener('carrito:actualizado', function () {
+    aplicarPreciosCarrito();
+
+    renderizarCarrito();
+    actualizarResumenPago();
+    validarPaso1();
+});
+
+
+// Actualizar el resumen cuando cambie el tipo de envío.
 document.addEventListener('change', function (event) {
     if (event.target.matches('input[name="tipo_envio"]')) {
         actualizarResumenPago();
+        validarPaso1();
     }
 });
 
-window.addEventListener('carrito:actualizado', function () {
+
+/***********************************************************/
+
+const CHECKOUT_DRAFT_KEY = 'checkoutPaso2Draft';
+
+function obtenerBorradorCheckout() {
+    try {
+        return JSON.parse(
+            localStorage.getItem(CHECKOUT_DRAFT_KEY)
+        ) || {};
+    } catch (error) {
+        console.error('Error al recuperar el checkout:', error);
+        return {};
+    }
+}
+
+function guardarBorradorCheckout() {
+    const tipoEnvio = document.querySelector(
+        'input[name="tipo_envio"]:checked'
+    );
+
+    const metodoPago = document.querySelector(
+        'input[name="metodo_pago"]:checked'
+    );
+
+    const disclaimer = document.getElementById('disclamer');
+
+    const borrador = obtenerBorradorCheckout();
+
+    borrador.tipo_envio = tipoEnvio?.value ?? null;
+    borrador.metodo_pago = metodoPago?.value ?? null;
+    borrador.disclaimer = disclaimer?.checked ?? false;
+
+    localStorage.setItem(
+        CHECKOUT_DRAFT_KEY,
+        JSON.stringify(borrador)
+    );
+}
+
+function restaurarBorradorCheckout() {
+    const borrador = obtenerBorradorCheckout();
+
+    if (borrador.tipo_envio !== null &&
+        borrador.tipo_envio !== undefined) {
+
+        document.querySelectorAll(
+            'input[name="tipo_envio"]'
+        ).forEach(input => {
+            input.checked = input.value === borrador.tipo_envio;
+        });
+    }
+
+    if (borrador.metodo_pago !== null &&
+        borrador.metodo_pago !== undefined) {
+
+        document.querySelectorAll(
+            'input[name="metodo_pago"]'
+        ).forEach(input => {
+            input.checked = input.value === borrador.metodo_pago;
+        });
+    }
+
+    const disclaimer = document.getElementById('disclamer');
+
+    if (disclaimer &&
+        typeof borrador.disclaimer === 'boolean') {
+        disclaimer.checked = borrador.disclaimer;
+    }
+
+    validarPaso1();
     actualizarResumenPago();
+}
+
+// Guardar cada cambio automáticamente.
+document.addEventListener('change', function (event) {
+    if (
+        event.target.matches('input[name="tipo_envio"]') ||
+        event.target.matches('input[name="metodo_pago"]') ||
+        event.target.matches('#disclamer')
+    ) {
+        guardarBorradorCheckout();
+    }
 });
-
-document.addEventListener('DOMContentLoaded', function () {
-    actualizarResumenPago();
-});
-
-
-
-// Validar Paso 1 al cargar la página.
-document.addEventListener('DOMContentLoaded', validarPaso1);

@@ -1,9 +1,8 @@
-
 <section class="cart-page pt-130 pb-130">
     <div class="container">
 
         <h2 class="text-white mb-4">
-            Finalizar compra — Paso 2
+            Datos Adicionales — Paso 2
         </h2>
 
         <p class="text-white">

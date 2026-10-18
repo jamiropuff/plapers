@@ -565,6 +565,7 @@ class UserController extends BaseController
                     'Paterno' => $usuario->paterno,
                     'Rol' => $usuario->id_rol,
                     'Nom_Rol' => $usuario->nom_rol,
+                    'Tipo_Usuario' => $usuario->id_tipo_usuario
                 );
 
                 $user_action = $usuarioModel->update(

@@ -339,6 +339,61 @@ class UsuarioModel extends Model
         return $Response;
     }
 
+    /**
+     * Verifica que las direcciones seleccionadas pertenezcan al cliente.
+     * El valor 0 se conserva como opción para pedidos sin envío o sin CFDI.
+     */
+    public function valida_domicilios_usuario($Id_User, $Id_Direccion, $Id_Facturacion)
+    {
+        $direccion = null;
+        if (is_numeric($Id_Direccion) && (int) $Id_Direccion > 0) {
+            $direccion = $this->db->table('cat_direcciones')
+                ->where('id_direccion', (int) $Id_Direccion)
+                ->get()->getFirstRow('array');
+        }
+
+        $fiscal = null;
+        if (is_numeric($Id_Facturacion) && (int) $Id_Facturacion > 0) {
+            $fiscal = $this->db->table('cat_datos_facturacion')
+                ->where('id_facturacion', (int) $Id_Facturacion)
+                ->get()->getFirstRow('array');
+        }
+
+        return self::selecciones_domicilios_validas(
+            $Id_User,
+            $Id_Direccion,
+            $Id_Facturacion,
+            $direccion,
+            $fiscal
+        );
+    }
+
+    /** Valida los registros obtenidos al consultar los IDs enviados por el cliente. */
+    public static function selecciones_domicilios_validas($Id_User, $Id_Direccion, $Id_Facturacion, $direccion, $fiscal)
+    {
+        if (!is_numeric($Id_User) || (int) $Id_User < 1) {
+            return false;
+        }
+
+        foreach ([
+            [$Id_Direccion, $direccion, 'id_direccion'],
+            [$Id_Facturacion, $fiscal, 'id_facturacion'],
+        ] as [$id, $registro, $primaryKey]) {
+            if (!is_numeric($id) || (int) $id < 0) {
+                return false;
+            }
+            if ((int) $id === 0) {
+                continue;
+            }
+
+            if (!$registro || (int) ($registro['id_user'] ?? 0) !== (int) $Id_User || (int) ($registro[$primaryKey] ?? 0) !== (int) $id) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     public function registra_orden(
         $Token,
         $Id_Tipo_Pago,
@@ -365,6 +420,29 @@ class UsuarioModel extends Model
         ];
 
         if ($Valid['Status'] === 1) {
+
+            if ((int) $Id_Tipo_Envio === 1 && (int) $Id_Direccion < 1) {
+                return [
+                    'Code' => REQUEST_FAILED,
+                    'Msg'  => 'Selecciona un domicilio de entrega para continuar con el envío.'
+                ];
+            }
+
+            if (!$this->valida_domicilios_usuario($Id_User, $Id_Direccion, $Id_Facturacion)) {
+                return [
+                    'Code' => REQUEST_FAILED,
+                    'Msg'  => 'La dirección de entrega o fiscal seleccionada no pertenece a tu cuenta.'
+                ];
+            }
+
+            if (empty($Id_uso) && (int) $Id_Facturacion > 0) {
+                $datosFiscales = $this->db->table('cat_datos_facturacion')
+                    ->select('uso')
+                    ->where('id_facturacion', (int) $Id_Facturacion)
+                    ->where('id_user', (int) $Id_User)
+                    ->get()->getFirstRow();
+                $Id_uso = $datosFiscales->uso ?? 0;
+            }
 
             $dataOrden = [
                 'id_user'              => $Id_User,

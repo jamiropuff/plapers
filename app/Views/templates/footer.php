@@ -6,7 +6,7 @@
         <!-- Logo at the top as requested -->
         <div class="row justify-content-center pt-60 pb-40">
             <div class="col-12 text-center">
-                <a href="index.php" class="logo d-inline-block">
+                <a href="<?= base_url() ?>" class="logo d-inline-block">
                     <img src="<?= base_url() ?>/assets/images/logo-plapers/logo-plapers.svg" alt="logo Plapers footer" style="max-width: 220px;">
                 </a>
             </div>
@@ -17,42 +17,49 @@
                 <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-duration="1.1s" data-wow-delay=".1s">
                     <div class="footer__item">
                         <ul>
-                            <li><a href="#"><span></span>Placas Americanas</a></li>
-                            <li><a href="#"><span></span>Placas Europeas</a></li>
-                            <li><a href="#"><span></span>Placas Euromini</a></li>
-                            <li><a href="#"><span></span>Placas Bicicleta</a></li>
+                            <li><a href="<?= base_url('placas/americana') ?>"><span></span>Placas Americanas</a></li>
+                            <li><a href="<?= base_url('placas/europea') ?>"><span></span>Placas Europeas</a></li>
+                            <li><a href="<?= base_url('placas/euromini') ?>"><span></span>Placas Euromini</a></li>
+                            <li><a href="<?= base_url('placas/bicicleta') ?>"><span></span>Placas Bicicleta</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-duration="1.2s" data-wow-delay=".2s">
                     <div class="footer__item">
                         <ul>
-                            <li><a href="#"><span></span>Nosotros</a></li>
-                            <li><a href="#"><span></span>Galer&iacute;a</a></li>
-                            <li><a href="#" data-toggle="modal" data-target=".bs-modal-aviso"><span></span>Aviso de Privacidad</a></li>
+                            <li><a href="<?= base_url('acerca_de') ?>"><span></span>Nosotros</a></li>
+                            <li><a href="<?= base_url('galeria') ?>"><span></span>Galer&iacute;a</a></li>
+                            <li><a href="<?= base_url('aviso-de-privacidad') ?>"><span></span>Aviso de Privacidad</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-duration="1.3s" data-wow-delay=".3s">
                     <div class="footer__item">
                         <ul>
-                            <li><a href="#"><span></span>FAQS</a></li>
-                            <li><a href="#"><span></span>Contacto</a></li>
-                            <li><a href="#" data-toggle="modal" data-target=".bs-modal-politica-venta"><span></span>Pil&iacute;ticas de Venta</a></li>
+                            <li><a href="<?= base_url('faqs') ?>"><span></span>FAQS</a></li>
+                            <li><a href="<?= base_url('contacto') ?>"><span></span>Contacto</a></li>
+                            <li><a href="#" data-bs-toggle="modal" data-bs-target=".bs-modal-politica-venta"><span></span>Pol&iacute;ticas de Venta</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-duration="1.4s" data-wow-delay=".4s">
                     <div class="footer__item newsletter">
                         <h4 class="footer-title">Bolet&iacute;n</h4>
-                        <div class="subscribe">
-                            <input type="email" placeholder="Tu Email">
-                            <button><i class="fa-solid fa-paper-plane"></i></button>
-                        </div>
+                        <?php $newsletterMessage = session()->getFlashdata('newsletter_message'); ?>
+                        <?php if ($newsletterMessage): ?>
+                            <div class="alert alert-<?= esc($newsletterMessage['type']) ?> py-2 px-3 mb-3" role="status">
+                                <?= esc($newsletterMessage['text']) ?>
+                            </div>
+                        <?php endif; ?>
+                        <form class="subscribe" action="<?= base_url('boletin/registro') ?>" method="post">
+                            <?= csrf_field() ?>
+                            <input type="email" name="Email" placeholder="Tu Email" autocomplete="email" required>
+                            <button type="submit" aria-label="Suscribirme al boletín"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i></button>
+                        </form>
                         <div class="social-icon mt-40">
-                            <a href="#0"><i class="fa-brands fa-facebook-f"></i></a>
-                            <a href="#0"><i class="fa-brands fa-instagram"></i></a>
-                            <a href="#0"><i class="fa-brands fa-whatsapp"></i></a>
+                            <a href="https://x.com/Plapers" target="_blank" rel="noopener noreferrer" aria-label="Plapers en X"><span aria-hidden="true">X</span></a>
+                            <a href="https://www.youtube.com/channel/UCcTYyOQ_rNj1N0eUqi-rzBg" target="_blank" rel="noopener noreferrer" aria-label="Plapers en YouTube"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a>
+                            <a href="https://www.instagram.com/plapersmx/?hl=es" target="_blank" rel="noopener noreferrer" aria-label="Plapers en Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
                         </div>
                     </div>
                 </div>
@@ -60,9 +67,9 @@
         </div>
         <div class="footer__copy-text pt-35 pb-35 d-flex align-items-center justify-content-between flex-wrap gap-3">
             <p class="m-0">&copy; Copyright 2026 Todos los derechos Reservados</p>
-            <a href="#0" class="payment d-block image">
+            <div class="payment d-block image">
                 <img src="<?= base_url() ?>/assets/images/icon/payment.png" alt="icon">
-            </a>
+            </div>
         </div>
     </div>
 </footer>
@@ -74,7 +81,7 @@
         <div class="modal-body">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                     <h4 class="modal-title" id="aviso-privacidad">AVISO DE PRIVACIDAD</h4>
                 </div>
                 <div class="modal-body">
@@ -163,7 +170,7 @@
         <div class="modal-body">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                     <h4 class="modal-title" id="politica-venta">POL&Iacute;TICAS DE VENTA</h4>
                 </div>
                 <div class="modal-body">

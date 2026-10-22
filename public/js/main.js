@@ -1,22 +1,15 @@
 // Login
 const loginCliente = (page = "") => {
-    console.log('loginCliente');
-
     let user = $("#uname").val();
     let pass = $("#pwd").val();
-
-    console.log(`user: ${user}, pass: ${pass}`);
 
     $.ajax({
         url: '/login/autenticar',
         type: 'POST',
+        dataType: 'json',
         data: { "user": user, "pass": pass },
         success: function (response) {
-            console.log('success login');
-            console.log(response);
-            console.log(JSON.parse(response));
-
-            respuesta = JSON.parse(response);
+            const respuesta = response;
 
             if (respuesta.status == 0) {
                 console.log("error");

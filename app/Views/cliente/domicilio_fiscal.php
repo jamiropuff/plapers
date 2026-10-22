@@ -26,11 +26,49 @@
                 <div class="card bg-dark text-white border-secondary shadow-sm">
                     <div class="card-header bg-transparent border-secondary py-3">
                         <h5 class="card-title text-white mb-0">
-                            <i class="fa-solid fa-file-invoice-dollar text-primary me-2"></i> Datos de Facturación (CFDI 4.0)
+                            <i class="fa-solid fa-file-invoice-dollar text-primary me-2"></i> Domicilios fiscales (CFDI 4.0)
                         </h5>
                     </div>
                     <div class="card-body p-4">
                         <div id="alerta_fiscal"></div>
+
+                        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+                            <p class="text-white-50 mb-0">Guarda los datos de facturación que usas y elige uno distinto en cada compra.</p>
+                            <button type="button" class="btn btn-outline-primary btn-sm" onclick="nuevoDomicilioFiscal()">
+                                <i class="fa-solid fa-plus me-1"></i> Nuevo domicilio fiscal
+                            </button>
+                        </div>
+
+                        <?php if (empty($facturaciones)): ?>
+                            <div class="alert alert-secondary">Todavía no tienes domicilios fiscales guardados.</div>
+                        <?php else: ?>
+                            <div class="row g-3 mb-4">
+                                <?php foreach ($facturaciones as $registroFiscal): ?>
+                                    <?php $titularFiscal = (int) $registroFiscal->tipo_persona === 2 ? $registroFiscal->razon_social : trim($registroFiscal->nombres . ' ' . $registroFiscal->paterno . ' ' . $registroFiscal->materno); ?>
+                                    <div class="col-md-6" id="card-fiscal-<?= esc($registroFiscal->id_facturacion) ?>">
+                                        <div class="card bg-black border-secondary text-white h-100">
+                                            <div class="card-body">
+                                                <div class="d-flex justify-content-between align-items-start gap-2">
+                                                    <div>
+                                                        <h6 class="fw-bold mb-1"><?= esc($titularFiscal) ?></h6>
+                                                        <p class="text-white-50 small mb-1">RFC: <?= esc($registroFiscal->rfc) ?></p>
+                                                        <p class="text-white-50 small mb-0"><?= esc($registroFiscal->calle . ' ' . $registroFiscal->numero . ', ' . $registroFiscal->colonia . ', ' . $registroFiscal->municipio . ', C.P. ' . $registroFiscal->codigo_postal) ?></p>
+                                                    </div>
+                                                    <div class="d-flex gap-1">
+                                                        <button type="button" class="btn btn-sm btn-outline-info" onclick="editarDomicilioFiscal(<?= esc($registroFiscal->id_facturacion) ?>)" aria-label="Editar domicilio fiscal"><i class="fa-solid fa-pen-to-square"></i></button>
+                                                        <button type="button" class="btn btn-sm btn-outline-danger" onclick="eliminarDomicilioFiscal(<?= esc($registroFiscal->id_facturacion) ?>)" aria-label="Eliminar domicilio fiscal"><i class="fa-solid fa-trash-can"></i></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
+                        <?php endif; ?>
+
+                        <h6 id="tituloFormularioFiscal" class="text-primary border-bottom border-secondary pb-2 mb-3">
+                            <?= !empty($facturacion) ? 'Editar domicilio fiscal seleccionado' : 'Agregar domicilio fiscal' ?>
+                        </h6>
 
                         <form id="formDomicilioFiscal" onsubmit="guardarDomicilioFiscal(event)" enctype="multipart/form-data">
                             <input type="hidden" id="fisc_id" name="id_facturacion" value="<?= esc($facturacion->id_facturacion ?? '') ?>">
@@ -147,20 +185,18 @@
                                     <div class="p-3 bg-black rounded border border-secondary">
                                         <label class="form-label text-white small">Adjuntar CSF actualizada en formato PDF (máx. 5MB)</label>
                                         <input type="file" id="fisc_archivo" name="documento_situacion_fiscal" class="form-control bg-dark text-white border-secondary" accept="application/pdf">
-                                        <?php if (!empty($facturacion->documento_situacion_fiscal)): ?>
-                                            <div class="mt-2 text-success small">
+                                        <div id="fisc_csf_actual" class="mt-2 text-success small" style="<?= !empty($facturacion->documento_situacion_fiscal) ? '' : 'display:none;' ?>">
                                                 <i class="fa-solid fa-circle-check me-1"></i> Constancia cargada previamente:
-                                                <a href="<?= base_url('uploads/constancias/' . esc($facturacion->documento_situacion_fiscal)) ?>" target="_blank" class="text-info text-decoration-underline ms-1">
+                                                <a id="fisc_csf_link" href="<?= !empty($facturacion->documento_situacion_fiscal) ? base_url('uploads/constancias/' . esc($facturacion->documento_situacion_fiscal)) : '#' ?>" target="_blank" rel="noopener noreferrer" class="text-info text-decoration-underline ms-1">
                                                     Ver archivo
                                                 </a>
-                                            </div>
-                                        <?php endif; ?>
+                                        </div>
                                     </div>
                                 </div>
 
                                 <div class="col-12 text-end mt-4">
                                     <button type="submit" id="btnGuardarFiscal" class="btn btn-primary px-4 py-2">
-                                        <i class="fa-solid fa-floppy-disk me-2"></i> Guardar Datos Fiscales
+                                        <i class="fa-solid fa-floppy-disk me-2"></i> <?= !empty($facturacion) ? 'Actualizar domicilio fiscal' : 'Guardar domicilio fiscal' ?>
                                     </button>
                                 </div>
                             </div>

@@ -32,8 +32,12 @@ class BoletinModel extends Model
                 'activo'    => 1
             ];
 
-            $this->insert($data);
-            $response['Code'] = REQUEST_SUCCESS;
+            if ($this->insert($data) === false) {
+                $response['Code'] = REQUEST_FAILED;
+                $response['Msg']  = 'No se pudo registrar el correo en el boletín.';
+            } else {
+                $response['Code'] = REQUEST_SUCCESS;
+            }
 
         } else {
             $response['Code'] = REQUEST_FAILED;

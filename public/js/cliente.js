@@ -318,8 +318,103 @@ const guardarDomicilioFiscal = async (event) => {
         console.error(e);
         Swal.fire({ icon: 'error', title: 'Error', text: 'Error al guardar los datos fiscales.' });
     } finally {
-        $btn.prop("disabled", false).html('<i class="fa-solid fa-floppy-disk me-2"></i> Guardar Datos Fiscales');
+        const label = $("#fisc_id").val() ? 'Actualizar domicilio fiscal' : 'Guardar domicilio fiscal';
+        $btn.prop("disabled", false).html('<i class="fa-solid fa-floppy-disk me-2"></i> ' + label);
     }
+};
+
+const nuevoDomicilioFiscal = () => {
+    const form = document.getElementById('formDomicilioFiscal');
+    form.reset();
+    $("#fisc_id").val('');
+    $("#formDomicilioFiscal input[type=text], #formDomicilioFiscal input[type=hidden]").not('#fisc_id').val('');
+    $("#tipo_fisica").prop('checked', true);
+    $("#fisc_estado, #fisc_uso").val('').trigger('change');
+    $("#fisc_archivo").val('');
+    $("#fisc_csf_actual").hide();
+    $("#tituloFormularioFiscal").text('Agregar domicilio fiscal');
+    $("#btnGuardarFiscal").html('<i class="fa-solid fa-floppy-disk me-2"></i> Guardar domicilio fiscal');
+    alternarTipoPersona();
+    form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+};
+
+const editarDomicilioFiscal = async (id) => {
+    try {
+        const response = await $.ajax({
+            url: BASE_URL + '/domicilio-fiscal/obtener/' + id,
+            type: 'GET',
+            dataType: 'json'
+        });
+        if (response.status !== 1) {
+            Swal.fire({ icon: 'error', title: 'Error', text: response.message || 'No se pudo cargar el domicilio fiscal.' });
+            return;
+        }
+
+        const data = response.facturacion;
+        $("#fisc_id").val(data.id_facturacion);
+        $("#tipo_fisica").prop('checked', String(data.tipo_persona) === '1');
+        $("#tipo_moral").prop('checked', String(data.tipo_persona) === '2');
+        $("#fisc_razon_social").val(data.razon_social === '0' ? '' : data.razon_social);
+        $("#fisc_nombres").val(data.nombres === '0' ? '' : data.nombres);
+        $("#fisc_paterno").val(data.paterno === '0' ? '' : data.paterno);
+        $("#fisc_materno").val(data.materno === '0' ? '' : data.materno);
+        $("#fisc_rfc").val(data.rfc);
+        $("#fisc_curp").val(data.curp === '0' ? '' : data.curp);
+        $("#fisc_uso").val(data.uso).trigger('change');
+        $("#fisc_calle").val(data.calle);
+        $("#fisc_numero").val(data.numero);
+        $("#fisc_interior").val(data.interior === '0' ? '' : data.interior);
+        $("#fisc_colonia").val(data.colonia);
+        $("#fisc_municipio").val(data.municipio);
+        $("#fisc_estado").val(data.estado).trigger('change');
+        $("#fisc_cp").val(data.codigo_postal);
+        $("#fisc_archivo").val('');
+
+        if (data.documento_situacion_fiscal) {
+            $("#fisc_csf_link").attr('href', BASE_URL + '/uploads/constancias/' + encodeURIComponent(data.documento_situacion_fiscal));
+            $("#fisc_csf_actual").show();
+        } else {
+            $("#fisc_csf_actual").hide();
+        }
+
+        $("#tituloFormularioFiscal").text('Editar domicilio fiscal');
+        $("#btnGuardarFiscal").html('<i class="fa-solid fa-floppy-disk me-2"></i> Actualizar domicilio fiscal');
+        alternarTipoPersona();
+        document.getElementById('formDomicilioFiscal').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } catch (e) {
+        console.error(e);
+        Swal.fire({ icon: 'error', title: 'Error', text: 'Error al cargar el domicilio fiscal.' });
+    }
+};
+
+const eliminarDomicilioFiscal = (id) => {
+    Swal.fire({
+        title: '¿Eliminar domicilio fiscal?',
+        text: 'Ya no aparecerá como opción para tus compras.',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Sí, eliminar',
+        cancelButtonText: 'Cancelar'
+    }).then(async (result) => {
+        if (!result.isConfirmed) return;
+        try {
+            const response = await $.ajax({
+                url: BASE_URL + '/domicilio-fiscal/eliminar/' + id,
+                type: 'POST',
+                dataType: 'json'
+            });
+            if (response.status === 1) {
+                $("#card-fiscal-" + id).fadeOut(200, function () { $(this).remove(); });
+                if (String($("#fisc_id").val()) === String(id)) nuevoDomicilioFiscal();
+                Swal.fire({ icon: 'success', title: 'Eliminado', text: response.message, timer: 1500, showConfirmButton: false });
+            } else {
+                Swal.fire({ icon: 'error', title: 'Error', text: response.message || 'No se pudo eliminar el domicilio fiscal.' });
+            }
+        } catch (e) {
+            console.error(e);
+            Swal.fire({ icon: 'error', title: 'Error', text: 'Error al eliminar el domicilio fiscal.' });
+        }
+    });
 };
 
 // 5. Mis Compras - Detalle de Orden

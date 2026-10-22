@@ -101,7 +101,7 @@
                                         </div>
 
                                         <div class="col-md-12 mt-2">
-                                            <button class="btn btn-primary" onclick="agregarACarrito()">Agregar al carrito</button>
+                                            <button type="button" class="btn btn-primary" onclick="agregarACarrito()">Agregar al carrito</button>
                                         </div>
 
 
@@ -184,6 +184,33 @@
         </div>
     </div>
     </div>
+
+    <dialog id="modalCarritoAgregado" class="plap-cart-dialog" aria-labelledby="modalCarritoTitulo" aria-describedby="modalCarritoDescripcion">
+        <div class="plap-cart-dialog__content">
+            <button type="button" class="plap-cart-dialog__close" onclick="cerrarModalCarritoAgregado()" aria-label="Cerrar aviso">
+                <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+            </button>
+            <div class="plap-cart-dialog__check" aria-hidden="true">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <p class="plap-cart-dialog__eyebrow">AGREGADO A TU CARRITO</p>
+            <h2 id="modalCarritoTitulo">¡Tu diseño ya está guardado!</h2>
+            <p id="modalCarritoDescripcion" class="plap-cart-dialog__description">Puedes revisar tu pedido o seguir diseñando.</p>
+            <div class="plap-cart-dialog__product" id="productoAgregadoResumen">
+                <img id="productoAgregadoImagen" src="" alt="" hidden>
+                <div>
+                    <strong id="productoAgregadoNombre"></strong>
+                    <span id="productoAgregadoCantidad"></span>
+                </div>
+            </div>
+            <div class="plap-cart-dialog__actions">
+                <a class="plap-cart-dialog__primary" href="<?= base_url('carrito') ?>">
+                    <i class="fa-regular fa-cart-shopping" aria-hidden="true"></i> Ir al carrito
+                </a>
+                <button type="button" class="plap-cart-dialog__secondary" onclick="cerrarModalCarritoAgregado()">Cerrar y seguir diseñando</button>
+            </div>
+        </div>
+    </dialog>
 
     <!-- ============================================================
      JAVASCRIPT
@@ -959,34 +986,54 @@
 
             // Guardar en localStorage (array de productos)
             agregarProductoCarrito(producto, cantidad);
+            mostrarModalCarritoAgregado(producto, cantidad);
+        }
 
-            // Mostrar mensaje de éxito
-            // alert('Producto agregado al carrito!\n' + JSON.stringify(producto, null, 2));
+        var cierreModalCarritoTimer = null;
 
-            var url_categoria = '';
-            switch (parseInt(state.datosPlaca.id_categoria)) {
-                case 1:
-                    url_categoria = 'bicicleta';
-                    break;
-                case 2:
-                    url_categoria = 'americana';
-                    break;
-                case 3:
-                    url_categoria = 'euromini';
-                    break;
-                case 4:
-                    url_categoria = 'europea';
-                    break;
-                default:
-                    url_categoria = 'accesorios';
-                    break;
+        function mostrarModalCarritoAgregado(producto, cantidad) {
+            var modal = document.getElementById('modalCarritoAgregado');
+            var imagen = document.getElementById('productoAgregadoImagen');
+            if (!modal || typeof modal.showModal !== 'function') return;
+
+            document.getElementById('productoAgregadoNombre').textContent = producto.nom_producto || 'Producto personalizado';
+            document.getElementById('productoAgregadoCantidad').textContent = cantidad + (cantidad === 1 ? ' pieza agregada' : ' piezas agregadas');
+            if (producto.foto) {
+                imagen.src = producto.foto;
+                imagen.hidden = false;
+            } else {
+                imagen.removeAttribute('src');
+                imagen.hidden = true;
             }
 
-            console.log('Redirigiendo a /placas/' + url_categoria + ' en 3 segundos...');
+            window.clearTimeout(cierreModalCarritoTimer);
+            if (!modal.open) modal.showModal();
+            window.requestAnimationFrame(function () {
+                modal.classList.add('is-visible');
+            });
+        }
 
-            setTimeout(function() {
-                window.location.href = '/placas/' + url_categoria;
-            }, 3000);
+        function cerrarModalCarritoAgregado() {
+            var modal = document.getElementById('modalCarritoAgregado');
+            if (!modal || !modal.open) return;
+
+            modal.classList.remove('is-visible');
+            window.clearTimeout(cierreModalCarritoTimer);
+            cierreModalCarritoTimer = window.setTimeout(function () {
+                if (modal.open) modal.close();
+            }, 180);
+        }
+
+        function volverACategoriaDelProducto() {
+            var categorias = {
+                1: 'bicicleta',
+                2: 'americana',
+                3: 'euromini',
+                4: 'europea'
+            };
+            var categoria = categorias[parseInt(state.datosPlaca.id_categoria, 10)] || 'accesorios';
+            var baseUrl = CONFIG.API_URL.replace(/\/+$/, '');
+            window.location.href = baseUrl + '/placas/' + categoria;
         }
 
         // ============================================================
@@ -1060,6 +1107,15 @@
         window.cambiaColor = cambiaColor;
         window.cambiaAcabado = cambiaAcabado;
         window.agregarACarrito = agregarACarrito;
+        window.cerrarModalCarritoAgregado = cerrarModalCarritoAgregado;
+
+        document.getElementById('modalCarritoAgregado').addEventListener('click', function(event) {
+            if (event.target === this) cerrarModalCarritoAgregado();
+        });
+        document.getElementById('modalCarritoAgregado').addEventListener('close', function() {
+            this.classList.remove('is-visible');
+            volverACategoriaDelProducto();
+        });
         window.checaRegex = checaRegex;
         window.cargarProducto = cargarProducto;
     </script>

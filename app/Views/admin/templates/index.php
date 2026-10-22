@@ -66,6 +66,9 @@
                                             placeholder="ingrese su contraseña">
                                     </div>
                                 </div>
+                                <div class="col-lg-12">
+                                    <div id="error_login" class="text-danger small mb-2" role="alert" aria-live="polite"></div>
+                                </div>
                                 <div class="col-lg-12 text-center">
                                     <button type="button" class="btn w-100 btn-dark" onclick="login()">Entrar</button>
                                 </div>
@@ -92,7 +95,7 @@
     <!-- ============================================================== -->
     <!-- This page plugin js -->
     <!-- ============================================================== -->
-     <script src="<?= base_url() ?>/admin/dist/js/main.js"></script>
+     <script src="<?= base_url() ?>/admin/dist/js/main.js?v=<?= filemtime(FCPATH . 'admin/dist/js/main.js') ?>"></script>
     <script>
         $(".preloader ").fadeOut();
     </script>

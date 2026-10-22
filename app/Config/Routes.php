@@ -52,6 +52,7 @@ $routes->get('/cliente', 'Cliente::index');
 $routes->get('/registro', 'RegistroController::index');
 $routes->get('/register', 'RegistroController::index');
 $routes->post('/registro/guardar', 'RegistroController::guardar');
+$routes->post('boletin/registro', 'BoletinesController::registro');
 
 // Área privada de clientes
 $routes->group('', ['filter' => 'authCliente:2'], static function ($routes) {
@@ -75,9 +76,12 @@ $routes->group('', ['filter' => 'authCliente:2'], static function ($routes) {
     // Domicilio Fiscal
     $routes->get('domicilio-fiscal', 'ClientesController::domicilio_fiscal');
     $routes->post('domicilio-fiscal/guardar', 'ClientesController::guardar_domicilio_fiscal');
+    $routes->get('domicilio-fiscal/obtener/(:num)', 'ClientesController::obtener_domicilio_fiscal/$1');
+    $routes->post('domicilio-fiscal/eliminar/(:num)', 'ClientesController::eliminar_domicilio_fiscal/$1');
 
     // Checkout: Paso 2
     $routes->get('carrito/paso2', 'Cliente::paso2');
+    $routes->post('carrito/paso2/domicilios', 'Cliente::seleccionar_domicilios');
 
     // Datos del checkout
     $routes->post('checkout/datos-facturacion', 'UserController::datos_facturacion');
@@ -91,8 +95,10 @@ $routes->group('', ['filter' => 'authCliente:2'], static function ($routes) {
     $routes->post('checkout/guardar-orden', 'UserController::guarda_orden');
 });
 
-// Entorno de desarrollo: Simulación de sesión de cliente (sin tocar login)
-$routes->get('dev/sesion-cliente/(:num)', 'ClientesController::dev_simular_sesion/$1');
+// Entorno de desarrollo: simulación de sesión (nunca disponible en producción)
+if (ENVIRONMENT === 'development') {
+    $routes->get('dev/sesion-cliente/(:num)', 'ClientesController::dev_simular_sesion/$1');
+}
 
 //Secciones
 $routes->get('/web/acerca_de', 'Home::acerca_de');

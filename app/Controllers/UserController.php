@@ -23,6 +23,14 @@ class UserController extends BaseController
         $user = $this->request->getPost('user');
         $pass = $this->request->getPost('pass');
 
+        if (! is_string($user) || trim($user) === '' || ! is_string($pass) || $pass === '') {
+            return $this->response->setJSON([
+                'status'  => 0,
+                'message' => 'Usuario y/o contraseña incorrectos',
+                'Code'    => 400,
+            ]);
+        }
+
         $active = 1;
 
         $builder = $db->table('t_usuarios AS tu');
@@ -34,16 +42,17 @@ class UserController extends BaseController
         $builder->join('cat_roles AS cr', 'tu.id_rol = cr.id_rol');
         $builder->join('t_info_usuarios AS tiu', 'tiu.id_user = tu.id_user');
 
-        $builder->where('username', $user); // verificamos si existe el usuario
-        $builder->where('active', $active); // verificamos si existe el usuario
-        $builder->whereIn('id_rol', [1, 3, 4, 5]);
+        $builder->where('tu.username', $user);
+        $builder->where('tu.active', $active);
+        $builder->whereIn('tu.id_rol', [1, 3, 4, 5]);
         $usuario = $builder->get()->getFirstRow(); // Ejecutar la consulta y obtener el primer registro
 
         if (!$usuario) {
-            $response = array(
-                'status' => 0,
-                'message' => 'Usuario y/o contraseña incorrectos'
-            );
+            return $this->response->setJSON([
+                'status'  => 0,
+                'message' => 'Usuario y/o contraseña incorrectos',
+                'Code'    => 400,
+            ]);
         }
 
         if ($usuarioModel->verifyPass($pass, $usuario->password)) {
@@ -92,7 +101,7 @@ class UserController extends BaseController
             );
         }
 
-        return json_encode($response);
+        return $this->response->setJSON($response);
     }
 
     public function logout()
@@ -451,6 +460,10 @@ class UserController extends BaseController
 
         $data = $this->request->getPost();
         $productos = json_decode($data['Productos'] ?? '[]');
+        $idDireccion = $data['Id_Direccion'] ?? session()->get('Checkout_Id_Direccion') ?? 0;
+        $idFacturacion = $data['Id_Facturacion'] ?? session()->get('Checkout_Id_Facturacion') ?? 0;
+        $idDireccion = ($idDireccion === '' || $idDireccion === null) ? 0 : $idDireccion;
+        $idFacturacion = ($idFacturacion === '' || $idFacturacion === null) ? 0 : $idFacturacion;
 
         $orden = $this->userModel->registra_orden(
             $data['Token'],
@@ -462,10 +475,10 @@ class UserController extends BaseController
             $data['Iva'],
             $data['Envio'],
             $data['Total'],
-            $data['Id_Direccion'],
-            $data['Id_Facturacion'],
+            $idDireccion,
+            $idFacturacion,
             $data['Notas_Adicionales'] ?? '',
-            $data['Id_uso']
+            $data['Id_uso'] ?? 0
         );
 
         if (($orden['Code'] ?? 0) !== REQUEST_SUCCESS) {

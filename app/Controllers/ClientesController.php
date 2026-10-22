@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\ClienteModel;
+use App\Libraries\DomicilioFiscalValidator;
 
 class ClientesController extends BaseController
 {
@@ -646,10 +647,11 @@ class ClientesController extends BaseController
 
         $db = \Config\Database::connect();
 
-        $facturacion = $db->table('cat_datos_facturacion')
+        $facturaciones = $db->table('cat_datos_facturacion')
             ->where('id_user', $userId)
+            ->orderBy('id_facturacion', 'DESC')
             ->get()
-            ->getFirstRow();
+            ->getResult();
 
         $usos_cfdi = $db->table('cat_uso_cfdi')
             ->orderBy('id_uso', 'ASC')
@@ -664,7 +666,8 @@ class ClientesController extends BaseController
         $data = [
             'Titulo'      => 'domicilio_fiscal',
             'Descripcion' => 'Datos de Facturación CFDI',
-            'facturacion' => $facturacion,
+            'facturaciones' => $facturaciones,
+            'facturacion' => $facturaciones[0] ?? null,
             'usos_cfdi'   => $usos_cfdi,
             'estados'     => $estados
         ];
@@ -688,6 +691,7 @@ class ClientesController extends BaseController
 
         $session = session();
         $userId  = $session->get('User_ID');
+        $idFacturacion = (int) $this->request->getPost('id_facturacion');
 
         $tipoPersona = (int)$this->request->getPost('tipo_persona');
         $rfc         = strtoupper(trim((string)$this->request->getPost('rfc')));
@@ -705,20 +709,22 @@ class ClientesController extends BaseController
         $estado      = (int)$this->request->getPost('estado');
         $cp          = trim((string)$this->request->getPost('codigo_postal'));
 
-        if (empty($rfc)) {
-            return $this->response->setJSON(['status' => 0, 'Code' => INVALID_REQUEST, 'message' => 'El RFC es obligatorio.']);
-        }
-
-        if ($tipoPersona === 2 && (strlen($rfc) < 12 || strlen($rfc) > 13)) {
-            return $this->response->setJSON(['status' => 0, 'Code' => INVALID_REQUEST, 'message' => 'El RFC de Persona Moral debe tener 12 caracteres.']);
-        }
-
-        if ($tipoPersona === 1 && strlen($rfc) !== 13) {
-            return $this->response->setJSON(['status' => 0, 'Code' => INVALID_REQUEST, 'message' => 'El RFC de Persona Física debe tener 13 caracteres.']);
-        }
-
-        if (empty($calle) || empty($numero) || empty($colonia) || empty($municipio) || empty($estado) || empty($cp) || empty($uso)) {
-            return $this->response->setJSON(['status' => 0, 'Code' => INVALID_REQUEST, 'message' => 'Por favor completa todos los campos del domicilio fiscal.']);
+        $errorFiscal = (new DomicilioFiscalValidator())->validate([
+            'tipo_persona' => $tipoPersona,
+            'rfc' => $rfc,
+            'razon_social' => $razonSocial,
+            'nombres' => $nombres,
+            'paterno' => $paterno,
+            'calle' => $calle,
+            'numero' => $numero,
+            'colonia' => $colonia,
+            'municipio' => $municipio,
+            'estado' => $estado,
+            'codigo_postal' => $cp,
+            'uso' => $uso,
+        ]);
+        if ($errorFiscal !== null) {
+            return $this->response->setJSON(['status' => 0, 'Code' => INVALID_REQUEST, 'message' => $errorFiscal]);
         }
 
         $db = \Config\Database::connect();
@@ -737,10 +743,18 @@ class ClientesController extends BaseController
             }
         }
 
-        $registroExistente = $db->table('cat_datos_facturacion')
-            ->where('id_user', $userId)
-            ->get()
-            ->getFirstRow();
+        $registroExistente = null;
+        if ($idFacturacion > 0) {
+            $registroExistente = $db->table('cat_datos_facturacion')
+                ->where('id_facturacion', $idFacturacion)
+                ->where('id_user', $userId)
+                ->get()
+                ->getFirstRow();
+
+            if (!$registroExistente) {
+                return $this->response->setJSON(['status' => 0, 'Code' => INVALID_REQUEST, 'message' => 'Domicilio fiscal no encontrado o no pertenece a tu cuenta.']);
+            }
+        }
 
         $datos = [
             'tipo_persona'  => $tipoPersona,
@@ -768,6 +782,7 @@ class ClientesController extends BaseController
 
         if ($registroExistente) {
             $db->table('cat_datos_facturacion')
+                ->where('id_facturacion', $idFacturacion)
                 ->where('id_user', $userId)
                 ->update($datos);
         } else {
@@ -781,11 +796,52 @@ class ClientesController extends BaseController
         ]);
     }
 
+    /** Obtener un domicilio fiscal propio para editarlo. */
+    public function obtener_domicilio_fiscal($idFacturacion = null)
+    {
+        $facturacion = \Config\Database::connect()->table('cat_datos_facturacion')
+            ->where('id_facturacion', (int) $idFacturacion)
+            ->where('id_user', session()->get('User_ID'))
+            ->get()
+            ->getFirstRow();
+
+        if (!$facturacion) {
+            return $this->response->setJSON(['status' => 0, 'Code' => NO_RESULTS, 'message' => 'Domicilio fiscal no encontrado.']);
+        }
+
+        return $this->response->setJSON(['status' => 1, 'Code' => REQUEST_SUCCESS, 'facturacion' => $facturacion]);
+    }
+
+    /** Eliminar un domicilio fiscal propio. */
+    public function eliminar_domicilio_fiscal($idFacturacion = null)
+    {
+        if (strtoupper($this->request->getMethod()) !== 'POST') {
+            return $this->response->setJSON(['status' => 0, 'Code' => METHOD_NOT_ALLOWED, 'message' => 'Método no permitido']);
+        }
+
+        $deleted = \Config\Database::connect()->table('cat_datos_facturacion')
+            ->where('id_facturacion', (int) $idFacturacion)
+            ->where('id_user', session()->get('User_ID'))
+            ->delete();
+
+        if ($deleted && (int) session()->get('Checkout_Id_Facturacion') === (int) $idFacturacion) {
+            session()->remove('Checkout_Id_Facturacion');
+        }
+
+        return $this->response->setJSON($deleted
+            ? ['status' => 1, 'Code' => REQUEST_SUCCESS, 'message' => 'Domicilio fiscal eliminado.']
+            : ['status' => 0, 'Code' => REQUEST_FAILED, 'message' => 'No se pudo eliminar el domicilio fiscal.']);
+    }
+
     /**
      * Utilidad de desarrollo: Inyecta sesión de cliente sin pasar por login
      */
     public function dev_simular_sesion($id_user = 329)
     {
+        if (ENVIRONMENT !== 'development') {
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+        }
+
         $db = \Config\Database::connect();
         $usuario = $db->table('t_usuarios')
             ->where('id_user', $id_user)

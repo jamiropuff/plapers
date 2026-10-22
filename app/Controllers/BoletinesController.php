@@ -10,20 +10,27 @@ class BoletinesController extends BaseController
 
     public function registro()
     {
-        if ($this->request->getMethod() === 'post') {
-
-            $email = $this->request->getPost('Email');
-
-            $boletinesModel = new BoletinesModel();
-            $response = $boletinesModel->registra_correo($email);
-
-            $response['Titulo'] = 'Suscritos al boletín';
-
-            return view('boletin/respuesta', $response);
-
-        } else {
-            return redirect()->to('/');
+        if (!$this->request->is('post')) {
+            return redirect()->to(base_url());
         }
+
+        $email = trim((string) $this->request->getPost('Email'));
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            session()->setFlashdata('newsletter_message', [
+                'type' => 'danger',
+                'text' => 'Ingresa un correo electrónico válido.'
+            ]);
+            return redirect()->to(base_url());
+        }
+
+        $response = (new BoletinModel())->registra_correo($email);
+        $isSuccess = ($response['Code'] ?? null) === REQUEST_SUCCESS;
+        session()->setFlashdata('newsletter_message', [
+            'type' => $isSuccess ? 'success' : 'warning',
+            'text' => $isSuccess ? 'Tu correo quedó registrado en el boletín.' : ($response['Msg'] ?? 'No se pudo registrar el correo.')
+        ]);
+
+        return redirect()->to(base_url());
     }
 
     public function lista_suscritos()

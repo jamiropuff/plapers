@@ -18,7 +18,7 @@
                                     <div class="pt-4 border-top border-secondary border-opacity-50">
                                         <div class="plap-auth-feature-pill">
                                             <div class="plap-auth-feature-icon">
-                                                <i class="fa-solid fa-shield-halved"></i>
+                                                <i class="fa-solid fa-shield-alt" aria-hidden="true"></i>
                                             </div>
                                             <span>Materiales y acabados de calidad automotriz</span>
                                         </div>

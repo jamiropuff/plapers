@@ -203,6 +203,18 @@
   left: 80px;
 }
 
+.nice-select .option:hover, .nice-select .option.focus, .nice-select .option.selected.focus {
+    background-color: #0c0c0c;
+    color: #ffffff;
+}
+.nice-select .option {
+  background-color: #0c0c0c;
+  color: #ffffff;
+}
+.nice-select .list:hover .option:not(:hover) {
+  background-color: #332d2d !important;
+  color: #ffffff !important;
+}
 .right-80 {
   right: 80px;
 }

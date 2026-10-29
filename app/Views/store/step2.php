@@ -16,7 +16,7 @@ $valor = static fn($obj, $key) => (string)($obj->{$key} ?? '');
 ?>
 <section class="cart-page pt-130 pb-130 checkout-direcciones">
   <div class="container">
-    <h2 class="checkout-title">Por favor llena los siguientes datos antes de continuar</h2>
+    <h2 class="checkout-title text-white">Por favor llena los siguientes datos antes de continuar</h2>
     <?php if (session()->getFlashdata('checkout_address_error')): ?>
       <div class="alert alert-danger" role="alert"><?= esc(session()->getFlashdata('checkout_address_error')) ?></div>
     <?php endif; ?>
@@ -68,7 +68,7 @@ $valor = static fn($obj, $key) => (string)($obj->{$key} ?? '');
           foreach ($camposEntrega as $campo => $label):
           ?>
             <div class="checkout-field <?= in_array($campo, ['numero', 'interior', 'telefono']) ? 'small-field' : '' ?>">
-              <label for="entrega_<?= esc($campo) ?>">
+              <label for="entrega_<?= esc($campo) ?>" class="form-label">
                 <?= esc($label) ?>
               </label>
 
@@ -92,6 +92,7 @@ $valor = static fn($obj, $key) => (string)($obj->{$key} ?? '');
               <?php if ($campo === 'estado' || $campo === 'pais'): ?>
 
                 <select
+                  class="form-select no-nice-select" 
                   id="entrega_<?= esc($campo) ?>"
                   name="entrega_<?= esc($campo) ?>"
                   required
@@ -108,6 +109,7 @@ $valor = static fn($obj, $key) => (string)($obj->{$key} ?? '');
 
                 <?php if ($campo !== 'recibe'): ?>
                   <input
+                    class="form-control"
                     type="text"
                     id="entrega_<?= esc($campo) ?>"
                     name="entrega_<?= esc($campo) ?>"
@@ -210,8 +212,8 @@ $valor = static fn($obj, $key) => (string)($obj->{$key} ?? '');
     min-height: 68px;
     border: 1px solid transparent;
     border-radius: 4px;
-    background: #eee;
-    color: #687386;
+    background: #383535;
+    color: #ffffff;
     padding: 12px 14px;
     text-align: center;
     display: flex;
@@ -221,7 +223,7 @@ $valor = static fn($obj, $key) => (string)($obj->{$key} ?? '');
     gap: 4px;
     cursor: pointer;
     font: inherit;
-    font-size: .78rem
+    font-size: .8rem
   }
 
   .address-card span {
@@ -332,6 +334,25 @@ $valor = static fn($obj, $key) => (string)($obj->{$key} ?? '');
   .checkout-billing {
     border-bottom: 0
   }
+  /* Evitar que el formulario recorte los elementos */
+.checkout-direcciones,
+.checkout-direcciones .container,
+.checkout-direcciones .checkout-section,
+.checkout-direcciones .checkout-form-grid,
+.checkout-direcciones .checkout-field {
+    overflow: visible !important;
+}
+
+/* Dar prioridad visual al campo seleccionado */
+.checkout-field:focus-within {
+    position: relative;
+    z-index: 1000;
+}
+
+.checkout-field select:focus {
+    position: relative;
+    z-index: 1001;
+}
 
   .d-none {
     display: none !important
@@ -417,7 +438,7 @@ $valor = static fn($obj, $key) => (string)($obj->{$key} ?? '');
       pais: <?= json_encode($valor($direccionActiva, 'pais')) ?>
     };
 
-    cargarCatalogosEntrega();
+    const catalogosListos = cargarCatalogosEntrega();
 
 
 
@@ -460,6 +481,7 @@ $valor = static fn($obj, $key) => (string)($obj->{$key} ?? '');
       campos.forEach(campo => {
         const input = document.getElementById(prefix + campo);
         if (!input) return;
+        console.log("campo: ",campo);
         if (campo === 'estado' || campo === 'pais') {
           input.value = data?.[campo] != null ?
             String(data[campo]) :
@@ -468,15 +490,15 @@ $valor = static fn($obj, $key) => (string)($obj->{$key} ?? '');
           input.value = NOMBRE_USUARIO;
         } else {
           input.value = data?.[campo] ?? '';
-        }        
-        
+        }
+
         input.disabled = !!data;
 
         if (campo === 'recibe') {
           input.disabled = false;
-        } 
+        }
 
-        
+
         if (campo === 'tipo_persona') input.value = data?.[campo] || '1';
       });
       if (idKey === 'entrega') {
@@ -491,22 +513,52 @@ $valor = static fn($obj, $key) => (string)($obj->{$key} ?? '');
     }
     const camposEntrega = ['recibe', 'calle', 'numero', 'interior', 'telefono', 'colonia', 'municipio', 'estado', 'codigo_postal', 'referencia', 'notas_adicionales', 'pais'];
     const camposFiscal = ['nombres', 'paterno', 'materno', 'razon_social', 'rfc', 'curp', 'calle', 'numero', 'interior', 'colonia', 'municipio', 'estado', 'codigo_postal', 'pais', 'uso_cfdi'];
-    document.querySelectorAll('[data-address]').forEach(btn => btn.addEventListener('click', () => llenar('entrega_', JSON.parse(btn.dataset.address), camposEntrega, 'entrega')));
+    document.querySelectorAll('[data-address]').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        await catalogosListos;
+
+        const data = JSON.parse(btn.dataset.address);
+
+        llenar(
+          'entrega_',
+          data,
+          camposEntrega,
+          'entrega'
+        );
+      });
+    });
     document.querySelectorAll('[data-billing]').forEach(btn => btn.addEventListener('click', () => {
       const data = JSON.parse(btn.dataset.billing);
       llenar('fiscal_', data, ['tipo_persona', ...camposFiscal], 'fiscal');
       document.getElementById('fiscal_tipo_persona').value = data.tipo_persona || '1';
       actualizarTipoPersona();
     }));
-    document.querySelectorAll('[data-new-address]').forEach(btn => btn.addEventListener('click', () => {
-      const tipo = btn.dataset.newAddress;
-      if (tipo === 'entrega') llenar('entrega_', null, camposEntrega, 'entrega');
-      else {
-        llenar('fiscal_', null, ['tipo_persona', ...camposFiscal], 'fiscal');
-        document.getElementById('fiscal_constancia').disabled = false;
-        actualizarTipoPersona();
-      }
-    }));
+    document.querySelectorAll('[data-new-address]').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        await catalogosListos;
+
+        const tipo = btn.dataset.newAddress;
+
+        if (tipo === 'entrega') {
+          llenar(
+            'entrega_',
+            null,
+            camposEntrega,
+            'entrega'
+          );
+        } else {
+          llenar(
+            'fiscal_',
+            null,
+            ['tipo_persona', ...camposFiscal],
+            'fiscal'
+          );
+
+          document.getElementById('fiscal_constancia').disabled = false;
+          actualizarTipoPersona();
+        }
+      });
+    });
     requiereFactura.addEventListener('change', () => {
       seccionFiscal.classList.toggle('d-none', !requiereFactura.checked);
       if (!requiereFactura.checked) {

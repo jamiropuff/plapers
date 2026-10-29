@@ -21,7 +21,7 @@ const login = () => {
 
             }else{
                 $("#error_login").empty();
-                window.self.location='/';
+                window.self.location='/panel/home';
             }
 
 

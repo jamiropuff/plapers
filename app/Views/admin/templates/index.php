@@ -43,10 +43,10 @@
             <div class="auth-box row">
                 <div class="col-lg-7 col-md-5 modal-bg-img" style="background-image: url(<?= base_url() ?>/admin/assets/images/big/3.jpg);">
                 </div>
-                <div class="col-lg-5 col-md-7 bg-white">
+                <div class="col-lg-5 col-md-7 bg-dark">
                     <div class="p-3">
                         <div class="text-center">
-                            <img src="<?= base_url() ?>/admin/assets/images/big/icon.png" alt="wrapkit">
+                            <img src="<?= base_url() ?>/admin/assets/images/big/logo-plapers.svg" alt="plapers" height="50">
                         </div>
                         <h2 class="mt-3 text-center">Iniciar Sesión</h2>
                         <p class="text-center">Ingrese su dirección de correo electrónico y contraseña para acceder al panel de administración.</p>
@@ -70,7 +70,7 @@
                                     <div id="error_login" class="text-danger small mb-2" role="alert" aria-live="polite"></div>
                                 </div>
                                 <div class="col-lg-12 text-center">
-                                    <button type="button" class="btn w-100 btn-dark" onclick="login()">Entrar</button>
+                                    <button type="button" class="btn w-100 btn-danger" onclick="login()">Entrar</button>
                                 </div>
                                 <div class="col-lg-12 text-center mt-5">
                                     

@@ -91,7 +91,7 @@ class Cliente extends BaseController
             'direcciones' => $direcciones,
             'facturaciones' => $facturaciones,
             'direccionSeleccionada' => $session->get('Checkout_Id_Direccion'),
-            'facturacionSeleccionada' => $session->get('Checkout_Id_Facturacion'),
+            'facturacionSeleccionada' => $session->get('Checkout_Id_Facturacion')
         ];
 
         echo view('templates/header');

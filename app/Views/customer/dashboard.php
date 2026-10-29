@@ -13,7 +13,6 @@
                                 </div>
                                 <div class="service__content">
                                     <a href="<?= base_url('mi-cuenta') ?>"><h4>Mi cuenta</h4></a>
-                                    <p>For all orders above $45</p>
                                 </div>
                             </div>
                             <div class="service__item">
@@ -22,7 +21,6 @@
                                 </div>
                                 <div class="service__content">
                                     <a href="<?= base_url('mis-compras') ?>"><h4>Mis compras</h4></a>
-                                    <p>Confidence on all your devices</p>
                                 </div>
                             </div>
                         </div>
@@ -31,7 +29,6 @@
                                 <img src="<?= base_url() ?>/assets/images/service/service-image.png" alt="image">
                                 <div class="section-header service-header d-flex align-items-center">
                                     <span class="title-icon mr-10"></span>
-                                    <h2>sign up & save 25%</h2>
                                 </div>
                             </div>
                         </div>
@@ -42,7 +39,6 @@
                                 </div>
                                 <div class="service__content">
                                     <a href="<?= base_url('mis-direcciones') ?>"><h4>Domicilio de Envío</h4></a>
-                                    <p>sayhello&gazacom</p>
                                 </div>
                             </div>
                             <div class="service__item">
@@ -51,7 +47,6 @@
                                 </div>
                                 <div class="service__content">
                                     <a href="<?= base_url('domicilio-fiscal') ?>"><h4>Domicilio Fiscal</h4></a>
-                                    <p>money back guranry</p>
                                 </div>
                             </div>
                         </div>

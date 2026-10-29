@@ -127,8 +127,11 @@ $routes->get('catalogos', 'Catalogos::catalogos');
 
 // Carrito
 $routes->get('carrito', 'CarritoController::carrito');
-// Checkout
+// Datos adicionales (domicilios)
 $routes->get('carrito/continuar', 'Cliente::continuar_compra');
+// Verificar orden
+$routes->get('carrito/paso3', 'Carrito::paso3');
+$routes->post('carrito/procesar-compra', 'Carrito::procesarCompra');
 
 
 

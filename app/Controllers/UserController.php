@@ -576,6 +576,7 @@ class UserController extends BaseController
                     'User' => $usuario->username,
                     'Nombres' => $usuario->nombres,
                     'Paterno' => $usuario->paterno,
+                    'Materno' => $usuario->materno,
                     'Rol' => $usuario->id_rol,
                     'Nom_Rol' => $usuario->nom_rol,
                     'Tipo_Usuario' => $usuario->id_tipo_usuario

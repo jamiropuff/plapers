@@ -75,12 +75,14 @@ $valor = static fn($obj, $key) => (string)($obj->{$key} ?? '');
               <?php if ($campo === 'recibe'): ?>
 
                 <input
+                  class="form-control"
                   type="text"
                   id="nombre_completo"
                   value="<?= esc($nombreUsuario) ?>"
                   readonly>
 
                 <input
+                  class="form-control"
                   type="hidden"
                   id="entrega_recibe"
                   name="entrega_recibe"
@@ -88,11 +90,10 @@ $valor = static fn($obj, $key) => (string)($obj->{$key} ?? '');
 
               <?php endif; ?>
 
-
               <?php if ($campo === 'estado' || $campo === 'pais'): ?>
 
                 <select
-                  class="form-select no-nice-select" 
+                  class="form-select no-nice-select"
                   id="entrega_<?= esc($campo) ?>"
                   name="entrega_<?= esc($campo) ?>"
                   required
@@ -101,9 +102,6 @@ $valor = static fn($obj, $key) => (string)($obj->{$key} ?? '');
                     Selecciona una opción
                   </option>
                 </select>
-
-
-
 
               <?php else: ?>
 
@@ -129,7 +127,9 @@ $valor = static fn($obj, $key) => (string)($obj->{$key} ?? '');
 
       <section class="checkout-section checkout-billing">
         <h4>Facturación</h4>
-        <label class="invoice-toggle"><input type="checkbox" id="requiere_factura" name="requiere_factura" value="1" <?= $facturacionSeleccionada ? 'checked' : '' ?>> Requiero factura de mi compra</label>
+        <label class="invoice-toggle" for="requiere_factura">
+          <input type="checkbox" id="requiere_factura" name="requiere_factura" value="1" <?= $facturacionSeleccionada ? 'checked' : '' ?>> Requiero factura de mi compra
+        </label>
         <div id="seccionFacturacion" class="<?= $facturacionSeleccionada ? '' : 'd-none' ?>">
           <div class="checkout-subtitle">Domicilios fiscales registrados:</div>
           <div class="address-cards" id="tarjetasFacturacion">
@@ -137,7 +137,25 @@ $valor = static fn($obj, $key) => (string)($obj->{$key} ?? '');
             <?php foreach ($facturaciones as $f):
               $titular = (int)($f->tipo_persona ?? 1) === 2 ? $valor($f, 'razon_social') : trim($valor($f, 'nombres') . ' ' . $valor($f, 'paterno') . ' ' . $valor($f, 'materno'));
               $texto = 'RFC ' . $valor($f, 'rfc') . ' · C.P. ' . $valor($f, 'codigo_postal');
-              $data = ['id_facturacion' => $valor($f, 'id_facturacion'), 'tipo_persona' => $valor($f, 'tipo_persona'), 'nombres' => $valor($f, 'nombres'), 'paterno' => $valor($f, 'paterno'), 'materno' => $valor($f, 'materno'), 'razon_social' => $valor($f, 'razon_social'), 'rfc' => $valor($f, 'rfc'), 'curp' => $valor($f, 'curp'), 'calle' => $valor($f, 'calle'), 'numero' => $valor($f, 'numero'), 'interior' => $valor($f, 'interior'), 'colonia' => $valor($f, 'colonia'), 'municipio' => $valor($f, 'municipio'), 'estado' => $valor($f, 'estado'), 'codigo_postal' => $valor($f, 'codigo_postal'), 'pais' => $valor($f, 'pais'), 'uso_cfdi' => $valor($f, 'uso_cfdi')];
+              $data = [
+                'id_facturacion' => $valor($f, 'id_facturacion'),
+                'tipo_persona' => $valor($f, 'tipo_persona'),
+                'nombres' => $valor($f, 'nombres'),
+                'paterno' => $valor($f, 'paterno'),
+                'materno' => $valor($f, 'materno'),
+                'razon_social' => $valor($f, 'razon_social'),
+                'rfc' => $valor($f, 'rfc'),
+                'curp' => $valor($f, 'curp'),
+                'calle' => $valor($f, 'calle'),
+                'numero' => $valor($f, 'numero'),
+                'interior' => $valor($f, 'interior'),
+                'colonia' => $valor($f, 'colonia'),
+                'municipio' => $valor($f, 'municipio'),
+                'estado' => $valor($f, 'estado'),
+                'codigo_postal' => $valor($f, 'codigo_postal'),
+                'pais' => $valor($f, 'pais'),
+                'uso_cfdi' => $valor($f, 'uso')
+              ];
             ?>
               <button type="button" class="address-card <?= $facturacionSeleccionada === (int)$valor($f, 'id_facturacion') ? 'selected' : '' ?>" data-billing="<?= esc(json_encode($data, JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_TAG | JSON_HEX_AMP), 'attr') ?>">
                 <strong><?= esc($titular) ?></strong><span><?= esc($texto) ?></span>
@@ -145,15 +163,64 @@ $valor = static fn($obj, $key) => (string)($obj->{$key} ?? '');
             <?php endforeach; ?>
           </div>
           <div class="checkout-form-grid" id="formFacturacion">
-            <div class="checkout-field"><label for="fiscal_tipo_persona">Tipo de persona</label><select id="fiscal_tipo_persona" name="fiscal_tipo_persona" <?= $facturacionActiva ? 'disabled' : '' ?>>
+            <div class="checkout-field">
+              <label for="fiscal_tipo_persona" class="form-label">Tipo de persona</label>
+              <select class="form-select no-nice-select" id="fiscal_tipo_persona" name="fiscal_tipo_persona" <?= $facturacionActiva ? 'disabled' : '' ?>>
                 <option value="1" <?= (int)$valor($facturacionActiva, 'tipo_persona') !== 2 ? 'selected' : '' ?>>Persona física</option>
                 <option value="2" <?= (int)$valor($facturacionActiva, 'tipo_persona') === 2 ? 'selected' : '' ?>>Persona moral</option>
-              </select></div>
-            <?php $camposFiscal = ['nombres' => 'Nombre / nombres', 'paterno' => 'Apellido paterno', 'materno' => 'Apellido materno', 'razon_social' => 'Razón social', 'rfc' => 'RFC', 'curp' => 'CURP', 'calle' => 'Calle', 'numero' => 'Número', 'interior' => 'Interior', 'colonia' => 'Colonia', 'municipio' => 'Alcaldía / Municipio', 'estado' => 'Estado', 'codigo_postal' => 'Código Postal', 'pais' => 'País', 'uso_cfdi' => 'Uso de CFDI'];
+              </select>
+            </div>
+            <?php $camposFiscal = [
+              'nombres' => 'Nombre / nombres',
+              'paterno' => 'Apellido paterno',
+              'materno' => 'Apellido materno',
+              'razon_social' => 'Razón social',
+              'rfc' => 'RFC',
+              'curp' => 'CURP',
+              'calle' => 'Calle',
+              'numero' => 'Número',
+              'interior' => 'Interior',
+              'colonia' => 'Colonia',
+              'municipio' => 'Alcaldía / Municipio',
+              'estado' => 'Estado',
+              'codigo_postal' => 'Código Postal',
+              'pais' => 'País',
+              'uso_cfdi' => 'Uso de CFDI'
+            ];
             foreach ($camposFiscal as $campo => $label): ?>
-              <div class="checkout-field" data-fiscal-field="<?= esc($campo) ?>"><label for="fiscal_<?= esc($campo) ?>"><?= esc($label) ?></label><input type="text" id="fiscal_<?= esc($campo) ?>" name="fiscal_<?= esc($campo) ?>" placeholder="<?= esc($label) ?>" value="<?= esc($valor($facturacionActiva, $campo)) ?>" <?= $facturacionActiva ? 'disabled' : '' ?>></div>
+              <div class="checkout-field" data-fiscal-field="<?= esc($campo) ?>">
+                <label for="fiscal_<?= esc($campo) ?>" class="form-label"><?= esc($label) ?></label>
+
+                <?php if (in_array($campo, ['estado', 'pais', 'uso_cfdi'], true)): ?>
+
+                  <select
+                    class="form-select no-nice-select"
+                    id="fiscal_<?= esc($campo) ?>"
+                    name="fiscal_<?= esc($campo) ?>"
+                    <?= $facturacionActiva ? 'disabled' : '' ?>
+                    required>
+                    <option value="">Selecciona una opción</option>
+                  </select>
+
+                <?php else: ?>
+
+                  <input
+                    class="form-control"
+                    type="text"
+                    id="fiscal_<?= esc($campo) ?>"
+                    name="fiscal_<?= esc($campo) ?>"
+                    placeholder="<?= esc($label) ?>"
+                    value="<?= esc($valor($facturacionActiva, $campo)) ?>"
+                    <?= $facturacionActiva ? 'disabled' : '' ?>>
+
+                <?php endif; ?>
+
+              </div>
             <?php endforeach; ?>
-            <div class="checkout-field"><label for="fiscal_constancia">Constancia de Situación Fiscal</label><input type="file" id="fiscal_constancia" name="fiscal_constancia" accept=".pdf,.jpg,.jpeg,.png" <?= $facturacionActiva ? 'disabled' : '' ?>></div>
+            <div class="checkout-field">
+              <label for="fiscal_constancia" class="form-label">Constancia de Situación Fiscal</label>
+              <input type="file" id="fiscal_constancia" name="fiscal_constancia" accept=".pdf,.jpg,.jpeg,.png" <?= $facturacionActiva ? 'disabled' : '' ?>>
+            </div>
           </div>
           <div class="checkout-actions"><a href="<?= base_url('domicilio-fiscal') ?>">Administrar domicilios fiscales</a></div>
         </div>
@@ -239,8 +306,8 @@ $valor = static fn($obj, $key) => (string)($obj->{$key} ?? '');
 
   .address-card.selected {
     border: 2px solid #ef393e;
-    background: #fff7f7;
-    color: #344054
+    background: #5c5a5a;
+    color: #ffffff
   }
 
   .address-card.address-new {
@@ -334,25 +401,26 @@ $valor = static fn($obj, $key) => (string)($obj->{$key} ?? '');
   .checkout-billing {
     border-bottom: 0
   }
-  /* Evitar que el formulario recorte los elementos */
-.checkout-direcciones,
-.checkout-direcciones .container,
-.checkout-direcciones .checkout-section,
-.checkout-direcciones .checkout-form-grid,
-.checkout-direcciones .checkout-field {
-    overflow: visible !important;
-}
 
-/* Dar prioridad visual al campo seleccionado */
-.checkout-field:focus-within {
+  /* Evitar que el formulario recorte los elementos */
+  .checkout-direcciones,
+  .checkout-direcciones .container,
+  .checkout-direcciones .checkout-section,
+  .checkout-direcciones .checkout-form-grid,
+  .checkout-direcciones .checkout-field {
+    overflow: visible !important;
+  }
+
+  /* Dar prioridad visual al campo seleccionado */
+  .checkout-field:focus-within {
     position: relative;
     z-index: 1000;
-}
+  }
 
-.checkout-field select:focus {
+  .checkout-field select:focus {
     position: relative;
     z-index: 1001;
-}
+  }
 
   .d-none {
     display: none !important
@@ -384,12 +452,20 @@ $valor = static fn($obj, $key) => (string)($obj->{$key} ?? '');
     const selectEstado = document.getElementById('entrega_estado');
     const selectPais = document.getElementById('entrega_pais');
 
+    const selectFiscalEstado = document.getElementById('fiscal_estado');
+    const selectFiscalPais = document.getElementById('fiscal_pais');
+    const selectFiscalUsoCFDI = document.getElementById('fiscal_uso_cfdi');
+
+
     let estadosCatalogo = [];
     let paisesCatalogo = [];
+    let usosCFDI = [];
+
 
     async function cargarCatalogosEntrega() {
       try {
         const respuesta = await fetch('<?= base_url('catalogos') ?>');
+
         if (!respuesta.ok) {
           throw new Error('No fue posible consultar los catálogos.');
         }
@@ -398,40 +474,55 @@ $valor = static fn($obj, $key) => (string)($obj->{$key} ?? '');
 
         estadosCatalogo = catalogos.estados || [];
         paisesCatalogo = catalogos.paises || [];
+        usosCFDI = catalogos.usocfdi || [];
 
-        selectEstado.innerHTML =
-          '<option value="">Selecciona una opción</option>';
+        // Selectores de entrega
+        llenarSelect(
+          selectEstado,
+          estadosCatalogo,
+          'id_estado',
+          'nombre_estado',
+          direccionInicial.estado
+        );
 
-        estadosCatalogo.forEach(estado => {
-          const opcion = document.createElement('option');
-          opcion.value = String(estado.id_estado);
-          opcion.textContent = estado.nombre_estado;
-          selectEstado.appendChild(opcion);
-        });
+        llenarSelect(
+          selectPais,
+          paisesCatalogo,
+          'id_pais',
+          'nombre_pais',
+          direccionInicial.pais
+        );
 
-        selectPais.innerHTML =
-          '<option value="">Selecciona una opción</option>';
+        // Selectores fiscales
+        llenarSelect(
+          selectFiscalEstado,
+          estadosCatalogo,
+          'id_estado',
+          'nombre_estado',
+          <?= json_encode($valor($facturacionActiva, 'estado')) ?>
+        );
 
-        paisesCatalogo.forEach(pais => {
-          const opcion = document.createElement('option');
-          opcion.value = String(pais.id_pais);
-          opcion.textContent = pais.nombre_pais;
-          selectPais.appendChild(opcion);
-        });
+        llenarSelect(
+          selectFiscalPais,
+          paisesCatalogo,
+          'id_pais',
+          'nombre_pais',
+          <?= json_encode($valor($facturacionActiva, 'pais')) ?>
+        );
 
-        // Restaurar los valores de la dirección seleccionada.
-        if (direccionInicial.estado) {
-          selectEstado.value = String(direccionInicial.estado);
-        }
-
-        if (direccionInicial.pais) {
-          selectPais.value = String(direccionInicial.pais);
-        }
+        llenarSelect(
+          selectFiscalUsoCFDI,
+          usosCFDI,
+          'id_uso',
+          'nombre_uso',
+          <?= json_encode($valor($facturacionActiva, 'uso')) ?>
+        );
 
       } catch (error) {
         console.error('Error cargando catálogos:', error);
       }
     }
+
 
     const direccionInicial = {
       estado: <?= json_encode($valor($direccionActiva, 'estado')) ?>,
@@ -481,8 +572,8 @@ $valor = static fn($obj, $key) => (string)($obj->{$key} ?? '');
       campos.forEach(campo => {
         const input = document.getElementById(prefix + campo);
         if (!input) return;
-        console.log("campo: ",campo);
-        if (campo === 'estado' || campo === 'pais') {
+        console.log("campo: ", campo);
+        if (['estado', 'pais', 'uso_cfdi'].includes(campo)) {
           input.value = data?.[campo] != null ?
             String(data[campo]) :
             '';
@@ -511,8 +602,38 @@ $valor = static fn($obj, $key) => (string)($obj->{$key} ?? '');
         document.querySelectorAll('#tarjetasFacturacion .address-card').forEach(b => b.classList.toggle('selected', !!data && b.dataset.billing && JSON.parse(b.dataset.billing).id_facturacion == data.id_facturacion));
       }
     }
-    const camposEntrega = ['recibe', 'calle', 'numero', 'interior', 'telefono', 'colonia', 'municipio', 'estado', 'codigo_postal', 'referencia', 'notas_adicionales', 'pais'];
-    const camposFiscal = ['nombres', 'paterno', 'materno', 'razon_social', 'rfc', 'curp', 'calle', 'numero', 'interior', 'colonia', 'municipio', 'estado', 'codigo_postal', 'pais', 'uso_cfdi'];
+
+    const camposEntrega = [
+      'recibe',
+      'calle',
+      'numero',
+      'interior',
+      'telefono',
+      'colonia',
+      'municipio',
+      'estado',
+      'codigo_postal',
+      'referencia',
+      'notas_adicionales',
+      'pais'
+    ];
+    const camposFiscal = [
+      'nombres',
+      'paterno',
+      'materno',
+      'razon_social',
+      'rfc',
+      'curp',
+      'calle',
+      'numero',
+      'interior',
+      'colonia',
+      'municipio',
+      'estado',
+      'codigo_postal',
+      'pais',
+      'uso_cfdi'
+    ];
     document.querySelectorAll('[data-address]').forEach(btn => {
       btn.addEventListener('click', async () => {
         await catalogosListos;
@@ -527,12 +648,27 @@ $valor = static fn($obj, $key) => (string)($obj->{$key} ?? '');
         );
       });
     });
-    document.querySelectorAll('[data-billing]').forEach(btn => btn.addEventListener('click', () => {
-      const data = JSON.parse(btn.dataset.billing);
-      llenar('fiscal_', data, ['tipo_persona', ...camposFiscal], 'fiscal');
-      document.getElementById('fiscal_tipo_persona').value = data.tipo_persona || '1';
-      actualizarTipoPersona();
-    }));
+
+    document.querySelectorAll('[data-billing]').forEach(btn =>
+      btn.addEventListener('click', async () => {
+        await catalogosListos;
+
+        const data = JSON.parse(btn.dataset.billing);
+
+        llenar(
+          'fiscal_',
+          data,
+          ['tipo_persona', ...camposFiscal],
+          'fiscal'
+        );
+
+        document.getElementById('fiscal_tipo_persona').value =
+          data.tipo_persona || '1';
+
+        actualizarTipoPersona();
+      })
+    );
+
     document.querySelectorAll('[data-new-address]').forEach(btn => {
       btn.addEventListener('click', async () => {
         await catalogosListos;
@@ -559,6 +695,27 @@ $valor = static fn($obj, $key) => (string)($obj->{$key} ?? '');
         }
       });
     });
+
+
+    function llenarSelect(select, opciones, campoId, campoTexto, valorSeleccionado = '') {
+      if (!select) return;
+
+      select.innerHTML = '<option value="">Selecciona una opción</option>';
+
+      opciones.forEach(item => {
+        const opcion = document.createElement('option');
+        opcion.value = String(item[campoId]);
+        opcion.textContent = item[campoTexto];
+        select.appendChild(opcion);
+      });
+
+      select.value = valorSeleccionado != null ?
+        String(valorSeleccionado) :
+        '';
+    }
+
+
+
     requiereFactura.addEventListener('change', () => {
       seccionFiscal.classList.toggle('d-none', !requiereFactura.checked);
       if (!requiereFactura.checked) {

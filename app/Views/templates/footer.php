@@ -262,12 +262,19 @@
 
 
 <script src="<?= base_url() ?>/js/main.js"></script>
+
+
 <script src="<?= base_url() ?>/js/placas/carrito.js"></script>
 
-<?php if ($Titulo == 'Carrito'): ?>
-<!-- Carrito Js -->
-<script src="<?= base_url() ?>/js/placas/visualizarCarrito.js"></script>
-<?php endif ?>
+<?php if (!empty($cargarScriptsCarrito)): ?>
+    <script src="<?= base_url() ?>/js/placas/visualizarCarrito.js"></script>
+<?php endif; ?>
+
+<?php if (!empty($cargarScriptCheckoutPaso3)): ?>
+    <script src="<?= base_url() ?>/js/placas/checkoutPaso3.js"></script>
+<?php endif; ?>
+
+
 
 <script>
     function updateHeaderOnScroll() {

@@ -257,7 +257,18 @@ function renderizarCarrito() {
  * Los importes definitivos deberán calcularse en el backend.
  */
 
-function actualizarResumenPago() {
+function actualizarResumenPago(paso = 1) {
+
+    const borrador = obtenerBorradorCheckout();
+
+    // Paso 1: obtiene el valor del radio.
+    // Paso 3: obtiene el valor guardado en localStorage.
+    const quiereEnvio = paso === 3
+        ? borrador.tipo_envio === 'true'
+        : document.querySelector(
+            'input[name="tipo_envio"]:checked'
+        )?.value === 'true';
+
     const productos = cargarCarrito();
     const totales = calcularTotales(productos);
 
@@ -267,12 +278,6 @@ function actualizarResumenPago() {
     });
 
     const cantidadProductos = totales.totalProductos;
-
-    const radioEnvio = document.querySelector(
-        'input[name="tipo_envio"]:checked'
-    );
-
-    const quiereEnvio = radioEnvio?.value === 'true';
 
     // El precio de los productos ya incluye IVA.
     const totalProductosConIVA = totales.totalCompra;
@@ -310,23 +315,32 @@ function actualizarResumenPago() {
                 : '';
 
             explicacion.classList.toggle('d-none', !quiereEnvio);
-            trEnvio.classList.toggle('d-none', !quiereEnvio);
-
         }
+
+        trEnvio?.classList.toggle('d-none', !quiereEnvio);
     }
 
     // Importes.
-    document.getElementById('tsubtotal').textContent = moneda.format(subtotal);
+    const elementoSubtotal = document.getElementById('tsubtotal');
+    const elementoEnvio = document.getElementById('tenvio');
+    const elementoIVA = document.getElementById('tiva');
+    const elementoTotal = document.getElementById('ttotal');
+    
+    if (elementoSubtotal) {
+        elementoSubtotal.textContent = moneda.format(subtotal);
+    }
 
-    document.getElementById('tenvio').textContent = moneda.format(precioEnvio);
+    if (elementoEnvio) {
+        elementoEnvio.textContent = moneda.format(precioEnvio);
+    }
 
-    document.getElementById('tiva').textContent = moneda.format(iva);
+    if (elementoIVA) {
+        elementoIVA.textContent = moneda.format(iva);
+    }
 
-    document.getElementById('ttotal').textContent = moneda.format(totalPagar);
-
-    // Mostrar u ocultar la fila de envío.
-    document.getElementById('fila-envio')
-        ?.classList.toggle('d-none', !quiereEnvio);
+    if (elementoTotal) {
+        elementoTotal.textContent = moneda.format(totalPagar);
+    }
 
     return {
         cantidadProductos,
@@ -580,7 +594,7 @@ document.addEventListener('change', function (event) {
         aplicarPreciosCarrito();
 
         renderizarCarrito();
-        actualizarResumenPago();
+        actualizarResumenPago(1);
         validarPaso1();
 
     } catch (error) {
@@ -600,7 +614,7 @@ document.addEventListener('click', function (event) {
     aplicarPreciosCarrito();
 
     renderizarCarrito();
-    actualizarResumenPago();
+    actualizarResumenPago(1);
     validarPaso1();
 });
 
@@ -636,7 +650,7 @@ window.addEventListener('carrito:actualizado', function () {
     aplicarPreciosCarrito();
 
     renderizarCarrito();
-    actualizarResumenPago();
+    actualizarResumenPago(1);
     validarPaso1();
 });
 
@@ -644,7 +658,7 @@ window.addEventListener('carrito:actualizado', function () {
 // Actualizar el resumen cuando cambie el tipo de envío.
 document.addEventListener('change', function (event) {
     if (event.target.matches('input[name="tipo_envio"]')) {
-        actualizarResumenPago();
+        actualizarResumenPago(1);
         validarPaso1();
     }
 });
@@ -719,7 +733,7 @@ function restaurarBorradorCheckout() {
     }
 
     validarPaso1();
-    actualizarResumenPago();
+    actualizarResumenPago(1);
 }
 
 // Guardar cada cambio automáticamente.

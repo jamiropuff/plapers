@@ -83,6 +83,10 @@ $routes->group('', ['filter' => 'authCliente:2'], static function ($routes) {
     $routes->get('carrito/paso2', 'Cliente::paso2');
     $routes->post('carrito/paso2/domicilios', 'Cliente::seleccionar_domicilios');
 
+    // Checkout: Paso 3
+    $routes->get('carrito/paso3', 'Cliente::paso3');
+    $routes->post('carrito/procesar-compra', 'CarritoController::procesarCompra');
+
     // Datos del checkout
     $routes->post('checkout/datos-facturacion', 'UserController::datos_facturacion');
     $routes->post('checkout/datos-direccion', 'UserController::datos_direccion');
@@ -129,10 +133,6 @@ $routes->get('catalogos', 'Catalogos::catalogos');
 $routes->get('carrito', 'CarritoController::carrito');
 // Datos adicionales (domicilios)
 $routes->get('carrito/continuar', 'Cliente::continuar_compra');
-// Verificar orden
-$routes->get('carrito/paso3', 'Carrito::paso3');
-$routes->post('carrito/procesar-compra', 'Carrito::procesarCompra');
-
 
 
 // Footer

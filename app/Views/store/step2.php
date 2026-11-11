@@ -32,6 +32,11 @@ $valor = static fn($obj, $key) => (string)($obj->{$key} ?? '');
       <input type="hidden" name="nueva_facturacion" id="nueva_facturacion" value="0">
       <input type="hidden" name="requiere_envio" id="requiere_envio" value="0">
 
+      <input type="hidden" name="productos" id="productos_checkout">
+      <input type="hidden" name="id_tipo_envio" id="id_tipo_envio">
+      <input type="hidden" name="id_tipo_pago" id="id_tipo_pago">
+      <input type="hidden" name="requiere_factura_hidden" id="requiere_factura_hidden">
+
       <section class="checkout-section" id="seccionEntrega" style="display:none">
         <h4>Dirección de envío</h4>
         <div class="checkout-subtitle">Direcciones registradas:</div>
@@ -422,10 +427,6 @@ $valor = static fn($obj, $key) => (string)($obj->{$key} ?? '');
     z-index: 1001;
   }
 
-  .d-none {
-    display: none !important
-  }
-
   @media(max-width:767px) {
     .address-cards {
       grid-template-columns: 1fr
@@ -460,6 +461,44 @@ $valor = static fn($obj, $key) => (string)($obj->{$key} ?? '');
     let estadosCatalogo = [];
     let paisesCatalogo = [];
     let usosCFDI = [];
+
+    function actualizarEstadoCampos() {
+      const requiereEnvio = obtenerTipoEnvio() === 'true' ||
+        obtenerTipoEnvio() === '1';
+
+      const requiereFactura = document.getElementById(
+        'requiere_factura'
+      ).checked;
+
+      const entrega = document.getElementById('seccionEntrega');
+      const facturacion = document.getElementById('seccionFacturacion');
+
+      // ENTREGA
+      entrega.querySelectorAll('input, select, textarea').forEach(campo => {
+        if (!requiereEnvio) {
+          campo.disabled = true;
+          campo.required = false;
+        } else {
+          campo.disabled = idEntrega.value !== '0';
+          campo.required = ['entrega_estado', 'entrega_pais'].includes(campo.id);
+        }
+      });
+
+      // FACTURACIÓN
+      facturacion.querySelectorAll('input, select, textarea').forEach(campo => {
+        if (!requiereFactura) {
+          campo.disabled = true;
+          campo.required = false;
+        } else {
+          campo.disabled = idFiscal.value !== '0';
+          campo.required = [
+            'fiscal_estado',
+            'fiscal_pais',
+            'fiscal_uso_cfdi'
+          ].includes(campo.id);
+        }
+      });
+    }
 
 
     async function cargarCatalogosEntrega() {
@@ -562,7 +601,10 @@ $valor = static fn($obj, $key) => (string)($obj->{$key} ?? '');
     function actualizarVisibilidadEntrega() {
       const tipoEnvio = obtenerTipoEnvio();
       const requiereEnvio = tipoEnvio === 'true' || tipoEnvio === '1';
+
       seccionEntrega.style.display = requiereEnvio ? '' : 'none';
+
+      actualizarEstadoCampos();
     }
 
     actualizarVisibilidadEntrega();
@@ -592,6 +634,7 @@ $valor = static fn($obj, $key) => (string)($obj->{$key} ?? '');
 
         if (campo === 'tipo_persona') input.value = data?.[campo] || '1';
       });
+
       if (idKey === 'entrega') {
         idEntrega.value = data?.id_direccion || '0';
         nuevaEntrega.value = data ? '0' : '1';
@@ -601,6 +644,8 @@ $valor = static fn($obj, $key) => (string)($obj->{$key} ?? '');
         nuevaFiscal.value = data ? '0' : '1';
         document.querySelectorAll('#tarjetasFacturacion .address-card').forEach(b => b.classList.toggle('selected', !!data && b.dataset.billing && JSON.parse(b.dataset.billing).id_facturacion == data.id_facturacion));
       }
+
+      actualizarEstadoCampos();
     }
 
     const camposEntrega = [
@@ -718,10 +763,13 @@ $valor = static fn($obj, $key) => (string)($obj->{$key} ?? '');
 
     requiereFactura.addEventListener('change', () => {
       seccionFiscal.classList.toggle('d-none', !requiereFactura.checked);
+
       if (!requiereFactura.checked) {
         idFiscal.value = '0';
         nuevaFiscal.value = '0';
       }
+
+      actualizarEstadoCampos();
     });
 
     function actualizarTipoPersona() {
@@ -729,26 +777,77 @@ $valor = static fn($obj, $key) => (string)($obj->{$key} ?? '');
       document.querySelector('[data-fiscal-field="razon_social"]').classList.toggle('d-none', !moral);
       ['nombres', 'paterno', 'materno', 'curp'].forEach(c => document.querySelector(`[data-fiscal-field="${c}"]`)?.classList.toggle('d-none', moral));
     }
+    
     document.getElementById('fiscal_tipo_persona').addEventListener('change', actualizarTipoPersona);
     actualizarTipoPersona();
+    actualizarEstadoCampos();
 
     form.addEventListener('submit', event => {
+
+      const productos = JSON.parse(
+        localStorage.getItem('Carrito') || '[]'
+      );
+
+      const carritoBackend = productos.map(producto => ({
+        id_producto: producto.id_producto,
+        cantidad: producto.cantidad,
+        personalizacion: producto.personalizacion
+      }));
+
+      document.getElementById('productos_checkout').value =
+        JSON.stringify(carritoBackend);
+
       const tipoEnvio = obtenerTipoEnvio();
-      const envio = document.querySelector('input[name="tipo_envio"]:checked');
-      const requiereEnvio = tipoEnvio === 'true' || tipoEnvio === '1' || envio?.value === 'true';
+      const envio = document.querySelector(
+        'input[name="tipo_envio"]:checked'
+      );
 
-      document.getElementById('requiere_envio').value = requiereEnvio ? '1' : '0';
+      const requiereEnvio =
+        tipoEnvio === 'true' ||
+        tipoEnvio === '1' ||
+        envio?.value === 'true';
 
+      const requiereFactura =
+        document.getElementById('requiere_factura').checked;
 
-      if (requiereEnvio && idEntrega.value === '0' && nuevaEntrega.value !== '1') {
+      document.getElementById('requiere_envio').value =
+        requiereEnvio ? '1' : '0';
+
+      // Validar domicilio de entrega
+      if (
+        requiereEnvio &&
+        idEntrega.value === '0' &&
+        nuevaEntrega.value !== '1'
+      ) {
         event.preventDefault();
         alert('Selecciona un domicilio de entrega o captura uno nuevo.');
         return;
       }
-      if (requiereFactura.checked && idFiscal.value === '0' && nuevaFiscal.value !== '1') {
+
+      // Validar domicilio fiscal
+      if (
+        requiereFactura &&
+        idFiscal.value === '0' &&
+        nuevaFiscal.value !== '1'
+      ) {
         event.preventDefault();
         alert('Selecciona un domicilio fiscal o captura uno nuevo.');
+        return;
       }
+
+      const borrador = JSON.parse(
+        localStorage.getItem('checkoutPaso2Draft') || '{}'
+      );
+
+      document.getElementById('id_tipo_envio').value =
+        requiereEnvio ? '1' : '2';
+
+      document.getElementById('id_tipo_pago').value =
+        borrador.metodo_pago === 'PAYPAL' ? '1' : '2';
+
+      document.getElementById('requiere_factura_hidden').value =
+        requiereFactura ? '1' : '0';
+
     });
   })();
 </script>

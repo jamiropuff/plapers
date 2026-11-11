@@ -4,7 +4,8 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class CatalogosModel extends Model {
+class CatalogosModel extends Model
+{
 
     public function catalogos()
     {
@@ -78,13 +79,83 @@ class CatalogosModel extends Model {
                 ->where('activo', 1)
                 ->orderBy('id_terminado', 'ASC')
                 ->get()->getResultArray(),
-                
+
             'usocfdi' => $this->db->table('plap_cat_uso_cfdi')
                 ->select('id_uso, nombre_uso')
                 ->orderBy('id_uso', 'ASC')
                 ->get()->getResultArray()
-            
+
         );
     }
 
+
+    public function obtenerPrecioCheckout(
+        int $idProducto,
+        int $totalPlacas,
+        int $tipoUsuario
+    ): array {
+
+        if ($totalPlacas < 1) {
+            throw new \RuntimeException('La cantidad total de placas no es válida.');
+        }
+
+        // 1. Obtener el producto directamente de MySQL.
+        $producto = $this->db->table('plap_cat_productos')
+            ->select('id_producto, id_categoria, precio_unitario')
+            ->where('id_producto', $idProducto)
+            ->where('activo', 1)
+            ->get()
+            ->getRowArray();
+
+        if (!$producto) {
+            throw new \RuntimeException(
+                "El producto {$idProducto} no existe o está inactivo."
+            );
+        }
+
+        // 2. Usuario normal: precio directo del producto.
+        if ($tipoUsuario === 1) {
+
+            return [
+                'id_producto'      => (int) $producto['id_producto'],
+                'id_categoria'     => (int) $producto['id_categoria'],
+                'precio_unitario'  => (float) $producto['precio_unitario'],
+                'tipo_precio'      => 'NORMAL'
+            ];
+        }
+
+        // 3. Usuario con descuento.
+        if ($tipoUsuario === 2) {
+
+            $descuento = $this->db->table('plap_cat_descuentos')
+                ->select('id_descuento, id_categoria, rango_inicio, rango_fin, precio_final')
+                ->where('id_categoria', (int) $producto['id_categoria'])
+                ->where('rango_inicio <=', $totalPlacas)
+                ->where('activo', 1)
+                ->groupStart()
+                ->where('rango_fin >=', $totalPlacas)
+                ->orWhere('rango_fin', -1)
+                ->groupEnd()
+                ->get()
+                ->getRowArray();
+
+            if (!$descuento) {
+                throw new \RuntimeException(
+                    "No existe un descuento configurado para la categoría "
+                        . $producto['id_categoria']
+                        . " con {$totalPlacas} placas."
+                );
+            }
+
+            return [
+                'id_producto'      => (int) $producto['id_producto'],
+                'id_categoria'     => (int) $producto['id_categoria'],
+                'precio_unitario'  => (float) $descuento['precio_final'],
+                'id_descuento'     => (int) $descuento['id_descuento'],
+                'tipo_precio'      => 'DESCUENTO'
+            ];
+        }
+
+        throw new \RuntimeException('El tipo de usuario no es válido.');
+    }
 }

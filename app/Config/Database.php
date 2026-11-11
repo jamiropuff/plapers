@@ -33,9 +33,9 @@ class Database extends Config
     public $default = [
         'DSN'      => '',
         'hostname' => 'localhost',
-        'username' => 'root', // arceocon_impo
-        'password' => '', // ?$U&b8SrS}#%
-        'database' => 'plapers', // arceocon_impo
+        'username' => 'root',
+        'password' => '',
+        'database' => 'plapers',
         'DBDriver' => 'MySQLi',
         'DBPrefix' => 'plap_',
         'pConnect' => false,

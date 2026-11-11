@@ -33,30 +33,16 @@ CSS TABLE OF CONTENTS
 (function ($) {
 	("use strict");
 
-	$(".header-bar").on("click", function (e) {
-		$(".main-menu, .header-bar").toggleClass("active");
+	// MENÚ MÓVIL
+	$(".header-bar").on("click", function () {
+		$(".main-menu").toggleClass("active");
+		$(this).toggleClass("active");
 	});
+
+	// Submenús móviles
 	$(".main-menu li a").on("click", function (e) {
 		var element = $(this).parent("li");
-		if (element.hasClass("open")) {
-			element.removeClass("open");
-			element.find("li").removeClass("open");
-			element.find("ul").slideUp(300, "swing");
-		} else {
-			element.addClass("open");
-			element.children("ul").slideDown(300, "swing");
-			element.siblings("li").children("ul").slideUp(300, "swing");
-			element.siblings("li").removeClass("open");
-			element.siblings("li").find("li").removeClass("open");
-			element.siblings("li").find("ul").slideUp(300, "swing");
-		}
-	});
-	
-	$(".header-bar").on("click", function (e) {
-		$(".main-menu-desktop, .header-bar").toggleClass("active");
-	});
-	$(".main-menu-desktop li a").on("click", function (e) {
-		var element = $(this).parent("li");
+
 		if (element.hasClass("open")) {
 			element.removeClass("open");
 			element.find("li").removeClass("open");
@@ -511,7 +497,7 @@ CSS TABLE OF CONTENTS
 				$("body").on("mouseleave", "a, .cursor-pointer", function () {
 					($(this).is("a") && $(this).closest(".cursor-pointer").length) ||
 						(e.classList.remove("cursor-hover"),
-						t.classList.remove("cursor-hover"));
+							t.classList.remove("cursor-hover"));
 				}),
 				(e.style.visibility = "visible"),
 				(t.style.visibility = "visible");

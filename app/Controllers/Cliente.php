@@ -125,8 +125,68 @@ class Cliente extends BaseController
             'Checkout_Id_Facturacion' => (int) $facturacionId,
         ]);
 
-        return redirect()->to(base_url('carrito/paso2'))
-            ->with('checkout_address_success', 'Guardamos tus direcciones para esta compra.');
+        $session->set([
+            'Checkout_Id_Tipo_Envio' => (int) $this->request->getPost('id_tipo_envio'),
+            'Checkout_Id_Tipo_Pago' => (int) $this->request->getPost('id_tipo_pago'),
+            'Checkout_Requiere_Factura' => (int) $this->request->getPost('requiere_factura_hidden'),
+        ]);
+
+        return redirect()->to(base_url('carrito/paso3'));
+    }
+
+    /**
+     * Paso 3: Verificar orden.
+     */
+    public function paso3()
+    {
+        $session = session();
+
+        if (
+            !$session->has('User_ID') ||
+            (int) $session->get('Rol') !== 2
+        ) {
+            return redirect()->to(base_url('login?redirect=carrito/paso2'));
+        }
+
+        $userId = (int) $session->get('User_ID');
+        $db = \Config\Database::connect();
+
+        $idDireccion = (int) $session->get('Checkout_Id_Direccion');
+        $idFacturacion = (int) $session->get('Checkout_Id_Facturacion');
+
+        $direccion = null;
+        $facturacion = null;
+
+        if ($idDireccion > 0) {
+            $direccion = $db->table('cat_direcciones')
+                ->where('id_direccion', $idDireccion)
+                ->where('id_user', $userId)
+                ->get()->getRow();
+        }
+
+        if ($idFacturacion > 0) {
+            $facturacion = $db->table('cat_datos_facturacion')
+                ->where('id_facturacion', $idFacturacion)
+                ->where('id_user', $userId)
+                ->get()->getRow();
+        }
+
+        $data = [
+            'Titulo' => 'Verificar orden',
+            'Descripcion' => '',
+            'direccionEnvio' => $direccion,
+            'datosFacturacion' => $facturacion,
+            'idTipoEnvio' => $session->get('Checkout_Id_Tipo_Envio'),
+            'idTipoPago' => $session->get('Checkout_Id_Tipo_Pago'),
+            'requiereFactura' => $session->get('Checkout_Requiere_Factura'),
+            'cargarScriptsCarrito' => true,
+            'cargarScriptCheckoutPaso3' => true
+        ];
+
+        echo view('templates/header');
+        echo view('templates/nav-top');
+        echo view('store/step3', $data);
+        echo view('templates/footer');
+        echo view('templates/close');
     }
 }
-

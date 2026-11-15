@@ -475,12 +475,12 @@ class UsuarioModel extends Model
 
                 // Depósito Bancario
                 if ((int) $Id_Tipo_Pago === 2) {
-                    $this->envia_correo_orden(
-                        $Id_User,
-                        $orderId,
-                        $Id_Tipo_Pago,
-                        $dataOrden
-                    );
+                    // $this->envia_correo_orden(
+                    //     $Id_User,
+                    //     $orderId,
+                    //     $Id_Tipo_Pago,
+                    //     $dataOrden
+                    // );
                 }
             }
         }

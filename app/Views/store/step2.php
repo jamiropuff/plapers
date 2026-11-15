@@ -80,11 +80,12 @@ $valor = static fn($obj, $key) => (string)($obj->{$key} ?? '');
               <?php if ($campo === 'recibe'): ?>
 
                 <input
-                  class="form-control"
-                  type="text"
-                  id="nombre_completo"
-                  value="<?= esc($nombreUsuario) ?>"
-                  readonly>
+                  class="form-control" 
+                  type="text" 
+                  id="nombre_completo" 
+                  value="<?= esc($nombreUsuario) ?>" 
+                  readonly 
+                  disabled>
 
                 <input
                   class="form-control"
@@ -463,6 +464,8 @@ $valor = static fn($obj, $key) => (string)($obj->{$key} ?? '');
     let usosCFDI = [];
 
     function actualizarEstadoCampos() {
+      // console.log('actualizarEstadoCampos');
+
       const requiereEnvio = obtenerTipoEnvio() === 'true' ||
         obtenerTipoEnvio() === '1';
 
@@ -475,14 +478,35 @@ $valor = static fn($obj, $key) => (string)($obj->{$key} ?? '');
 
       // ENTREGA
       entrega.querySelectorAll('input, select, textarea').forEach(campo => {
+
+        // El nombre visible nunca debe ser editable.
+        console.log("campo: ", campo)
+        if (campo.id === 'nombre_completo') {
+          campo.readOnly = true;
+          campo.disabled = true;
+          campo.required = false;
+          return;
+        }
+
+        // El campo oculto siempre debe enviarse al servidor.
+        if (campo.id === 'entrega_recibe') {
+          campo.disabled = false;
+          campo.required = false;
+          return;
+        }
+
         if (!requiereEnvio) {
           campo.disabled = true;
           campo.required = false;
         } else {
           campo.disabled = idEntrega.value !== '0';
-          campo.required = ['entrega_estado', 'entrega_pais'].includes(campo.id);
+          campo.required = [
+            'entrega_estado',
+            'entrega_pais'
+          ].includes(campo.id);
         }
       });
+
 
       // FACTURACIÓN
       facturacion.querySelectorAll('input, select, textarea').forEach(campo => {
@@ -502,6 +526,8 @@ $valor = static fn($obj, $key) => (string)($obj->{$key} ?? '');
 
 
     async function cargarCatalogosEntrega() {
+      // console.log('cargarCatalogosEntrega');
+
       try {
         const respuesta = await fetch('<?= base_url('catalogos') ?>');
 
@@ -587,6 +613,8 @@ $valor = static fn($obj, $key) => (string)($obj->{$key} ?? '');
 
     // Recuperar el tipo de envío guardado en el paso 1.
     function obtenerTipoEnvio() {
+      // console.log('obtenerTipoEnvio');
+
       try {
         const borrador = JSON.parse(localStorage.getItem(CHECKOUT_DRAFT_KEY) || '{}');
         if (borrador.tipo_envio !== undefined && borrador.tipo_envio !== null) {
@@ -599,6 +627,8 @@ $valor = static fn($obj, $key) => (string)($obj->{$key} ?? '');
     }
 
     function actualizarVisibilidadEntrega() {
+      // console.log('actualizarVisibilidadEntrega');
+
       const tipoEnvio = obtenerTipoEnvio();
       const requiereEnvio = tipoEnvio === 'true' || tipoEnvio === '1';
 
@@ -610,11 +640,13 @@ $valor = static fn($obj, $key) => (string)($obj->{$key} ?? '');
     actualizarVisibilidadEntrega();
 
     function llenar(prefix, data, campos, idKey) {
-      console.log("data: ", data);
+      // console.log('llenar');
+      // console.log("data: ", data);
+
       campos.forEach(campo => {
         const input = document.getElementById(prefix + campo);
         if (!input) return;
-        console.log("campo: ", campo);
+        // console.log("campo: ", campo);
         if (['estado', 'pais', 'uso_cfdi'].includes(campo)) {
           input.value = data?.[campo] != null ?
             String(data[campo]) :
@@ -625,15 +657,30 @@ $valor = static fn($obj, $key) => (string)($obj->{$key} ?? '');
           input.value = data?.[campo] ?? '';
         }
 
-        input.disabled = !!data;
-
+        // El nombre visible nunca debe habilitarse.
+        // console.log("campos: ", campos);
+        // console.log("data: ", data);
         if (campo === 'recibe') {
+          // console.log("entro a campo recibe ");
           input.disabled = false;
+          return;
         }
+
+        input.disabled = !!data;
 
 
         if (campo === 'tipo_persona') input.value = data?.[campo] || '1';
       });
+
+      var nombreCompleto = document.getElementById('nombre_completo');
+      console.log({
+        nombreCompleto
+      });
+
+      if (nombreCompleto) {
+        nombreCompleto.readOnly = true;
+        nombreCompleto.disabled = true;
+      }
 
       if (idKey === 'entrega') {
         idEntrega.value = data?.id_direccion || '0';
@@ -644,6 +691,7 @@ $valor = static fn($obj, $key) => (string)($obj->{$key} ?? '');
         nuevaFiscal.value = data ? '0' : '1';
         document.querySelectorAll('#tarjetasFacturacion .address-card').forEach(b => b.classList.toggle('selected', !!data && b.dataset.billing && JSON.parse(b.dataset.billing).id_facturacion == data.id_facturacion));
       }
+
 
       actualizarEstadoCampos();
     }
@@ -743,6 +791,8 @@ $valor = static fn($obj, $key) => (string)($obj->{$key} ?? '');
 
 
     function llenarSelect(select, opciones, campoId, campoTexto, valorSeleccionado = '') {
+      // console.log('llenarSelect');
+
       if (!select) return;
 
       select.innerHTML = '<option value="">Selecciona una opción</option>';
@@ -773,11 +823,13 @@ $valor = static fn($obj, $key) => (string)($obj->{$key} ?? '');
     });
 
     function actualizarTipoPersona() {
+      // console.log('actualizarTipoPersona');
+
       const moral = document.getElementById('fiscal_tipo_persona').value === '2';
       document.querySelector('[data-fiscal-field="razon_social"]').classList.toggle('d-none', !moral);
       ['nombres', 'paterno', 'materno', 'curp'].forEach(c => document.querySelector(`[data-fiscal-field="${c}"]`)?.classList.toggle('d-none', moral));
     }
-    
+
     document.getElementById('fiscal_tipo_persona').addEventListener('change', actualizarTipoPersona);
     actualizarTipoPersona();
     actualizarEstadoCampos();
@@ -814,15 +866,98 @@ $valor = static fn($obj, $key) => (string)($obj->{$key} ?? '');
         requiereEnvio ? '1' : '0';
 
       // Validar domicilio de entrega
-      if (
-        requiereEnvio &&
-        idEntrega.value === '0' &&
-        nuevaEntrega.value !== '1'
-      ) {
-        event.preventDefault();
-        alert('Selecciona un domicilio de entrega o captura uno nuevo.');
-        return;
+
+      // Validar domicilio de entrega
+      if (requiereEnvio) {
+
+        // Si no hay domicilio registrado seleccionado,
+        // comprobar que los campos de una nueva dirección estén completos.
+        if (Number(idEntrega.value) === 0) {
+
+          const camposEntrega = [{
+              id: 'entrega_recibe',
+              nombre: 'Nombre completo'
+            },
+            {
+              id: 'entrega_calle',
+              nombre: 'Calle'
+            },
+            {
+              id: 'entrega_numero',
+              nombre: 'Número'
+            },
+            {
+              id: 'entrega_telefono',
+              nombre: 'Teléfono'
+            },
+            {
+              id: 'entrega_colonia',
+              nombre: 'Colonia'
+            },
+            {
+              id: 'entrega_municipio',
+              nombre: 'Municipio'
+            },
+            {
+              id: 'entrega_estado',
+              nombre: 'Estado'
+            },
+            {
+              id: 'entrega_codigo_postal',
+              nombre: 'Código Postal'
+            },
+            {
+              id: 'entrega_pais',
+              nombre: 'País'
+            }
+          ];
+
+          const pendientes = [];
+
+          camposEntrega.forEach(campo => {
+            const elemento = document.getElementById(campo.id);
+            const valor = elemento?.value?.trim() || '';
+
+            if (!valor || valor === '0') {
+              pendientes.push(campo.nombre);
+            }
+          });
+
+          if (pendientes.length > 0) {
+            event.preventDefault();
+
+            Swal.fire({
+              icon: 'warning',
+              title: 'Domicilio incompleto',
+              html: `
+                    <p>Por favor completa los siguientes campos:</p>
+                    <ul style="text-align:left;">
+                        ${pendientes.map(campo => `<li>${campo}</li>`).join('')}
+                    </ul>
+                `,
+              confirmButtonText: 'Aceptar',
+              confirmButtonColor: '#ef393e'
+            });
+
+            return;
+          }
+
+          // Los campos están completos: es una dirección nueva.
+          nuevaEntrega.value = '1';
+
+        } else {
+
+          // Se seleccionó un domicilio previamente registrado.
+          nuevaEntrega.value = '0';
+        }
+
+      } else {
+
+        // Recoger en oficina: no necesita domicilio.
+        idEntrega.value = '0';
+        nuevaEntrega.value = '0';
       }
+
 
       // Validar domicilio fiscal
       if (

@@ -533,8 +533,10 @@ class UserController extends BaseController
             $response = array(
                 'status' => 0,
                 'message' => 'Ingresa tu correo y contraseña.',
-                'Code' => 200
+                'Code' => 400
             );
+            return json_encode($response);
+            
         }
 
         $builder = $db->table('t_usuarios AS tu');
@@ -563,8 +565,10 @@ class UserController extends BaseController
         if (!$usuario) {
             $response = array(
                 'status' => 0,
-                'message' => 'Usuario y/o contraseña incorrectos'
+                'message' => 'Usuario y/o contraseña incorrectos',
+                'Code' => 400
             );
+            return json_encode($response);
         } else {
             if ($usuarioModel->verifyPass($pass, $usuario->password)) {
 
@@ -606,6 +610,7 @@ class UserController extends BaseController
                     'message' => 'Success',
                     'Code' => 200
                 );
+                return json_encode($response);
             } else {
                 $response = array(
                     'status' => 0,
@@ -613,10 +618,11 @@ class UserController extends BaseController
                     'Code' => 400
 
                 );
+                return json_encode($response);
             }
         }
 
-        return json_encode($response);
+        
     }
 
     public function logout_cliente()

@@ -126,7 +126,29 @@
                 return;
             }
 
-            await Swal.fire('Solicitud recibida', result.Msg || 'El servidor confirmó el procesamiento.', 'success');
+            // await Swal.fire('Solicitud recibida', result.Msg || 'El servidor confirmó el procesamiento.', 'success');
+
+
+            await Swal.fire({
+                title: '¡Compra realizada!',
+                text: result.Msg || 'Tu pedido se registró correctamente.',
+                icon: 'success',
+                confirmButtonText: 'Ver mis compras',
+                allowOutsideClick: false,
+                allowEscapeKey: false
+            });
+
+            // Limpiar información del carrito y checkout
+            localStorage.removeItem('Carrito');
+            localStorage.removeItem('checkoutPaso2Draft');
+
+            // Limpiar también el borrador de sesión, si existe
+            sessionStorage.removeItem('checkoutPaso2Draft');
+
+            // Redireccionar al historial de compras
+            window.location.href = result.redirect || `${BASE_URL.replace(/\/$/, '')}/mis-compras`;
+
+
         } catch (error) {
             console.error('Error al procesar compra:', error);
             await Swal.fire('No se pudo procesar', error.message || 'Ocurrió un error inesperado.', 'error');

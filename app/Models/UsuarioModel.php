@@ -346,9 +346,11 @@ class UsuarioModel extends Model
     public function valida_domicilios_usuario($Id_User, $Id_Direccion, $Id_Facturacion)
     {
         $direccion = null;
+
         if (is_numeric($Id_Direccion) && (int) $Id_Direccion > 0) {
             $direccion = $this->db->table('cat_direcciones')
                 ->where('id_direccion', (int) $Id_Direccion)
+                ->where('id_user', (int) $Id_User)
                 ->get()->getFirstRow('array');
         }
 
@@ -356,6 +358,7 @@ class UsuarioModel extends Model
         if (is_numeric($Id_Facturacion) && (int) $Id_Facturacion > 0) {
             $fiscal = $this->db->table('cat_datos_facturacion')
                 ->where('id_facturacion', (int) $Id_Facturacion)
+                ->where('id_user', (int) $Id_User)
                 ->get()->getFirstRow('array');
         }
 

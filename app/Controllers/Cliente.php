@@ -166,6 +166,84 @@ class Cliente extends BaseController
             $direccionId = (int) $resultado['Id'];
         }
 
+
+        // ==========================================
+        // REGISTRAR NUEVA DIRECCIÓN FISCAL
+        // ==========================================
+
+        $nuevaFacturacion = $this->request->getPost('nueva_facturacion') === '1';
+
+        // Si no requiere factura, no debe conservar ningún domicilio fiscal.
+        if ($requiereFactura !== 1) {
+            $facturacionId = 0;
+        }
+
+        // Si está capturando uno nuevo, ignorar cualquier ID anterior.
+        if ($requiereFactura === 1 && $nuevaFacturacion) {
+            $facturacionId = 0;
+        }
+
+        if ($requiereFactura === 1 && $nuevaFacturacion) {
+
+            $token = (string) $session->get('Token');
+
+            if ($token === '') {
+                return redirect()->to(base_url('carrito/paso2'))
+                    ->with('checkout_address_error', 'Tu sesión no contiene un token válido.');
+            }
+
+            // Obtener constancia fiscal, si se adjuntó.
+            $documentoFiscal = null;
+            $archivo = $this->request->getFile('fiscal_constancia');
+
+            if ($archivo && $archivo->isValid() && !$archivo->hasMoved()) {
+
+                $ruta = WRITEPATH . 'uploads/documentos_fiscales/';
+
+                if (!is_dir($ruta)) {
+                    mkdir($ruta, 0755, true);
+                }
+
+                $nombreArchivo = $archivo->getRandomName();
+                $archivo->move($ruta, $nombreArchivo);
+
+                $documentoFiscal = $nombreArchivo;
+            }
+
+            $resultadoFiscal = $usuarioModel->registra_facturacion(
+                $token,
+                $this->request->getPost('fiscal_razon_social'),
+                $this->request->getPost('fiscal_rfc'),
+                $this->request->getPost('fiscal_curp'),
+                $this->request->getPost('fiscal_nombres'),
+                $this->request->getPost('fiscal_paterno'),
+                $this->request->getPost('fiscal_materno'),
+                $this->request->getPost('fiscal_calle'),
+                $this->request->getPost('fiscal_numero'),
+                $this->request->getPost('fiscal_interior'),
+                $this->request->getPost('fiscal_colonia'),
+                $this->request->getPost('fiscal_municipio'),
+                $this->request->getPost('fiscal_estado'),
+                $this->request->getPost('fiscal_codigo_postal'),
+                $this->request->getPost('fiscal_pais'),
+                $this->request->getPost('fiscal_uso_cfdi'),
+                $this->request->getPost('fiscal_tipo_persona'),
+                $documentoFiscal
+            );
+
+            if (
+                ($resultadoFiscal['Code'] ?? null) !== REQUEST_SUCCESS ||
+                empty($resultadoFiscal['Id'])
+            ) {
+                return redirect()->to(base_url('carrito/paso2'))
+                    ->with('checkout_address_error', 'No fue posible registrar los datos fiscales.');
+            }
+
+            // Recuperar el ID generado.
+            $facturacionId = (int) $resultadoFiscal['Id'];
+        }
+
+
         // ==========================================
         // 2. RECOGER EN OFICINA
         // ==========================================
@@ -173,6 +251,27 @@ class Cliente extends BaseController
         if ($idTipoEnvio === 2) {
             $direccionId = 0;
         }
+
+        if ($idTipoEnvio === 1 && $direccionId <= 0) {
+            return redirect()->to(base_url('carrito/paso2'))
+                ->with('checkout_address_error', 'Debes seleccionar o registrar un domicilio de entrega.');
+        }
+
+        if ($requiereFactura === 1 && $facturacionId <= 0) {
+            return redirect()->to(base_url('carrito/paso2'))
+                ->with('checkout_address_error', 'Debes seleccionar o registrar un domicilio fiscal.');
+        }
+
+        if (!in_array($idTipoEnvio, [1, 2], true)) {
+            return redirect()->to(base_url('carrito/paso2'))
+                ->with('checkout_address_error', 'Selecciona un tipo de envío válido.');
+        }
+
+        if (!in_array($requiereFactura, [0, 1], true)) {
+            return redirect()->to(base_url('carrito/paso2'))
+                ->with('checkout_address_error', 'La opción de facturación no es válida.');
+        }
+
 
         // ==========================================
         // 3. VALIDAR PROPIEDAD DE LOS DOMICILIOS

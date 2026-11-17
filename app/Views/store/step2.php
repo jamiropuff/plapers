@@ -80,11 +80,11 @@ $valor = static fn($obj, $key) => (string)($obj->{$key} ?? '');
               <?php if ($campo === 'recibe'): ?>
 
                 <input
-                  class="form-control" 
-                  type="text" 
-                  id="nombre_completo" 
-                  value="<?= esc($nombreUsuario) ?>" 
-                  readonly 
+                  class="form-control"
+                  type="text"
+                  id="nombre_completo"
+                  value="<?= esc($nombreUsuario) ?>"
+                  readonly
                   disabled>
 
                 <input
@@ -959,16 +959,115 @@ $valor = static fn($obj, $key) => (string)($obj->{$key} ?? '');
       }
 
 
-      // Validar domicilio fiscal
-      if (
-        requiereFactura &&
-        idFiscal.value === '0' &&
-        nuevaFiscal.value !== '1'
-      ) {
-        event.preventDefault();
-        alert('Selecciona un domicilio fiscal o captura uno nuevo.');
-        return;
+
+      // ==========================================
+      // VALIDAR DOMICILIO FISCAL
+      // ==========================================
+
+      if (requiereFactura) {
+
+        if (Number(idFiscal.value) === 0) {
+
+          const tipoPersona = document.getElementById('fiscal_tipo_persona').value;
+          const camposFiscalObligatorios = [{
+              id: 'fiscal_rfc',
+              nombre: 'RFC'
+            },
+            {
+              id: 'fiscal_calle',
+              nombre: 'Calle'
+            },
+            {
+              id: 'fiscal_numero',
+              nombre: 'Número'
+            },
+            {
+              id: 'fiscal_colonia',
+              nombre: 'Colonia'
+            },
+            {
+              id: 'fiscal_municipio',
+              nombre: 'Municipio'
+            },
+            {
+              id: 'fiscal_estado',
+              nombre: 'Estado'
+            },
+            {
+              id: 'fiscal_codigo_postal',
+              nombre: 'Código Postal'
+            },
+            {
+              id: 'fiscal_pais',
+              nombre: 'País'
+            },
+            {
+              id: 'fiscal_uso_cfdi',
+              nombre: 'Uso de CFDI'
+            }
+          ];
+
+          if (tipoPersona === '1') {
+            camposFiscalObligatorios.push({
+              id: 'fiscal_nombres',
+              nombre: 'Nombre'
+            }, {
+              id: 'fiscal_paterno',
+              nombre: 'Apellido paterno'
+            });
+          } else {
+            camposFiscalObligatorios.push({
+              id: 'fiscal_razon_social',
+              nombre: 'Razón social'
+            });
+          }
+
+          const pendientes = [];
+
+          camposFiscalObligatorios.forEach(campo => {
+            const elemento = document.getElementById(campo.id);
+            const valor = elemento?.value?.trim() || '';
+
+            if (!valor || valor === '0') {
+              pendientes.push(campo.nombre);
+            }
+          });
+
+          if (pendientes.length > 0) {
+            event.preventDefault();
+
+            Swal.fire({
+              icon: 'warning',
+              title: 'Datos fiscales incompletos',
+              html: `
+                    <p>Por favor completa los siguientes campos:</p>
+                    <ul style="text-align:left;">
+                        ${pendientes.map(campo => `<li>${campo}</li>`).join('')}
+                    </ul>
+                `,
+              confirmButtonText: 'Aceptar',
+              confirmButtonColor: '#ef393e'
+            });
+
+            return;
+          }
+
+          // Se capturó una nueva dirección fiscal.
+          nuevaFiscal.value = '1';
+
+        } else {
+
+          // Se seleccionó una dirección fiscal registrada.
+          nuevaFiscal.value = '0';
+        }
+
+      } else {
+
+        // No requiere factura.
+        idFiscal.value = '0';
+        nuevaFiscal.value = '0';
       }
+
 
       const borrador = JSON.parse(
         localStorage.getItem('checkoutPaso2Draft') || '{}'
